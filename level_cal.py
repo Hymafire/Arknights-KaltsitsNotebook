@@ -19,7 +19,10 @@ class level_calculate(object):
         self.elite = employee_elite
         self.level = employee_level
         self.get_param()
-        return self.calculate()
+        if self.judge():
+            return self.calculate()
+        else:
+            return "错误参数."
 
     # 运算器
     def calculate(self):
@@ -43,6 +46,12 @@ class level_calculate(object):
                 self.employee_max_level = employee_file["phases"][self.elite]["attributesKeyFrames"][1]["level"]                
                 self.employee_max = employee_file["phases"][self.elite]["attributesKeyFrames"][1]["data"]
 
+    # 判断输入参数是否合法
+    def judge(self):
+        if 0 <= self.elite <= 2 and 1 <= self.level <= self.employee_max_level:
+            return True
+        else:
+            return False
 
 if __name__ == "__main__":
     A = level_calculate()
