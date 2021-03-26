@@ -55,4 +55,4 @@ class level_calculate(object):
 
 if __name__ == "__main__":
     A = level_calculate()
-    print(A.compute("斯卡蒂", 1, 80))
+    print(A.compute("斯卡蒂", 2, 90))
