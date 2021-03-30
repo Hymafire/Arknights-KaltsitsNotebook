@@ -1,8 +1,9 @@
 import json
 
 # 用于计算干员当前等级的属性
+
 class level_calculate(object):
-    #初始化参数
+    # 初始化参数
     def __init__(self):
         self.em = {}
         self.em_max = {}
@@ -10,9 +11,9 @@ class level_calculate(object):
         self.favor = {}
         self.em_max_level = 0
         self.em_min_level = 0
-    
+
     # 入口 main()
-    def compute(self, name, elite, level, favor_level = 100, potential_rank = 0):
+    def compute(self, name, elite, level, favor_level=100, potential_rank=0):
         self.name = name
         self.elite = elite
         self.level = level
@@ -33,15 +34,21 @@ class level_calculate(object):
         max_level_diff = self.em_max_level - self.em_min_level
         level_diff = self.level - self.em_min_level
         self.em = self.em_min
-        self.em["maxHp"] += round(level_diff * (self.em_max["maxHp"] - self.em_min["maxHp"]) / max_level_diff)
-        self.em["atk"] += round(level_diff * (self.em_max["atk"] - self.em_min["atk"]) / max_level_diff)
-        self.em["def"] += round(level_diff * (self.em_max["def"] - self.em_min["def"]) / max_level_diff)
+        self.em["maxHp"] += round(level_diff * (self.em_max["maxHp"] -
+                                                self.em_min["maxHp"]) / max_level_diff)
+        self.em["atk"] += round(level_diff * (self.em_max["atk"] -
+                                              self.em_min["atk"]) / max_level_diff)
+        self.em["def"] += round(level_diff * (self.em_max["def"] -
+                                              self.em_min["def"]) / max_level_diff)
 
     # 计算信赖加成
     def favor_calculate(self):
-        self.em["maxHp"] += round((min(self.favor_level, 100) / 100) * self.favor["maxHp"])
-        self.em["atk"] += round((min(self.favor_level, 100) / 100) * self.favor["atk"])
-        self.em["def"] += round((min(self.favor_level, 100) / 100) * self.favor["def"])
+        self.em["maxHp"] += round((min(self.favor_level,
+                                       100) / 100) * self.favor["maxHp"])
+        self.em["atk"] += round((min(self.favor_level,
+                                     100) / 100) * self.favor["atk"])
+        self.em["def"] += round((min(self.favor_level,
+                                     100) / 100) * self.favor["def"])
 
     # 计算潜能加成
     def potential_calculate(self):
@@ -53,7 +60,7 @@ class level_calculate(object):
 
     # 读参
     def get_param(self):
-        with open("employee_table.json", encoding = "utf-8") as f:
+        with open("employee_table.json", encoding="utf-8") as f:
             json_file = json.load(f)
         for em in json_file:
             em_file = json_file[em]
@@ -70,14 +77,14 @@ class level_calculate(object):
                         return False
                 self.em_min_level = em_file["phases"][self.elite]["attributesKeyFrames"][0]["level"]
                 self.em_min = em_file["phases"][self.elite]["attributesKeyFrames"][0]["data"]
-                self.em_max_level = em_file["phases"][self.elite]["attributesKeyFrames"][1]["level"]                
+                self.em_max_level = em_file["phases"][self.elite]["attributesKeyFrames"][1]["level"]
                 self.em_max = em_file["phases"][self.elite]["attributesKeyFrames"][1]["data"]
                 self.favor = em_file["favorKeyFrames"][1]["data"]
         return False
 
     # 读描述
     def get_description(self, name):
-        with open("employee_table.json", encoding = "utf-8") as f:
+        with open("employee_table.json", encoding="utf-8") as f:
             json_file = json.load(f)
         for em in json_file:
             em_file = json_file[em]
@@ -86,12 +93,12 @@ class level_calculate(object):
                 return em_description
         return False
 
-
     # 判断输入参数是否合法
     def judge(self):
         if 1 <= self.level <= self.em_max_level and 0 <= self.favor_level <= 200:
-                return True
+            return True
         return False
+
 
 if __name__ == "__main__":
     A = level_calculate()
