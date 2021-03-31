@@ -1,4 +1,3 @@
-import json
 from level_calc import LevelCalculate
 
 # 计算输出能力
@@ -7,69 +6,54 @@ class AttackAnalysis(object):
     # 初始化参数
     def __init__(self):
         self.em = {}
-        self.atk = 0
-        self.attackSpeed = 100.0
-        self.baseAttackTime = 1.00
         self.pre_atk = 0
 
     # 获得干员相关参数
-    def get_param(self, name: str, elite: str, level: str):
+    def getParam(self, name: str, elite: str, level: str):
+        self.name = name
         self.em = LevelCalculate().compute(name, elite, level)
         self.atk = self.em["atk"]
-        self.attackSpeed = self.em["attackSpeed"]
-        self.baseAttackTime = self.em["baseAttackTime"]
+        self.atk_spd = self.em["attackSpeed"]
+        self.base_atk_t = self.em["baseAttackTime"]
 
     # 计算秒伤
-    def pre_damage(self, name: str):
-        dam_mod = self.damage_mod(name)
-        if dam_mod == "法术伤害":
-            self.pre_damage_mag(enemy_magicResistance=0)
-        elif dam_mod == "真实伤害":
-            self.pre_damage_tru()
-        else:
-            self.pre_damage_phy(enemy_def=0)
-
-    # 计算物理秒伤
-    def pre_damage_phy(self, enemy_def: str):
-        true_atk = max(self.atk * 0.05, self.atk - enemy_def)
-        self.pre_atk = (true_atk / self.baseAttackTime) * \
-            (100 / self.attackSpeed)
-        return "Dps:{:.1f}/s".format(self.pre_atk)
-
-    # 计算法术秒伤
-    def pre_damage_mag(self, enemy_magicResistance: str):
-        true_atk = max(0.05, 1 - enemy_magicResistance / 100) * self.atk
-        self.pre_atk = (true_atk / self.baseAttackTime) * \
-            (100 / self.attackSpeed)
-        return "Dps:{:.1f}/s".format(self.pre_atk)
-
-    # 计算真实伤害
-    def pre_damage_tru(self):
-        self.pre_atk = (self.atk / self.baseAttackTime) * \
-            (100 / self.attackSpeed)
-        return "Dps:{:.1f}/s".format(self.pre_atk)
+    def preDamage(self, enemy_def: int = 0, enemy_magicResistance: int = 0):
+        dam_mod = self.damageMod(self.name)
+        if dam_mod == "Mag":
+            true_atk = max(0.05, 1 - enemy_magicResistance / 100) * self.atk
+        elif dam_mod == "Phy":
+            true_atk = max(self.atk * 0.05, self.atk - enemy_def)
+        elif dam_mod == "Tru":
+            true_atk = self.atk
+        self.pre_atk = (true_atk / self.base_atk_t) * (100 / self.atk_spd)
+        return self.pre_atk
 
     # 保底伤害及保底线
-    def min_damage(self, mod: int = 0):
+    def minDamage(self, mod: int = 0):
         if mod == 0:    # min_pre_damage
-            min_dam = (self.atk * 0.05 / self.baseAttackTime) * \
-                (100 / self.attackSpeed)
+            min_dam = (self.atk * 0.05 / self.base_atk_t) * (100 / self.atk_spd)
         else:           # min_hite_damage
             min_dam = self.atk * 0.05
         dam_line = self.atk * 0.95
-        return "{:.1f},{:.1f}".format(min_dam, dam_line)
+        ret = [min_dam, dam_line]
+        return ret
 
     # 判断伤害模式
-    def damage_mod(self, name: str):
+    def damageMod(self, name: str):
         description = LevelCalculate().getDescription(name)
+        dam_mod = "Phy"
         if "法术伤害" in description:
             dam_mod = "Mag"
         elif "真实伤害" in description:
             dam_mod = "Tru"
         return dam_mod
 
+    # 秒伤图形化
+    def preDamageGraph(self):
+        pass
+
 
 if __name__ == "__main__":
     A = AttackAnalysis()
-    A.get_param("斯卡蒂", 2, 90)
-    print(A.min_damage())
+    A.getParam("斯卡蒂", 2, 90)
+    print(A.minDamage())
