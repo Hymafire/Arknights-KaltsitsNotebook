@@ -1,15 +1,15 @@
-from level_cal import level_calculate
+from level_calc import LevelCalculate
 
 # 计算生存能力
 
-class viability_calculate(object):
+class ViabilityAnalysis(object):
 
     def __init__(self):
         pass
 
     # 获得干员相关参数
     def get_param(self, name, elite, level):
-        self.em = level_calculate().compute(name, elite, level)
+        self.em = LevelCalculate().compute(name, elite, level)
         self.maxHp = self.em["maxHp"]
         self.def_ = self.em["def"]
         self.magicResistance = self.em["magicResistance"]
@@ -30,6 +30,6 @@ class viability_calculate(object):
 
 
 if __name__ == "__main__":
-    A = viability_calculate()
+    A = ViabilityAnalysis()
     A.get_param("斯卡蒂", 2, 90)
     print(A.viability_compute(en_atk = 500))
