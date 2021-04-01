@@ -2,7 +2,6 @@ import json
 
 # 用于计算干员当前等级的属性
 
-
 class LevelCalculate(object):
     # 初始化参数
     def __init__(self):
@@ -99,6 +98,79 @@ class LevelCalculate(object):
         if 1 <= self.level <= self.employee_max_level and 0 <= self.favor_level <= 200:
             return True
         return False
+
+#==========================================分割线==========================================#
+
+class EmployeeAnalysis(object):
+    # 初始化参数
+    def __init__(self):
+        self.em = {}
+        self.pre_atk = 0
+
+    # 获得干员相关参数
+    def getParam(self, name: str, elite: str, level: str):
+        self.name = name
+        self.em = LevelCalculate().compute(name, elite, level)
+        self.atk = self.em["atk"]
+        self.atk_spd = self.em["attackSpeed"]
+        self.base_atk_t = self.em["baseAttackTime"]
+
+    # 计算秒伤
+    def preDamage(self, enemy_def: int = 0, enemy_magicResistance: int = 0):
+        dam_mod = self.damageMod(self.name)
+        if dam_mod == "Mag":
+            true_atk = max(0.05, 1 - enemy_magicResistance / 100) * self.atk
+        elif dam_mod == "Phy":
+            true_atk = max(self.atk * 0.05, self.atk - enemy_def)
+        elif dam_mod == "Tru":
+            true_atk = self.atk
+        self.pre_atk = (true_atk / self.base_atk_t) * (100 / self.atk_spd)
+        return self.pre_atk
+
+    # 保底伤害及保底线
+    def minDamage(self, mod: int = 0):
+        if mod == 0:    # min_pre_damage
+            min_dam = (self.atk * 0.05 / self.base_atk_t) * (100 / self.atk_spd)
+        else:           # min_hite_damage
+            min_dam = self.atk * 0.05
+        dam_line = self.atk * 0.95
+        ret = [min_dam, dam_line]
+        return ret
+
+    # 判断伤害模式
+    def damageMod(self, name: str):
+        description = LevelCalculate().getDescription(name)
+        dam_mod = "Phy"
+        if "法术伤害" in description:
+            dam_mod = "Mag"
+        elif "真实伤害" in description:
+            dam_mod = "Tru"
+        return dam_mod
+
+    # 获得干员相关参数
+    def get_param(self, name, elite, level):
+        self.em = LevelCalculate().compute(name, elite, level)
+        self.maxHp = self.em["maxHp"]
+        self.def_ = self.em["def"]
+        self.magicResistance = self.em["magicResistance"]
+        self.hpRecoveryPerSec = self.em["hpRecoveryPerSec"]
+
+    # 驻留时间
+    def viability_compute(self, en_atk = 100, en_atkSpeed = 1.00, en_dam_mod = "Phy"):
+        if en_dam_mod == "Phy":
+            en_dam = max(en_atk - self.def_, en_atk * 0.05)
+        elif en_dam_mod == "Mag":
+            en_dam = min(0.05, 1 - self.magicResistance / 100) * en_atk
+        now_Hp = self.maxHp
+        stay_time = 0
+        while now_Hp > 0:
+            now_Hp -= en_dam
+            stay_time += en_atkSpeed
+        return stay_time
+
+    # 秒伤图形化
+    def preDamageGraph(self):
+        pass
 
 
 if __name__ == "__main__":
