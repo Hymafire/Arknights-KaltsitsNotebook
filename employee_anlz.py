@@ -9,46 +9,40 @@ class LevelCalculate(object):
         self.employee_max = {}
         self.employee_min = {}
         self.favor = {}
+        self.potential = {}
+        self.talent = {}
         self.employee_max_level = 0
-        self.employee_min_level = 0
 
     # 入口 main()
     def compute(self, name: str, elite: int, level: int, favor_level: int = 100, potential_rank: int = 0):
-        self.name = name
-        self.elite = elite
-        self.level = level
-        self.favor_level = favor_level
-        self.potential_rank = potential_rank
-        self.getParam()
+        self.getParam(name, elite)
         if self.judgeLegal():
-            self.levelCalc()
-            self.favorCalc()
-            self.potentialCalc()
-            self.talentCalc()
+            self.levelCalc(level)
+            self.favorCalc(favor_level)
+            self.potentialCalc(potential_rank)
+            self.talentCalc(elite)
             return self.employee
         else:
             return "错误参数."
 
     # 计算相应等级数值
-    def levelCalc(self):
-        max_level_diff = self.employee_max_level - self.employee_min_level
-        level_diff = self.level - self.employee_min_level
+    # 其他属性暂不随等级变化而变化
+    def levelCalc(self, level: int):
+        level_diff = self.employee_max_level - 1
         self.employee = self.employee_min
-        self.employee["maxHp"] += round(level_diff * (self.employee_max["maxHp"] -
-                                                self.employee_min["maxHp"]) / max_level_diff)
-        self.employee["atk"] += round(level_diff * (self.employee_max["atk"] -
-                                              self.employee_min["atk"]) / max_level_diff)
-        self.employee["def"] += round(level_diff * (self.employee_max["def"] -
-                                              self.employee_min["def"]) / max_level_diff)
+        self.employee["maxHp"] += round((level - 1) * (self.employee_max["maxHp"] -
+                                                self.employee_min["maxHp"]) / level_diff)
+        self.employee["atk"] += round((level - 1) * (self.employee_max["atk"] -
+                                              self.employee_min["atk"]) / level_diff)
+        self.employee["def"] += round((level - 1) * (self.employee_max["def"] -
+                                              self.employee_min["def"]) / level_diff)
 
     # 计算信赖加成
-    def favorCalc(self):
-        self.employee["maxHp"] += round((min(self.favor_level,
-                                       100) / 100) * self.favor["maxHp"])
-        self.employee["atk"] += round((min(self.favor_level,
-                                     100) / 100) * self.favor["atk"])
-        self.employee["def"] += round((min(self.favor_level,
-                                     100) / 100) * self.favor["def"])
+    # 信赖暂只加成"maxHp""atk""def"三个属性
+    def favorCalc(self, favor_level: int):
+        self.employee["maxHp"] += round(min(favor_level / 100, 1) * self.favor["maxHp"])                                   
+        self.employee["atk"] += round(min(favor_level / 100, 1) * self.favor["atk"])                                
+        self.employee["def"] += round(min(favor_level / 100, 1) * self.favor["def"])                                  
 
     # 计算潜能加成
     def potentialCalc(self):
@@ -80,6 +74,8 @@ class LevelCalculate(object):
                 self.employee_max_level = employee_file["phases"][self.elite]["attributesKeyFrames"][1]["level"]
                 self.employee_max = employee_file["phases"][self.elite]["attributesKeyFrames"][1]["data"]
                 self.favor = employee_file["favorKeyFrames"][1]["data"]
+                self.potential = employee_file["potentialRanks"]
+                self.talent = employee_file["talents"]
         return False
 
     # 读描述
@@ -105,7 +101,6 @@ class EmployeeAnalysis(object):
     # 初始化参数
     def __init__(self):
         self.em = {}
-        self.pre_atk = 0
 
     # 获得干员相关参数
     def getParam(self, name: str, elite: str, level: str):
