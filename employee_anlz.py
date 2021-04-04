@@ -16,7 +16,7 @@ class LevelCalculate(object):
     # 入口 main()
     def compute(self, name: str, elite: int, level: int, favor_level: int = 100, potential_rank: int = 0):
         self.getParam(name, elite)
-        if self.judgeLegal():
+        if self.judgeLegal(level, favor_level):
             self.levelCalc(level)
             self.favorCalc(favor_level)
             self.potentialCalc(potential_rank)
@@ -45,34 +45,34 @@ class LevelCalculate(object):
         self.employee["def"] += round(min(favor_level / 100, 1) * self.favor["def"])                                  
 
     # 计算潜能加成
-    def potentialCalc(self):
+    def potentialCalc(self, potential_rank: int):
         pass
 
     # 计算天赋加成
-    def talentCalc(self):
+    def talentCalc(self, elite: int):
         pass
 
     # 读参
-    def getParam(self):
+    def getParam(self, name: str, elite: int):
         with open("employee_table.json", encoding="utf-8") as f:
             json_file = json.load(f)
         for employee in json_file:
             employee_file = json_file[employee]
-            if employee_file["name"] == self.name:
+            if employee_file["name"] == name:
                 rarity = employee_file["rarity"]
                 if rarity == 0 or rarity == 1:
-                    if self.elite != 0:
+                    if elite != 0:
                         return False
                 elif rarity == 2:
-                    if self.elite < 0 and self.elite > 1:
+                    if elite < 0 and elite > 1:
                         return False
                 else:
-                    if self.elite < 0 or self.elite > 2:
+                    if elite < 0 or elite > 2:
                         return False
-                self.employee_min_level = employee_file["phases"][self.elite]["attributesKeyFrames"][0]["level"]
-                self.employee_min = employee_file["phases"][self.elite]["attributesKeyFrames"][0]["data"]
-                self.employee_max_level = employee_file["phases"][self.elite]["attributesKeyFrames"][1]["level"]
-                self.employee_max = employee_file["phases"][self.elite]["attributesKeyFrames"][1]["data"]
+                self.employee_min_level = employee_file["phases"][elite]["attributesKeyFrames"][0]["level"]
+                self.employee_min = employee_file["phases"][elite]["attributesKeyFrames"][0]["data"]
+                self.employee_max_level = employee_file["phases"][elite]["attributesKeyFrames"][1]["level"]
+                self.employee_max = employee_file["phases"][elite]["attributesKeyFrames"][1]["data"]
                 self.favor = employee_file["favorKeyFrames"][1]["data"]
                 self.potential = employee_file["potentialRanks"]
                 self.talent = employee_file["talents"]
@@ -90,8 +90,8 @@ class LevelCalculate(object):
         return False
 
     # 判断输入参数是否合法
-    def judgeLegal(self):
-        if 1 <= self.level <= self.employee_max_level and 0 <= self.favor_level <= 200:
+    def judgeLegal(self, level: int, favor_level: int):
+        if 1 <= level <= self.employee_max_level and 0 <= favor_level <= 200:
             return True
         return False
 
