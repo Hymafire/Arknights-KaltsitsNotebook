@@ -33,4 +33,37 @@ class EmployeeData(models.Model):
 
     # 信赖信息
 
+class EmployeeSkillData(models.Model):
+    pass
 
+
+
+class EnemyData(models.Model):
+    # 敌人基本信息
+    Key = models.CharField("键值", max_length=30, primary_key=True, unique=True)
+    name = models.CharField("名字", max_length=30)
+    description = models.TextField("描述", null=True)
+    life_point_reduce = models.IntegerField("", null=True)
+    range_radius = models.FloatField("", null=True)
+    talent_black_board = models.CharField("", null=True, max_length=20)
+    skills = models.CharField("", null=True, max_length=30)
+    spdata = models.CharField("", null=True, max_length=30) 
+    # 敌人数据信息
+    max_hp = models.IntegerField("最大血量", null=True)
+    atk = models.IntegerField("攻击", null=True)
+    defd = models.IntegerField("防御", null=True)
+    mag_res = models.IntegerField("法抗", null=True)
+    cost = models.IntegerField("部署费用", null=True)
+    block_cnt = models.IntegerField("", null=True)
+    move_speed = models.FloatField("移动速度", null=True)
+    attack_speed = models.FloatField("攻速", null=True)
+    base_atk_time = models.FloatField("攻击间隔", null=True)
+    respqwn_time = models.IntegerField("", null=True)
+    hp_rec_pre_sec = models.FloatField("", null=True)
+    sp_rec_pre_sec = models.FloatField("", null=True)
+    max_deploy_cnt = models.IntegerField("", null=True)
+    mass_level = models.IntegerField("重量", null=True)
+    base_force_level = models.IntegerField("嘲讽等级", null=True)
+    stun_immune = models.BooleanField("")
+    silence_immune = models.BooleanField("")
+    sleep_immune = models.BooleanField("")
