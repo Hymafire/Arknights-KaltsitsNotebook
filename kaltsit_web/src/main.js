@@ -7,6 +7,7 @@ import ElementUI from 'element-ui'
 import 'normalize.css/normalize.css'
 import 'nprogress/nprogress.css'
 import './assets/styles/styles.scss'
+import './plugins/element.js'
 
 Vue.use(ElementUI)
 
