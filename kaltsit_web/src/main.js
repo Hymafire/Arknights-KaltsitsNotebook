@@ -8,6 +8,7 @@ import 'normalize.css/normalize.css'
 import 'nprogress/nprogress.css'
 import './assets/styles/styles.scss'
 import './plugins/element.js'
+import './assets/css/global.css'
 
 Vue.use(ElementUI)
 
