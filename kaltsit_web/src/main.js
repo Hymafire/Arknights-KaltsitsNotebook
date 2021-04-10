@@ -9,6 +9,10 @@ import 'nprogress/nprogress.css'
 import './assets/styles/styles.scss'
 import './plugins/element.js'
 import './assets/css/global.css'
+import axios from 'axios'
+
+axios.defaults.baseURL = 'http://127.0.0.1:3000/'
+Vue.prototype.$http = axios
 
 Vue.use(ElementUI)
 
