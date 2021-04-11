@@ -1,57 +1,37 @@
 <template>
-  <div id="App">
-    <span>Kal'tsit's Notebook</span>
+  <div id="App" class="app-div">
     <el-menu
       :default-active="activeIndex"
       class="el-menu-demo"
       mode="horizontal"
       @select="handleSelect"
+      router
     >
-      <el-menu-item index="1">
-        处理中心
+      <el-menu-item>
+        <span>Kal'tsit's Notebook</span>
       </el-menu-item>
-      <el-submenu index="2">
-        <template slot="title">
-          我的工作台
-        </template>
-        <el-menu-item index="2-1">
-          选项1
-        </el-menu-item>
-        <el-menu-item index="2-2">
-          选项2
-        </el-menu-item>
-        <el-menu-item index="2-3">
-          选项3
-        </el-menu-item>
-        <el-submenu index="2-4">
-          <template slot="title">
-            选项4
-          </template>
-          <el-menu-item index="2-4-1">
-            选项1
-          </el-menu-item>
-          <el-menu-item index="2-4-2">
-            选项2
-          </el-menu-item>
-          <el-menu-item index="2-4-3">
-            选项3
-          </el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-menu-item
-        index="3"
-        disabled
-      >
-        消息中心
+      <el-menu-item index="/home">
+        首页
       </el-menu-item>
-      <el-menu-item index="4">
-        <a
-          href=""
-          target="_blank"
-        >订单管理</a>
+      <el-menu-item index="/employee">
+        干员分析
+      </el-menu-item>
+      <el-menu-item disabled index="/compare">
+        干员对比
+      </el-menu-item>
+      <el-menu-item index="/enemy">
+        敌人分析
+      </el-menu-item>
+      <el-menu-item disabled index="/createm">
+        简历编辑
+      </el-menu-item>
+      <el-menu-item disabled index="/createn">
+        敌人登记
       </el-menu-item>
     </el-menu>
-    <router-view />
+    <el-main>
+      <router-view />
+    </el-main>
   </div>
 </template>
 
@@ -60,8 +40,7 @@ export default {
   name: 'App',
   data () {
     return {
-      activeIndex: '1',
-      activeIndex2: '1'
+      activeIndex: '1'
     }
   },
   methods: {
@@ -72,5 +51,22 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
+.app-div {
+  position:fixed;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+}
+.el-menu {
+  padding-left: 12px;
+  span {
+    font-size: 30px;
+  }
+}
+.el-main {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+}
 </style>

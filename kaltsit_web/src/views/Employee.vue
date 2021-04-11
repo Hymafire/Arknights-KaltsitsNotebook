@@ -1,9 +1,9 @@
 <template>
   <el-container class="home-container">
     <!--  左  -->
-    <el-aside width="200px" class="home-aside" >
-      <el-input prefix-icon="el-icon-user" />
-      <el-tree :props="props" :load="loadNode" lazy show-checkbox> </el-tree>
+    <el-aside width="220px" class="home-aside" >
+      <el-input prefix-icon="el-icon-user" placeholder="输入干员名称" v-model="filterText"/>
+      <el-tree :props="props" :load="loadNode" lazy> </el-tree>
     </el-aside>
     <!--  主体  -->
     <el-main>Main</el-main>
@@ -23,48 +23,19 @@ export default {
     }
   },
   methods: {
-    handleCheckChange (data, checked, indeterminate) {
-      console.log(data, checked, indeterminate)
-    },
-    handleNodeClick (data) {
-      console.log(data)
-    },
     loadNode (node, resolve) {
       if (node.level === 0) {
         return resolve([{ name: '★★★★★★' }, { name: '★★★★★' }, { name: '★★★★' }, { name: '★★★' }, { name: '★★' }, { name: '★' }])
       }
-      if (node.level > 3) return resolve([])
-
-      var hasChild
       if (node.level === 1) {
-        return resolve([{ name: '近卫' }, { name: '医疗' }])
+        return resolve([{ name: '近卫' }, { name: '医疗' }, { name: '狙击' }, { name: '特种' }, { name: '术师' }, { name: '重装' }, { name: '辅助' }, { name: '先锋' }])
       }
-      /*
-      if (node.data.name === 'region1') {
-        hasChild = true
-      } else if (node.data.name === 'region2') {
-        hasChild = false
-      } else {
-        hasChild = Math.random() > 0.5
+      if (node.level >= 3) {
+        return resolve([])
       }
-*/
-      setTimeout(() => {
-        var data
-        if (hasChild) {
-          data = [
-            {
-              name: 'zone' + this.count++
-            },
-            {
-              name: 'zone' + this.count++
-            }
-          ]
-        } else {
-          data = []
-        }
-
-        resolve(data)
-      }, 500)
+      if (node.level === 2) {
+        return resolve([{ name: '测试干员' }])
+      }
     }
   }
 }
@@ -92,9 +63,19 @@ export default {
   }
 }
 .el-aside {
-  background-color: #333744;
+  background-color: #fcfcff;
 }
 .el-main {
   background-color: #eaedf1;
+}
+.toggle-button {
+  font-size: 10px;
+  line-height: 24px;
+  color: #000;
+  text-align: center
+}
+.reset-button {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

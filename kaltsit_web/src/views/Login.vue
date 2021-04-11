@@ -1,3 +1,4 @@
+<!-- 练手用的组件  -->
 <template>
   <div class="login_container">
     <div class="login_box">
