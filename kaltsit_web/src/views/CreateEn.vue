@@ -3,7 +3,9 @@
 </template>
 
 <script>
+// const geoData = require('../assets/datas/enemy_table.json')
+// console.log(geoData)
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 </style>

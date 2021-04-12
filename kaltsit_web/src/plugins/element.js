@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import {
   Button, Form, FormItem, Input, Message, Container, Header,
-  Aside, Main, Tree, Menu, MenuItem, Submenu, MenuItemGroup
+  Aside, Main, Tree, Menu, MenuItem, Submenu, MenuItemGroup,
+  Card, Row, Col
 } from 'element-ui'
 
 Vue.use(Button)
@@ -18,3 +19,6 @@ Vue.use(Menu)
 Vue.use(MenuItem)
 Vue.use(MenuItemGroup)
 Vue.use(Submenu)
+Vue.use(Card)
+Vue.use(Row)
+Vue.use(Col)
