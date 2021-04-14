@@ -1,7 +1,7 @@
 <template>
   <el-container class="home-container">
     <!--  左  -->
-    <el-aside width="220px" class="home-aside" >
+    <el-aside width="220px" class="home-aside">
       <el-input prefix-icon="el-icon-user" placeholder="输入干员名称" v-model="filterText" class="search-input">
         <el-button slot="append" icon="el-icon-search"></el-button>
       </el-input>
@@ -13,47 +13,50 @@
       <el-card class="box-card">
         <!-- 页头 -->
         <div slot="header" class="clearfix">
-          <el-row :gutter="20" type="flex">
-            <el-col :span="4">
-              <span class="head-name">{{ employeeList.name }}</span>
+          <el-row :gutter="10" type="flex">
+            <el-col :span="6">
+              <span class="head-name">{{ employee.name }}</span>
             </el-col>
-            <el-col :span="20" class="head-description">
+            <el-col :span="18" class="head-description">
               <span class="head-title">特性：</span>
-              <span>{{ employeeList.description }}</span>
+              <span>{{ employee.description }}</span>
             </el-col>
           </el-row>
         </div>
+        <!-- 第一排数据 -->
         <el-row :gutter="20" type="flex">
           <el-col :span="16" :offset="7">
-            <el-table :data="employeeList">
-              <el-table-column label="属性"></el-table-column>
+            <el-table :data="em_param">
+              <el-table-column label="属性："></el-table-column>
             </el-table>
           </el-col>
         </el-row>
         <el-row :gutter="20" type="flex">
           <el-col :span="16" :offset="7">
-            <el-table :data="employeeList">
+            <el-table :data="[em_param]">
               <el-table-column label="最大生命" prop="maxHp"></el-table-column>
               <el-table-column label="攻击" prop="atk"></el-table-column>
               <el-table-column label="防御" prop="def"></el-table-column>
-              <el-table-column label="法抗" prop="magres"></el-table-column>
+              <el-table-column label="法抗" prop="magicResistance"></el-table-column>
             </el-table>
           </el-col>
         </el-row>
+        <!-- 第二排数据 -->
         <el-row :gutter="20" type="flex">
           <el-col :span="16" :offset="7">
-            <el-table :data="employeeList">
-              <el-table-column label="部署费用" prop="maxHp"></el-table-column>
-              <el-table-column label="攻击" prop="atk"></el-table-column>
-              <el-table-column label="防御" prop="def"></el-table-column>
-              <el-table-column label="法抗" prop="magres"></el-table-column>
+            <el-table :data="[em_param]">
+              <el-table-column label="部署费用" prop="cost"></el-table-column>
+              <el-table-column label="阻挡数" prop="blockCnt"></el-table-column>
+              <el-table-column label="攻击间隔" prop="baseAttackTime"></el-table-column>
+              <el-table-column label="再部署时间" prop="respawnTime"></el-table-column>
             </el-table>
           </el-col>
         </el-row>
+        <!-- 第三排数据 -->
         <el-row :gutter="20" type="flex">
           <el-col :span="16" :offset="7">
-            <el-table :data="employeeList">
-              <el-table-column label="天赋" prop="char_149_scave"></el-table-column>
+            <el-table :data="[employee]">
+              <el-table-column label="天赋" prop="talents"></el-table-column>
             </el-table>
           </el-col>
         </el-row>
@@ -64,6 +67,7 @@
 </template>
 
 <script>
+/* eslint-disable camelcase */
 export default {
   data () {
     return {
@@ -76,27 +80,36 @@ export default {
       employeeList5: [],
       employeeList6: [],
       employee: [],
-      total: 0
+      em_param: [],
+      total: 0,
+      props: {
+        name: 'name',
+        label: 'name'
+      },
+      searchname: '斯卡蒂',
+      elite: '0',
+      level: '40',
+      favor: '100'
     }
   },
   // 创建时调用
   created () {
     this.getEmployeeTable()
     this.getEmployeeList()
+    this.haveEmployeeList()
   },
   mounted () {
-    this.findemployee()
+    this.findEmployee()
   },
   methods: {
     // 获取干员列表
-    getemployeeTable () {
+    getEmployeeTable () {
       const employeeTable = require('../assets/data/employee_table.json')
       this.employeeTable = employeeTable
       this.total = employeeTable.length
-      // console.log(employeeTable)
     },
     // 干员名单
-    getemployeeList () {
+    getEmployeeList () {
       var cnt = [0, 0, 0, 0, 0, 0]
       for (var en in this.employeeTable) {
         if (this.employeeTable[en].profession !== 'TRAP' && this.employeeTable[en].profession !== 'TOKEN') {
@@ -120,27 +133,78 @@ export default {
             cnt[5]++
           }
         }
-        // this.employeeList[cnt] = { name: this.employeeTable[en].profession }
-        // cnt++
       }
-      // console.log(this.employeeList)
     },
     haveEmployeeList () {
-
+      this.employeeList =
+      [
+        {
+          name: '★★★★★★',
+          children: this.employeeList6
+        },
+        {
+          name: '★★★★★',
+          children: this.employeeList5
+        },
+        {
+          name: '★★★★',
+          children: this.employeeList4
+        },
+        {
+          name: '★★★',
+          children: this.employeeList3
+        },
+        {
+          name: '★★',
+          children: this.employeeList2
+        },
+        {
+          name: '★',
+          children: this.employeeList1
+        }
+      ]
     },
-    loadNode (node, resolve) {
-      if (node.level === 0) {
-        return resolve([{ name: '★★★★★★' }, { name: '★★★★★' }, { name: '★★★★' }, { name: '★★★' }, { name: '★★' }, { name: '★' }])
+    findEmployee () {
+      for (var en in this.employeeTable) {
+        if (this.employeeTable[en].name === this.searchname) {
+          this.employee = this.employeeTable[en]
+          break
+        }
       }
-      if (node.level === 1) {
-        return resolve([{ name: '近卫' }, { name: '医疗' }, { name: '狙击' }, { name: '特种' }, { name: '术师' }, { name: '重装' }, { name: '辅助' }, { name: '先锋' }])
-      }
-      if (node.level >= 3) {
-        return resolve([])
-      }
-      if (node.level === 2) {
-        return resolve([{ name: '测试干员' }])
-      }
+    },
+    /* ========================================== 分界线 ========================================= */
+    // 用于计算干员的基础属性
+    getEmployeeParam () {
+      this.employeeBaseParamClac()
+      this.employeeFavorClac()
+      // 潜能
+      // 天赋
+    },
+    // 用于计算干员的等级数据
+    employeeBaseParamClac () {
+      const min_data = this.employee.phases[this.elite].attributesKeyFrames[0].data
+      const max_data = this.employee.phases[this.elite].attributesKeyFrames[1].data
+      const diff = this.employee.phases[this.elite].maxLevel - 1
+      this.em_param = min_data
+      // 具体参数计算
+      this.em_param.maxHp += Math.round((this.level - 1) * (max_data.maxHp - min_data.maxHp) / diff)
+      this.em_param.atk += Math.round((this.level - 1) * (max_data.atk - min_data.atk) / diff)
+      this.em_param.def += Math.round((this.level - 1) * (max_data.def - min_data.def) / diff)
+    },
+    // 用于计算信赖的加成
+    employeeFavorClac () {
+      const min_favor = Math.min(this.favor, 100)
+      const favor_data = this.employee.favorKeyFrames[1].data
+      this.em_param.maxHp += Math.round(favor_data.maxHp * min_favor / 100)
+      this.em_param.atk += Math.round(favor_data.atk * min_favor / 100)
+      this.em_param.def += Math.round(favor_data.def * min_favor / 100)
+      console.log(this.em_param)
+    },
+    // 点击事件
+    handleNodeClick (data) {
+      this.searchname = data.name
+      this.findEmployee()
+      this.getEmployeeParam()
     }
   }
 }

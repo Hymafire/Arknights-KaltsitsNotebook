@@ -1,16 +1,12 @@
 <template>
   <el-container class="home-container">
     <!--  敌方列表和查询区 -->
-    <el-aside width="220px" class="home-aside" >
-      <div>
-        <el-input prefix-icon="el-icon-user" placeholder="输入敌方名称" class="search-input">
-          <el-button slot="append" icon="el-icon-search"></el-button>
-        </el-input>
-      </div>
-      <div>
-        <!-- <el-tree :props="props" :load="loadNode" lazy></el-tree> -->
-        <el-tree :data="enemyList" :props="props" @node-click="handleNodeClick" highlight-current></el-tree>
-      </div>
+    <el-aside width="220px" class="home-aside">
+      <el-input prefix-icon="el-icon-user" placeholder="输入敌方名称" class="search-input">
+        <el-button slot="append" icon="el-icon-search"></el-button>
+      </el-input>
+      <!-- <el-tree :props="props" :load="loadNode" lazy></el-tree> -->
+      <el-tree :data="enemyList" :props="props" @node-click="handleNodeClick" highlight-current></el-tree>
     </el-aside>
     <!--  属性输出区  -->
     <el-main>
@@ -63,9 +59,7 @@ export default {
   data () {
     return {
       props: {
-        label: 'name',
-        children: 'zones',
-        idLeaf: 'leaf'
+        label: 'name'
       },
       enemyTable: [],
       enemyList: [],
@@ -77,8 +71,10 @@ export default {
   created () {
     this.getEnemyTable()
     this.getEnemyList()
+    this.findEnemy()
   },
   mounted () {
+    // this.handleNodeClick()
     this.findEnemy()
   },
   methods: {
@@ -93,7 +89,7 @@ export default {
       for (var i = 0; i < this.total; i++) {
         this.enemyList[i] = { name: this.enemyTable[i].Value[0].enemyData.name.m_value }
       }
-      console.log(this.enemyList)
+      // console.log(this.enemyList)
     },
     // 获取目标敌人数据
     findEnemy () {
@@ -104,20 +100,10 @@ export default {
         }
       }
     },
-    //
-    loadNode (node, resolve) {
-      if (node.level === 0) {
-        return resolve(this.enemyList)
-      }
-
-      if (node.level === 1) {
-        return ([])
-      }
-
-      setTimeout(() => {
-        const data = []
-        resolve(data)
-      }, 500)
+    handleNodeClick (data) {
+      this.searchName = data.name
+      // console.log(this.searchname)
+      this.findEnemy()
     }
   }
 }
@@ -125,7 +111,7 @@ export default {
 
 <style lang="scss" scoped>
 .home-container {
-  height: 92%;
+  height: 100%;
 }
 .el-aside {
   background-color: #fff;
