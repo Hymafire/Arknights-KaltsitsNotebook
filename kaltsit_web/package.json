@@ -10,6 +10,7 @@
   "dependencies": {
     "@vue/cli": "^4.5.12",
     "axios": "^0.21.1",
+    "compression": "^1.7.4",
     "core-js": "^3.6.5",
     "echarts": "^5.0.2",
     "element-ui": "^2.15.1",
@@ -49,7 +50,7 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
+      "plugin:vue/strongly-recommended",
       "@vue/standard"
     ],
     "parserOptions": {
