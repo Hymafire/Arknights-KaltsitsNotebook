@@ -30,6 +30,7 @@
       </el-menu-item>
     </el-menu>
     <el-main>
+      <!-- 路由占位 -->
       <router-view />
     </el-main>
   </div>
