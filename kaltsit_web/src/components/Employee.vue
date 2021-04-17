@@ -102,7 +102,7 @@ export default {
       em_param: [],
       em_talent: [],
       props: {
-        name: 'name',
+        children: 'children',
         label: 'name'
       },
       searchname: '斯卡蒂',

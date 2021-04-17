@@ -5,7 +5,7 @@
       <div>Kal'tsit's Notebook</div>
     </div>
     <div>
-      <div class="version">v0.2.0</div>
+      <div class="version">v0.3.0</div>
     </div>
   </div>
 </template>
@@ -15,18 +15,19 @@
 
 <style lang="scss" scoped>
 .home-div {
-  margin: 20px;
+  margin: 0px;
   font-size: 40px;
   overflow: hidden;
   position: absolute;
   text-align: center;
-  top: 35%;
+  top: 37%;
   width: 100%;
 }
 .version {
   position: absolute;
   text-align: right;
-  bottom: 0px;
+  bottom: 2px;
+  right: 10px;
   width: 100%;
 }
 </style>
