@@ -48,7 +48,7 @@ class EnemyDataSwitch(object):
     def getEnemyList(self):
         # 分类生成子列表
         enemy_chi_list = [[], [], []]
-        enemy_dict = {"NORMAL": 0, "ELITE": 1, "BOSS":1}
+        enemy_dict = {"NORMAL": 0, "ELITE": 1, "BOSS":2}
         for em in self.handbook_json:
             enemy_chi_dict = {}
             enemy_chi_dict["name"] = self.handbook_json[em]["name"]

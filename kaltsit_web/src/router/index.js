@@ -1,16 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// 导入组件
-import Home from '../components/Home.vue'
-import Enemy from '../components/Enemy.vue'
-import Employee from '../components/Employee.vue'
-import CreateEn from '../components/Create/CreateEn.vue'
-import CreateEm from '../components/Create/CreateEm.vue'
-import Compare from '../components/EmCompare.vue'
-import Welcome from '../components/Welcome.vue'
-import Login from '../views/Login.vue'
-import Test from '../views/Test.vue'
-import Test2 from '../views/Test2.vue'
+// 导入模块
+import Home from '@/components/Home.vue'
+import Enemy from '@/components/Enemy.vue'
+import Employee from '@/components/Employee.vue'
+import CreateEn from '@/components/Create/CreateEn.vue'
+import CreateEm from '@/components/Create/CreateEm.vue'
+import Compare from '@/components/EmCompare.vue'
+import Welcome from '@/components/Welcome.vue'
+import Login from '@/views/Login.vue'
+import Test from '@/views/Test.vue'
+import Test2 from '@/views/Test2.vue'
 
 Vue.use(VueRouter)
 

@@ -71,19 +71,19 @@
         >
           <el-form-item prop="elite">
             <span>精英化等级：</span>
-            <el-input prefix-icon="el-icon-user" v-model="infoForm.elite" @keyup.enter.native="getEmployeeParam"/>
+            <el-input prefix-icon="el-icon-user" v-model="infoForm.elite" @keyup.enter.native="getEmployeeParam" />
           </el-form-item>
           <el-form-item prop="level">
             <span>干员等级：</span>
-            <el-input prefix-icon="el-icon-user" v-model="infoForm.level" @keyup.enter.native="getEmployeeParam"/>
+            <el-input prefix-icon="el-icon-user" v-model="infoForm.level" @keyup.enter.native="getEmployeeParam" />
           </el-form-item>
           <el-form-item prop="favor">
             <span>信赖度：</span>
-            <el-input prefix-icon="el-icon-user" v-model="infoForm.favor" @keyup.enter.native="getEmployeeParam"/>
+            <el-input prefix-icon="el-icon-user" v-model="infoForm.favor" @keyup.enter.native="getEmployeeParam" />
           </el-form-item>
           <el-form-item prop="potential">
             <span>潜能：</span>
-            <el-input prefix-icon="el-icon-user" v-model="infoForm.potential" @keyup.enter.native="getEmployeeParam"/>
+            <el-input prefix-icon="el-icon-user" v-model="infoForm.potential" @keyup.enter.native="getEmployeeParam" />
           </el-form-item>
         </el-form>
       </el-card>
@@ -139,7 +139,7 @@ export default {
   methods: {
     // 获取干员列表
     getEmployeeTable () {
-      const employeeTable = require('../assets/data/employee_table.json')
+      const employeeTable = require('@/assets/data/employee_table.json')
       this.employeeTable = employeeTable
     },
     // 干员名单

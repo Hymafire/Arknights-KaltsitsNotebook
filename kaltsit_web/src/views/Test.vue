@@ -16,12 +16,17 @@ export default {
     }
   },
   created () {
-    this.getEnemyTable()
+    // this.getEnemyTable()
     // this.getEnemyList()
-    this.getEnemyList2()
+    // this.getEnemyList2()
+    this.getEnemyList3()
     this.findEnemy()
   },
   methods: {
+    getEnemyList3 () {
+      const enemyList = require('@/assets/data/enemylist.json')
+      this.enemyList = enemyList
+    },
     getEnemyTable () {
       const enemyTable = require('../assets/data/enemy_table.json')
       this.enemyTable = enemyTable
