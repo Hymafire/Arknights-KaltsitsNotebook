@@ -49,11 +49,17 @@
         射程：{{ enemy.rangeRadius }}
       </div>
       <hr>
+      <!-- 秒伤表 -->
+      <div id="pre-damage" class="echarts-box" />
+      <div id="hit-damage" class="echarts-box" />
     </el-card>
   </el-container>
 </template>
 
 <script>
+/* eslint-disable camelcase */
+import * as echarts from 'echarts'
+
 export default {
   data () {
     return {
@@ -65,17 +71,19 @@ export default {
     this.getEnemyData()
     this.findEnemy()
   },
-  updated () {
-    this.findEnemy()
+  mounted () {
+    this.getCharts()
   },
   props: {
     enemy_name: String
   },
   methods: {
+    // 获取数据
     getEnemyData () {
       const enemyData = require('@/assets/data/enemydata.json')
       this.enemyData = enemyData
     },
+    // 查询敌人 （入口）
     findEnemy () {
       for (var en in this.enemyData) {
         if (this.enemyData[en].name === this.enemy_name) {
@@ -83,12 +91,81 @@ export default {
           break
         }
       }
+    },
+    // 绘图函数区 =========================================
+    // 总函数
+    getCharts () {
+      this.preDamageChart()
+    },
+    // 秒伤-predamage
+    preDamageChart () {
+      // 数据
+      const data = []
+      for (let def = 0; def <= 800; def++) {
+        const damage = Math.max(this.enemy.atk[0] - def, this.enemy.atk[0] * 0.05)
+        const pre_dam = damage / this.enemy.atkTime
+        data.push([def, pre_dam])
+      }
+      // 初始化DOM
+      this.pre_dam_chart = echarts.init(document.getElementById('pre-damage'))
+      // 配置内容
+      const option = {
+        // 是否开启动画化
+        animation: false,
+        // 标题
+        title: {
+          left: 'center',
+          text: '秒伤害量'
+        },
+        // 四周间距
+        grid: {
+          top: 40,
+          left: 50,
+          right: 40,
+          buttom: 50
+        },
+        // x轴
+        xAxis: {
+          name: 'x',
+          minorTick: {
+            show: true
+          },
+          minorSplitLine: {
+            show: true
+          }
+        },
+        // y轴
+        yAxis: {
+          name: 'y',
+          minorTick: {
+            show: true
+          },
+          // 辅助线
+          minorSplitLine: {
+            show: true
+          }
+        },
+        series: [
+          {
+            // 图表类型
+            type: 'line',
+            showSymbol: false,
+            clip: true,
+            data: data
+          }
+        ]
+      }
+      this.pre_dam_chart.setOption(option)
+    },
+    // 单次伤害-hitdamage
+    hitDamageChart () {
     }
   },
   watch: {
     enemy_name: {
       handler: function () {
         this.findEnemy()
+        this.getCharts()
       },
       immediate: true
     }
@@ -119,5 +196,10 @@ export default {
 }
 .enemy-style {
   padding: 3px
+}
+// 图表容器
+.echarts-box {
+  width: 600px;
+  height: 400px;
 }
 </style>

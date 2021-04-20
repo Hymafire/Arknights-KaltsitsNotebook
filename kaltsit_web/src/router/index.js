@@ -9,8 +9,6 @@ import CreateEm from '@/components/Create/CreateEm.vue'
 import Compare from '@/components/EmCompare.vue'
 import Welcome from '@/components/Welcome.vue'
 import Login from '@/views/Login.vue'
-import Test from '@/views/Test.vue'
-import Test2 from '@/views/Test2.vue'
 
 Vue.use(VueRouter)
 
@@ -30,8 +28,6 @@ export default new VueRouter({
         { path: '/createm', component: CreateEm },
         { path: '/compare', component: Compare }
       ]
-    },
-    { path: '/test', component: Test },
-    { path: '/test2', component: Test2 }
+    }
   ]
 })
