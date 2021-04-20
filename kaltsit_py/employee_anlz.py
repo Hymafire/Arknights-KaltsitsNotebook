@@ -54,7 +54,7 @@ class LevelCalculate(object):
 
     # 读参
     def getParam(self, name: str, elite: int):
-        with open("employee_table.json", encoding="utf-8") as f:
+        with open("character_table.json", encoding="utf-8") as f:
             json_file = json.load(f)
         for employee in json_file:
             employee_file = json_file[employee]
@@ -80,7 +80,7 @@ class LevelCalculate(object):
 
     # 读描述
     def getDescription(self, name: str):
-        with open("employee_table.json", encoding="utf-8") as f:
+        with open("character_table.json", encoding="utf-8") as f:
             json_file = json.load(f)
         for employee in json_file:
             employee_file = json_file[employee]

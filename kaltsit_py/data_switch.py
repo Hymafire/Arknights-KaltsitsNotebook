@@ -138,7 +138,7 @@ class EmployeeDataSwitch(object):
         self.getJsonData()
         self.getEmployeeData()
         self.getEmployeeList()
-        # self.outputJson()
+        self.outputJson()
 
     #=================================== json文件的处理 ============================================#
     # 获取原始的json文件: character_table.json
@@ -190,7 +190,7 @@ class EmployeeDataSwitch(object):
                 em_chi_list[i] = em_prof_chi_list
         # 干员列表
         # 职业匹配列表
-        prof_list = ["PIONEER", "SNIPER", "MEDIC", "CASTER", "WARRIOR", "TANK", "SUPPORT", "SPECIAL"]
+        prof_list = ["先锋", "狙击", "医疗", "术师", "近卫", "重装", "辅助", "特种"]
         # 匹配星级 (不包括 1,2星干员, 召唤物)
         for i in range(5, 1, -1):
             # 匹配职业
@@ -333,7 +333,7 @@ class EmployeeDataSwitch(object):
 
 
 if __name__ == "__main__": 
-    A = EnemyDataSwitch()
-    A.letsEnemySwitch()
-    # B = EmployeeDataSwitch()
-    # B.letsEmployeeSwitch()
+    # A = EnemyDataSwitch()
+    # A.letsEnemySwitch()
+    B = EmployeeDataSwitch()
+    B.letsEmployeeSwitch()

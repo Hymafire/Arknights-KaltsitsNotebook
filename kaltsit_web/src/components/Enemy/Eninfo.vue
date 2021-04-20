@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container class="info-container">
     <el-card class="box-card">
       <div
         slot="header"
@@ -48,6 +48,7 @@
       <div class="enemy-style">
         射程：{{ enemy.rangeRadius }}
       </div>
+      <hr>
     </el-card>
   </el-container>
 </template>
@@ -96,6 +97,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.info-container {
+  height: 100%;
+}
 .box-card {
   height: 100%;
   width: 100%;

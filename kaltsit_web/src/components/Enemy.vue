@@ -48,8 +48,10 @@ export default {
   background-color: #fff;
   width: 100%;
   height: 100%;
+  padding: 1px;
 }
 .el-main {
   background-color: #eaedf1;
+  padding: 1px;
 }
 </style>

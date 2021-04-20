@@ -20,16 +20,16 @@
         <el-menu-item index="/employee">
           干员分析
         </el-menu-item>
-        <el-menu-item index="/compare">
+        <el-menu-item disabled index="/compare">
           干员对比
         </el-menu-item>
         <el-menu-item index="/enemy">
           敌人分析
         </el-menu-item>
-        <el-menu-item index="/createm">
+        <el-menu-item disabled index="/createm">
           简历编辑
         </el-menu-item>
-        <el-menu-item index="/createn">
+        <el-menu-item disabled index="/createn">
           敌人登记
         </el-menu-item>
       </el-menu>
@@ -64,7 +64,6 @@ export default {
 .el-header {
   padding: 0px;
   width: 100%;
-
 }
 .el-menu {
   width: 100%;
