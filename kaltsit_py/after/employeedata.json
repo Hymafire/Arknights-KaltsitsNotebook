@@ -2,7 +2,9 @@
   "char_002_amiya": {
     "Key": "char_002_amiya",
     "appellation": "Amiya",
-    "description": "攻击造成<@ba.kw>法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害",
     "displayNum": "R001",
     "favor": {
       "atk": 70,
@@ -198,7 +200,9 @@
   "char_009_12fce": {
     "Key": "char_009_12fce",
     "appellation": "12F",
-    "description": "攻击造成<@ba.kw>群体法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成群体法术伤害",
     "displayNum": "R303",
     "favor": {
       "atk": 50,
@@ -317,7 +321,9 @@
   "char_010_chen": {
     "Key": "char_010_chen",
     "appellation": "Ch'en",
-    "description": "普通攻击连续造成<@ba.kw>两次</>伤害",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "普通攻击连续造成两次伤害",
     "displayNum": "LM04",
     "favor": {
       "atk": 50,
@@ -554,7 +560,9 @@
   "char_017_huang": {
     "Key": "char_017_huang",
     "appellation": "Blaze",
-    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "同时攻击阻挡的所有敌人",
     "displayNum": "RE41",
     "favor": {
       "atk": 60,
@@ -857,7 +865,9 @@
   "char_1011_lava2": {
     "Key": "char_1011_lava2",
     "appellation": "Purgatory",
-    "description": "攻击造成<@ba.kw>群体法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成群体法术伤害",
     "displayNum": "RF01",
     "favor": {
       "atk": 90,
@@ -1082,7 +1092,9 @@
   "char_101_sora": {
     "Key": "char_101_sora",
     "appellation": "Sora",
-    "description": "不进行攻击，持续恢复攻击范围内所有友军的<@ba.kw>生命</>（每秒恢复相当于空攻击力10%的生命）",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "不进行攻击，持续恢复攻击范围内所有友军的生命（每秒恢复相当于空攻击力10%的生命）",
     "displayNum": "PL05",
     "favor": {
       "atk": 50,
@@ -1266,6 +1278,8 @@
   "char_102_texas": {
     "Key": "char_102_texas",
     "appellation": "Texas",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡两个敌人",
     "displayNum": "PL02",
     "favor": {
@@ -1442,6 +1456,8 @@
   "char_103_angel": {
     "Key": "char_103_angel",
     "appellation": "Exusiai",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "优先攻击空中单位",
     "displayNum": "PL03",
     "favor": {
@@ -1696,6 +1712,8 @@
   "char_106_franka": {
     "Key": "char_106_franka",
     "appellation": "Franka",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡一个敌人",
     "displayNum": "BS01",
     "favor": {
@@ -1872,6 +1890,8 @@
   "char_107_liskam": {
     "Key": "char_107_liskam",
     "appellation": "Liskarm",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡三个敌人",
     "displayNum": "BS02",
     "favor": {
@@ -2067,6 +2087,8 @@
   "char_108_silent": {
     "Key": "char_108_silent",
     "appellation": "Silence",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "恢复友方单位生命",
     "displayNum": "RL01",
     "favor": {
@@ -2276,7 +2298,9 @@
   "char_109_fmout": {
     "Key": "char_109_fmout",
     "appellation": "Gitano",
-    "description": "攻击造成<@ba.kw>群体法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成群体法术伤害",
     "displayNum": "SI01",
     "favor": {
       "atk": 70,
@@ -2517,7 +2541,9 @@
   "char_110_deepcl": {
     "Key": "char_110_deepcl",
     "appellation": "Deepcolor",
-    "description": "攻击造成<@ba.kw>法术伤害</>\\n可以使用<@ba.kw>召唤物</>协助作战",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害可以使用召唤物协助作战",
     "displayNum": "AA04",
     "favor": {
       "atk": 0,
@@ -2709,6 +2735,8 @@
   "char_112_siege": {
     "Key": "char_112_siege",
     "appellation": "Siege",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡两个敌人",
     "displayNum": "GG01",
     "favor": {
@@ -2955,7 +2983,9 @@
   "char_113_cqbw": {
     "Key": "char_113_cqbw",
     "appellation": "W",
-    "description": "攻击造成<@ba.kw>群体物理伤害</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "攻击造成群体物理伤害",
     "displayNum": "B214",
     "favor": {
       "atk": 100,
@@ -3184,6 +3214,8 @@
   "char_115_headbr": {
     "Key": "char_115_headbr",
     "appellation": "Зима",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡两个敌人",
     "displayNum": "USS1",
     "favor": {
@@ -3360,6 +3392,8 @@
   "char_117_myrrh": {
     "Key": "char_117_myrrh",
     "appellation": "Myrrh",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "恢复友方单位生命",
     "displayNum": "R104",
     "favor": {
@@ -3569,7 +3603,9 @@
   "char_118_yuki": {
     "Key": "char_118_yuki",
     "appellation": "ShiraYuki",
-    "description": "攻击造成<@ba.kw>群体物理伤害</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "攻击造成群体物理伤害",
     "displayNum": "LM10",
     "favor": {
       "atk": 70,
@@ -3732,6 +3768,8 @@
   "char_120_hibisc": {
     "Key": "char_120_hibisc",
     "appellation": "Hibiscus",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "恢复友方单位生命",
     "displayNum": "PA13",
     "favor": {
@@ -3888,7 +3926,9 @@
   "char_121_lava": {
     "Key": "char_121_lava",
     "appellation": "Lava",
-    "description": "攻击造成<@ba.kw>群体法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成群体法术伤害",
     "displayNum": "PA15",
     "favor": {
       "atk": 60,
@@ -4078,6 +4118,8 @@
   "char_122_beagle": {
     "Key": "char_122_beagle",
     "appellation": "Beagle",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡三个敌人",
     "displayNum": "PA14",
     "favor": {
@@ -4234,6 +4276,8 @@
   "char_123_fang": {
     "Key": "char_123_fang",
     "appellation": "Fang",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡两个敌人",
     "displayNum": "PA11",
     "favor": {
@@ -4373,6 +4417,8 @@
   "char_124_kroos": {
     "Key": "char_124_kroos",
     "appellation": "Kroos",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "优先攻击空中单位",
     "displayNum": "PA12",
     "favor": {
@@ -4579,6 +4625,8 @@
   "char_126_shotst": {
     "Key": "char_126_shotst",
     "appellation": "Meteor",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "优先攻击空中单位",
     "displayNum": "ST02",
     "favor": {
@@ -4789,7 +4837,9 @@
   "char_127_estell": {
     "Key": "char_127_estell",
     "appellation": "Estelle",
-    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "同时攻击阻挡的所有敌人",
     "displayNum": "IU04",
     "favor": {
       "atk": 0,
@@ -4999,6 +5049,8 @@
   "char_128_plosis": {
     "Key": "char_128_plosis",
     "appellation": "Ptilopsis",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "同时恢复三个友方单位的生命",
     "displayNum": "RL04",
     "favor": {
@@ -5175,6 +5227,8 @@
   "char_129_bluep": {
     "Key": "char_129_bluep",
     "appellation": "Blue Poison",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "优先攻击空中单位",
     "displayNum": "AA03",
     "favor": {
@@ -5400,7 +5454,9 @@
   "char_130_doberm": {
     "Key": "char_130_doberm",
     "appellation": "Dobermann",
-    "description": "可以攻击到<@ba.kw>较远敌人</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "可以攻击到较远敌人",
     "displayNum": "R100",
     "favor": {
       "atk": 30,
@@ -5610,6 +5666,8 @@
   "char_131_flameb": {
     "Key": "char_131_flameb",
     "appellation": "Flamebringer",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡一个敌人",
     "displayNum": "R137",
     "favor": {
@@ -5836,6 +5894,8 @@
   "char_133_mm": {
     "Key": "char_133_mm",
     "appellation": "May",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "优先攻击空中单位",
     "displayNum": "VC01",
     "favor": {
@@ -6062,7 +6122,9 @@
   "char_134_ifrit": {
     "Key": "char_134_ifrit",
     "appellation": "Ifrit",
-    "description": "攻击造成<@ba.kw>超远距离的群体法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成超远距离的群体法术伤害",
     "displayNum": "RL03",
     "favor": {
       "atk": 110,
@@ -6351,6 +6413,8 @@
   "char_136_hsguma": {
     "Key": "char_136_hsguma",
     "appellation": "Hoshiguma",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡三个敌人",
     "displayNum": "LM05",
     "favor": {
@@ -6598,6 +6662,8 @@
   "char_137_brownb": {
     "Key": "char_137_brownb",
     "appellation": "Beehunter",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡一个敌人",
     "displayNum": "US10",
     "favor": {
@@ -6823,7 +6889,9 @@
   "char_140_whitew": {
     "Key": "char_140_whitew",
     "appellation": "Lappland",
-    "description": "可以进行<@ba.kw>远程攻击</>，但此时攻击力降低至80%",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "可以进行远程攻击，但此时攻击力降低至80%",
     "displayNum": "SR01",
     "favor": {
       "atk": 75,
@@ -7052,7 +7120,9 @@
   "char_141_nights": {
     "Key": "char_141_nights",
     "appellation": "Haze",
-    "description": "攻击造成<@ba.kw>法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害",
     "displayNum": "VC02",
     "favor": {
       "atk": 60,
@@ -7278,7 +7348,9 @@
   "char_143_ghost": {
     "Key": "char_143_ghost",
     "appellation": "Specter",
-    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "同时攻击阻挡的所有敌人",
     "displayNum": "AA02",
     "favor": {
       "atk": 80,
@@ -7504,7 +7576,9 @@
   "char_144_red": {
     "Key": "char_144_red",
     "appellation": "Projekt Red",
-    "description": "再部署时间大幅度<@ba.kw>减少</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "再部署时间大幅度减少",
     "displayNum": "SW01",
     "favor": {
       "atk": 75,
@@ -7714,6 +7788,8 @@
   "char_145_prove": {
     "Key": "char_145_prove",
     "appellation": "Provence",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "高精度的近距离射击",
     "displayNum": "SR03",
     "favor": {
@@ -7955,6 +8031,8 @@
   "char_147_shining": {
     "Key": "char_147_shining",
     "appellation": "Shining",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "恢复友方单位生命",
     "displayNum": "FO01",
     "favor": {
@@ -8236,6 +8314,8 @@
   "char_148_nearl": {
     "Key": "char_148_nearl",
     "appellation": "Nearl",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "技能可以治疗友方单位",
     "displayNum": "FO02",
     "favor": {
@@ -8446,6 +8526,8 @@
   "char_149_scave": {
     "Key": "char_149_scave",
     "appellation": "Scavenger",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡两个敌人",
     "displayNum": "SW02",
     "favor": {
@@ -8672,6 +8754,8 @@
   "char_150_snakek": {
     "Key": "char_150_snakek",
     "appellation": "Cuora",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡三个敌人",
     "displayNum": "IU05",
     "favor": {
@@ -8847,6 +8931,8 @@
   "char_151_myrtle": {
     "Key": "char_151_myrtle",
     "appellation": "Myrtle",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "技能发动期间阻挡数变为0",
     "displayNum": "R108",
     "favor": {
@@ -9023,6 +9109,8 @@
   "char_155_tiger": {
     "Key": "char_155_tiger",
     "appellation": "Indra",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡一个敌人",
     "displayNum": "GG03",
     "favor": {
@@ -9249,7 +9337,9 @@
   "char_158_milu": {
     "Key": "char_158_milu",
     "appellation": "Firewatch",
-    "description": "优先攻击攻击范围内<@ba.kw>防御力最低</>的敌方单位",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "优先攻击攻击范围内防御力最低的敌方单位",
     "displayNum": "ST01",
     "favor": {
       "atk": 90,
@@ -9459,6 +9549,8 @@
   "char_159_peacok": {
     "Key": "char_159_peacok",
     "appellation": "Conviction",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡一个敌人",
     "displayNum": "MN01",
     "favor": {
@@ -9622,7 +9714,9 @@
   "char_163_hpsts": {
     "Key": "char_163_hpsts",
     "appellation": "Vulcan",
-    "description": "<@ba.kw>无法</>被友方角色治疗",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "无法被友方角色治疗",
     "displayNum": "MN02",
     "favor": {
       "atk": 50,
@@ -9849,7 +9943,9 @@
   "char_164_nightm": {
     "Key": "char_164_nightm",
     "appellation": "Nightmare",
-    "description": "攻击造成<@ba.kw>法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害",
     "displayNum": "VC03",
     "favor": {
       "atk": 70,
@@ -10076,7 +10172,9 @@
   "char_166_skfire": {
     "Key": "char_166_skfire",
     "appellation": "Skyfire",
-    "description": "攻击造成<@ba.kw>群体法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成群体法术伤害",
     "displayNum": "SK01",
     "favor": {
       "atk": 90,
@@ -10286,6 +10384,8 @@
   "char_171_bldsk": {
     "Key": "char_171_bldsk",
     "appellation": "Warfarin",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "恢复友方单位生命",
     "displayNum": "R106",
     "favor": {
@@ -10470,7 +10570,9 @@
   "char_172_svrash": {
     "Key": "char_172_svrash",
     "appellation": "SilverAsh",
-    "description": "可以进行<@ba.kw>远程攻击</>，但此时攻击力降低至80%",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "可以进行远程攻击，但此时攻击力降低至80%",
     "displayNum": "JC01",
     "favor": {
       "atk": 50,
@@ -10730,7 +10832,9 @@
   "char_173_slchan": {
     "Key": "char_173_slchan",
     "appellation": "Cliffheart",
-    "description": "技能可以使敌人产生<@ba.kw>位移</>\\n可以放置于远程位",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "技能可以使敌人产生位移可以放置于远程位",
     "displayNum": "JC06",
     "favor": {
       "atk": 70,
@@ -10956,7 +11060,9 @@
   "char_174_slbell": {
     "Key": "char_174_slbell",
     "appellation": "Pramanix",
-    "description": "攻击造成<@ba.kw>法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害",
     "displayNum": "JC05",
     "favor": {
       "atk": 65,
@@ -11200,6 +11306,8 @@
   "char_179_cgbird": {
     "Key": "char_179_cgbird",
     "appellation": "Nightingale",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "同时恢复三个友方单位的生命",
     "displayNum": "FO03",
     "favor": {
@@ -11464,7 +11572,9 @@
   "char_180_amgoat": {
     "Key": "char_180_amgoat",
     "appellation": "Eyjafjalla",
-    "description": "攻击造成<@ba.kw>法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害",
     "displayNum": "LN02",
     "favor": {
       "atk": 90,
@@ -11719,6 +11829,8 @@
   "char_181_flower": {
     "Key": "char_181_flower",
     "appellation": "Perfumer",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "同时恢复三个友方单位的生命",
     "displayNum": "MN03",
     "favor": {
@@ -11928,7 +12040,9 @@
   "char_183_skgoat": {
     "Key": "char_183_skgoat",
     "appellation": "Earthspirit",
-    "description": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成短暂的<@ba.kw>停顿</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害，并对敌人造成短暂的停顿",
     "displayNum": "LN01",
     "favor": {
       "atk": 50,
@@ -12122,7 +12236,9 @@
   "char_185_frncat": {
     "Key": "char_185_frncat",
     "appellation": "Mousse",
-    "description": "攻击造成<@ba.kw>法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害",
     "displayNum": "VC04",
     "favor": {
       "atk": 35,
@@ -12331,6 +12447,8 @@
   "char_187_ccheal": {
     "Key": "char_187_ccheal",
     "appellation": "Gavial",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "恢复友方单位生命",
     "displayNum": "IU07",
     "favor": {
@@ -12572,7 +12690,9 @@
   "char_188_helage": {
     "Key": "char_188_helage",
     "appellation": "Hellagur",
-    "description": "不成为其他角色的治疗目标，每次攻击到敌人后回复自身<@ba.kw>{value}</>生命",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "不成为其他角色的治疗目标，每次攻击到敌人后回复自身{value}生命",
     "displayNum": "AZ01",
     "favor": {
       "atk": 70,
@@ -12889,6 +13009,8 @@
   "char_190_clour": {
     "Key": "char_190_clour",
     "appellation": "Vermeil",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "优先攻击空中单位",
     "displayNum": "R122",
     "favor": {
@@ -13064,6 +13186,8 @@
   "char_192_falco": {
     "Key": "char_192_falco",
     "appellation": "Plume",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "击杀敌人后获得1点部署费用，撤退时返还初始部署费用",
     "displayNum": "LT05",
     "favor": {
@@ -13240,7 +13364,9 @@
   "char_193_frostl": {
     "Key": "char_193_frostl",
     "appellation": "Frostleaf",
-    "description": "可以进行<@ba.kw>远程攻击</>，但此时攻击力降低至80%",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "可以进行远程攻击，但此时攻击力降低至80%",
     "displayNum": "R123",
     "favor": {
       "atk": 0,
@@ -13418,7 +13544,9 @@
   "char_195_glassb": {
     "Key": "char_195_glassb",
     "appellation": "Истина",
-    "description": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成短暂的<@ba.kw>停顿</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害，并对敌人造成短暂的停顿",
     "displayNum": "USS2",
     "favor": {
       "atk": 65,
@@ -13621,6 +13749,8 @@
   "char_196_sunbr": {
     "Key": "char_196_sunbr",
     "appellation": "Гум",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "技能可以治疗友方单位",
     "displayNum": "USS3",
     "favor": {
@@ -13863,6 +13993,8 @@
   "char_197_poca": {
     "Key": "char_197_poca",
     "appellation": "Роса",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "优先攻击重量最重的敌人",
     "displayNum": "USS4",
     "favor": {
@@ -14084,6 +14216,8 @@
   "char_198_blackd": {
     "Key": "char_198_blackd",
     "appellation": "Courier",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡两个敌人",
     "displayNum": "JC04",
     "favor": {
@@ -14310,6 +14444,8 @@
   "char_199_yak": {
     "Key": "char_199_yak",
     "appellation": "Matterhorn",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡三个敌人",
     "displayNum": "JC03",
     "favor": {
@@ -14485,7 +14621,9 @@
   "char_2013_cerber": {
     "Key": "char_2013_cerber",
     "appellation": "Ceobe",
-    "description": "攻击造成<@ba.kw>法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害",
     "displayNum": "R155",
     "favor": {
       "atk": 90,
@@ -14719,6 +14857,8 @@
   "char_2014_nian": {
     "Key": "char_2014_nian",
     "appellation": "Nian",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡三个敌人",
     "displayNum": "NM01",
     "favor": {
@@ -14949,7 +15089,9 @@
   "char_2015_dusk": {
     "Key": "char_2015_dusk",
     "appellation": "Dusk",
-    "description": "攻击造成<@ba.kw>群体法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成群体法术伤害",
     "displayNum": "NM02",
     "favor": {
       "atk": 110,
@@ -15196,6 +15338,8 @@
   "char_201_moeshd": {
     "Key": "char_201_moeshd",
     "appellation": "Croissant",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡三个敌人",
     "displayNum": "PL04",
     "favor": {
@@ -15422,6 +15566,8 @@
   "char_202_demkni": {
     "Key": "char_202_demkni",
     "appellation": "Saria",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "技能可以治疗友方单位",
     "displayNum": "RL02",
     "favor": {
@@ -15701,6 +15847,8 @@
   "char_204_platnm": {
     "Key": "char_204_platnm",
     "appellation": "Platinum",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "优先攻击空中单位",
     "displayNum": "KZ03",
     "favor": {
@@ -15958,6 +16106,8 @@
   "char_208_melan": {
     "Key": "char_208_melan",
     "appellation": "Melantha",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡一个敌人",
     "displayNum": "PA41",
     "favor": {
@@ -16115,6 +16265,8 @@
   "char_209_ardign": {
     "Key": "char_209_ardign",
     "appellation": "Cardigan",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡三个敌人",
     "displayNum": "PA45",
     "favor": {
@@ -16271,7 +16423,9 @@
   "char_210_stward": {
     "Key": "char_210_stward",
     "appellation": "Steward",
-    "description": "攻击造成<@ba.kw>法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害",
     "displayNum": "PA42",
     "favor": {
       "atk": 50,
@@ -16427,6 +16581,8 @@
   "char_211_adnach": {
     "Key": "char_211_adnach",
     "appellation": "Adnachiel",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "优先攻击空中单位",
     "displayNum": "PA44",
     "favor": {
@@ -16583,6 +16739,8 @@
   "char_212_ansel": {
     "Key": "char_212_ansel",
     "appellation": "Ansel",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "恢复友方单位生命",
     "displayNum": "PA43",
     "favor": {
@@ -16773,7 +16931,9 @@
   "char_213_mostma": {
     "Key": "char_213_mostma",
     "appellation": "Mostima",
-    "description": "攻击造成<@ba.kw>群体法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成群体法术伤害",
     "displayNum": "LT77",
     "favor": {
       "atk": 105,
@@ -16987,7 +17147,9 @@
   "char_214_kafka": {
     "Key": "char_214_kafka",
     "appellation": "Kafka",
-    "description": "再部署时间大幅度<@ba.kw>减少</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "再部署时间大幅度减少",
     "displayNum": "CB06",
     "favor": {
       "atk": 0,
@@ -17214,7 +17376,9 @@
   "char_215_mantic": {
     "Key": "char_215_mantic",
     "appellation": "Manticore",
-    "description": "对攻击范围内<@ba.kw>所有敌人</>造成伤害\\n拥有50%的物理和法术闪避且不容易成为敌人的<@ba.kw>攻击目标</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "对攻击范围内所有敌人造成伤害拥有50%的物理和法术闪避且不容易成为敌人的攻击目标",
     "displayNum": "SG01",
     "favor": {
       "atk": 60,
@@ -17459,7 +17623,9 @@
   "char_218_cuttle": {
     "Key": "char_218_cuttle",
     "appellation": "Andreana",
-    "description": "优先攻击攻击范围内<@ba.kw>防御力最低</>的敌方单位",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "优先攻击攻击范围内防御力最低的敌方单位",
     "displayNum": "II04",
     "favor": {
       "atk": 40,
@@ -17669,7 +17835,9 @@
   "char_219_meteo": {
     "Key": "char_219_meteo",
     "appellation": "Meteorite",
-    "description": "攻击造成<@ba.kw>群体物理伤害</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "攻击造成群体物理伤害",
     "displayNum": "ST03",
     "favor": {
       "atk": 85,
@@ -17853,6 +18021,8 @@
   "char_220_grani": {
     "Key": "char_220_grani",
     "appellation": "Grani",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "击杀敌人后获得1点部署费用，撤退时返还初始部署费用",
     "displayNum": "VC05",
     "favor": {
@@ -18082,6 +18252,8 @@
   "char_222_bpipe": {
     "Key": "char_222_bpipe",
     "appellation": "Bagpipe",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "击杀敌人后获得1点部署费用，撤退时返还初始部署费用",
     "displayNum": "RV02",
     "favor": {
@@ -18364,6 +18536,8 @@
   "char_225_haak": {
     "Key": "char_225_haak",
     "appellation": "Aak",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "自身生命会不断减少",
     "displayNum": "LM20",
     "favor": {
@@ -18649,6 +18823,8 @@
   "char_226_hmau": {
     "Key": "char_226_hmau",
     "appellation": "Hung",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "技能可以治疗友方单位",
     "displayNum": "LM19",
     "favor": {
@@ -18875,7 +19051,9 @@
   "char_230_savage": {
     "Key": "char_230_savage",
     "appellation": "Savage",
-    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "同时攻击阻挡的所有敌人",
     "displayNum": "RB01",
     "favor": {
       "atk": 0,
@@ -19043,6 +19221,8 @@
   "char_235_jesica": {
     "Key": "char_235_jesica",
     "appellation": "Jessica",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "优先攻击空中单位",
     "displayNum": "BS03",
     "favor": {
@@ -19219,7 +19399,9 @@
   "char_236_rope": {
     "Key": "char_236_rope",
     "appellation": "Rope",
-    "description": "技能可以使敌人产生<@ba.kw>位移</>\\n可以放置于远程位",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "技能可以使敌人产生位移可以放置于远程位",
     "displayNum": "RB02",
     "favor": {
       "atk": 0,
@@ -19428,7 +19610,9 @@
   "char_237_gravel": {
     "Key": "char_237_gravel",
     "appellation": "Gravel",
-    "description": "再部署时间大幅度<@ba.kw>减少</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "再部署时间大幅度减少",
     "displayNum": "KZ04",
     "favor": {
       "atk": 0,
@@ -19637,6 +19821,8 @@
   "char_240_wyvern": {
     "Key": "char_240_wyvern",
     "appellation": "Vanilla",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡两个敌人",
     "displayNum": "BS04",
     "favor": {
@@ -19793,7 +19979,9 @@
   "char_241_panda": {
     "Key": "char_241_panda",
     "appellation": "FEater",
-    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>\\n可以放置于远程位",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "同时攻击阻挡的所有敌人可以放置于远程位",
     "displayNum": "YD01",
     "favor": {
       "atk": 45,
@@ -20003,7 +20191,9 @@
   "char_242_otter": {
     "Key": "char_242_otter",
     "appellation": "Mayer",
-    "description": "攻击造成<@ba.kw>法术伤害</>\\n可以使用<@ba.kw>召唤物</>协助作战",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害可以使用召唤物协助作战",
     "displayNum": "RL05",
     "favor": {
       "atk": 35,
@@ -20196,7 +20386,9 @@
   "char_243_waaifu": {
     "Key": "char_243_waaifu",
     "appellation": "Waai Fu",
-    "description": "再部署时间大幅度<@ba.kw>减少</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "再部署时间大幅度减少",
     "displayNum": "LM12",
     "favor": {
       "atk": 50,
@@ -20438,7 +20630,9 @@
   "char_248_mgllan": {
     "Key": "char_248_mgllan",
     "appellation": "Magallan",
-    "description": "攻击造成<@ba.kw>法术伤害</>\\n可以使用<@ba.kw>召唤物</>协助作战",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害可以使用召唤物协助作战",
     "displayNum": "RL06",
     "favor": {
       "atk": 40,
@@ -20683,7 +20877,9 @@
   "char_250_phatom": {
     "Key": "char_250_phatom",
     "appellation": "Phantom",
-    "description": "再部署时间大幅度<@ba.kw>减少</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "再部署时间大幅度减少",
     "displayNum": "R109",
     "favor": {
       "atk": 90,
@@ -20875,7 +21071,9 @@
   "char_252_bibeak": {
     "Key": "char_252_bibeak",
     "appellation": "Bibeak",
-    "description": "普通攻击连续造成<@ba.kw>两次</>伤害",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "普通攻击连续造成两次伤害",
     "displayNum": "R138",
     "favor": {
       "atk": 80,
@@ -21101,7 +21299,9 @@
   "char_253_greyy": {
     "Key": "char_253_greyy",
     "appellation": "Greyy",
-    "description": "攻击造成<@ba.kw>群体法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成群体法术伤害",
     "displayNum": "R119",
     "favor": {
       "atk": 0,
@@ -21277,7 +21477,9 @@
   "char_254_vodfox": {
     "Key": "char_254_vodfox",
     "appellation": "Shamare",
-    "description": "攻击造成<@ba.kw>法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害",
     "displayNum": "R148",
     "favor": {
       "atk": 65,
@@ -21544,7 +21746,9 @@
   "char_258_podego": {
     "Key": "char_258_podego",
     "appellation": "Podenco",
-    "description": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成短暂的<@ba.kw>停顿</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害，并对敌人造成短暂的停顿",
     "displayNum": "R157",
     "favor": {
       "atk": 50,
@@ -21773,6 +21977,8 @@
   "char_260_durnar": {
     "Key": "char_260_durnar",
     "appellation": "Dur-nar",
+    "atkNum": null,
+    "damageMod": "Mag",
     "description": "技能开启时普通攻击会造成法术伤害",
     "displayNum": "R124",
     "favor": {
@@ -21957,6 +22163,8 @@
   "char_261_sddrag": {
     "Key": "char_261_sddrag",
     "appellation": "Reed",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "击杀敌人后获得1点部署费用，撤退时返还初始部署费用",
     "displayNum": "HT03",
     "favor": {
@@ -22152,6 +22360,8 @@
   "char_263_skadi": {
     "Key": "char_263_skadi",
     "appellation": "Skadi",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡一个敌人",
     "displayNum": "AA01",
     "favor": {
@@ -22382,6 +22592,8 @@
   "char_264_f12yin": {
     "Key": "char_264_f12yin",
     "appellation": "Mountain",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡一个敌人",
     "displayNum": "CB05",
     "favor": {
@@ -22664,7 +22876,9 @@
   "char_265_sophia": {
     "Key": "char_265_sophia",
     "appellation": "Whislash",
-    "description": "可以攻击到<@ba.kw>较远敌人</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "可以攻击到较远敌人",
     "displayNum": "KZ07",
     "favor": {
       "atk": 30,
@@ -22980,7 +23194,9 @@
   "char_271_spikes": {
     "Key": "char_271_spikes",
     "appellation": "Arene",
-    "description": "可以进行<@ba.kw>远程攻击</>，但此时攻击力降低至80%",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "可以进行远程攻击，但此时攻击力降低至80%",
     "displayNum": "LT06",
     "favor": {
       "atk": 55,
@@ -23225,7 +23441,9 @@
   "char_272_strong": {
     "Key": "char_272_strong",
     "appellation": "Jaye",
-    "description": "再部署时间<@ba.kw>减少</>，撤退时不返还<@ba.kw>部署费用</>，在场时每3秒<@ba.kw>消耗</>3点部署费用（不足时自动撤退）",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "再部署时间减少，撤退时不返还部署费用，在场时每3秒消耗3点部署费用（不足时自动撤退）",
     "displayNum": "LM14",
     "favor": {
       "atk": 40,
@@ -23458,7 +23676,9 @@
   "char_274_astesi": {
     "Key": "char_274_astesi",
     "appellation": "Astesia",
-    "description": "攻击造成<@ba.kw>法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害",
     "displayNum": "RR01",
     "favor": {
       "atk": 30,
@@ -23650,6 +23870,8 @@
   "char_275_breeze": {
     "Key": "char_275_breeze",
     "appellation": "Breeze",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "同时恢复三个友方单位的生命",
     "displayNum": "R132",
     "favor": {
@@ -23826,7 +24048,9 @@
   "char_277_sqrrel": {
     "Key": "char_277_sqrrel",
     "appellation": "Shaw",
-    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>\\n可以放置于远程位",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "同时攻击阻挡的所有敌人可以放置于远程位",
     "displayNum": "LM11",
     "favor": {
       "atk": 35,
@@ -24001,7 +24225,9 @@
   "char_278_orchid": {
     "Key": "char_278_orchid",
     "appellation": "Orchid",
-    "description": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成短暂的<@ba.kw>停顿</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害，并对敌人造成短暂的停顿",
     "displayNum": "PA61",
     "favor": {
       "atk": 40,
@@ -24176,7 +24402,9 @@
   "char_279_excu": {
     "Key": "char_279_excu",
     "appellation": "Executor",
-    "description": "攻击范围内的<@ba.kw>所有敌人</>，对自己前方一横排的敌人攻击力提升至150%",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "攻击范围内的所有敌人，对自己前方一横排的敌人攻击力提升至150%",
     "displayNum": "LT01",
     "favor": {
       "atk": 65,
@@ -24404,7 +24632,9 @@
   "char_281_popka": {
     "Key": "char_281_popka",
     "appellation": "Popukar",
-    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "同时攻击阻挡的所有敌人",
     "displayNum": "PA65",
     "favor": {
       "atk": 50,
@@ -24611,7 +24841,9 @@
   "char_282_catap": {
     "Key": "char_282_catap",
     "appellation": "Catapult",
-    "description": "攻击造成<@ba.kw>群体物理伤害</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "攻击造成群体物理伤害",
     "displayNum": "PA63",
     "favor": {
       "atk": 55,
@@ -24750,7 +24982,9 @@
   "char_283_midn": {
     "Key": "char_283_midn",
     "appellation": "Midnight",
-    "description": "可以进行<@ba.kw>远程攻击</>，但此时攻击力降低至80%",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "可以进行远程攻击，但此时攻击力降低至80%",
     "displayNum": "PA62",
     "favor": {
       "atk": 50,
@@ -24975,6 +25209,8 @@
   "char_284_spot": {
     "Key": "char_284_spot",
     "appellation": "Spot",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "技能可以治疗友方单位",
     "displayNum": "PA64",
     "favor": {
@@ -25182,7 +25418,9 @@
   "char_285_medic2": {
     "Key": "char_285_medic2",
     "appellation": "Lancet-2",
-    "description": "恢复友方单位生命，且不受<@ba.kw>部署数量</>限制，但再部署时间极长",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "恢复友方单位生命，且不受部署数量限制，但再部署时间极长",
     "displayNum": "RCX2",
     "favor": {
       "atk": 40,
@@ -25386,7 +25624,9 @@
   "char_286_cast3": {
     "Key": "char_286_cast3",
     "appellation": "Castle-3",
-    "description": "能够阻挡一个敌人，且不受<@ba.kw>部署数量</>限制，但再部署时间极长",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "能够阻挡一个敌人，且不受部署数量限制，但再部署时间极长",
     "displayNum": "RCX3",
     "favor": {
       "atk": 60,
@@ -25638,6 +25878,8 @@
   "char_289_gyuki": {
     "Key": "char_289_gyuki",
     "appellation": "Matoimaru",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡一个敌人",
     "displayNum": "HK01",
     "favor": {
@@ -25822,6 +26064,8 @@
   "char_290_vigna": {
     "Key": "char_290_vigna",
     "appellation": "Vigna",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "击杀敌人后获得1点部署费用，撤退时返还初始部署费用",
     "displayNum": "R105",
     "favor": {
@@ -26083,7 +26327,9 @@
   "char_291_aglina": {
     "Key": "char_291_aglina",
     "appellation": "Angelina",
-    "description": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成短暂的<@ba.kw>停顿</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害，并对敌人造成短暂的停顿",
     "displayNum": "SR02",
     "favor": {
       "atk": 75,
@@ -26350,7 +26596,9 @@
   "char_293_thorns": {
     "Key": "char_293_thorns",
     "appellation": "Thorns",
-    "description": "可以进行<@ba.kw>远程攻击</>，但此时攻击力降低至80%",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "可以进行远程攻击，但此时攻击力降低至80%",
     "displayNum": "II01",
     "favor": {
       "atk": 30,
@@ -26656,7 +26904,9 @@
   "char_294_ayer": {
     "Key": "char_294_ayer",
     "appellation": "Ayerscarpe",
-    "description": "可以进行<@ba.kw>远程攻击</>，但此时攻击力降低至80%",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "可以进行远程攻击，但此时攻击力降低至80%",
     "displayNum": "RB04",
     "favor": {
       "atk": 75,
@@ -26885,6 +27135,8 @@
   "char_298_susuro": {
     "Key": "char_298_susuro",
     "appellation": "Sussurro",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "恢复友方单位生命",
     "displayNum": "R107",
     "favor": {
@@ -27110,7 +27362,9 @@
   "char_301_cutter": {
     "Key": "char_301_cutter",
     "appellation": "Cutter",
-    "description": "普通攻击连续造成<@ba.kw>两次</>伤害",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "普通攻击连续造成两次伤害",
     "displayNum": "R144",
     "favor": {
       "atk": 70,
@@ -27336,7 +27590,9 @@
   "char_302_glaze": {
     "Key": "char_302_glaze",
     "appellation": "Ambriel",
-    "description": "优先攻击攻击范围内<@ba.kw>防御力最低</>的敌方单位",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "优先攻击攻击范围内防御力最低的敌方单位",
     "displayNum": "LT02",
     "favor": {
       "atk": 75,
@@ -27520,7 +27776,9 @@
   "char_306_leizi": {
     "Key": "char_306_leizi",
     "appellation": "Leizi",
-    "description": "攻击造成<@ba.kw>法术伤害</>，且会在<@ba.kw>3</>个敌人间跳跃，每次跳跃伤害降低25%并造成短暂停顿",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害，且会在3个敌人间跳跃，每次跳跃伤害降低25%并造成短暂停顿",
     "displayNum": "YD05",
     "favor": {
       "atk": 75,
@@ -27772,7 +28030,9 @@
   "char_308_swire": {
     "Key": "char_308_swire",
     "appellation": "Swire",
-    "description": "可以攻击到<@ba.kw>较远敌人</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "可以攻击到较远敌人",
     "displayNum": "LM08",
     "favor": {
       "atk": 40,
@@ -28016,7 +28276,9 @@
   "char_311_mudrok": {
     "Key": "char_311_mudrok",
     "appellation": "Mudrock",
-    "description": "<@ba.kw>无法</>被友方角色治疗",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "无法被友方角色治疗",
     "displayNum": "R159",
     "favor": {
       "atk": 0,
@@ -28353,6 +28615,8 @@
   "char_325_bison": {
     "Key": "char_325_bison",
     "appellation": "Bison",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡三个敌人",
     "displayNum": "LM15",
     "favor": {
@@ -28562,7 +28826,9 @@
   "char_326_glacus": {
     "Key": "char_326_glacus",
     "appellation": "Glaucus",
-    "description": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成短暂的<@ba.kw>停顿</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害，并对敌人造成短暂的停顿",
     "displayNum": "R128",
     "favor": {
       "atk": 35,
@@ -28791,7 +29057,9 @@
   "char_328_cammou": {
     "Key": "char_328_cammou",
     "appellation": "Click",
-    "description": "操作<@ba.kw>浮游单元</>对敌人造成<@ba.kw>法术伤害</>\\n浮游单元连续攻击同一敌人时伤害提升（最高造成干员110%攻击力的伤害）",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "操作浮游单元对敌人造成法术伤害浮游单元连续攻击同一敌人时伤害提升（最高造成干员110%攻击力的伤害）",
     "displayNum": "R140",
     "favor": {
       "atk": 60,
@@ -28998,6 +29266,8 @@
   "char_332_archet": {
     "Key": "char_332_archet",
     "appellation": "Archetto",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "优先攻击空中单位",
     "displayNum": "LT08",
     "favor": {
@@ -29218,7 +29488,9 @@
   "char_333_sidero": {
     "Key": "char_333_sidero",
     "appellation": "Sideroca",
-    "description": "攻击造成<@ba.kw>法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害",
     "displayNum": "R126",
     "favor": {
       "atk": 0,
@@ -29410,7 +29682,9 @@
   "char_336_folivo": {
     "Key": "char_336_folivo",
     "appellation": "Scene",
-    "description": "攻击造成<@ba.kw>法术伤害</>\\n可以使用<@ba.kw>召唤物</>协助作战",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害可以使用召唤物协助作战",
     "displayNum": "R162",
     "favor": {
       "atk": 0,
@@ -29603,7 +29877,9 @@
   "char_337_utage": {
     "Key": "char_337_utage",
     "appellation": "Utage",
-    "description": "不成为其他角色的治疗目标，每次攻击到敌人后回复自身<@ba.kw>{value}</>生命",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "不成为其他角色的治疗目标，每次攻击到敌人后回复自身{value}生命",
     "displayNum": "HK03",
     "favor": {
       "atk": 30,
@@ -29883,7 +30159,9 @@
   "char_338_iris": {
     "Key": "char_338_iris",
     "appellation": "Iris",
-    "description": "攻击造成<@ba.kw>法术伤害</>，在找不到攻击目标时可以将攻击能量<@ba.kw>储存</>起来之后一齐发射（最多3个）",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害，在找不到攻击目标时可以将攻击能量储存起来之后一齐发射（最多3个）",
     "displayNum": "VC12",
     "favor": {
       "atk": 130,
@@ -30111,6 +30389,8 @@
   "char_340_shwaz": {
     "Key": "char_340_shwaz",
     "appellation": "Schwarz",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "高精度的近距离射击",
     "displayNum": "SS02",
     "favor": {
@@ -30376,7 +30656,9 @@
   "char_343_tknogi": {
     "Key": "char_343_tknogi",
     "appellation": "Tsukinogi",
-    "description": "攻击造成<@ba.kw>法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害",
     "displayNum": "R129",
     "favor": {
       "atk": 40,
@@ -30602,7 +30884,9 @@
   "char_344_beewax": {
     "Key": "char_344_beewax",
     "appellation": "Beeswax",
-    "description": "通常时<@ba.kw>不攻击</>且防御力和法术抗性大幅度<@ba.kw>提升</>，技能开启时攻击造成<@ba.kw>群体法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "通常时不攻击且防御力和法术抗性大幅度提升，技能开启时攻击造成群体法术伤害",
     "displayNum": "R147",
     "favor": {
       "atk": 70,
@@ -30801,6 +31085,8 @@
   "char_345_folnic": {
     "Key": "char_345_folnic",
     "appellation": "Folinic",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "恢复友方单位生命",
     "displayNum": "R133",
     "favor": {
@@ -31006,7 +31292,9 @@
   "char_346_aosta": {
     "Key": "char_346_aosta",
     "appellation": "Aosta",
-    "description": "攻击范围内的<@ba.kw>所有敌人</>，对自己前方一横排的敌人攻击力提升至150%",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "攻击范围内的所有敌人，对自己前方一横排的敌人攻击力提升至150%",
     "displayNum": "SR28",
     "favor": {
       "atk": 65,
@@ -31250,6 +31538,8 @@
   "char_347_jaksel": {
     "Key": "char_347_jaksel",
     "appellation": "Jackie",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡一个敌人",
     "displayNum": "R166",
     "favor": {
@@ -31491,7 +31781,9 @@
   "char_348_ceylon": {
     "Key": "char_348_ceylon",
     "appellation": "Ceylon",
-    "description": "拥有较大治疗范围，但在治疗较远目标时治疗量变为<@ba.kw>{heal_scale:0%}</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "拥有较大治疗范围，但在治疗较远目标时治疗量变为{heal_scale:0%}",
     "displayNum": "SS01",
     "favor": {
       "atk": 40,
@@ -31735,6 +32027,8 @@
   "char_349_chiave": {
     "Key": "char_349_chiave",
     "appellation": "Chiave",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡两个敌人",
     "displayNum": "SR26",
     "favor": {
@@ -31977,7 +32271,9 @@
   "char_350_surtr": {
     "Key": "char_350_surtr",
     "appellation": "Surtr",
-    "description": "攻击造成<@ba.kw>法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害",
     "displayNum": "R111",
     "favor": {
       "atk": 100,
@@ -32257,7 +32553,9 @@
   "char_355_ethan": {
     "Key": "char_355_ethan",
     "appellation": "Ethan",
-    "description": "对攻击范围内<@ba.kw>所有敌人</>造成伤害\\n拥有50%的物理和法术闪避且不容易成为敌人的<@ba.kw>攻击目标</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "对攻击范围内所有敌人造成伤害拥有50%的物理和法术闪避且不容易成为敌人的攻击目标",
     "displayNum": "R130",
     "favor": {
       "atk": 0,
@@ -32460,7 +32758,9 @@
   "char_356_broca": {
     "Key": "char_356_broca",
     "appellation": "Broca",
-    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "同时攻击阻挡的所有敌人",
     "displayNum": "SR27",
     "favor": {
       "atk": 80,
@@ -32702,7 +33002,9 @@
   "char_358_lisa": {
     "Key": "char_358_lisa",
     "appellation": "Suzuran",
-    "description": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成短暂的<@ba.kw>停顿</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害，并对敌人造成短暂的停顿",
     "displayNum": "R172",
     "favor": {
       "atk": 75,
@@ -32935,6 +33237,8 @@
   "char_362_saga": {
     "Key": "char_362_saga",
     "appellation": "Saga",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡两个敌人",
     "displayNum": "HK13",
     "favor": {
@@ -33188,6 +33492,8 @@
   "char_365_aprl": {
     "Key": "char_365_aprl",
     "appellation": "April",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "优先攻击空中单位",
     "displayNum": "RB07",
     "favor": {
@@ -33371,6 +33677,8 @@
   "char_366_acdrop": {
     "Key": "char_366_acdrop",
     "appellation": "Aciddrop",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "高精度的近距离射击",
     "displayNum": "R139",
     "favor": {
@@ -33554,6 +33862,8 @@
   "char_367_swllow": {
     "Key": "char_367_swllow",
     "appellation": "GreyThroat",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "优先攻击空中单位",
     "displayNum": "R110",
     "favor": {
@@ -33745,7 +34055,9 @@
   "char_373_lionhd": {
     "Key": "char_373_lionhd",
     "appellation": "Leonhardt",
-    "description": "攻击造成<@ba.kw>群体法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成群体法术伤害",
     "displayNum": "RB03",
     "favor": {
       "atk": 90,
@@ -33971,7 +34283,9 @@
   "char_376_therex": {
     "Key": "char_376_therex",
     "appellation": "Thermal-EX",
-    "description": "不进行攻击，且不受<@ba.kw>部署数量</>限制，但再部署时间极长",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "不进行攻击，且不受部署数量限制，但再部署时间极长",
     "displayNum": "RCX4",
     "favor": {
       "atk": 90,
@@ -34247,6 +34561,8 @@
   "char_378_asbest": {
     "Key": "char_378_asbest",
     "appellation": "Asbestos",
+    "atkNum": null,
+    "damageMod": "Mag",
     "description": "技能开启时普通攻击会造成法术伤害",
     "displayNum": "RB05",
     "favor": {
@@ -34431,7 +34747,9 @@
   "char_379_sesa": {
     "Key": "char_379_sesa",
     "appellation": "Sesa",
-    "description": "攻击造成<@ba.kw>群体物理伤害</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "攻击造成群体物理伤害",
     "displayNum": "R158",
     "favor": {
       "atk": 85,
@@ -34641,6 +34959,8 @@
   "char_381_bubble": {
     "Key": "char_381_bubble",
     "appellation": "Bubble",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡三个敌人",
     "displayNum": "R146",
     "favor": {
@@ -34824,7 +35144,9 @@
   "char_383_snsant": {
     "Key": "char_383_snsant",
     "appellation": "Snowsant",
-    "description": "技能可以使敌人产生<@ba.kw>位移</>\\n可以放置于远程位",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "技能可以使敌人产生位移可以放置于远程位",
     "displayNum": "LM16",
     "favor": {
       "atk": 0,
@@ -35050,7 +35372,9 @@
   "char_385_finlpp": {
     "Key": "char_385_finlpp",
     "appellation": "Purestream",
-    "description": "拥有较大治疗范围，但在治疗较远目标时治疗量变为<@ba.kw>{heal_scale:0%}</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "拥有较大治疗范围，但在治疗较远目标时治疗量变为{heal_scale:0%}",
     "displayNum": "R160",
     "favor": {
       "atk": 35,
@@ -35253,7 +35577,9 @@
   "char_388_mint": {
     "Key": "char_388_mint",
     "appellation": "Mint",
-    "description": "通常时<@ba.kw>不攻击</>且防御力和法术抗性大幅度<@ba.kw>提升</>，技能开启时攻击造成<@ba.kw>群体法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "通常时不攻击且防御力和法术抗性大幅度提升，技能开启时攻击造成群体法术伤害",
     "displayNum": "VC08",
     "favor": {
       "atk": 75,
@@ -35518,7 +35844,9 @@
   "char_391_rosmon": {
     "Key": "char_391_rosmon",
     "appellation": "Rosmontis",
-    "description": "攻击对小范围的<@ba.kw>地面</>敌人造成<@ba.kw>两次</>物理伤害（第二次为余震，伤害降低至攻击力的一半）",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "攻击对小范围的地面敌人造成两次物理伤害（第二次为余震，伤害降低至攻击力的一半）",
     "displayNum": "RE45",
     "favor": {
       "atk": 60,
@@ -35766,7 +36094,9 @@
   "char_400_weedy": {
     "Key": "char_400_weedy",
     "appellation": "Weedy",
-    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>\\n可以放置于远程位",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "同时攻击阻挡的所有敌人可以放置于远程位",
     "displayNum": "R117",
     "favor": {
       "atk": 45,
@@ -35958,6 +36288,8 @@
   "char_401_elysm": {
     "Key": "char_401_elysm",
     "appellation": "Elysium",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "技能发动期间阻挡数变为0",
     "displayNum": "R131",
     "favor": {
@@ -36184,6 +36516,8 @@
   "char_402_tuye": {
     "Key": "char_402_tuye",
     "appellation": "Tuye",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "恢复友方单位生命",
     "displayNum": "SG08",
     "favor": {
@@ -36409,7 +36743,9 @@
   "char_405_absin": {
     "Key": "char_405_absin",
     "appellation": "Absinthe",
-    "description": "攻击造成<@ba.kw>法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害",
     "displayNum": "US11",
     "favor": {
       "atk": 70,
@@ -36634,7 +36970,9 @@
   "char_411_tomimi": {
     "Key": "char_411_tomimi",
     "appellation": "Tomimi",
-    "description": "攻击造成<@ba.kw>法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害",
     "displayNum": "SG05",
     "favor": {
       "atk": 35,
@@ -36878,6 +37216,8 @@
   "char_415_flint": {
     "Key": "char_415_flint",
     "appellation": "Flint",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡一个敌人",
     "displayNum": "SG06",
     "favor": {
@@ -37087,6 +37427,8 @@
   "char_416_zumama": {
     "Key": "char_416_zumama",
     "appellation": "Eunectes",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "只有阻挡敌人时才能够回复技力",
     "displayNum": "SG03",
     "favor": {
@@ -37350,6 +37692,8 @@
   "char_423_blemsh": {
     "Key": "char_423_blemsh",
     "appellation": "Blemishine",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "技能可以治疗友方单位",
     "displayNum": "KZ09",
     "favor": {
@@ -37581,7 +37925,9 @@
   "char_436_whispr": {
     "Key": "char_436_whispr",
     "appellation": "Whisperain",
-    "description": "拥有较大治疗范围，但在治疗较远目标时治疗量变为<@ba.kw>{heal_scale:0%}</>",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "拥有较大治疗范围，但在治疗较远目标时治疗量变为{heal_scale:0%}",
     "displayNum": "R163",
     "favor": {
       "atk": 40,
@@ -37809,7 +38155,9 @@
   "char_440_pinecn": {
     "Key": "char_440_pinecn",
     "appellation": "Pinecone",
-    "description": "攻击范围内的<@ba.kw>所有敌人</>，对自己前方一横排的敌人攻击力提升至150%",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "攻击范围内的所有敌人，对自己前方一横排的敌人攻击力提升至150%",
     "displayNum": "CB09",
     "favor": {
       "atk": 55,
@@ -38054,7 +38402,9 @@
   "char_451_robin": {
     "Key": "char_451_robin",
     "appellation": "Robin",
-    "description": "可以使用陷阱来协助作战，但陷阱无法放置于<@ba.kw>敌人已在</>的格子中",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "可以使用陷阱来协助作战，但陷阱无法放置于敌人已在的格子中",
     "displayNum": "CB08",
     "favor": {
       "atk": 40,
@@ -38298,7 +38648,9 @@
   "char_452_bstalk": {
     "Key": "char_452_bstalk",
     "appellation": "Beanstalk",
-    "description": "可以在攻击范围内选择一次<@ba.kw>战术点</>来召唤援军，自身攻击援军阻挡的敌人时攻击力提升至150%",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "可以在攻击范围内选择一次战术点来召唤援军，自身攻击援军阻挡的敌人时攻击力提升至150%",
     "displayNum": "CB16",
     "favor": {
       "atk": 50,
@@ -38510,7 +38862,9 @@
   "char_455_nothin": {
     "Key": "char_455_nothin",
     "appellation": "Mr.Nothing",
-    "description": "再部署时间<@ba.kw>减少</>，撤退时不返还<@ba.kw>部署费用</>，在场时每3秒<@ba.kw>消耗</>3点部署费用（不足时自动撤退）",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "再部署时间减少，撤退时不返还部署费用，在场时每3秒消耗3点部署费用（不足时自动撤退）",
     "displayNum": "YD11",
     "favor": {
       "atk": 40,
@@ -38775,6 +39129,8 @@
   "char_456_ash": {
     "Key": "char_456_ash",
     "appellation": "Ash",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "优先攻击空中单位",
     "displayNum": "RS01",
     "favor": {
@@ -38995,6 +39351,8 @@
   "char_457_blitz": {
     "Key": "char_457_blitz",
     "appellation": "Blitz",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡三个敌人",
     "displayNum": "RS02",
     "favor": {
@@ -39228,7 +39586,9 @@
   "char_458_rfrost": {
     "Key": "char_458_rfrost",
     "appellation": "Frost",
-    "description": "可以使用陷阱来协助作战，但陷阱无法放置于<@ba.kw>敌人已在</>的格子中",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "可以使用陷阱来协助作战，但陷阱无法放置于敌人已在的格子中",
     "displayNum": "RS03",
     "favor": {
       "atk": 40,
@@ -39472,7 +39832,9 @@
   "char_459_tachak": {
     "Key": "char_459_tachak",
     "appellation": "Tachanka",
-    "description": "普通攻击连续造成<@ba.kw>两次</>伤害",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "普通攻击连续造成两次伤害",
     "displayNum": "RS04",
     "favor": {
       "atk": 40,
@@ -39739,6 +40101,8 @@
   "char_500_noirc": {
     "Key": "char_500_noirc",
     "appellation": "Noir Corne",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡三个敌人",
     "displayNum": "A43",
     "favor": {
@@ -39862,7 +40226,9 @@
   "char_501_durin": {
     "Key": "char_501_durin",
     "appellation": "Durin",
-    "description": "攻击造成<@ba.kw>法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害",
     "displayNum": "A44",
     "favor": {
       "atk": 30,
@@ -39981,6 +40347,8 @@
   "char_502_nblade": {
     "Key": "char_502_nblade",
     "appellation": "Yato",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡两个敌人",
     "displayNum": "A41",
     "favor": {
@@ -40100,6 +40468,8 @@
   "char_503_rang": {
     "Key": "char_503_rang",
     "appellation": "Rangers",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "优先攻击空中单位",
     "displayNum": "A42",
     "favor": {
@@ -40219,6 +40589,8 @@
   "char_504_rguard": {
     "Key": "char_504_rguard",
     "appellation": "Reserve (Melee)",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡两个敌人",
     "displayNum": null,
     "favor": {
@@ -40305,7 +40677,9 @@
   "char_505_rcast": {
     "Key": "char_505_rcast",
     "appellation": "Reserve (Caster)",
-    "description": "攻击造成<@ba.kw>法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成法术伤害",
     "displayNum": null,
     "favor": {
       "atk": 0,
@@ -40391,6 +40765,8 @@
   "char_506_rmedic": {
     "Key": "char_506_rmedic",
     "appellation": "Reserve (Logistic)",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "恢复友方单位生命",
     "displayNum": null,
     "favor": {
@@ -40477,6 +40853,8 @@
   "char_507_rsnipe": {
     "Key": "char_507_rsnipe",
     "appellation": "Reserve (Sniper)",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "优先攻击空中单位",
     "displayNum": null,
     "favor": {
@@ -40563,6 +40941,8 @@
   "char_508_aguard": {
     "Key": "char_508_aguard",
     "appellation": "Sharp",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "能够阻挡一个敌人",
     "displayNum": null,
     "favor": {
@@ -40715,7 +41095,9 @@
   "char_509_acast": {
     "Key": "char_509_acast",
     "appellation": "Pith",
-    "description": "攻击造成<@ba.kw>群体法术伤害</>",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成群体法术伤害",
     "displayNum": null,
     "favor": {
       "atk": 0,
@@ -40858,6 +41240,8 @@
   "char_510_amedic": {
     "Key": "char_510_amedic",
     "appellation": "Touch",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "恢复友方单位生命",
     "displayNum": null,
     "favor": {
@@ -41001,6 +41385,8 @@
   "char_511_asnipe": {
     "Key": "char_511_asnipe",
     "appellation": "Stormeye",
+    "atkNum": null,
+    "damageMod": "Phy",
     "description": "优先攻击空中单位",
     "displayNum": null,
     "favor": {

@@ -24,21 +24,21 @@ class EnemyDataSwitch(object):
     #================================= json文件的处理 ===================================#
     def getJsonData(self):
         # 获取 enemy_database.json
-        with open("enemy_database.json", encoding="utf-8") as f:
+        with open("before/enemy_database.json", encoding="utf-8") as f:
             self.data_json = json.load(f)        
         # 获取 enemy_handbook_table.json
-        with open("enemy_handbook_table.json", encoding="utf-8") as f:
+        with open("before/enemy_handbook_table.json", encoding="utf-8") as f:
             self.handbook_json = json.load(f)
 
     def outputJson(self):
         # 生成文件，用 vscode 以 GB2312 打开，并以 UTF-8 重新编码保存
         # 敌人数据 enemydata.json
-        filename = "enemydata.json"
+        filename = "after/enemydata.json"
         with open(filename, "w") as f:
             json.dump(self.enemy_data, f, ensure_ascii=False, sort_keys=True, indent=2)
         
         # 敌人列表 enemylist.json
-        filename = "enemylist.json"
+        filename = "after/enemylist.json"
         with open(filename, "w") as f:
             json.dump(self.enemy_list, f, ensure_ascii=False, sort_keys=True, indent=2)
     
@@ -53,6 +53,11 @@ class EnemyDataSwitch(object):
             enemy_chi_dict = {}
             enemy_chi_dict["name"] = self.handbook_json[em]["name"]
             enemy_chi_list[enemy_dict[self.handbook_json[em]["enemyLevel"]]].append(enemy_chi_dict)
+            # 补充 enemydata.json
+            # 两个json文件部分姓名信息不同
+            self.enemy_data[em]["name"] = self.handbook_json[em]["name"]
+            self.enemy_data[em]["damageMod"] = self.getDamageMod(self.handbook_json[em]["attackType"])
+
         # 敌人列表
         self.enemy_list.append({
             "name": "普通",
@@ -66,7 +71,7 @@ class EnemyDataSwitch(object):
             "name": "领袖",
             "children": enemy_chi_list[2]
         })
-        print(self.enemy_list)
+        # print(self.enemy_list)
         
     # 生成敌方数据 enemydata.json
     def getEnemyData(self):
@@ -79,7 +84,7 @@ class EnemyDataSwitch(object):
             tmp_data = em["Value"][0]["enemyData"]    # 参数重定位
             base_data["Key"] = tmp_key
             base_data["name"] = tmp_data["name"]["m_value"]
-            base_data["description"] = tmp_data["description"]["m_value"]
+            base_data["description"] = self.descriptionClear(tmp_data["description"]["m_value"])
             base_data["lifePointReduce"] = tmp_data["lifePointReduce"]["m_value"]
             base_data["rangeRadius"] = tmp_data["rangeRadius"]["m_value"]
             base_data["talent"] = tmp_data["talentBlackboard"]
@@ -94,7 +99,7 @@ class EnemyDataSwitch(object):
             base_data["immune"] = [0, 0, 0]
             base_data["immune"][0] = tmp_data["attributes"]["stunImmune"]["m_value"]
             base_data["immune"][1] = tmp_data["attributes"]["silenceImmune"]["m_value"]
-            base_data["immune"][2] = tmp_data["attributes"]["sleepImmune"]["m_value"]            
+            base_data["immune"][2] = tmp_data["attributes"]["sleepImmune"]["m_value"]           
             # 提取数据（可变的）
             base_data["maxHp"] = []
             base_data["atk"] = []
@@ -123,6 +128,28 @@ class EnemyDataSwitch(object):
             # 将 base_data 存入 self.enemy_data
             self.enemy_data[tmp_key] = base_data     
 
+    #========================================= 小功能区 ========================================#
+    # 清理描述上多余的符号
+    def descriptionClear(self, description: str):
+        if "<@eb.key>" in description:
+            description = description.replace("<@eb.key>", "")
+            description = description.replace("</>", "")
+        if "<@eb.danger>" in description:
+            description = description.replace("<@eb.danger>", "")
+            description = description.replace("</>", "")
+        if r"\n" in description:
+            description = description.replace(r"\n", "")
+        return description 
+
+    # 伤害类型
+    def getDamageMod(self, description: str):
+        dam_mod = "Phy"
+        if "法术" in description:
+            dam_mod = "Mag"
+        elif "不攻击" in description:
+            dam_mod = "Noatk"
+        return dam_mod
+
 #==============================================================================================#
 #======================================= 用于干员数据的转换 ======================================#
 class EmployeeDataSwitch(object):
@@ -144,21 +171,21 @@ class EmployeeDataSwitch(object):
     # 获取原始的json文件: character_table.json
     def getJsonData(self):
         # 获取 character_table.json 干员属性表
-        with open("character_table.json", encoding="utf-8") as f:
+        with open("before/character_table.json", encoding="utf-8") as f:
             self.data_json = json.load(f)
 
     # 输出json文件
     def outputJson(self):
         # 生成文件，用 vscode 以 GB2312 打开，并以 UTF-8 重新编码保存
         # 干员数据表 employeedata.json
-        filename = "employeedata.json"
+        filename = "after/employeedata.json"
         with open(filename, "w") as f:
             json.dump(self.employee_data, f, ensure_ascii=False, sort_keys=True, indent=2)
 
         # 召唤物数据表 tokendata.json
 
         # 干员名单 employeelist.json
-        filename = "employeelist.json"
+        filename = "after/employeelist.json"
         with open(filename, "w") as f:
             json.dump(self.employee_list, f, ensure_ascii=False, sort_keys=True, indent=2)
 
@@ -231,7 +258,7 @@ class EmployeeDataSwitch(object):
                 # itemDesc, itemObt..., isNotObt..., isSpChar, character..., allSkillLvlup
                 base_data["Key"] = tmp_key
                 base_data["name"] = tmp_data["name"]
-                base_data["description"] = tmp_data["description"]
+                base_data["description"] = self.descriptionClear(tmp_data["description"])
                 base_data["displayNum"] = tmp_data["displayNumber"]
                 base_data["tokenKey"] = tmp_data["tokenKey"]
                 base_data["appellation"] = tmp_data["appellation"]
@@ -242,6 +269,8 @@ class EmployeeDataSwitch(object):
                 base_data["rarity"] = tmp_data["rarity"]
                 base_data["profession"] = tmp_data["profession"]
                 base_data["trait"] = tmp_data["trait"]
+                base_data["damageMod"] = self.getDamageMod(base_data["description"])
+                base_data["atkNum"] = self.getAtkNum(base_data["description"])
 
                 # phases 阶段数据 ================================================#
                 # 除去： character..., level, movespeed, maxDeployCount, tauntLevel, massLevel,
@@ -329,11 +358,40 @@ class EmployeeDataSwitch(object):
             # 召唤物数据
             elif "token" in tmp_key:
                 pass
+    #========================================= 小功能区 ========================================#
+    # 清理描述上多余的符号
+    def descriptionClear(self, description: str):
+        if "<@ba.kw>" in description:
+            description = description.replace("<@ba.kw>", "")
+            description = description.replace("</>", "")
+        if r"\n" in description:
+            description = description.replace(r"\n", "")
+        return description   
 
-
+    # 获得伤害类型
+    def getDamageMod(self, description: str):
+        dam_mod = "Phy"
+        if "法术伤害" in description:
+            dam_mod = "Mag"
+        elif "真实伤害" in description:
+            dam_mod = "Tru"
+        return dam_mod
+    
+    # 群攻、伪群攻、单、双
+    def getAtkNum(self, description: str):
+        atk_num = 0
+        if "群体" in description:
+            atk_num = 1
+        elif "阻挡的所以敌人" in description:
+            atk_num = 2
+        elif "两次" in description:
+            atk_num = 3
+        elif "远程攻击" in description:
+            atk_num = 4
 
 if __name__ == "__main__": 
     # A = EnemyDataSwitch()
     # A.letsEnemySwitch()
     B = EmployeeDataSwitch()
     B.letsEmployeeSwitch()
+    
