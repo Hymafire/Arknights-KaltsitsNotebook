@@ -12332,6 +12332,7 @@
       300
     ],
     "description": "",
+    "damageMod": "Mag",
     "hpRec": 0.0,
     "immune": [
       true,
@@ -13523,6 +13524,7 @@
       750
     ],
     "description": "",
+    "damageMod": "Mag",
     "hpRec": 0.0,
     "immune": [
       true,
@@ -14446,6 +14448,7 @@
       350
     ],
     "description": "",
+    "damageMod": "Mag",
     "hpRec": 0.0,
     "immune": [
       false,

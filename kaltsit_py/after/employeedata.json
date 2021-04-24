@@ -8315,7 +8315,7 @@
     "Key": "char_148_nearl",
     "appellation": "Nearl",
     "atkNum": null,
-    "damageMod": "Phy",
+    "damageMod": "Heal",
     "description": "技能可以治疗友方单位",
     "displayNum": "FO02",
     "favor": {
@@ -9715,7 +9715,7 @@
     "Key": "char_163_hpsts",
     "appellation": "Vulcan",
     "atkNum": null,
-    "damageMod": "Phy",
+    "damageMod": "Heal",
     "description": "无法被友方角色治疗",
     "displayNum": "MN02",
     "favor": {
@@ -12691,7 +12691,7 @@
     "Key": "char_188_helage",
     "appellation": "Hellagur",
     "atkNum": null,
-    "damageMod": "Phy",
+    "damageMod": "Heal",
     "description": "不成为其他角色的治疗目标，每次攻击到敌人后回复自身{value}生命",
     "displayNum": "AZ01",
     "favor": {
@@ -13750,7 +13750,7 @@
     "Key": "char_196_sunbr",
     "appellation": "Гум",
     "atkNum": null,
-    "damageMod": "Phy",
+    "damageMod": "Heal",
     "description": "技能可以治疗友方单位",
     "displayNum": "USS3",
     "favor": {
@@ -15567,7 +15567,7 @@
     "Key": "char_202_demkni",
     "appellation": "Saria",
     "atkNum": null,
-    "damageMod": "Phy",
+    "damageMod": "Heal",
     "description": "技能可以治疗友方单位",
     "displayNum": "RL02",
     "favor": {
@@ -18824,7 +18824,7 @@
     "Key": "char_226_hmau",
     "appellation": "Hung",
     "atkNum": null,
-    "damageMod": "Phy",
+    "damageMod": "Heal",
     "description": "技能可以治疗友方单位",
     "displayNum": "LM19",
     "favor": {
@@ -25210,7 +25210,7 @@
     "Key": "char_284_spot",
     "appellation": "Spot",
     "atkNum": null,
-    "damageMod": "Phy",
+    "damageMod": "Heal",
     "description": "技能可以治疗友方单位",
     "displayNum": "PA64",
     "favor": {
@@ -28277,7 +28277,7 @@
     "Key": "char_311_mudrok",
     "appellation": "Mudrock",
     "atkNum": null,
-    "damageMod": "Phy",
+    "damageMod": "Heal",
     "description": "无法被友方角色治疗",
     "displayNum": "R159",
     "favor": {
@@ -29878,7 +29878,7 @@
     "Key": "char_337_utage",
     "appellation": "Utage",
     "atkNum": null,
-    "damageMod": "Phy",
+    "damageMod": "Heal",
     "description": "不成为其他角色的治疗目标，每次攻击到敌人后回复自身{value}生命",
     "displayNum": "HK03",
     "favor": {
@@ -31782,7 +31782,7 @@
     "Key": "char_348_ceylon",
     "appellation": "Ceylon",
     "atkNum": null,
-    "damageMod": "Phy",
+    "damageMod": "Heal",
     "description": "拥有较大治疗范围，但在治疗较远目标时治疗量变为{heal_scale:0%}",
     "displayNum": "SS01",
     "favor": {
@@ -35373,7 +35373,7 @@
     "Key": "char_385_finlpp",
     "appellation": "Purestream",
     "atkNum": null,
-    "damageMod": "Phy",
+    "damageMod": "Heal",
     "description": "拥有较大治疗范围，但在治疗较远目标时治疗量变为{heal_scale:0%}",
     "displayNum": "R160",
     "favor": {
@@ -37693,7 +37693,7 @@
     "Key": "char_423_blemsh",
     "appellation": "Blemishine",
     "atkNum": null,
-    "damageMod": "Phy",
+    "damageMod": "Heal",
     "description": "技能可以治疗友方单位",
     "displayNum": "KZ09",
     "favor": {
@@ -37926,7 +37926,7 @@
     "Key": "char_436_whispr",
     "appellation": "Whisperain",
     "atkNum": null,
-    "damageMod": "Phy",
+    "damageMod": "Heal",
     "description": "拥有较大治疗范围，但在治疗较远目标时治疗量变为{heal_scale:0%}",
     "displayNum": "R163",
     "favor": {

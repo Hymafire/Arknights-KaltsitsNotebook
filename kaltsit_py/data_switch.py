@@ -358,6 +358,7 @@ class EmployeeDataSwitch(object):
             # 召唤物数据
             elif "token" in tmp_key:
                 pass
+
     #========================================= 小功能区 ========================================#
     # 清理描述上多余的符号
     def descriptionClear(self, description: str):
@@ -375,6 +376,8 @@ class EmployeeDataSwitch(object):
             dam_mod = "Mag"
         elif "真实伤害" in description:
             dam_mod = "Tru"
+        elif "治疗" in description:
+            dam_mod = "Heal"
         return dam_mod
     
     # 群攻、伪群攻、单、双
@@ -389,9 +392,126 @@ class EmployeeDataSwitch(object):
         elif "远程攻击" in description:
             atk_num = 4
 
+#==================== 预处理 ===========================#
+# 预处理一些敌人和干员的数据数据
+class PreTreated(object):
+    def __init__(self):
+        self.employee_data = {}
+        self.enemy_data = {}
+        self.pre_treated_data = {}
+
+    # 入口
+    def letsPreTreat(self):
+        self.getDatas()
+        self.employeeAvg()
+        self.enemyAvg()
+        self.outputJson()
+
+    # 获取数据
+    def getDatas(self):
+        with open("after/employeedata.json", encoding="utf-8") as f:
+            self.employee_data = json.load(f)
+
+        with open("after/enemydata.json", encoding="utf-8") as f:
+            self.enemy_data = json.load(f)
+    
+    def outputJson(self):
+        filename = "after/pretreated.json"
+        with open(filename, "w") as f:
+            json.dump(self.pre_treated_data, f, ensure_ascii=False, sort_keys=True, indent=2)
+
+    # 干员平均
+    def employeeAvg(self):
+        # 列表 (平均、物理、法术、治疗)
+        avg_atk = [0, 0, 0, 0]
+        avg_dam = [0, 0, 0 ,0]
+        avg_def = 0
+        total_atk = [0, 0, 0, 0]
+        total_dam = [0, 0, 0, 0]
+        total_cnt = [0, 0, 0, 0]
+        total_def = 0 
+        for em in self.employee_data:
+            em_data = self.employee_data[em]
+            # 攻击、输出
+            em_atk = em_data["phases"]["atk"][-1][-1] + em_data["favor"]["atk"] 
+            if em_data["damageMod"] == "Phy":
+                total_atk[0] += em_atk
+                total_atk[1] += em_atk
+                total_dam[0] += em_atk / em_data["phases"]["atkTime"]
+                total_dam[1] += em_atk / em_data["phases"]["atkTime"]
+                total_cnt[0] += 1
+                total_cnt[1] += 1
+            elif em_data["damageMod"] == "Mag":
+                total_atk[0] += em_atk
+                total_atk[2] += em_atk
+                total_dam[0] += em_atk / em_data["phases"]["atkTime"] 
+                total_dam[2] += em_atk / em_data["phases"]["atkTime"]
+                total_cnt[0] += 1
+                total_cnt[2] += 1
+            elif em_data["damageMod"] == "Heal":
+                total_atk[3] += em_atk
+                total_dam[3] += em_atk / em_data["phases"]["atkTime"]
+                total_cnt[3] += 1
+            # 防御
+            total_def += em_data["phases"]["def"][-1][-1] + em_data["favor"]["def"]
+
+        for i in range(4):
+            avg_atk[i] = total_atk[i] / total_cnt[i]
+            avg_dam[i] = total_dam[i] / total_cnt[i]
+        
+        self.pre_treated_data["emAvgAtk"] = avg_atk
+        self.pre_treated_data["emAvgDam"] = avg_dam
+        self.pre_treated_data["emAvgDef"] = total_def / (total_cnt[0] + total_cnt[3])
+
+    # 敌人平均
+    def enemyAvg(self):
+        # 列表 (平均、物理、法术)
+        avg_atk = [0, 0, 0]
+        avg_dam = [0, 0, 0]
+        avg_def = 0
+        total_atk = [0, 0, 0]
+        total_dam = [0, 0, 0]
+        total_cnt = [0, 0, 0]
+        total_def = 0
+        for en in self.enemy_data:           
+            en_data = self.enemy_data[en]
+            # 攻击、输出
+            en_atk = en_data["atk"][0] 
+            en_atkT = en_data["atkTime"]
+            
+            if  en_atkT == 0:
+                en_atkT = 1
+            if en_data["damageMod"] == "Phy":
+                total_atk[0] += en_atk
+                total_atk[1] += en_atk
+                total_dam[0] += en_atk / en_atkT
+                total_dam[1] += en_atk / en_atkT
+                total_cnt[0] += 1
+                total_cnt[1] += 1
+            elif en_data["damageMod"] == "Mag":
+                total_atk[0] += en_atk
+                total_atk[2] += en_atk
+                total_dam[0] += en_atk / en_atkT 
+                total_dam[2] += en_atk / en_atkT
+                total_cnt[0] += 1
+                total_cnt[2] += 1
+            # 防御
+            total_def += en_data["def"][0]
+
+        for i in range(3):
+            avg_atk[i] = total_atk[i] / total_cnt[i]
+            avg_dam[i] = total_dam[i] / total_cnt[i]
+        
+        self.pre_treated_data["enAvgAtk"] = avg_atk
+        self.pre_treated_data["enAvgDam"] = avg_dam
+        self.pre_treated_data["enAvgDef"] = total_def / total_cnt[0]
+
+
 if __name__ == "__main__": 
     # A = EnemyDataSwitch()
     # A.letsEnemySwitch()
-    B = EmployeeDataSwitch()
-    B.letsEmployeeSwitch()
+    # B = EmployeeDataSwitch()
+    # B.letsEmployeeSwitch()
+    C = PreTreated()
+    C.letsPreTreat()
     
