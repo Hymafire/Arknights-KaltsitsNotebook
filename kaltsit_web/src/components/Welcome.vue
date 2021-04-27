@@ -5,7 +5,7 @@
       <div>Kal'tsit's Notebook</div>
     </div>
     <div>
-      <div class="version">v0.5.1</div>
+      <div class="version">v0.6.0</div>
     </div>
   </div>
 </template>

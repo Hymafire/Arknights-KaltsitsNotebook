@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container class="home-container">
     <!-- 敌方列表和查询区 -->
     <el-aside width="250px" class="home-aside">
       <Emlist v-bind:employee_name="employee_name" v-on:employeeChanged="changeName($event)" />
@@ -38,20 +38,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.el-container {
+.home-container {
   height: 100%;
 }
 .home-aside {
   padding: 0px;
 }
 .el-aside {
+  display: block;
+  height: 100%;
   background-color: #fff;
   width: 100%;
-  height: 100%;
 }
 .el-main {
-  height: 100%;
-  background-color: #eaedf1;
+  // height: 100%;
+  // position: absolute;
+  left: 250px;
+  background-color: #e2e2e2;
   padding: 1px;
+  // overflow-y: scroll;
 }
 </style>

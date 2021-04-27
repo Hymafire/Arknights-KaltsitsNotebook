@@ -57,6 +57,7 @@ class EnemyDataSwitch(object):
             # 两个json文件部分姓名信息不同
             self.enemy_data[em]["name"] = self.handbook_json[em]["name"]
             self.enemy_data[em]["damageMod"] = self.getDamageMod(self.handbook_json[em]["attackType"])
+            self.enemy_data[em]["enLevel"] = self.handbook_json[em]["enemyLevel"]
 
         # 敌人列表
         self.enemy_list.append({
@@ -431,9 +432,9 @@ class PreTreated(object):
         total_cnt = [0, 0, 0, 0]
         total_def = 0 
         for em in self.employee_data:
-            em_data = self.employee_data[em]
+            em_data = self.employee_data[em]           
             # 攻击、输出
-            em_atk = em_data["phases"]["atk"][-1][-1] + em_data["favor"]["atk"] 
+            em_atk = em_data["phases"]["atk"][-1][-1] + em_data["favor"]["atk"]
             if em_data["damageMod"] == "Phy":
                 total_atk[0] += em_atk
                 total_atk[1] += em_atk
@@ -452,64 +453,92 @@ class PreTreated(object):
                 total_atk[3] += em_atk
                 total_dam[3] += em_atk / em_data["phases"]["atkTime"]
                 total_cnt[3] += 1
+
             # 防御
             total_def += em_data["phases"]["def"][-1][-1] + em_data["favor"]["def"]
 
         for i in range(4):
-            avg_atk[i] = total_atk[i] / total_cnt[i]
-            avg_dam[i] = total_dam[i] / total_cnt[i]
+            avg_atk[i] = round(total_atk[i] / total_cnt[i], 2)
+            avg_dam[i] = round(total_dam[i] / total_cnt[i], 2)
         
         self.pre_treated_data["emAvgAtk"] = avg_atk
         self.pre_treated_data["emAvgDam"] = avg_dam
-        self.pre_treated_data["emAvgDef"] = total_def / (total_cnt[0] + total_cnt[3])
+        self.pre_treated_data["emAvgDef"] = round(total_def / (total_cnt[0] + total_cnt[3]), 2)
 
     # 敌人平均
     def enemyAvg(self):
         # 列表 (平均、物理、法术)
         avg_atk = [0, 0, 0]
         avg_dam = [0, 0, 0]
-        avg_def = 0
         total_atk = [0, 0, 0]
         total_dam = [0, 0, 0]
-        total_cnt = [0, 0, 0]
-        total_def = 0
+        total_cnt_a = [0, 0, 0]
+        # （全部，普通，精英，领袖）
+        avg_def = [0, 0, 0, 0]
+        total_def = [0, 0, 0, 0]
+        total_cnt_d = [0, 0, 0, 0]
+
+
         for en in self.enemy_data:           
             en_data = self.enemy_data[en]
             # 攻击、输出
             en_atk = en_data["atk"][0] 
             en_atkT = en_data["atkTime"]
-            
-            if  en_atkT == 0:
+            # 攻击间隔为 0 的默认为 1
+            if en_atkT == 0:
                 en_atkT = 1
-            if en_data["damageMod"] == "Phy":
+            try:
+                if en_data["damageMod"] == "Phy":
+                    total_atk[1] += en_atk
+                    total_dam[1] += en_atk / en_atkT
+                    total_cnt_a[1] += 1
+                elif en_data["damageMod"] == "Mag":
+                    total_atk[2] += en_atk
+                    total_dam[2] += en_atk / en_atkT
+                    total_cnt_a[2] += 1
                 total_atk[0] += en_atk
-                total_atk[1] += en_atk
                 total_dam[0] += en_atk / en_atkT
-                total_dam[1] += en_atk / en_atkT
-                total_cnt[0] += 1
-                total_cnt[1] += 1
-            elif en_data["damageMod"] == "Mag":
-                total_atk[0] += en_atk
-                total_atk[2] += en_atk
-                total_dam[0] += en_atk / en_atkT 
-                total_dam[2] += en_atk / en_atkT
-                total_cnt[0] += 1
-                total_cnt[2] += 1
+                total_cnt_a[0] += 1
+            except:
+                pass
+            else:
+                pass
             # 防御
-            total_def += en_data["def"][0]
-
+            en_def = en_data["def"][0]
+            try:
+                if en_data["enLevel"] == "NORMAL":
+                    total_def[1] += en_def
+                    total_cnt_d[1] += 1
+                elif en_data["enLevel"] == "ELITE":
+                    total_def[2] += en_def
+                    total_cnt_d[2] += 1
+                elif en_data["enLevel"] == "BOSS":
+                    total_def[3] += en_def
+                    total_cnt_d[3] += 1
+                total_def[0] += en_def
+                total_cnt_d[0] += 1
+            except:
+                pass
+            else:
+                pass
+        
+        # 四舍五入保留两位小数
         for i in range(3):
-            avg_atk[i] = total_atk[i] / total_cnt[i]
-            avg_dam[i] = total_dam[i] / total_cnt[i]
+            avg_atk[i] = round(total_atk[i] / total_cnt_a[i], 2)
+            avg_dam[i] = round(total_dam[i] / total_cnt_a[i], 2)
+        
+        for i in range(4):
+            avg_def[i] = round(total_def[i] / total_cnt_d[i], 2)
         
         self.pre_treated_data["enAvgAtk"] = avg_atk
         self.pre_treated_data["enAvgDam"] = avg_dam
-        self.pre_treated_data["enAvgDef"] = total_def / total_cnt[0]
+        self.pre_treated_data["enAvgDef"] = avg_def
 
+        print(self.pre_treated_data)
 
 if __name__ == "__main__": 
-    # A = EnemyDataSwitch()
-    # A.letsEnemySwitch()
+    #A = EnemyDataSwitch()
+    #A.letsEnemySwitch()
     # B = EmployeeDataSwitch()
     # B.letsEmployeeSwitch()
     C = PreTreated()

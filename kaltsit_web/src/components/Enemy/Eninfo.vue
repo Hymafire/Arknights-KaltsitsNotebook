@@ -22,13 +22,16 @@
         </el-row>
       </div>
       <div class="enemy-style">
-        最大血量：{{ enemy.maxHp[0] }}
+        <span class="param-title">最大血量：</span>
+        <span>{{ enemy.maxHp[0] }}</span>
       </div>
       <div class="enemy-style">
-        攻击：{{ enemy.atk[0] }}
+        <span class="param-title">攻击：</span>
+        <span>{{ enemy.atk[0] }}</span>
       </div>
       <div class="enemy-style">
-        防御：{{ enemy.def[0] }}
+        <span class="param-title">防御：</span>
+        <span>{{ enemy.def[0] }}</span>
       </div>
       <div class="enemy-style">
         法抗：{{ enemy.magRes[0] }}
@@ -51,7 +54,6 @@
       <hr>
       <!-- 秒伤表 -->
       <div id="pre-damage" class="echarts-box" />
-      <div id="hit-damage" class="echarts-box" />
     </el-card>
   </el-container>
 </template>
@@ -80,8 +82,7 @@ export default {
   methods: {
     // 获取数据
     getEnemyData () {
-      const enemyData = require('@/assets/data/enemydata.json')
-      this.enemyData = enemyData
+      this.enemyData = require('@/assets/data/enemydata.json')
     },
     // 查询敌人 （入口）
     findEnemy () {
@@ -115,7 +116,7 @@ export default {
         // 标题
         title: {
           left: 'center',
-          text: '秒伤害量'
+          text: '秒伤害量-防御'
         },
         // 四周间距
         grid: {
@@ -126,7 +127,7 @@ export default {
         },
         // x轴
         xAxis: {
-          name: 'x',
+          name: '防御',
           minorTick: {
             show: true
           },
@@ -136,7 +137,7 @@ export default {
         },
         // y轴
         yAxis: {
-          name: 'y',
+          name: '秒伤害量',
           minorTick: {
             show: true
           },
@@ -191,7 +192,12 @@ export default {
 .head-description {
   padding: 10px 0px 0px 0px;
 }
+// 敌人名称
 .head-title {
+  font-weight: bold;
+}
+// 属性标题
+.param-title {
   font-weight: bold;
 }
 .enemy-style {

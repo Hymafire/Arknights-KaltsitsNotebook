@@ -1,6 +1,6 @@
 <template>
   <el-container class="info-container">
-    <el-card>
+    <el-card class="info-card">
       <!-- 头部 -->
       <div slot="header" class="clearfix">
         <el-row :gutter="10" type="flex">
@@ -29,7 +29,7 @@
             <el-input prefix-icon="el-icon-user" v-model="infoForm.potential" />
           </el-col>
           <el-col :span="2">
-            <el-button type="primary" @click="getInfo">确认</el-button>
+            <el-button type="primary" @click="this.findEmployee">确认</el-button>
           </el-col>
         </el-row>
       </div>
@@ -63,22 +63,37 @@
             </el-table>
           </el-col>
         </el-row>
+        <el-row :gutter="20" type="flex">
+          <el-col :span="24">
+            <el-table :data="[em_talents]">
+              <el-table-column label="技能" prop="name" />
+              <el-table-column label="技力要求" prop="name" />
+              <el-table-column label="持续时间" prop="name" />
+              <el-table-column label="描述" prop="name" />
+            </el-table>
+          </el-col>
+        </el-row>
       </div>
       <hr>
       <!-- 分析区 -->
-      <div>
-      </div>
+      <div id="pre-damage-def" class="echarts-box"/>
+      <div id="pre-damage-time" class="echarts-box" />
+      <div id="rank-radar" class="echarts-box" />
     </el-card>
   </el-container>
 </template>
 
 <script>
 /* eslint-disable camelcase */
+import * as echarts from 'echarts'
 export default {
   data () {
     return {
       employeeData: [],
+      skillData: [],
+      pretreated: [],
       employee: [],
+      employeeSkill: [],
       em_param: [],
       infoForm: {
         elite: '0',
@@ -108,6 +123,7 @@ export default {
     this.findEmployee()
   },
   mounted () {
+    this.getCharts()
   },
   props: {
     employee_name: String
@@ -115,8 +131,9 @@ export default {
   methods: {
     // 获取干员列表
     getEmployeeData () {
-      const employeeData = require('@/assets/data/employeedata.json')
-      this.employeeData = employeeData
+      this.employeeData = require('@/assets/data/employeedata.json')
+      this.skillData = require('@/assets/data/skill_table.json')
+      this.pretreated = require('@/assets/data/pretreated.json')
     },
     // 查找干员
     findEmployee () {
@@ -144,6 +161,7 @@ export default {
       this.em_param.blockCnt = this.employee.phases.blockCnt[elt]
       this.em_param.range = this.employee.phases.range[elt]
       this.em_param.atkTime = this.employee.phases.atkTime
+      this.em_param.baseAtkTime = 100.0
       this.em_param.respawnTime = this.employee.phases.respawnTime
     },
     // 用于计算信赖的加成
@@ -154,18 +172,190 @@ export default {
       this.em_param.maxHp += Math.round(this.employee.favor.maxHp * min_favor / 100)
       this.em_param.atk += Math.round(this.employee.favor.atk * min_favor / 100)
       this.em_param.def += Math.round(this.employee.favor.def * min_favor / 100)
-      console.log(this.em_param)
+      // console.log(this.em_param)
     },
     // 用于计算潜能的加成
     employeeTalentClac () {
     },
     getInfo () {
+    },
+    // 绘图区 ===============================================================
+    // 总函数
+    getCharts () {
+      this.preDamageDefChart()
+      this.preDamageTimeChart()
+    },
+    // 秒伤-防御
+    preDamageDefChart () {
+      const data = []
+      for (let def = 0; def <= 800; def++) {
+        const damage = Math.max(this.em_param.atk - def, this.em_param.atk * 0.05)
+        const pre_dam = damage / this.em_param.atkTime
+        data.push([def, pre_dam])
+      }
+      this.pre_dam_def_chart = echarts.init(document.getElementById('pre-damage-def'))
+      const option = {
+        animation: false,
+        title: {
+          left: 'center',
+          text: '秒伤害量-防御'
+        },
+        grid: {
+          top: 40,
+          left: 50,
+          right: 40,
+          buttom: 50
+        },
+        xAxis: {
+          name: '防御',
+          minorTick: {
+            show: true
+          },
+          minorSplitLine: {
+            show: true
+          }
+        },
+        yAxis: {
+          name: '伤害量',
+          minorTick: {
+            show: true
+          },
+          // 辅助线
+          minorSplitLine: {
+            show: true
+          }
+        },
+        series: [
+          {
+            type: 'line',
+            showSymbol: false,
+            clip: true,
+            data: data
+          }
+        ]
+      }
+      this.pre_dam_def_chart.setOption(option)
+    },
+    // 伤害量-时间
+    preDamageTimeChart () {
+      const data = [[], [], [], []]
+      const def_list = this.pretreated.enAvgDef
+      for (let time = 0; time <= 30; time++) {
+        for (let i = 0; i < 4; i++) {
+          const damage = Math.max(this.em_param.atk - def_list[i], this.em_param.atk * 0.05)
+          const pre_dam = damage / this.em_param.atkTime
+          const total_dam = pre_dam * time
+          data[i].push([time, total_dam])
+        }
+      }
+      this.pre_dam_time_chart = echarts.init(document.getElementById('pre-damage-time'))
+      const option = {
+        animation: false,
+        title: {
+          left: '20%',
+          text: '伤害量-时间'
+        },
+        legend: {
+          left: '40%',
+          data: ['Avg', 'NORMAL', 'ELITE', 'BOSS']
+        },
+        grid: {
+          top: 40,
+          left: 50,
+          right: 40,
+          buttom: 50
+        },
+        xAxis: {
+          name: '时间',
+          minorTick: {
+            show: true
+          },
+          minorSplitLine: {
+            show: true
+          }
+        },
+        yAxis: {
+          name: '伤害量',
+          minorTick: {
+            show: true
+          },
+          minorSplitLine: {
+            show: true
+          }
+        },
+        series: [
+          {
+            name: 'Avg',
+            type: 'line',
+            showSymbol: false,
+            clip: true,
+            data: data[0]
+          },
+          {
+            name: 'NORMAL',
+            type: 'line',
+            showSymbol: false,
+            clip: true,
+            data: data[1]
+          },
+          {
+            name: 'ELITE',
+            type: 'line',
+            showSymbol: false,
+            clip: true,
+            data: data[2]
+          },
+          {
+            name: 'BOSS',
+            type: 'line',
+            showSymbol: false,
+            clip: true,
+            data: data[3]
+          }
+        ]
+      }
+      this.pre_dam_time_chart.setOption(option)
+    },
+    // 能力排名
+    rankRadar () {
+      const data = []
+      for (var em in this.employeeData) {
+        const em_data = this.employeeData[em]
+        console.log(em_data)
+      }
+      this.rank_radar = echarts.init(document.getElementById('rank_radar'))
+      const option = {
+        title: {
+          text: '能力评分图'
+        },
+        radar: {
+          name: {
+          },
+          indicator: [
+            { name: '最大生命力', max: 200 },
+            { name: '攻击力', max: 200 },
+            { name: '防御力', max: 200 },
+            { name: '法抗', max: 200 },
+            { name: '攻击速度', max: 200 }
+            // { name: '攻击范围', max: 5 },
+          ]
+        },
+        series: [
+          {
+            name: 'rank_radar',
+            type: 'radar',
+            data: data
+          }
+        ]
+      }
+      this.rank_radar.setOption(option)
     }
   },
   watch: {
     employee_name: {
       handler: function () {
         this.findEmployee()
+        this.getCharts()
       },
       immediate: true
     }
@@ -175,7 +365,7 @@ export default {
 
 <style lang="scss" scoped>
 .info-container {
-  height: 100%;
+  // height: 100%;
   padding: 0px;
 }
 // 输入栏style
@@ -204,7 +394,12 @@ export default {
 .head-description {
   padding: 10px 0px 0px 0px;
 }
+// 敌方名称
 .head-title {
+  font-weight: bold;
+}
+// 属性标题
+.param-title {
   font-weight: bold;
 }
 // 输入框
@@ -214,5 +409,10 @@ export default {
   width: 22%;
   padding: 20px;
   box-sizing: border-box;
+}
+// 图表容器
+.echarts-box {
+  width: 600px;
+  height: 400px;
 }
 </style>
