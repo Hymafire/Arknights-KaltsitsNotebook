@@ -51,7 +51,7 @@ export default {
   padding: 1px;
 }
 .el-main {
-  background-color: #eaedf1;
+  background-color: #fff;
   padding: 1px;
 }
 </style>

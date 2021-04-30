@@ -1,5 +1,9 @@
 /* 全局样式表 */
-html, body, #app{
+* {
+    margin: 0px;
+    padding: 0px;
+}
+html, body, #app {
     height: 100%;
     margin: 0px;
     padding: 0px;

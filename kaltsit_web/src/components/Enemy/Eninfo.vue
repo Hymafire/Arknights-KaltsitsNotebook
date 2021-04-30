@@ -1,10 +1,7 @@
 <template>
   <el-container class="info-container">
-    <el-card class="box-card">
-      <div
-        slot="header"
-        class="clearfix"
-      >
+    <el-header class="info-header">
+      <el-card>
         <el-row
           :gutter="10"
           type="flex"
@@ -20,41 +17,48 @@
             <span>{{ enemy.description }}</span>
           </el-col>
         </el-row>
-      </div>
-      <div class="enemy-style">
-        <span class="param-title">最大血量：</span>
-        <span>{{ enemy.maxHp[0] }}</span>
-      </div>
-      <div class="enemy-style">
-        <span class="param-title">攻击：</span>
-        <span>{{ enemy.atk[0] }}</span>
-      </div>
-      <div class="enemy-style">
-        <span class="param-title">防御：</span>
-        <span>{{ enemy.def[0] }}</span>
-      </div>
-      <div class="enemy-style">
-        法抗：{{ enemy.magRes[0] }}
-      </div>
-      <div class="enemy-style">
-        移速：{{ enemy.moveSpd }}
-      </div>
-      <div class="enemy-style">
-        攻击间隔：{{ enemy.atkTime }}s
-      </div>
-      <div class="enemy-style">
-        生命回复：{{ enemy.hpRec }}/s
-      </div>
-      <div class="enemy-style">
-        重量：{{ enemy.massLevel }}
-      </div>
-      <div class="enemy-style">
-        射程：{{ enemy.rangeRadius }}
-      </div>
-      <hr>
+      </el-card>
+    </el-header>
+    <el-main class="info-main">
+      <el-card class="box-card">
+        <div>
+          <span>最大血量：</span> {{ enemy.maxHp[0] }}
+        </div>
+        <div>
+          <span>攻击：</span> {{ enemy.atk[0] }}
+        </div>
+        <div>
+          <span>防御：</span> {{ enemy.def[0] }}
+        </div>
+        <div>
+          <span>法抗：</span> {{ enemy.magRes[0] }}
+        </div>
+        <div>
+          <span>移速：</span> {{ enemy.moveSpd }}
+        </div>
+        <div>
+          <span>攻击间隔：</span> {{ enemy.atkTime }}s
+        </div>
+        <div>
+          <span>生命回复：</span> {{ enemy.hpRec }}/s
+        </div>
+        <div>
+          <span>重量：</span> {{ enemy.massLevel }}
+        </div>
+        <div>
+          <span>射程：</span> {{ enemy.rangeRadius }}
+        </div>
+      </el-card>
+
       <!-- 秒伤表 -->
-      <div id="pre-damage" class="echarts-box" />
-    </el-card>
+
+      <el-card class="card-box">
+        <div
+          id="pre-damage"
+          class="echarts-box"
+        />
+      </el-card>
+    </el-main>
   </el-container>
 </template>
 
@@ -175,12 +179,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.info-container {
-  height: 100%;
+.info-header {
+  padding: 0px;
 }
+// 属性盒子
 .box-card {
   height: 100%;
   width: 100%;
+  // 各属性间距
+  div {
+    padding: 3px;
+    // 属性标题
+    span {
+      font-weight: 700;
+      background-color: rgba(172, 255, 47, 0.6);
+    }
+  }
 }
 // 页头
 .head-name {
@@ -195,13 +209,6 @@ export default {
 // 敌人名称
 .head-title {
   font-weight: bold;
-}
-// 属性标题
-.param-title {
-  font-weight: bold;
-}
-.enemy-style {
-  padding: 3px
 }
 // 图表容器
 .echarts-box {

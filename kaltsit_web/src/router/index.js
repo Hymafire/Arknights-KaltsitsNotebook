@@ -9,6 +9,7 @@ import CreateEm from '@/components/Create/CreateEm.vue'
 import Compare from '@/components/EmCompare.vue'
 import Welcome from '@/components/Welcome.vue'
 import Login from '@/views/Login.vue'
+import Learn from '@/views/learn.vue'
 
 Vue.use(VueRouter)
 
@@ -16,6 +17,7 @@ export default new VueRouter({
   routes: [
     { path: '/', redirect: 'Home' },
     { path: '/login', component: Login },
+    { path: '/learn', component: Learn },
     {
       path: '/home',
       component: Home,

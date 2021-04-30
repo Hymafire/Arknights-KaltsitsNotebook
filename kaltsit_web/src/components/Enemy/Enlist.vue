@@ -40,13 +40,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// 搜索框
 .search-input {
   margin: 10px 0px;
 }
+// 搜索栏
 .search-header {
   padding: 5px;
   height: 60px;
 }
+// 列表栏
 .list-main {
   padding: 5px;
 }
