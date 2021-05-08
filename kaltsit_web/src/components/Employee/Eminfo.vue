@@ -1,91 +1,95 @@
 <template>
-  <el-container class="info-container">
-    <el-card class="info-card">
+  <el-container>
+    <el-header>
       <!-- 头部 -->
-      <div slot="header" class="clearfix">
-        <el-row :gutter="10" type="flex">
-          <el-col :span="6">
-            <span class="head-name">{{ employee.name }}</span>
-          </el-col>
-          <el-col :span="18" class="head-description">
-            <span class="head-title">描述：</span>
-            <span>{{ employee.description }}</span>
-          </el-col>
-        </el-row>
-      </div>
+      <el-row :gutter="10" type="flex">
+        <el-col :span="6">
+          <span class="head-name">{{ employee.name }}</span>
+        </el-col>
+        <el-col :span="18" class="head-description">
+          <span class="head-title">描述：</span>
+          <span>{{ employee.description }}</span>
+        </el-col>
+      </el-row>
+    </el-header>
       <!-- 信息输入区 -->
-      <div>
-        <el-row :gutter="10" type="flex">
-          <el-col>
-            <el-input prefix-icon="el-icon-user" v-model="infoForm.elite" />
-          </el-col>
-          <el-col>
-            <el-input prefix-icon="el-icon-user" v-model="infoForm.level" />
-          </el-col>
-          <el-col>
-            <el-input prefix-icon="el-icon-user" v-model="infoForm.favor" />
-          </el-col>
-          <el-col>
-            <el-input prefix-icon="el-icon-user" v-model="infoForm.potential" />
-          </el-col>
-          <el-col :span="2">
-            <el-button type="primary" @click="this.findEmployee">确认</el-button>
-          </el-col>
-        </el-row>
-      </div>
-      <hr>
-      <!-- 基础信息区 -->
-      <div>
-        <el-row :gutter="20" type="flex">
-          <el-col :span="24">
-            <el-table :data="[em_param]">
-              <el-table-column label="最大生命" prop="maxHp" />
-              <el-table-column label="攻击" prop="atk" />
-              <el-table-column label="防御" prop="def" />
-              <el-table-column label="法抗" prop="magRes" />
-            </el-table>
-          </el-col>
-        </el-row>
-        <el-row :gutter="20" type="flex">
-          <el-col :span="24">
-            <el-table :data="[em_param]">
-              <el-table-column label="部署费用" prop="cost" />
-              <el-table-column label="阻挡数" prop="blockCnt" />
-              <el-table-column label="攻击间隔" prop="atkTime" />
-              <el-table-column label="再部署时间" prop="respawnTime" />
-            </el-table>
-          </el-col>
-        </el-row>
-        <el-row :gutter="20" type="flex">
-          <el-col :span="24">
-            <el-table :data="[em_talents]">
-              <el-table-column label="天赋" prop="name" />
-            </el-table>
-          </el-col>
-        </el-row>
-        <el-row :gutter="20" type="flex">
-          <el-col :span="24">
-            <el-table :data="[em_talents]">
-              <el-table-column label="技能" prop="name" />
-              <el-table-column label="技力要求" prop="name" />
-              <el-table-column label="持续时间" prop="name" />
-              <el-table-column label="描述" prop="name" />
-            </el-table>
-          </el-col>
-        </el-row>
-      </div>
-      <hr>
-      <!-- 分析区 -->
-      <div id="pre-damage-def" class="echarts-box"/>
-      <div id="pre-damage-time" class="echarts-box" />
-      <div id="rank-radar" class="echarts-box" />
-    </el-card>
+    <el-main>
+      <el-card>
+        <div>
+          <el-row :gutter="10" type="flex">
+            <el-col>
+              <el-input prefix-icon="el-icon-user" v-model="infoForm.elite" />
+            </el-col>
+            <el-col>
+              <el-input prefix-icon="el-icon-user" v-model="infoForm.level" />
+            </el-col>
+            <el-col>
+              <el-input prefix-icon="el-icon-user" v-model="infoForm.favor" />
+            </el-col>
+            <el-col>
+              <el-input prefix-icon="el-icon-user" v-model="infoForm.potential" />
+            </el-col>
+            <el-col :span="2">
+              <el-button type="primary" @click="this.findEmployee">确认</el-button>
+            </el-col>
+          </el-row>
+        </div>
+        <hr>
+        <!-- 基础信息区 -->
+        <div>
+          <el-row :gutter="20" type="flex">
+            <el-col :span="24">
+              <el-table :data="[em_param]">
+                <el-table-column label="最大生命" prop="maxHp" />
+                <el-table-column label="攻击" prop="atk" />
+                <el-table-column label="防御" prop="def" />
+                <el-table-column label="法抗" prop="magRes" />
+              </el-table>
+            </el-col>
+          </el-row>
+          <el-row :gutter="20" type="flex">
+            <el-col :span="24">
+              <el-table :data="[em_param]">
+                <el-table-column label="部署费用" prop="cost" />
+                <el-table-column label="阻挡数" prop="blockCnt" />
+                <el-table-column label="攻击间隔" prop="atkTime" />
+                <el-table-column label="再部署时间" prop="respawnTime" />
+              </el-table>
+            </el-col>
+          </el-row>
+          <el-row :gutter="20" type="flex">
+            <el-col :span="24">
+              <el-table :data="[em_talents]">
+                <el-table-column label="天赋" prop="name" />
+              </el-table>
+            </el-col>
+          </el-row>
+          <el-row :gutter="20" type="flex">
+            <el-col :span="24">
+              <el-table :data="[em_talents]">
+                <el-table-column label="技能" prop="name" />
+                <el-table-column label="技力要求" prop="name" />
+                <el-table-column label="持续时间" prop="name" />
+                <el-table-column label="描述" prop="name" />
+              </el-table>
+            </el-col>
+          </el-row>
+        </div>
+        <hr>
+        <!-- 分析区 -->
+        <PerDamage :key="employee_name" :atk="em_param.atk" :atkTime="em_param.atkTime"/>
+        <div id="pre-damage-time" class="echarts-box" />
+        <div id="rank-radar" class="echarts-box" />
+      </el-card>
+    </el-main>
   </el-container>
 </template>
 
 <script>
 /* eslint-disable camelcase */
 import * as echarts from 'echarts'
+import PerDamage from '../Echarts/DamageClass/PerDamage.vue'
+
 export default {
   data () {
     return {
@@ -127,6 +131,9 @@ export default {
   },
   props: {
     employee_name: String
+  },
+  components: {
+    PerDamage
   },
   methods: {
     // 获取干员列表
@@ -182,59 +189,7 @@ export default {
     // 绘图区 ===============================================================
     // 总函数
     getCharts () {
-      this.preDamageDefChart()
       this.preDamageTimeChart()
-    },
-    // 秒伤-防御
-    preDamageDefChart () {
-      const data = []
-      for (let def = 0; def <= 800; def++) {
-        const damage = Math.max(this.em_param.atk - def, this.em_param.atk * 0.05)
-        const pre_dam = damage / this.em_param.atkTime
-        data.push([def, pre_dam])
-      }
-      this.pre_dam_def_chart = echarts.init(document.getElementById('pre-damage-def'))
-      const option = {
-        animation: false,
-        title: {
-          left: 'center',
-          text: '秒伤害量-防御'
-        },
-        grid: {
-          top: 40,
-          left: 50,
-          right: 40,
-          buttom: 50
-        },
-        xAxis: {
-          name: '防御',
-          minorTick: {
-            show: true
-          },
-          minorSplitLine: {
-            show: true
-          }
-        },
-        yAxis: {
-          name: '伤害量',
-          minorTick: {
-            show: true
-          },
-          // 辅助线
-          minorSplitLine: {
-            show: true
-          }
-        },
-        series: [
-          {
-            type: 'line',
-            showSymbol: false,
-            clip: true,
-            data: data
-          }
-        ]
-      }
-      this.pre_dam_def_chart.setOption(option)
     },
     // 伤害量-时间
     preDamageTimeChart () {
@@ -364,10 +319,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.info-container {
-  // height: 100%;
-  padding: 0px;
-}
 // 输入栏style
 .search-input {
   margin: 5px 0px;

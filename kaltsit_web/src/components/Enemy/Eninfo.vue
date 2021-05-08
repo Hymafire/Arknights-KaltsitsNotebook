@@ -1,21 +1,15 @@
 <template>
   <el-container>
     <el-header>
-        <el-row
-          :gutter="10"
-          type="flex"
-        >
-          <el-col :span="6">
-            <span class="head-name">{{ enemy.name }}</span>
-          </el-col>
-          <el-col
-            :span="18"
-            class="head-description"
-          >
-            <span class="head-title">描述：</span>
-            <span>{{ enemy.description }}</span>
-          </el-col>
-        </el-row>
+      <el-row :gutter="10" type="flex">
+        <el-col :span="6">
+          <span class="head-name">{{ enemy.name }}</span>
+        </el-col>
+        <el-col :span="18" class="head-description">
+          <span class="head-title">描述：</span>
+          <span>{{ enemy.description }}</span>
+        </el-col>
+      </el-row>
     </el-header>
     <el-main>
       <BaseInfo :enemyParams="enemy" />

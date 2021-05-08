@@ -1,8 +1,8 @@
 <template>
   <el-container>
-    <!-- 敌方列表和查询区 -->
+    <!-- 列表和查询区 -->
     <el-aside width="250px">
-      <Enlist :enemy_name="enemy_name" @enemyChanged="changeName" />
+      <SearchList :listData="enemyList" @objChanged="changeName" />
     </el-aside>
     <!--  属性输出区  -->
     <el-main>
@@ -12,22 +12,29 @@
 </template>
 
 <script>
-import Enlist from '../components/Enemy/Enlist.vue'
+import SearchList from '../components/Common/SearchList.vue'
 import Eninfo from '../components/Enemy/Eninfo.vue'
 
 export default {
   data () {
     return {
-      enemy_name: '源石虫'
+      enemy_name: '源石虫',
+      enemyList: []
     }
   },
+  created () {
+    this.getEnemyList()
+  },
   components: {
-    Enlist,
+    SearchList,
     Eninfo
   },
   methods: {
     changeName (name) {
       this.enemy_name = name
+    },
+    getEnemyList () {
+      this.enemyList = require('@/assets/data/enemylist.json')
     }
   }
 }

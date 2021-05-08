@@ -1,8 +1,8 @@
 <template>
   <el-container>
-    <!-- 敌方列表和查询区 -->
+    <!-- 干员列表和查询区 -->
     <el-aside width="250px">
-      <Emlist :employee_name="employee_name" @employeeChanged="changeName($event)" />
+      <SearchList :listData="employeeList" @objChanged="changeName" />
     </el-aside>
     <!--  属性输出区  -->
     <el-main>
@@ -12,37 +12,44 @@
 </template>
 
 <script>
-import Emlist from '../components/Employee/Emlist.vue'
+import SearchList from '../components/Common/SearchList.vue'
 import Eminfo from '../components/Employee/Eminfo.vue'
 
 export default {
   data () {
     return {
-      employee_name: '斯卡蒂'
+      employee_name: '斯卡蒂',
+      employeeList: []
     }
   },
+  created () {
+    this.getEmployeeList()
+  },
   components: {
-    Emlist,
+    SearchList,
     Eminfo
   },
   methods: {
     changeName (name) {
       this.employee_name = name
+    },
+    getEmployeeList () {
+      this.employeeList = require('@/assets/data/employeelist.json')
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.el-aside {
+.el-container {
   height: 100%;
-  width: 100%;
-  padding: 0px;
+}
+.el-aside {
+  padding: 1px;
   background-color: #fff;
 }
 .el-main {
-  left: 250px;
-  background-color: #e2e2e2;
+  background-color: #fff;
   padding: 1px;
 }
 </style>
