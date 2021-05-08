@@ -1,39 +1,40 @@
 <template>
   <el-container>
     <el-header class="search-header">
-      <el-input prefix-icon="el-icon-user" placeholder="输入敌方名称" v-model="this.enemy_name" class="search-input">
-        <el-button slot="append" icon="el-icon-search" />
+      <el-input prefix-icon="el-icon-user" placeholder="输入敌方名称" v-model="enemyName" class="search-input">
+        <el-button slot="append" icon="el-icon-search" @click="findName"/>
       </el-input>
     </el-header>
     <el-main class="list-main">
-      <el-tree :data="enemyList" :props="proplist" @node-click="handleNodeClick" highlight-current accordion/>
+      <el-tree :data="enemyList" :props="propslist" @node-click="handleNodeClick($event)" highlight-current accordion/>
     </el-main>
   </el-container>
 </template>
 
 <script>
 export default {
-  name: 'Enaside',
   data () {
     return {
-      proplist: {
+      propslist: {
         label: 'name',
         children: 'children'
       },
-      enemyList: []
+      enemyList: [],
+      enemyName: ''
     }
   },
   mounted () {
     this.getEnemyList()
   },
-  props: ['enemy_name'],
   methods: {
     getEnemyList () {
-      const enemylist = require('@/assets/data/enemylist.json')
-      this.enemyList = enemylist
+      this.enemyList = require('@/assets/data/enemylist.json')
     },
     handleNodeClick (data) {
       this.$emit('enemyChanged', data.name)
+    },
+    findName () {
+      this.$emit('enemyChanged', this.enemyName)
     }
   }
 }
@@ -52,5 +53,6 @@ export default {
 // 列表栏
 .list-main {
   padding: 5px;
+  height: 100%;
 }
 </style>

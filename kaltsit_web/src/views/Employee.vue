@@ -1,8 +1,8 @@
 <template>
-  <el-container class="home-container">
+  <el-container>
     <!-- 敌方列表和查询区 -->
-    <el-aside width="250px" class="home-aside">
-      <Emlist v-bind:employee_name="employee_name" v-on:employeeChanged="changeName($event)" />
+    <el-aside width="250px">
+      <Emlist :employee_name="employee_name" @employeeChanged="changeName($event)" />
     </el-aside>
     <!--  属性输出区  -->
     <el-main>
@@ -12,18 +12,14 @@
 </template>
 
 <script>
-import Emlist from './Employee/Emlist.vue'
-import Eminfo from './Employee/Eminfo.vue'
+import Emlist from '../components/Employee/Emlist.vue'
+import Eminfo from '../components/Employee/Eminfo.vue'
 
 export default {
   data () {
     return {
       employee_name: '斯卡蒂'
     }
-  },
-  created () {
-  },
-  mounted () {
   },
   components: {
     Emlist,
@@ -38,24 +34,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.home-container {
-  height: 100%;
-}
-.home-aside {
-  padding: 0px;
-}
 .el-aside {
-  display: block;
   height: 100%;
-  background-color: #fff;
   width: 100%;
+  padding: 0px;
+  background-color: #fff;
 }
 .el-main {
-  // height: 100%;
-  // position: absolute;
   left: 250px;
   background-color: #e2e2e2;
   padding: 1px;
-  // overflow-y: scroll;
 }
 </style>

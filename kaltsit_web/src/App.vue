@@ -1,6 +1,5 @@
 <template>
-  <div id="App">
-    <!-- 路由占位符 -->
+  <div id="app">
     <router-view />
   </div>
 </template>
@@ -12,8 +11,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// 设置充满全屏
-#id {
-  height: 100%
-}
 </style>
