@@ -21,6 +21,15 @@
         :showParam="em_param"
         @submitInfo="updateInfo"
       />
+      <div class="base-info card-style">
+        <ParamInput
+          :maxLevel="employee.phases.maxLevel"
+          :potential="employee.maxPotential"
+          @submitInfo="updateInfo"
+        />
+        <ParamShow :showParam="em_param" :showHp="em_param.maxHp" />
+        <RangeShow />
+      </div>
       <!-- 分析区 -->
       <PerDamage :atk="em_param.atk" :atkTime="em_param.atkTime"/>
       <DamageTotal :avgDef="pretreated.enAvgDef" :atk="em_param.atk" :atkTime="em_param.atkTime"/>
@@ -35,6 +44,9 @@ import * as echarts from 'echarts'
 import PerDamage from '../Echarts/DamageClass/PerDamage.vue'
 import DamageTotal from '../Echarts/DamageClass/DamageTotal.vue'
 import BaseInfo from './Eminfo/BaseInfo.vue'
+import ParamInput from './Eminfo/ParamInput.vue'
+import ParamShow from './Eminfo/ParamShow.vue'
+import RangeShow from './Eminfo/RangeShow.vue'
 
 export default {
   data () {
@@ -58,6 +70,9 @@ export default {
   },
   components: {
     BaseInfo,
+    ParamInput,
+    ParamShow,
+    RangeShow,
     PerDamage,
     DamageTotal
   },
@@ -210,5 +225,25 @@ export default {
 .echarts-box {
   width: 600px;
   height: 400px;
+}
+//
+.base-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  >div {
+    text-align: left;
+    min-width: 360px;
+    height: 160px;
+    margin-left: 10px;
+  }
+}
+// 卡片
+.card-style {
+  margin-bottom: 5px;
+  background-color: white;
+  border: 1px solid #ebeef5;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 }
 </style>
