@@ -11,7 +11,6 @@ import * as echarts from 'echarts'
 export default {
   name: 'PerDamage',
   props: {
-    key: String,
     atk: Number,
     atkTime: Number
   },
@@ -28,7 +27,10 @@ export default {
         data.push([def, pre_dam])
       }
       // 初始化DOM
-      this.pre_dam_chart = echarts.init(document.getElementById('pre-damage'))
+      const myChart = echarts.getInstanceByDom(document.getElementById('pre-damage'))
+      if (myChart == null) {
+        this.pre_dam_chart = echarts.init(document.getElementById('pre-damage'))
+      }
       // 配置内容
       const option = {
         // 是否开启动画化
@@ -78,6 +80,20 @@ export default {
       }
       this.pre_dam_chart.setOption(option)
     }
+  },
+  watch: {
+    atk: {
+      handler () {
+        this.preDamageChart()
+      },
+      immediate: true
+    },
+    atkTime: {
+      handler () {
+        this.preDamageChart()
+      },
+      immediate: true
+    }
   }
 }
 </script>
@@ -87,5 +103,6 @@ export default {
 .echarts-box {
   width: 600px;
   height: 400px;
+  margin: 0 auto;
 }
 </style>

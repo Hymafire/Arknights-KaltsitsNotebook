@@ -24,7 +24,7 @@ export default {
     }
   },
   props: {
-    listData: Object
+    listData: Array
   },
   methods: {
     handleNodeClick (data) {
