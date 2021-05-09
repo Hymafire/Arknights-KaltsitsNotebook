@@ -34,6 +34,8 @@
         <span>{{showParam.respawnTime}}</span>
       </li>
     </ul>
+    <!-- 隐藏起来 -->
+    <div class="hidden-style">{{changed}}</div>
   </div>
 </template>
 
@@ -42,20 +44,16 @@ export default {
   name: 'ParamShow',
   props: {
     showParam: Array,
-    showHp: Number
-  },
-  watch: {
-    showParam: {
-      handler () {
-        console.log(this.showParam)
-      },
-      deep: true,
-      immediate: true
-    }
+    changed: Boolean
   }
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.hidden-style {
+  height: 0px;
+  width: 0px;
+  font-size: 0px;
+  color: transparent;
+}
 </style>

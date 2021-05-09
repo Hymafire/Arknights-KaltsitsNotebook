@@ -27,7 +27,8 @@
           :potential="employee.maxPotential"
           @submitInfo="updateInfo"
         />
-        <ParamShow :showParam="em_param" :showHp="em_param.maxHp" />
+        <!-- changed_flag 用于表示 em_param 已经修改，需要更新 -->
+        <ParamShow :showParam="em_param" :changed="changed_flag" />
         <RangeShow />
       </div>
       <!-- 分析区 -->
@@ -57,7 +58,8 @@ export default {
       employee: [],
       employeeSkill: [],
       em_param: [],
-      infoForm: []
+      infoForm: [],
+      changed_flag: false
     }
   },
   // 创建时调用
@@ -93,6 +95,7 @@ export default {
       }
       this.employeeBaseParamClac()
       this.employeeFavorClac()
+      this.changed_flag = !this.changed_flag
     },
     updateInfo (info) {
       this.infoForm = info
@@ -176,6 +179,7 @@ export default {
       handler () {
         this.employeeBaseParamClac()
         this.employeeFavorClac()
+        this.changed_flag = !this.changed_flag
         // 更新数据
         this.$forceUpdate()
       },
