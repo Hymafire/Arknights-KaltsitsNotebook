@@ -9,22 +9,31 @@
       <span>Kal'tsit's Notebook</span>
     </el-menu-item>
     <!-- 导航跳转 -->
-    <el-menu-item index="/welcome">
+    <el-menu-item index="/home">
       首页
     </el-menu-item>
     <el-menu-item index="/employee">
       干员分析
     </el-menu-item>
-    <el-menu-item disabled index="/compare">
+    <el-menu-item
+      disabled
+      index="/compare"
+    >
       干员对比
     </el-menu-item>
     <el-menu-item index="/enemy">
       敌人分析
     </el-menu-item>
-    <el-menu-item disabled index="/createm">
+    <el-menu-item
+      disabled
+      index="/createm"
+    >
       简历编辑
     </el-menu-item>
-    <el-menu-item disabled index="/createn">
+    <el-menu-item
+      disabled
+      index="/createn"
+    >
       敌人登记
     </el-menu-item>
   </el-menu>
@@ -35,7 +44,7 @@ export default {
   name: 'NavBar',
   data () {
     return {
-      activeIndex: '1'
+      activeIndex: '/home'
     }
   }
 }

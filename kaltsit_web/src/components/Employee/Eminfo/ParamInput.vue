@@ -3,31 +3,61 @@
     <el-row>
       <span>精英阶段</span>
       <ul class="input-position">
-        <li v-for="elt in Array(maxLevel.length).keys()" :key="elt" class="btn-position">
-          <el-button size="mini" @click="eliteClick(elt)" class="btn-slience"
-            :class="{'btn-active': baseInfo.elite == elt}">{{ elt }}</el-button>
+        <li
+          v-for="elt in Array(maxLevel.length).keys()"
+          :key="elt"
+          class="btn-position"
+        >
+          <el-button
+            size="mini"
+            @click="eliteClick(elt)"
+            class="btn-slience"
+            :class="{'btn-active': baseInfo.elite == elt}"
+          >
+            {{ elt }}
+          </el-button>
         </li>
       </ul>
     </el-row>
     <el-row>
       <span>潜能等级</span>
       <ul class="input-position">
-        <li v-for="pot in Array(potential+1).keys()" :key="pot" class="btn-position">
-          <el-button size="mini" @click="potClick(pot)" class="btn-slience"
-            :class="{'btn-active': baseInfo.potentialLevel == pot}">{{ pot+1 }}</el-button>
+        <li
+          v-for="pot in Array(potential+1).keys()"
+          :key="pot"
+          class="btn-position"
+        >
+          <el-button
+            size="mini"
+            @click="potClick(pot)"
+            class="btn-slience"
+            :class="{'btn-active': baseInfo.potentialLevel == pot}"
+          >
+            {{ pot+1 }}
+          </el-button>
         </li>
       </ul>
     </el-row>
     <!-- 等级 -->
     <el-row>
       <span>干员等级</span>
-      <el-slider v-model="baseInfo.levelValue" :show-tooltip="false" :min="1" :max="maxLevel[baseInfo.elite]"/>
+      <el-slider
+        v-model="baseInfo.levelValue"
+        :show-tooltip="false"
+        :min="1"
+        :max="maxLevel[baseInfo.elite]"
+      />
       <span class="value-number">{{ baseInfo.levelValue }}</span>
     </el-row>
     <!-- 信赖 -->
     <el-row>
       <span>干员信赖</span>
-      <el-slider v-model="baseInfo.favorValue" :show-tooltip="false" :min="0" :max="100"/>
+      <el-slider
+        v-model="baseInfo.favorValue"
+        :show-tooltip="false"
+        :min="0"
+        :max="100"
+      />
       <span class="value-number">{{ baseInfo.favorValue }}</span>
     </el-row>
   </div>

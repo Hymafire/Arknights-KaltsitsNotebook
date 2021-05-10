@@ -1,12 +1,18 @@
 <template>
   <el-container>
     <!-- 干员列表和查询区 -->
-    <el-aside width="250px">
-      <SearchList :listData="employeeList" @objChanged="changeName" />
+    <el-aside width="250px" :class="{'aside-collapse': isCollapse}">
+      <SearchList
+        :list-data="employeeList"
+        @objChanged="changeName"
+      />
     </el-aside>
     <!--  属性输出区  -->
     <el-main>
-      <Eminfo :employee_name="employee_name" />
+      <Eminfo
+        :employee_name="employee_name"
+        @listCollapse="changeCollapse"
+      />
     </el-main>
   </el-container>
 </template>
@@ -19,7 +25,8 @@ export default {
   data () {
     return {
       employee_name: '斯卡蒂',
-      employeeList: []
+      employeeList: [],
+      isCollapse: false
     }
   },
   created () {
@@ -32,6 +39,9 @@ export default {
   methods: {
     changeName (name) {
       this.employee_name = name
+    },
+    changeCollapse (isCollapse) {
+      this.isCollapse = isCollapse
     },
     getEmployeeList () {
       this.employeeList = require('@/assets/data/employeelist.json')
@@ -51,5 +61,8 @@ export default {
 .el-main {
   background-color: #fff;
   padding: 1px;
+}
+.aside-collapse {
+  width: 0px !important;
 }
 </style>

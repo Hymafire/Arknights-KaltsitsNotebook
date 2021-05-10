@@ -2,7 +2,10 @@
   <el-container>
     <!-- 列表和查询区 -->
     <el-aside width="250px">
-      <SearchList :listData="enemyList" @objChanged="changeName" />
+      <SearchList
+        :list-data="enemyList"
+        @objChanged="changeName"
+      />
     </el-aside>
     <!--  属性输出区  -->
     <el-main>

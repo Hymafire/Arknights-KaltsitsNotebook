@@ -3,39 +3,41 @@
     <ul>
       <li>
         <strong>最大生命</strong>
-        <span>{{showParam.maxHp}}</span>
+        <span>{{ showParam.maxHp }}</span>
       </li>
       <li>
         <strong>攻击</strong>
-        <span>{{showParam.atk}}</span>
+        <span>{{ showParam.atk }}</span>
       </li>
       <li>
         <strong>防御</strong>
-        <span>{{showParam.def}}</span>
+        <span>{{ showParam.def }}</span>
       </li>
       <li>
         <strong>法抗</strong>
-        <span>{{showParam.magRes}}</span>
+        <span>{{ showParam.magRes }}</span>
       </li>
       <li>
         <strong>部署费用</strong>
-        <span>{{showParam.cost}}</span>
+        <span>{{ showParam.cost }}</span>
       </li>
       <li>
         <strong>阻挡数</strong>
-        <span>{{showParam.blockCnt}}</span>
+        <span>{{ showParam.blockCnt }}</span>
       </li>
       <li>
         <strong>攻击间隔</strong>
-        <span>{{showParam.atkTime}}s</span>
+        <span>{{ showParam.atkTime }}s</span>
       </li>
       <li>
         <strong>在部署时间</strong>
-        <span>{{showParam.respawnTime}}s</span>
+        <span>{{ showParam.respawnTime }}s</span>
       </li>
     </ul>
     <!-- 隐藏起来 -->
-    <div class="hidden-style">{{changed}}</div>
+    <div class="hidden-style">
+      {{ changed }}
+    </div>
   </div>
 </template>
 

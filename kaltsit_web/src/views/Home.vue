@@ -1,39 +1,37 @@
 <template>
-  <el-container>
-    <!-- 导航栏 -->
-    <el-header>
-      <NavBar />
-    </el-header>
-    <!-- 主体 -->
-    <el-main>
-      <router-view />
-    </el-main>
-  </el-container>
+  <div class="linear">
+    <div class="welcome-title">
+      <div>凯尔希的笔记本</div>
+      <div>Kal'tsit's Notebook</div>
+    </div>
+    <div>
+      <div class="version">
+        v0.7.0
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import NavBar from '../components/Home/NavBar.vue'
-
-export default {
-  name: 'Home',
-  components: {
-    NavBar
-  }
-}
 </script>
 
 <style lang="scss" scoped>
-.el-container {
-  // 用于固定 navbar
-  height: 100%;
-}
-.el-header {
-  padding: 0px;
+// 欢迎词
+.welcome-title {
+  margin: 0px;
+  font-size: 40px;
+  overflow: hidden;
+  position: absolute;
+  text-align: center;
+  top: 37%;
   width: 100%;
 }
-.el-main {
-  height: 100%;
-  padding: 0px;
-  margin: 0px;
+// 版本号
+.version {
+  position: absolute;
+  text-align: right;
+  bottom: 2px;
+  right: 10px;
+  width: 100%;
 }
 </style>

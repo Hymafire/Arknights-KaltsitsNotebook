@@ -1,6 +1,9 @@
 <template>
   <el-card>
-    <div id="rank-radar" class="echarts-box"/>
+    <div
+      id="rank-radar"
+      class="echarts-box"
+    />
   </el-card>
 </template>
 

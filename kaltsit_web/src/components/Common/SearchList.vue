@@ -1,12 +1,27 @@
 <template>
   <el-container>
     <el-header class="search-header">
-      <el-input prefix-icon="el-icon-user" placeholder="输入查询名称" v-model="objName" class="search-input">
-        <el-button slot="append" icon="el-icon-search" @click="searchName" />
+      <el-input
+        prefix-icon="el-icon-user"
+        placeholder="输入查询名称"
+        v-model="objName"
+        class="search-input"
+      >
+        <el-button
+          slot="append"
+          icon="el-icon-search"
+          @click="searchName"
+        />
       </el-input>
     </el-header>
     <el-main class="list-main">
-      <el-tree :data="listData" :props="proplist" @node-click="handleNodeClick" highlight-current accordion />
+      <el-tree
+        :data="listData"
+        :props="proplist"
+        @node-click="handleNodeClick"
+        highlight-current
+        accordion
+      />
     </el-main>
   </el-container>
 </template>

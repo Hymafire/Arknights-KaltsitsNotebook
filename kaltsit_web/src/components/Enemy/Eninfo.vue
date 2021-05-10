@@ -1,19 +1,29 @@
 <template>
   <el-container>
     <el-header>
-      <el-row :gutter="10" type="flex">
+      <el-row
+        :gutter="10"
+        type="flex"
+      >
         <el-col :span="6">
           <span class="head-name">{{ enemy.name }}</span>
         </el-col>
-        <el-col :span="18" class="head-description">
+        <el-col
+          :span="18"
+          class="head-description"
+        >
           <span class="head-title">描述：</span>
           <span>{{ enemy.description }}</span>
         </el-col>
       </el-row>
     </el-header>
     <el-main>
-      <BaseInfo :enemyParams="enemy" />
-      <PerDamage :atk="enemy.atk[0]" :atkTime="enemy.atkTime" :isActive="true" />
+      <BaseInfo :enemy-params="enemy" />
+      <PerDamage
+        :atk="enemy.atk[0]"
+        :atk-time="enemy.atkTime"
+        :is-active="true"
+      />
     </el-main>
   </el-container>
 </template>
@@ -72,11 +82,15 @@ export default {
 
 <style lang="scss" scoped>
 // 页头
+/deep/.el-header {
+  height: 32px;
+  line-height: 32px;
+}
 .head-name {
   font-size: 30px;
   font-style: italic;
   font-weight: bold;
-  padding: 0 0 0 15px;
+  padding: 0 0 0 20px;
 }
 .head-description {
   padding: 10px 0px 0px 0px;

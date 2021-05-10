@@ -2,17 +2,11 @@
   <el-container>
     <!-- 头部 -->
     <el-header>
-      <el-row :gutter="10" type="flex">
-        <el-col :span="6">
-          <span class="head-name">{{ employee.name }}</span>
-        </el-col>
-        <el-col :span="18" class="head-description">
-          <span class="head-title">描述：</span>
-          <span>{{ employee.description }}</span>
-        </el-col>
-      </el-row>
+      <div class="head-name">
+        <el-button @click="changeCollapse">|||</el-button>
+        {{ employee.name }}
+      </div>
     </el-header>
-    <hr>
     <!-- 信息区 -->
     <el-main>
       <div class="w">
@@ -21,23 +15,47 @@
         <!-- 参数信息 -->
         <div class="base-info card-style">
           <ParamInput
-            :maxLevel="employee.phases.maxLevel"
+            :max-level="employee.phases.maxLevel"
             :potential="employee.maxPotential"
             @submitInfo="updateInfo"
           />
           <!-- changed_flag 用于表示 em_param 已经修改，需要更新 -->
-          <ParamShow :showParam="em_param" :changed="changed_flag" />
+          <ParamShow
+            :show-param="em_param"
+            :changed="changed_flag"
+          />
           <RangeShow />
         </div>
         <!-- 分析区 -->
-        <el-collapse v-model="activeName">
-          <el-collapse-item title="秒伤害量" name="1">
-            <PerDamage :atk="em_param.atk" :atkTime="em_param.atkTime" :isActive="isActive('1')" />
+        <el-collapse
+          v-model="activeName"
+          class="aaa"
+        >
+          <el-collapse-item
+            title="秒伤害量"
+            name="1"
+          >
+            <PerDamage
+              :atk="em_param.atk"
+              :atk-time="em_param.atkTime"
+              :is-active="isActive('1')"
+            />
           </el-collapse-item>
-          <el-collapse-item title="总伤害量" name="2">
-            <DamageTotal :avgDef="pretreated.enAvgDef" :atk="em_param.atk" :atkTime="em_param.atkTime" :isActive="isActive('2')" />
+          <el-collapse-item
+            title="总伤害量"
+            name="2"
+          >
+            <DamageTotal
+              :avg-def="pretreated.enAvgDef"
+              :atk="em_param.atk"
+              :atk-time="em_param.atkTime"
+              :is-active="isActive('2')"
+            />
           </el-collapse-item>
-          <el-collapse-item title="能力评分表" name="3">
+          <el-collapse-item
+            title="能力评分表"
+            name="3"
+          >
             <RankRadar :name="employee_name" />
           </el-collapse-item>
         </el-collapse>
@@ -68,7 +86,8 @@ export default {
       em_param: [],
       infoForm: [],
       changed_flag: false,
-      activeName: []
+      activeName: [],
+      isCollapse: false
     }
   },
   // 创建时调用
@@ -129,6 +148,10 @@ export default {
         }
       }
       return false
+    },
+    changeCollapse () {
+      this.isCollapse = !this.isCollapse
+      this.$emit('listCollapse', this.isCollapse)
     }
   },
   watch: {
@@ -149,27 +172,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// 卡片style
-.text {
-  font-size: 14px;
+// 标题
+.el-header {
+  height: 50px !important;
+  line-height: 50px;
+  z-index: 100;
 }
-.item {
-  padding: 18px 0;
+.list-btn {
+  font-size: 25px;
+  font-weight: bold;
+  padding: 0px 5px;
 }
-// 页头
 .head-name {
   font-size: 30px;
   font-style: italic;
   font-weight: bold;
-  padding: 0 0 0 20px;
-}
-.head-description {
-  padding: 10px 0px 0px 0px;
+  padding-left: 50px;
+  border-bottom: 2px solid #dcdfe6;
 }
 // 信息展示区
+.el-main {
+  padding-top: 7px !important;
+}
 .w {
   max-width: 1200px;
   margin: 0 auto;
+}
+/deep/.el-collapse-item__header {
+  height: 32px;
+  line-height: 32px;
+  font-size: 15px;
+  font-weight: 700;
+  padding-left: 20px;
 }
 //
 .base-info {
@@ -183,6 +217,9 @@ export default {
     height: 200px;
     margin-left: 10px;
   }
+}
+.aaa {
+  height: 30px;
 }
 // 卡片
 .card-style {

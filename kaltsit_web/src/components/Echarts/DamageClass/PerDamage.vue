@@ -1,6 +1,9 @@
 <template>
   <el-card>
-    <div id="pre-damage" class="echarts-box" />
+    <div
+      id="pre-damage"
+      class="echarts-box"
+    />
   </el-card>
 </template>
 
