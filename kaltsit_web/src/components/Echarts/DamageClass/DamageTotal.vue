@@ -13,7 +13,11 @@ export default {
   props: {
     avgDef: Array,
     atk: Number,
-    atkTime: Number
+    atkTime: Number,
+    isActive: {
+      type: Boolean,
+      default: false
+    }
   },
   mounted () {
     this.damageTotalChart()
@@ -107,15 +111,24 @@ export default {
   watch: {
     atk: {
       handler () {
-        this.damageTotalChart()
+        if (this.isActive) {
+          this.damageTotalChart()
+        }
       },
       immediate: true
     },
     atkTime: {
       handler () {
-        this.preDamageChart()
+        if (this.isActive) {
+          this.damageTotalChart()
+        }
       },
       immediate: true
+    },
+    isActive: {
+      handler () {
+        this.damageTotalChart()
+      }
     }
   }
 }

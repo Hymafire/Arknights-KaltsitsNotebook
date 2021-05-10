@@ -13,7 +13,7 @@
     </el-header>
     <el-main>
       <BaseInfo :enemyParams="enemy" />
-      <PerDamage :key="enemy_name" :atk="enemy.atk[0]" :atkTime="enemy.atkTime" />
+      <PerDamage :atk="enemy.atk[0]" :atkTime="enemy.atkTime" :isActive="true" />
     </el-main>
   </el-container>
 </template>

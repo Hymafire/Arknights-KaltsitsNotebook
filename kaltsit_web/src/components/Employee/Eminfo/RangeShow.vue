@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>射程展示</div>
 </template>
 
 <script>

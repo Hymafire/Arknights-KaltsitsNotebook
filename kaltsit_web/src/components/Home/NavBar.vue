@@ -3,7 +3,6 @@
     :default-active="activeIndex"
     class="el-menu-demo"
     mode="horizontal"
-    @select="handleSelect"
     router
   >
     <el-menu-item>

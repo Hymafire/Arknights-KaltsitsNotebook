@@ -12,7 +12,11 @@ export default {
   name: 'PerDamage',
   props: {
     atk: Number,
-    atkTime: Number
+    atkTime: Number,
+    isActive: {
+      type: Boolean,
+      default: false
+    }
   },
   mounted () {
     this.preDamageChart()
@@ -84,15 +88,22 @@ export default {
   watch: {
     atk: {
       handler () {
-        this.preDamageChart()
-      },
-      immediate: true
+        if (this.isActive) {
+          this.preDamageChart()
+        }
+      }
     },
     atkTime: {
       handler () {
+        if (this.isActive) {
+          this.preDamageChart()
+        }
+      }
+    },
+    isActive: {
+      handler () {
         this.preDamageChart()
-      },
-      immediate: true
+      }
     }
   }
 }

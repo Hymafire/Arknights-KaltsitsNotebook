@@ -2,36 +2,36 @@
   <div id="param-show">
     <ul>
       <li>
-        <span>最大生命</span>
+        <strong>最大生命</strong>
         <span>{{showParam.maxHp}}</span>
       </li>
       <li>
-        <span>攻击</span>
+        <strong>攻击</strong>
         <span>{{showParam.atk}}</span>
       </li>
       <li>
-        <span>防御</span>
+        <strong>防御</strong>
         <span>{{showParam.def}}</span>
       </li>
       <li>
-        <span>法抗</span>
+        <strong>法抗</strong>
         <span>{{showParam.magRes}}</span>
       </li>
       <li>
-        <span>部署费用</span>
+        <strong>部署费用</strong>
         <span>{{showParam.cost}}</span>
       </li>
       <li>
-        <span>阻挡数</span>
-        <span>{{showParam.block}}</span>
+        <strong>阻挡数</strong>
+        <span>{{showParam.blockCnt}}</span>
       </li>
       <li>
-        <span>攻击间隔</span>
-        <span>{{showParam.atkTime}}</span>
+        <strong>攻击间隔</strong>
+        <span>{{showParam.atkTime}}s</span>
       </li>
       <li>
-        <span>在部署时间</span>
-        <span>{{showParam.respawnTime}}</span>
+        <strong>在部署时间</strong>
+        <span>{{showParam.respawnTime}}s</span>
       </li>
     </ul>
     <!-- 隐藏起来 -->
@@ -50,6 +50,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#param-show {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  li {
+    text-align: left;
+    height: 46px;
+    min-width: 176px;
+    margin: 2px 2px;
+  }
+  strong {
+    display: inline-block;
+    height: 30px;
+    width: 84px;
+    line-height: 30px;
+    text-align: center;
+    margin: 0px 10px;
+    padding: 10px 0px;
+  }
+  span {
+    margin-left: 10px;
+  }
+}
+//
 .hidden-style {
   height: 0px;
   width: 0px;
