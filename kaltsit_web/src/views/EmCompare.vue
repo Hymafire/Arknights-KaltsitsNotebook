@@ -6,5 +6,14 @@
 
 <script>
 export default {
+  name: 'Compare',
+  created () {
+    this.closeDrawer()
+  },
+  methods: {
+    closeDrawer () {
+      this.$store.commit('closeDrawer')
+    }
+  }
 }
 </script>

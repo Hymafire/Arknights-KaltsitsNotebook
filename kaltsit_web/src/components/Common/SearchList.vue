@@ -1,5 +1,6 @@
 <template>
   <el-container>
+    <!-- 搜索栏 -->
     <el-header class="search-header">
       <el-input
         prefix-icon="el-icon-user"
@@ -11,9 +12,12 @@
           slot="append"
           icon="el-icon-search"
           @click="searchName"
+          class="search-btn"
         />
       </el-input>
     </el-header>
+    <!-- 搜索栏-end -->
+    <!-- 列表栏 -->
     <el-main class="list-main">
       <el-tree
         :data="listData"
@@ -23,6 +27,7 @@
         accordion
       />
     </el-main>
+    <!-- 列表栏-end -->
   </el-container>
 </template>
 
@@ -53,8 +58,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.base-style {
+  padding: 0;
+  margin: 0;
+}
 .search-input {
-  margin: 10px 0px;
+  margin-top: 10px;
 }
 .search-header {
   height: 60px;

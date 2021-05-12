@@ -86,8 +86,7 @@ export default {
       em_param: [],
       infoForm: [],
       changed_flag: false,
-      activeName: [],
-      isCollapse: false
+      activeName: []
     }
   },
   // 创建时调用
@@ -150,8 +149,7 @@ export default {
       return false
     },
     changeCollapse () {
-      this.isCollapse = !this.isCollapse
-      this.$emit('listCollapse', this.isCollapse)
+      this.$store.commit('changeCollapse')
     }
   },
   watch: {

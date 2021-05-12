@@ -13,12 +13,12 @@ Vue.use(VueRouter)
 
 const routes = [
   { path: '/', redirect: '/home' },
-  { path: '/home', component: Home },
-  { path: '/enemy', component: Enemy },
-  { path: '/employee', component: Employee },
-  { path: '/createn', component: CreateEn },
-  { path: '/createm', component: CreateEm },
-  { path: '/compare', component: Compare }
+  { path: '/home', name: '首页', component: Home },
+  { path: '/enemy', name: '敌人分析', component: Enemy },
+  { path: '/employee', name: '干员分析', component: Employee },
+  { path: '/createn', name: '敌人等级', component: CreateEn },
+  { path: '/createm', name: '简历编辑', component: CreateEm },
+  { path: '/compare', name: '干员比较', component: Compare }
 ]
 
 export default new VueRouter({

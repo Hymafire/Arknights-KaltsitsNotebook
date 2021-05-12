@@ -13,6 +13,17 @@
 </template>
 
 <script>
+export default {
+  name: 'Home',
+  created () {
+    this.closeDrawer()
+  },
+  methods: {
+    closeDrawer () {
+      this.$store.commit('closeDrawer')
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

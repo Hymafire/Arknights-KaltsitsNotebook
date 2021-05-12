@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <!-- 列表和查询区 -->
-    <el-aside width="250px">
+    <el-aside width="249px">
       <SearchList
         :list-data="enemyList"
         @objChanged="changeName"
@@ -27,6 +27,7 @@ export default {
   },
   created () {
     this.getEnemyList()
+    this.closeDrawer()
   },
   components: {
     SearchList,
@@ -38,6 +39,9 @@ export default {
     },
     getEnemyList () {
       this.enemyList = require('@/assets/data/enemylist.json')
+    },
+    closeDrawer () {
+      this.$store.commit('closeDrawer')
     }
   }
 }
