@@ -28,6 +28,7 @@ export default {
   created () {
     this.getEmployeeList()
     this.closeDrawer()
+    this.initCollapse()
   },
   components: {
     SearchList,
@@ -42,6 +43,9 @@ export default {
     },
     closeDrawer () {
       this.$store.commit('closeDrawer')
+    },
+    initCollapse () {
+      this.$store.commit('initCollapse')
     }
   }
 }

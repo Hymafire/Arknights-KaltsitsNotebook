@@ -1,10 +1,8 @@
 <template>
-  <el-card>
-    <div
-      id="damage-total"
-      class="echarts-box"
-    />
-  </el-card>
+  <div
+    id="damage-total"
+    class="echarts-box"
+  />
 </template>
 
 <script>
@@ -55,9 +53,9 @@ export default {
         },
         grid: {
           top: 40,
-          left: 50,
-          right: 40,
-          buttom: 50
+          y2: 30,
+          left: 30,
+          right: 50
         },
         xAxis: {
           name: '时间',
@@ -109,6 +107,7 @@ export default {
         ]
       }
       this.pre_dam_time_chart.setOption(option)
+      window.addEventListener('resize', () => { myChart.resize() })
     }
   },
   watch: {
@@ -138,9 +137,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.echarts-box {
-  width: 600px;
-  height: 400px;
-  margin: 0 auto;
+// 图表容器
+@media only screen and (max-width:599px) {
+  .echarts-box {
+    width: 100vw;
+    height: 75vw;
+    margin: 0 auto;
+  }
+}
+@media only screen and (min-width:600px) {
+  .echarts-box {
+    width: 600px;
+    height: 450px;
+    margin: 0 auto;
+  }
 }
 </style>

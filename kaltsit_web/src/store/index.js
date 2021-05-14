@@ -21,6 +21,13 @@ export default new Vuex.Store({
     // 列表开关
     changeCollapse (state) {
       state.isListCollapse = !state.isListCollapse
+    },
+    initCollapse (state) {
+      if (window.innerWidth < 768) {
+        state.isListCollapse = true
+      } else {
+        state.isListCollapse = false
+      }
     }
   },
   actions: {

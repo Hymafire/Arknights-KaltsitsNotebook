@@ -1,6 +1,6 @@
 <template>
   <div class="card-style">
-    Information
+    <div id="em-img"/>
   </div>
 </template>
 

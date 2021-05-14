@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <!-- 列表和查询区 -->
-    <el-aside width="249px">
+    <el-aside width="249px" :class="{'aside-collapse': $store.state.isListCollapse}">
       <SearchList
         :list-data="enemyList"
         @objChanged="changeName"
@@ -28,6 +28,7 @@ export default {
   created () {
     this.getEnemyList()
     this.closeDrawer()
+    this.initCollapse()
   },
   components: {
     SearchList,
@@ -42,6 +43,9 @@ export default {
     },
     closeDrawer () {
       this.$store.commit('closeDrawer')
+    },
+    initCollapse () {
+      this.$store.commit('initCollapse')
     }
   }
 }
@@ -58,5 +62,8 @@ export default {
 .el-main {
   background-color: #fff;
   padding: 1px;
+}
+.aside-collapse {
+  display: none !important;
 }
 </style>

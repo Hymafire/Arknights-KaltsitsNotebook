@@ -1,23 +1,12 @@
 <template>
   <el-container>
     <el-header>
-      <el-row
-        :gutter="10"
-        type="flex"
-      >
-        <el-col :span="6">
-          <span class="head-name">{{ enemy.name }}</span>
-        </el-col>
-        <el-col
-          :span="18"
-          class="head-description"
-        >
-          <span class="head-title">描述：</span>
-          <span>{{ enemy.description }}</span>
-        </el-col>
-      </el-row>
+      <div class="head-name">
+        <el-button @click="changeCollapse">|||</el-button>
+        {{ enemy.name }}
+      </div>
     </el-header>
-    <el-main>
+    <el-main class="info-main">
       <BaseInfo :enemy-params="enemy" />
       <PerDamage
         :atk="enemy.atk[0]"
@@ -61,12 +50,15 @@ export default {
     },
     // 查询敌人 （入口）
     findEnemy () {
-      for (var en in this.enemyData) {
+      for (const en in this.enemyData) {
         if (this.enemyData[en].name === this.enemy_name) {
           this.enemy = this.enemyData[en]
           break
         }
       }
+    },
+    changeCollapse () {
+      this.$store.commit('changeCollapse')
     }
   },
   watch: {
@@ -98,5 +90,8 @@ export default {
 // 敌人名称
 .head-title {
   font-weight: bold;
+}
+.info-main {
+  padding: 0px;
 }
 </style>

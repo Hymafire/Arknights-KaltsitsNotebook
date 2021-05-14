@@ -1,10 +1,8 @@
 <template>
-  <el-card>
-    <div
-      id="pre-damage"
-      class="echarts-box"
-    />
-  </el-card>
+  <div
+    id="pre-damage"
+    class="echarts-box"
+  />
 </template>
 
 <script>
@@ -49,10 +47,11 @@ export default {
         },
         // 四周间距
         grid: {
-          top: 40,
-          left: 50,
-          right: 40,
-          buttom: 50
+          top: 50,
+          // buttom 参数设置有问题（？？？） 替换成 y2
+          y2: 30,
+          left: 30,
+          right: 50
         },
         // x轴
         xAxis: {
@@ -86,6 +85,8 @@ export default {
         ]
       }
       this.pre_dam_chart.setOption(option)
+      // 自适应
+      window.addEventListener('resize', () => { myChart.resize() })
     }
   },
   watch: {
@@ -114,9 +115,18 @@ export default {
 
 <style lang="scss" scoped>
 // 图表容器
-.echarts-box {
-  width: 600px;
-  height: 400px;
-  margin: 0 auto;
+@media only screen and (max-width:599px) {
+  .echarts-box {
+    width: 100vw;
+    height: 75vw;
+    margin: 0 auto;
+  }
+}
+@media only screen and (min-width:600px) {
+  .echarts-box {
+    width: 600px;
+    height: 450px;
+    margin: 0 auto;
+  }
 }
 </style>

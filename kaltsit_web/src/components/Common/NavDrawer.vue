@@ -4,7 +4,8 @@
       :visible.sync="drawer"
       :direction="direction"
       :before-close="handleClose"
-      size="50%">
+      size="50%"
+    >
       <div id="drawer-nav">
         <router-link to="/home" replace>
           首页

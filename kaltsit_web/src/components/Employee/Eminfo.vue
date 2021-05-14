@@ -8,12 +8,12 @@
       </div>
     </el-header>
     <!-- 信息区 -->
-    <el-main>
+    <el-main class="info-main">
       <div class="w">
         <!-- 基础信息 -->
         <BaseInfo />
         <!-- 参数信息 -->
-        <div class="base-info card-style">
+        <div class="base-info">
           <ParamInput
             :max-level="employee.phases.maxLevel"
             :potential="employee.maxPotential"
@@ -73,7 +73,7 @@ import ParamInput from './Eminfo/ParamInput.vue'
 import ParamShow from './Eminfo/ParamShow.vue'
 import RangeShow from './Eminfo/RangeShow.vue'
 import RankRadar from '../Echarts/RankClass/RankRadar.vue'
-import baseClac from '../utils/baseClac.js'
+import baseCalc from '../utils/baseCalc.js'
 
 export default {
   data () {
@@ -126,17 +126,17 @@ export default {
           break
         }
       }
-      this.letsClac()
+      this.letsCalc()
     },
     // 更新输入的信息
     updateInfo (info) {
       this.infoForm = info
     },
     // 计算函数入口
-    letsClac () {
-      baseClac.baseParamClac(this.em_param, this.employee.phases, this.infoForm)
-      baseClac.favorClac(this.em_param, this.employee.favor, this.infoForm.favorValue)
-      baseClac.potentialClac(this.em_param, this.employee.potential, this.infoForm.potentialLevel)
+    letsCalc () {
+      baseCalc.baseParamCalc(this.em_param, this.employee.phases, this.infoForm)
+      baseCalc.favorCalc(this.em_param, this.employee.favor, this.infoForm.favorValue)
+      baseCalc.potentialCalc(this.em_param, this.employee.potential, this.infoForm.potentialLevel)
       this.changed_flag = !this.changed_flag
     },
     // 判断折叠面板是否处于激活状态
@@ -160,7 +160,7 @@ export default {
     },
     infoForm: {
       handler () {
-        this.letsClac()
+        this.letsCalc()
         this.$forceUpdate()
       },
       deep: true
@@ -197,17 +197,18 @@ export default {
   margin: 0 auto;
 }
 /deep/.el-collapse-item__header {
-  height: 32px;
-  line-height: 32px;
-  font-size: 15px;
+  height: 39px;
+  // line-height: 39px;
+  font-size: 16px;
   font-weight: 700;
   padding-left: 20px;
+  letter-spacing: 2px;
 }
 //
 .base-info {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  // justify-content: space-between;
   >div {
     text-align: center;
     min-width: 360px;
@@ -219,6 +220,10 @@ export default {
 .aaa {
   height: 30px;
 }
+//
+/deep/.el-collapse-item__content {
+  padding: 0px;
+}
 // 卡片
 .card-style {
   margin-bottom: 5px;
@@ -226,5 +231,9 @@ export default {
   border: 1px solid #ebeef5;
   border-radius: 4px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+//
+.info-main {
+  padding: 0px 10px;
 }
 </style>
