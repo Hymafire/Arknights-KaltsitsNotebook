@@ -1,35 +1,28 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// 导入模块
-import Home from '@/components/Home.vue'
-import Enemy from '@/components/Enemy.vue'
-import Employee from '@/components/Employee.vue'
-import CreateEn from '@/components/Create/CreateEn.vue'
-import CreateEm from '@/components/Create/CreateEm.vue'
-import Compare from '@/components/EmCompare.vue'
-import Welcome from '@/components/Welcome.vue'
-import Login from '@/views/Login.vue'
-import Learn from '@/views/learn.vue'
+
+// 懒加载
+const Enemy = () => import('../views/Enemy.vue')
+const Employee = () => import('../views/Employee.vue')
+const CreateEn = () => import('../components/Create/CreateEn.vue')
+const CreateEm = () => import('../components/Create/CreateEm.vue')
+const Compare = () => import('../views/EmCompare.vue')
+const Home = () => import('../views/Home.vue')
 
 Vue.use(VueRouter)
 
+const routes = [
+  { path: '/', redirect: '/home' },
+  { path: '/home', name: '首页', component: Home },
+  { path: '/enemy', name: '敌人分析', component: Enemy },
+  { path: '/employee', name: '干员分析', component: Employee },
+  { path: '/createn', name: '敌人等级', component: CreateEn },
+  { path: '/createm', name: '简历编辑', component: CreateEm },
+  { path: '/compare', name: '干员比较', component: Compare }
+]
+
 export default new VueRouter({
-  routes: [
-    { path: '/', redirect: 'Home' },
-    { path: '/login', component: Login },
-    { path: '/learn', component: Learn },
-    {
-      path: '/home',
-      component: Home,
-      redirect: '/welcome',
-      children: [
-        { path: '/welcome', component: Welcome },
-        { path: '/enemy', component: Enemy },
-        { path: '/employee', component: Employee },
-        { path: '/createn', component: CreateEn },
-        { path: '/createm', component: CreateEm },
-        { path: '/compare', component: Compare }
-      ]
-    }
-  ]
+  routes,
+  // mode: 'history',
+  linkActiveClass: 'active'
 })

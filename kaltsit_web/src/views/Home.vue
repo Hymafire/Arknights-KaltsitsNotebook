@@ -5,12 +5,25 @@
       <div>Kal'tsit's Notebook</div>
     </div>
     <div>
-      <div class="version"> v0.6.0 </div>
+      <div class="version">
+        v0.8.0
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+export default {
+  name: 'Home',
+  created () {
+    this.closeDrawer()
+  },
+  methods: {
+    closeDrawer () {
+      this.$store.commit('closeDrawer')
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -32,11 +45,4 @@
   right: 10px;
   width: 100%;
 }
-/*
-// 背景渐变
-.linear {
-  height: 100%;
-  background-image: linear-gradient(white 95%, rgb(95, 173, 22));
-}
-*/
 </style>

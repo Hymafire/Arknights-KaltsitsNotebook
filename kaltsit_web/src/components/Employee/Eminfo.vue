@@ -1,91 +1,79 @@
 <template>
-  <el-container class="info-container">
-    <el-card class="info-card">
-      <!-- 头部 -->
-      <div slot="header" class="clearfix">
-        <el-row :gutter="10" type="flex">
-          <el-col :span="6">
-            <span class="head-name">{{ employee.name }}</span>
-          </el-col>
-          <el-col :span="18" class="head-description">
-            <span class="head-title">描述：</span>
-            <span>{{ employee.description }}</span>
-          </el-col>
-        </el-row>
+  <el-container>
+    <!-- 头部 -->
+    <el-header height="42px">
+      <div class="head-name">
+        {{ employee.name }}
       </div>
-      <!-- 信息输入区 -->
-      <div>
-        <el-row :gutter="10" type="flex">
-          <el-col>
-            <el-input prefix-icon="el-icon-user" v-model="infoForm.elite" />
-          </el-col>
-          <el-col>
-            <el-input prefix-icon="el-icon-user" v-model="infoForm.level" />
-          </el-col>
-          <el-col>
-            <el-input prefix-icon="el-icon-user" v-model="infoForm.favor" />
-          </el-col>
-          <el-col>
-            <el-input prefix-icon="el-icon-user" v-model="infoForm.potential" />
-          </el-col>
-          <el-col :span="2">
-            <el-button type="primary" @click="this.findEmployee">确认</el-button>
-          </el-col>
-        </el-row>
+    </el-header>
+    <!-- 信息区 -->
+    <el-main class="info-main">
+      <div class="w">
+        <!-- 基础信息 -->
+        <BaseInfo :employee="employee"/>
+        <!-- 参数信息 -->
+        <div class="base-info">
+          <ParamInput
+            :max-level="employee.phases.maxLevel"
+            :potential="employee.maxPotential"
+            @submitInfo="updateInfo"
+          />
+          <!-- changed_flag 用于表示 em_param 已经修改，需要更新 -->
+          <ParamShow
+            :show-param="em_param"
+            :changed="changed_flag"
+          />
+          <RangeShow />
+        </div>
+        <!-- 分析区 -->
+        <el-collapse
+          v-model="activeName"
+          class="collapse-title"
+        >
+          <el-collapse-item
+            title="秒伤害量"
+            name="1"
+          >
+            <PerDamage
+              :atk="em_param.atk"
+              :atk-time="em_param.atkTime"
+              :is-active="isActive('1')"
+            />
+          </el-collapse-item>
+          <el-collapse-item
+            title="总伤害量"
+            name="2"
+          >
+            <DamageTotal
+              :avg-def="pretreated.enAvgDef"
+              :atk="em_param.atk"
+              :atk-time="em_param.atkTime"
+              :is-active="isActive('2')"
+            />
+          </el-collapse-item>
+          <el-collapse-item
+            title="能力评分表"
+            name="3"
+          >
+            <RankRadar :name="employee_name" />
+          </el-collapse-item>
+        </el-collapse>
       </div>
-      <hr>
-      <!-- 基础信息区 -->
-      <div>
-        <el-row :gutter="20" type="flex">
-          <el-col :span="24">
-            <el-table :data="[em_param]">
-              <el-table-column label="最大生命" prop="maxHp" />
-              <el-table-column label="攻击" prop="atk" />
-              <el-table-column label="防御" prop="def" />
-              <el-table-column label="法抗" prop="magRes" />
-            </el-table>
-          </el-col>
-        </el-row>
-        <el-row :gutter="20" type="flex">
-          <el-col :span="24">
-            <el-table :data="[em_param]">
-              <el-table-column label="部署费用" prop="cost" />
-              <el-table-column label="阻挡数" prop="blockCnt" />
-              <el-table-column label="攻击间隔" prop="atkTime" />
-              <el-table-column label="再部署时间" prop="respawnTime" />
-            </el-table>
-          </el-col>
-        </el-row>
-        <el-row :gutter="20" type="flex">
-          <el-col :span="24">
-            <el-table :data="[em_talents]">
-              <el-table-column label="天赋" prop="name" />
-            </el-table>
-          </el-col>
-        </el-row>
-        <el-row :gutter="20" type="flex">
-          <el-col :span="24">
-            <el-table :data="[em_talents]">
-              <el-table-column label="技能" prop="name" />
-              <el-table-column label="技力要求" prop="name" />
-              <el-table-column label="持续时间" prop="name" />
-              <el-table-column label="描述" prop="name" />
-            </el-table>
-          </el-col>
-        </el-row>
-      </div>
-      <hr>
-      <!-- 分析区 -->
-      <div id="pre-damage-def" class="echarts-box"/>
-      <div id="pre-damage-time" class="echarts-box" />
-      <div id="rank-radar" class="echarts-box" />
-    </el-card>
+    </el-main>
   </el-container>
 </template>
 
 <script>
 /* eslint-disable camelcase */
-import * as echarts from 'echarts'
+import PerDamage from '../Echarts/DamageClass/PerDamage.vue'
+import DamageTotal from '../Echarts/DamageClass/DamageTotal.vue'
+import BaseInfo from './Eminfo/BaseInfo.vue'
+import ParamInput from './Eminfo/ParamInput.vue'
+import ParamShow from './Eminfo/ParamShow.vue'
+import RangeShow from './Eminfo/RangeShow.vue'
+import RankRadar from '../Echarts/RankClass/RankRadar.vue'
+import baseCalc from '../utils/baseCalc.js'
+
 export default {
   data () {
     return {
@@ -95,38 +83,32 @@ export default {
       employee: [],
       employeeSkill: [],
       em_param: [],
-      infoForm: {
-        elite: '0',
-        level: '1',
-        favor: '0',
-        potential: '0'
-      },
-      infoRules: {
-        elit: [
-          { required: true, message: '精英化等级', trigger: 'blur' }
-        ],
-        level: [
-          { required: true, message: '干员等级', trigger: 'blur' }
-        ],
-        favor: [
-          { required: true, message: '信赖度', trigger: 'blur' }
-        ],
-        potential: [
-          { required: true, message: '潜能', trigger: 'blur' }
-        ]
-      }
+      infoForm: [],
+      changed_flag: false,
+      activeName: []
     }
   },
   // 创建时调用
   created () {
     this.getEmployeeData()
-    this.findEmployee()
   },
   mounted () {
-    this.getCharts()
+    this.findEmployee()
   },
   props: {
-    employee_name: String
+    employee_name: {
+      type: String,
+      default: '斯卡蒂'
+    }
+  },
+  components: {
+    BaseInfo,
+    ParamInput,
+    ParamShow,
+    RangeShow,
+    PerDamage,
+    DamageTotal,
+    RankRadar
   },
   methods: {
     // 获取干员列表
@@ -137,282 +119,109 @@ export default {
     },
     // 查找干员
     findEmployee () {
-      for (var em in this.employeeData) {
+      for (const em in this.employeeData) {
         if (this.employeeData[em].name === this.employee_name) {
           this.employee = this.employeeData[em]
           break
         }
       }
-      this.employeeBaseParamClac()
-      this.employeeFavorClac()
+      this.letsCalc()
     },
-    /* ========================================== 分界线 ========================================= */
-    // 用于计算干员的等级数据
-    employeeBaseParamClac () {
-      const Lv = this.infoForm.level - 1
-      const elt = this.infoForm.elite
-      const diff = this.employee.phases.maxLevel[elt] - 1
-      // 具体参数计算及赋值
-      this.em_param.maxHp = this.employee.phases.maxHp[elt][0] + Math.round(Lv * (this.employee.phases.maxHp[elt][1] - this.employee.phases.maxHp[elt][0]) / diff)
-      this.em_param.atk = this.employee.phases.atk[elt][0] + Math.round(Lv * (this.employee.phases.atk[elt][1] - this.employee.phases.atk[elt][0]) / diff)
-      this.em_param.def = this.employee.phases.def[elt][0] + Math.round(Lv * (this.employee.phases.def[elt][1] - this.employee.phases.def[elt][0]) / diff)
-      this.em_param.magRes = this.employee.phases.magRes[elt]
-      this.em_param.cost = this.employee.phases.cost[elt]
-      this.em_param.blockCnt = this.employee.phases.blockCnt[elt]
-      this.em_param.range = this.employee.phases.range[elt]
-      this.em_param.atkTime = this.employee.phases.atkTime
-      this.em_param.baseAtkTime = 100.0
-      this.em_param.respawnTime = this.employee.phases.respawnTime
+    // 更新输入的信息
+    updateInfo (info) {
+      this.infoForm = info
     },
-    // 用于计算信赖的加成
-    // 有bug
-    employeeFavorClac () {
-      const min_favor = Math.min(this.infoForm.favor, 100)
-      // 存储基础数据
-      this.em_param.maxHp += Math.round(this.employee.favor.maxHp * min_favor / 100)
-      this.em_param.atk += Math.round(this.employee.favor.atk * min_favor / 100)
-      this.em_param.def += Math.round(this.employee.favor.def * min_favor / 100)
-      // console.log(this.em_param)
+    // 计算函数入口
+    letsCalc () {
+      baseCalc.baseParamCalc(this.em_param, this.employee.phases, this.infoForm)
+      baseCalc.favorCalc(this.em_param, this.employee.favor, this.infoForm.favorValue)
+      baseCalc.potentialCalc(this.em_param, this.employee.potential, this.infoForm.potentialLevel)
+      this.changed_flag = !this.changed_flag
     },
-    // 用于计算潜能的加成
-    employeeTalentClac () {
-    },
-    getInfo () {
-    },
-    // 绘图区 ===============================================================
-    // 总函数
-    getCharts () {
-      this.preDamageDefChart()
-      this.preDamageTimeChart()
-    },
-    // 秒伤-防御
-    preDamageDefChart () {
-      const data = []
-      for (let def = 0; def <= 800; def++) {
-        const damage = Math.max(this.em_param.atk - def, this.em_param.atk * 0.05)
-        const pre_dam = damage / this.em_param.atkTime
-        data.push([def, pre_dam])
-      }
-      this.pre_dam_def_chart = echarts.init(document.getElementById('pre-damage-def'))
-      const option = {
-        animation: false,
-        title: {
-          left: 'center',
-          text: '秒伤害量-防御'
-        },
-        grid: {
-          top: 40,
-          left: 50,
-          right: 40,
-          buttom: 50
-        },
-        xAxis: {
-          name: '防御',
-          minorTick: {
-            show: true
-          },
-          minorSplitLine: {
-            show: true
-          }
-        },
-        yAxis: {
-          name: '伤害量',
-          minorTick: {
-            show: true
-          },
-          // 辅助线
-          minorSplitLine: {
-            show: true
-          }
-        },
-        series: [
-          {
-            type: 'line',
-            showSymbol: false,
-            clip: true,
-            data: data
-          }
-        ]
-      }
-      this.pre_dam_def_chart.setOption(option)
-    },
-    // 伤害量-时间
-    preDamageTimeChart () {
-      const data = [[], [], [], []]
-      const def_list = this.pretreated.enAvgDef
-      for (let time = 0; time <= 30; time++) {
-        for (let i = 0; i < 4; i++) {
-          const damage = Math.max(this.em_param.atk - def_list[i], this.em_param.atk * 0.05)
-          const pre_dam = damage / this.em_param.atkTime
-          const total_dam = pre_dam * time
-          data[i].push([time, total_dam])
+    // 判断折叠面板是否处于激活状态
+    isActive (name) {
+      for (let i = 0; i < this.activeName.length; i++) {
+        if (name === this.activeName[i]) {
+          return true
         }
       }
-      this.pre_dam_time_chart = echarts.init(document.getElementById('pre-damage-time'))
-      const option = {
-        animation: false,
-        title: {
-          left: '20%',
-          text: '伤害量-时间'
-        },
-        legend: {
-          left: '40%',
-          data: ['Avg', 'NORMAL', 'ELITE', 'BOSS']
-        },
-        grid: {
-          top: 40,
-          left: 50,
-          right: 40,
-          buttom: 50
-        },
-        xAxis: {
-          name: '时间',
-          minorTick: {
-            show: true
-          },
-          minorSplitLine: {
-            show: true
-          }
-        },
-        yAxis: {
-          name: '伤害量',
-          minorTick: {
-            show: true
-          },
-          minorSplitLine: {
-            show: true
-          }
-        },
-        series: [
-          {
-            name: 'Avg',
-            type: 'line',
-            showSymbol: false,
-            clip: true,
-            data: data[0]
-          },
-          {
-            name: 'NORMAL',
-            type: 'line',
-            showSymbol: false,
-            clip: true,
-            data: data[1]
-          },
-          {
-            name: 'ELITE',
-            type: 'line',
-            showSymbol: false,
-            clip: true,
-            data: data[2]
-          },
-          {
-            name: 'BOSS',
-            type: 'line',
-            showSymbol: false,
-            clip: true,
-            data: data[3]
-          }
-        ]
-      }
-      this.pre_dam_time_chart.setOption(option)
+      return false
     },
-    // 能力排名
-    rankRadar () {
-      const data = []
-      for (var em in this.employeeData) {
-        const em_data = this.employeeData[em]
-        console.log(em_data)
-      }
-      this.rank_radar = echarts.init(document.getElementById('rank_radar'))
-      const option = {
-        title: {
-          text: '能力评分图'
-        },
-        radar: {
-          name: {
-          },
-          indicator: [
-            { name: '最大生命力', max: 200 },
-            { name: '攻击力', max: 200 },
-            { name: '防御力', max: 200 },
-            { name: '法抗', max: 200 },
-            { name: '攻击速度', max: 200 }
-            // { name: '攻击范围', max: 5 },
-          ]
-        },
-        series: [
-          {
-            name: 'rank_radar',
-            type: 'radar',
-            data: data
-          }
-        ]
-      }
-      this.rank_radar.setOption(option)
+    changeCollapse () {
+      this.$store.commit('changeCollapse')
     }
   },
   watch: {
     employee_name: {
-      handler: function () {
+      handler () {
         this.findEmployee()
-        this.getCharts()
+      }
+    },
+    infoForm: {
+      handler () {
+        this.letsCalc()
+        this.$forceUpdate()
       },
-      immediate: true
+      deep: true
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.info-container {
-  // height: 100%;
-  padding: 0px;
-}
-// 输入栏style
-.search-input {
-  margin: 5px 0px;
-}
-// 卡片style
-.text {
-  font-size: 14px;
-}
-.item {
-  padding: 18px 0;
-}
-// 卡片style
-.el-card {
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15) !important;
-  width: 100%;
-}
-// 页头
+// 标题
 .head-name {
-  font-size: 30px;
+  height: 100%;
+  font-size: 28px;
   font-style: italic;
   font-weight: bold;
-  padding: 0 0 0 20px;
+  padding-left: 20px;
+  border-bottom: 2px solid #dcdfe6;
 }
-.head-description {
-  padding: 10px 0px 0px 0px;
+// 信息展示区
+.el-main {
+  padding: 10px;
+  padding-top: 7px !important;
 }
-// 敌方名称
-.head-title {
-  font-weight: bold;
+.w {
+  max-width: 1080px;
+  margin: 0 auto;
 }
-// 属性标题
-.param-title {
-  font-weight: bold;
+//
+.base-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  >div {
+    text-align: center;
+    min-width: 320px;
+    max-width: 360px;
+    height: 200px;
+  }
 }
-// 输入框
-.info_form {
-  position: absolute;
-  top: 171px;
-  width: 22%;
-  padding: 20px;
-  box-sizing: border-box;
+// 图形区
+//
+.collapse-title {
+  height: 30px;
 }
-// 图表容器
-.echarts-box {
-  width: 600px;
-  height: 400px;
+//
+/deep/.el-collapse-item__header {
+  height: 39px;
+  font-size: 16px;
+  font-weight: 700;
+  padding-left: 20px;
+  letter-spacing: 2px;
+}
+//
+/deep/.el-collapse-item__content {
+  padding: 0px;
+}
+// 卡片
+.card-style {
+  margin-bottom: 5px;
+  background-color: white;
+  border: 1px solid #ebeef5;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 }
 </style>
