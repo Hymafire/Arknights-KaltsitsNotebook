@@ -1,4 +1,5 @@
 // 计算工具库
+// 基础类计算
 // 等级
 function baseParamCalc (param, data, input) {
   const Lv = input.levelValue - 1

@@ -1,6 +1,6 @@
 <template>
   <div
-    id="pre-damage"
+    id="per-damage"
     class="echarts-box"
   />
 </template>
@@ -8,33 +8,44 @@
 <script>
 /* eslint-disable camelcase */
 import * as echarts from 'echarts'
+import damageCalc from '../../utils/damageCalc.js'
 
 export default {
   name: 'PerDamage',
   props: {
     atk: Number,
     atkTime: Number,
+    damMod: {
+      type: String,
+      default: 'Phy'
+    },
+    atkMod: {
+      type: String,
+      default: '0'
+    },
     isActive: {
       type: Boolean,
       default: false
     }
   },
   mounted () {
-    this.preDamageChart()
+    this.perDamageChart()
   },
   methods: {
-    preDamageChart () {
+    perDamageChart () {
       // 数据
-      const data = []
+      /*
       for (let def = 0; def <= 800; def++) {
         const damage = Math.max(this.atk - def, this.atk * 0.05)
         const pre_dam = damage / this.atkTime
         data.push([def, pre_dam])
       }
+      */
+      const data = damageCalc.perDamage(this.atk, this.atkTime, this.damMod, this.atkMod)
       // 初始化DOM
-      const myChart = echarts.getInstanceByDom(document.getElementById('pre-damage'))
+      const myChart = echarts.getInstanceByDom(document.getElementById('per-damage'))
       if (myChart == null) {
-        this.pre_dam_chart = echarts.init(document.getElementById('pre-damage'))
+        this.per_dam_chart = echarts.init(document.getElementById('per-damage'))
       }
       // 配置内容
       const option = {
@@ -84,7 +95,7 @@ export default {
           }
         ]
       }
-      this.pre_dam_chart.setOption(option)
+      this.per_dam_chart.setOption(option)
       // 自适应
       window.addEventListener('resize', () => { myChart.resize() })
     }
@@ -93,20 +104,20 @@ export default {
     atk: {
       handler () {
         if (this.isActive) {
-          this.preDamageChart()
+          this.perDamageChart()
         }
       }
     },
     atkTime: {
       handler () {
         if (this.isActive) {
-          this.preDamageChart()
+          this.perDamageChart()
         }
       }
     },
     isActive: {
       handler () {
-        this.preDamageChart()
+        this.perDamageChart()
       }
     }
   }

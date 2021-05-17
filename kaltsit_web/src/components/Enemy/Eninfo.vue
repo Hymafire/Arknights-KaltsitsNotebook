@@ -1,8 +1,7 @@
 <template>
   <el-container>
-    <el-header>
+    <el-header height="42px">
       <div class="head-name">
-        <el-button @click="changeCollapse">|||</el-button>
         {{ enemy.name }}
       </div>
     </el-header>
@@ -56,9 +55,6 @@ export default {
           break
         }
       }
-    },
-    changeCollapse () {
-      this.$store.commit('changeCollapse')
     }
   },
   watch: {
@@ -74,24 +70,15 @@ export default {
 
 <style lang="scss" scoped>
 // 页头
-/deep/.el-header {
-  height: 32px;
-  line-height: 32px;
-}
 .head-name {
-  font-size: 30px;
+  height: 100%;
+  font-size: 28px;
   font-style: italic;
   font-weight: bold;
-  padding: 0 0 0 20px;
-}
-.head-description {
-  padding: 10px 0px 0px 0px;
-}
-// 敌人名称
-.head-title {
-  font-weight: bold;
+  padding-left: 20px;
+  border-bottom: 2px solid #dcdfe6;
 }
 .info-main {
-  padding: 0px;
+  padding: 0px 10px;
 }
 </style>

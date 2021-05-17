@@ -1,12 +1,17 @@
 <template>
-  <div class="card-style">
+  <div>
     <div id="em-img"/>
+    <div id="em-desp">{{ employee.description }}</div>
+    <div>{{ employee.itemUsage }}</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'BaseInfo'
+  name: 'BaseInfo',
+  props: {
+    employee: Array
+  }
 }
 </script>
 

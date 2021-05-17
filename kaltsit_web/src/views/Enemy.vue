@@ -8,7 +8,10 @@
       />
     </el-aside>
     <!--  属性输出区  -->
-    <el-main>
+    <el-main :class="{'is-aside-collapse': $store.state.isListCollapse}">
+      <div class="collapse-btn-box" :class="{'btn-box-collapsed': $store.state.isListCollapse}">
+        <el-button class="collapse-btn" @click="changeCollapse">|||</el-button>
+      </div>
       <Eninfo :enemy_name="enemy_name" />
     </el-main>
   </el-container>
@@ -46,6 +49,9 @@ export default {
     },
     initCollapse () {
       this.$store.commit('initCollapse')
+    },
+    changeCollapse () {
+      this.$store.commit('changeCollapse')
     }
   }
 }
@@ -54,16 +60,58 @@ export default {
 <style lang="scss" scoped>
 .el-container {
   height: 100%;
+  position: relative;
 }
 .el-aside {
+  position: absolute;
+  z-index: 100;
+  height: 100%;
   background-color: #fff;
+  box-sizing: border-box;
   padding: 1px;
+  border-right: 1px solid #dcdfe6;
 }
 .el-main {
+  position: absolute;
+  height: 100%;
+  left: 249px;
+  width: calc(100% - 249px);
   background-color: #fff;
+  box-sizing: border-box;
   padding: 1px;
 }
 .aside-collapse {
   display: none !important;
+}
+.is-aside-collapse {
+  left: 0px !important;
+  width: 100%;
+}
+@media only screen and (max-width:1080px) {
+  .el-main {
+    left: 0px;
+    width: 100%;
+  }
+}
+.collapse-btn-box {
+  width: 30px;
+  height: 30px;
+  background-color: #dcdfe6;
+  position: fixed;
+  text-align: right;
+  box-sizing: border-box;
+  left: 249px;
+  top: 58px;
+  z-index: 1000;
+}
+.btn-box-collapsed {
+  left: 0px;
+}
+.collapse-btn {
+  height: 30px;
+  width: 30px;
+  border: 0px solid transparent;
+  padding: 0px;
+  // background-color: transparent;
 }
 </style>

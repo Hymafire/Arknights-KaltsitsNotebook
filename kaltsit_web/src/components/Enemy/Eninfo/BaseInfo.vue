@@ -1,6 +1,6 @@
 <template>
   <!-- 敌人的基础信息 -->
-  <el-card>
+  <div>
     <ul>
       <li>
         <span>最大血量</span> {{ enemyParams.maxHp[0] }}
@@ -30,7 +30,7 @@
         <span>射程</span> {{ enemyParams.rangeRadius }}
       </li>
     </ul>
-  </el-card>
+  </div>
 </template>
 
 <script>
@@ -43,7 +43,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.el-card {
+div {
   padding: 3px;
   // 属性标题
   span {

@@ -6,7 +6,7 @@
     </div>
     <div>
       <div class="version">
-        v0.7.0
+        v0.8.0
       </div>
     </div>
   </div>

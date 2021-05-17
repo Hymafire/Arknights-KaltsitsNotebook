@@ -1,9 +1,8 @@
 <template>
   <el-container>
     <!-- 头部 -->
-    <el-header>
+    <el-header height="42px">
       <div class="head-name">
-        <el-button @click="changeCollapse">|||</el-button>
         {{ employee.name }}
       </div>
     </el-header>
@@ -11,7 +10,7 @@
     <el-main class="info-main">
       <div class="w">
         <!-- 基础信息 -->
-        <BaseInfo />
+        <BaseInfo :employee="employee"/>
         <!-- 参数信息 -->
         <div class="base-info">
           <ParamInput
@@ -29,7 +28,7 @@
         <!-- 分析区 -->
         <el-collapse
           v-model="activeName"
-          class="aaa"
+          class="collapse-title"
         >
           <el-collapse-item
             title="秒伤害量"
@@ -171,54 +170,47 @@ export default {
 
 <style lang="scss" scoped>
 // 标题
-.el-header {
-  height: 50px !important;
-  line-height: 50px;
-  z-index: 100;
-}
-.list-btn {
-  font-size: 25px;
-  font-weight: bold;
-  padding: 0px 5px;
-}
 .head-name {
-  font-size: 30px;
+  height: 100%;
+  font-size: 28px;
   font-style: italic;
   font-weight: bold;
-  padding-left: 50px;
+  padding-left: 20px;
   border-bottom: 2px solid #dcdfe6;
 }
 // 信息展示区
 .el-main {
+  padding: 10px;
   padding-top: 7px !important;
 }
 .w {
-  max-width: 1200px;
+  max-width: 1080px;
   margin: 0 auto;
-}
-/deep/.el-collapse-item__header {
-  height: 39px;
-  // line-height: 39px;
-  font-size: 16px;
-  font-weight: 700;
-  padding-left: 20px;
-  letter-spacing: 2px;
 }
 //
 .base-info {
   display: flex;
   flex-wrap: wrap;
-  // justify-content: space-between;
+  justify-content: space-around;
   >div {
     text-align: center;
-    min-width: 360px;
-    max-width: 400px;
+    min-width: 320px;
+    max-width: 360px;
     height: 200px;
-    margin-left: 10px;
   }
 }
-.aaa {
+// 图形区
+//
+.collapse-title {
   height: 30px;
+}
+//
+/deep/.el-collapse-item__header {
+  height: 39px;
+  font-size: 16px;
+  font-weight: 700;
+  padding-left: 20px;
+  letter-spacing: 2px;
 }
 //
 /deep/.el-collapse-item__content {
@@ -231,9 +223,5 @@ export default {
   border: 1px solid #ebeef5;
   border-radius: 4px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-}
-//
-.info-main {
-  padding: 0px 10px;
 }
 </style>

@@ -127,9 +127,15 @@ export default {
     margin-right: 5px;
   }
   button {
+    text-align: center;
     font-size: 15px;
     font-weight: 500;
     padding: 5px 12px;
+  }
+  @media only screen and (max-width:321px) {
+    button {
+      padding: 5px 10px;
+    }
   }
   .btn-slience {
     color: #67c23a;
@@ -143,8 +149,9 @@ export default {
   }
   // 滑动条
   .el-slider {
-    width: 65%;
-    margin: 0px 10px;
+    width: 60%;
+    margin-left: 15px;
+    margin-right: 10px;
   }
   /deep/.el-slider__button {
     width: 10px;

@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <!-- 搜索栏 -->
-    <el-header class="search-header">
+    <el-header class="search-header" height="50px">
       <el-input
         prefix-icon="el-icon-user"
         placeholder="输入查询名称"
@@ -58,16 +58,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.base-style {
-  padding: 0;
-  margin: 0;
-}
 .search-input {
   margin-top: 10px;
 }
 .search-header {
-  height: 60px;
   padding: 5px;
+  padding-top: 0px;
 }
 .list-main {
   height: 100%;

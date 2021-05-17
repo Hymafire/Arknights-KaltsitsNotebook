@@ -56,13 +56,15 @@ export default {
   ul {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   li {
     text-align: left;
-    height: 46px;
-    min-width: 176px;
-    margin: 2px 2px;
+    box-sizing: border-box;
+    height: 50px;
+    min-width: 160px;
+    min-width: 170px;
+    padding: 2px 2px;
   }
   strong {
     display: inline-block;
