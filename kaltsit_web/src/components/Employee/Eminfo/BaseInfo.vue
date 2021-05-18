@@ -10,7 +10,7 @@
 export default {
   name: 'BaseInfo',
   props: {
-    employee: Array
+    employee: Object
   }
 }
 </script>

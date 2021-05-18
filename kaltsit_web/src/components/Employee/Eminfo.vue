@@ -6,6 +6,7 @@
         {{ employee.name }}
       </div>
     </el-header>
+    <!-- 头部-end -->
     <!-- 信息区 -->
     <el-main class="info-main">
       <div class="w">
@@ -25,25 +26,28 @@
           />
           <RangeShow />
         </div>
+        <!-- 天赋信息 -->
+        <TalentInfo
+          :talentTable="employee.talents"
+          :paramInputed="infoForm"
+          :changed="changed_flag"
+        />
+        <!-- 技能信息 -->
+        <SkillInfo
+          :employeeName="employee_name"
+          :skillsName="employee.skills"
+          :elite="infoForm.elite"
+        />
         <!-- 分析区 -->
-        <el-collapse
-          v-model="activeName"
-          class="collapse-title"
-        >
-          <el-collapse-item
-            title="秒伤害量"
-            name="1"
-          >
+        <el-collapse v-model="activeName" class="collapse-title">
+          <el-collapse-item title="秒伤害量" name="1">
             <PerDamage
               :atk="em_param.atk"
               :atk-time="em_param.atkTime"
               :is-active="isActive('1')"
             />
           </el-collapse-item>
-          <el-collapse-item
-            title="总伤害量"
-            name="2"
-          >
+          <el-collapse-item title="总伤害量" name="2">
             <DamageTotal
               :avg-def="pretreated.enAvgDef"
               :atk="em_param.atk"
@@ -51,13 +55,11 @@
               :is-active="isActive('2')"
             />
           </el-collapse-item>
-          <el-collapse-item
-            title="能力评分表"
-            name="3"
-          >
+          <el-collapse-item title="能力评分表" name="3">
             <RankRadar :name="employee_name" />
           </el-collapse-item>
         </el-collapse>
+        <!-- 分析区-end -->
       </div>
     </el-main>
   </el-container>
@@ -65,23 +67,23 @@
 
 <script>
 /* eslint-disable camelcase */
-import PerDamage from '../Echarts/DamageClass/PerDamage.vue'
-import DamageTotal from '../Echarts/DamageClass/DamageTotal.vue'
 import BaseInfo from './Eminfo/BaseInfo.vue'
 import ParamInput from './Eminfo/ParamInput.vue'
 import ParamShow from './Eminfo/ParamShow.vue'
 import RangeShow from './Eminfo/RangeShow.vue'
+import TalentInfo from './Eminfo/TalentInfo.vue'
+import SkillInfo from './Eminfo/SkillInfo.vue'
 import RankRadar from '../Echarts/RankClass/RankRadar.vue'
+import PerDamage from '../Echarts/DamageClass/PerDamage.vue'
+import DamageTotal from '../Echarts/DamageClass/DamageTotal.vue'
 import baseCalc from '../utils/baseCalc.js'
 
 export default {
   data () {
     return {
       employeeData: [],
-      skillData: [],
       pretreated: [],
       employee: [],
-      employeeSkill: [],
       em_param: [],
       infoForm: [],
       changed_flag: false,
@@ -106,6 +108,8 @@ export default {
     ParamInput,
     ParamShow,
     RangeShow,
+    TalentInfo,
+    SkillInfo,
     PerDamage,
     DamageTotal,
     RankRadar
@@ -114,7 +118,6 @@ export default {
     // 获取干员列表
     getEmployeeData () {
       this.employeeData = require('@/assets/data/employeedata.json')
-      this.skillData = require('@/assets/data/skill_table.json')
       this.pretreated = require('@/assets/data/pretreated.json')
     },
     // 查找干员

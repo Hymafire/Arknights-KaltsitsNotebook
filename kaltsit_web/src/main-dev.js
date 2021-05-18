@@ -7,6 +7,7 @@ import './registerServiceWorker'
 import './assets/styles/styles.scss'
 import './plugins/element.js'
 import './assets/css/global.css'
+import './assets/css/colorful.css'
 
 Vue.use(ElementUI)
 
