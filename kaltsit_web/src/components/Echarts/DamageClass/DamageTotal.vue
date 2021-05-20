@@ -107,7 +107,9 @@ export default {
         ]
       }
       this.pre_dam_time_chart.setOption(option)
-      window.addEventListener('resize', () => { myChart.resize() })
+      if (this.isActive) {
+        window.addEventListener('resize', () => { myChart.resize() })
+      }
     }
   },
   watch: {

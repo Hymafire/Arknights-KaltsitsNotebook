@@ -1,6 +1,7 @@
 <template>
   <!-- 敌人的基础信息 -->
   <div>
+    <img id="en-img" :src="imgUrl" alt="Worry!"/>
     <ul>
       <li>
         <span>最大血量</span> {{ enemyParams.maxHp[0] }}
@@ -37,12 +38,23 @@
 export default {
   name: 'BaseInfo',
   props: {
-    enemyParams: Object
+    enemyParams: Object,
+    enemyKey: String
+  },
+  computed: {
+    imgUrl: function () {
+      return require('../../../assets/images/enimgs/' + this.enemyKey + '.png')
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+#en-img {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+}
 div {
   padding: 3px;
   // 属性标题

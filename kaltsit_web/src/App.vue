@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-container>
-      <el-header height="52px" class="base-style">
+      <el-header height="48px" class="base-style">
         <NavBar />
       </el-header>
       <el-main class="base-style">

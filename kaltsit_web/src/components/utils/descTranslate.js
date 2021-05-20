@@ -10,6 +10,7 @@ function tagTranslate (str) {
   str = str.replace(/<@ba.vup>/g, '<span class="vup">')
   str = str.replace(/<@ba.rem>/g, '<span class="rem">')
   str = str.replace(/<@ba.vdown>/g, '<span class="vdown">')
+  str = str.replace(/<@ba.talpu>/g, '<span class="talpu">')
   str = str.replace(/\\n/g, '<br>')
   str = str.replace(/<\/>/g, '</span>')
   return str
@@ -17,8 +18,6 @@ function tagTranslate (str) {
 // 技能内容补充
 function completeValue (str, blackboard) {
   for (const i in blackboard) {
-    console.log(blackboard[i].key)
-    console.log(blackboard[i].value)
     str = valueFormat(str, blackboard[i].key, blackboard[i].value)
   }
   return str
@@ -37,5 +36,6 @@ function valueFormat (str, key, param) {
   return str
 }
 module.exports = {
-  descTranslate
+  descTranslate,
+  tagTranslate
 }

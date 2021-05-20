@@ -85,7 +85,7 @@ class EnemyDataSwitch(object):
             tmp_data = em["Value"][0]["enemyData"]    # 参数重定位
             base_data["Key"] = tmp_key
             base_data["name"] = tmp_data["name"]["m_value"]
-            base_data["description"] = self.descriptionClear(tmp_data["description"]["m_value"])
+            base_data["description"] = tmp_data["description"]["m_value"]
             base_data["lifePointReduce"] = tmp_data["lifePointReduce"]["m_value"]
             base_data["rangeRadius"] = tmp_data["rangeRadius"]["m_value"]
             base_data["talent"] = tmp_data["talentBlackboard"]
@@ -130,18 +130,6 @@ class EnemyDataSwitch(object):
             self.enemy_data[tmp_key] = base_data     
 
     #========================================= 小功能区 ========================================#
-    # 清理描述上多余的符号
-    def descriptionClear(self, description: str):
-        if "<@eb.key>" in description:
-            description = description.replace("<@eb.key>", "")
-            description = description.replace("</>", "")
-        if "<@eb.danger>" in description:
-            description = description.replace("<@eb.danger>", "")
-            description = description.replace("</>", "")
-        if r"\n" in description:
-            description = description.replace(r"\n", "")
-        return description 
-
     # 伤害类型
     def getDamageMod(self, description: str):
         dam_mod = "Phy"
@@ -259,7 +247,7 @@ class EmployeeDataSwitch(object):
                 # itemDesc, itemObt..., isNotObt..., isSpChar, character..., allSkillLvlup
                 base_data["Key"] = tmp_key
                 base_data["name"] = tmp_data["name"]
-                base_data["description"] = self.descriptionClear(tmp_data["description"])
+                base_data["description"] = tmp_data["description"]
                 base_data["displayNum"] = tmp_data["displayNumber"]
                 base_data["tokenKey"] = tmp_data["tokenKey"]
                 base_data["appellation"] = tmp_data["appellation"]
@@ -361,15 +349,6 @@ class EmployeeDataSwitch(object):
                 pass
 
     #========================================= 小功能区 ========================================#
-    # 清理描述上多余的符号
-    def descriptionClear(self, description: str):
-        if "<@ba.kw>" in description:
-            description = description.replace("<@ba.kw>", "")
-            description = description.replace("</>", "")
-        if r"\n" in description:
-            description = description.replace(r"\n", "")
-        return description   
-
     # 获得伤害类型
     def getDamageMod(self, description: str):
         dam_mod = "Phy"

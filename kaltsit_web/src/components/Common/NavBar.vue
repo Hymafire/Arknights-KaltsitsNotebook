@@ -23,7 +23,7 @@
     <!-- 小 -->
     <div id="tool-bar" class="hidden-sm-and-up">
       <div class="tool-mag">&gt;</div>
-      <div class="tool-title">{{$route.name}}</div>
+      <div class="tool-title">{{ $route.name }}</div>
       <button class="tool-btn" @click="openDrawer">|||</button>
     </div>
     <!-- 小-end -->
@@ -57,8 +57,8 @@ a {
   >a {
     display: inline-block;
     box-sizing: border-box;
-    height: 52px;
-    line-height: 52px;
+    height: 48px;
+    line-height: 48px;
     padding: 0px 15px;
     font-size: 16px;
     font-weight: 700;
@@ -82,9 +82,9 @@ a {
   display: flex;
   width: 100%;
   .tool-mag {
-    height: 52px;
-    width: 52px;
-    line-height: 52px;
+    height: 48px;
+    width: 48px;
+    line-height: 48px;
     font-size: 26px;
     font-weight: 100;
     text-align: center;
@@ -92,16 +92,16 @@ a {
   .tool-title {
     display: inline-block;
     box-sizing: border-box;
-    height: 52px;
-    line-height: 52px;
+    height: 48px;
+    line-height: 48px;
     font-size: 22px;
     font-weight: 400;
     color: #303133;
     margin-right: auto;
   }
   .tool-btn {
-    height: 52px;
-    width: 52px;
+    height: 48px;
+    width: 48px;
     border: 0px solid transparent;
     background-color: transparent;
   }

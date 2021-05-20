@@ -11,52 +11,51 @@
     <el-main class="info-main">
       <div class="w">
         <!-- 基础信息 -->
-        <BaseInfo :employee="employee"/>
+        <BaseInfo :employee="employee" :employeeKey="employee.Key"/>
         <!-- 参数信息 -->
-        <div class="base-info">
+        <div id="param-info">
           <ParamInput
-            :max-level="employee.phases.maxLevel"
+            :maxLevel="employee.phases.maxLevel"
             :potential="employee.maxPotential"
             @submitInfo="updateInfo"
           />
           <!-- changed_flag 用于表示 em_param 已经修改，需要更新 -->
-          <ParamShow
-            :show-param="em_param"
-            :changed="changed_flag"
-          />
+          <ParamShow :showParam="em_param" :changed="changed_flag" />
           <RangeShow />
         </div>
         <!-- 天赋信息 -->
-        <TalentInfo
-          :talentTable="employee.talents"
-          :paramInputed="infoForm"
-          :changed="changed_flag"
-        />
-        <!-- 技能信息 -->
-        <SkillInfo
-          :employeeName="employee_name"
-          :skillsName="employee.skills"
-          :elite="infoForm.elite"
-        />
+        <div>
+          <TalentInfo
+            :talentTable="employee.talents"
+            :paramInputed="infoForm"
+            :changed="changed_flag"
+          />
+          <!-- 技能信息 -->
+          <SkillInfo
+            :employeeName="employee_name"
+            :skillsName="employee.skills"
+            :elite="infoForm.elite"
+          />
+        </div>
         <!-- 分析区 -->
         <el-collapse v-model="activeName" class="collapse-title">
           <el-collapse-item title="秒伤害量" name="1">
             <PerDamage
               :atk="em_param.atk"
-              :atk-time="em_param.atkTime"
-              :is-active="isActive('1')"
+              :atkTime="em_param.atkTime"
+              :isActive="isActive('1')"
             />
           </el-collapse-item>
           <el-collapse-item title="总伤害量" name="2">
             <DamageTotal
-              :avg-def="pretreated.enAvgDef"
+              :avgDef="pretreated.enAvgDef"
               :atk="em_param.atk"
-              :atk-time="em_param.atkTime"
-              :is-active="isActive('2')"
+              :atkTime="em_param.atkTime"
+              :isActive="isActive('2')"
             />
           </el-collapse-item>
           <el-collapse-item title="能力评分表" name="3">
-            <RankRadar :name="employee_name" />
+            <RankRadar :name="employee_name" :isActive="isActive('3')"/>
           </el-collapse-item>
         </el-collapse>
         <!-- 分析区-end -->
@@ -191,19 +190,13 @@ export default {
   margin: 0 auto;
 }
 //
-.base-info {
+#param-info {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  justify-content: space-around;
-  >div {
-    text-align: center;
-    min-width: 320px;
-    max-width: 360px;
-    height: 200px;
-  }
 }
 // 图形区
-//
+// 抽屉标题
 .collapse-title {
   height: 30px;
 }

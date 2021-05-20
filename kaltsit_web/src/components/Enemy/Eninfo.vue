@@ -6,7 +6,7 @@
       </div>
     </el-header>
     <el-main class="info-main">
-      <BaseInfo :enemy-params="enemy" />
+      <BaseInfo :enemy-params="enemy" :enemyKey="enemy.Key"/>
       <PerDamage
         :atk="enemy.atk[0]"
         :atk-time="enemy.atkTime"

@@ -12,7 +12,11 @@ import * as echarts from 'echarts'
 export default {
   name: 'RankRadar',
   props: {
-    name: String
+    name: String,
+    isActive: {
+      type: Boolean,
+      default: false
+    }
     // rankTable: Array
   },
   mounted () {
@@ -52,7 +56,9 @@ export default {
         ]
       }
       this.rank_radar.setOption(option)
-      window.addEventListener('resize', () => { myChart.resize() })
+      if (this.isActive) {
+        window.addEventListener('resize', () => { myChart.resize() })
+      }
     }
   },
   watch: {

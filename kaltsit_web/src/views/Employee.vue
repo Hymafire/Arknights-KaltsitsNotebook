@@ -64,7 +64,7 @@ export default {
 }
 .el-aside {
   position: absolute;
-  z-index: 1002;
+  z-index: 1003;
   height: 100%;
   background-color: #fff;
   box-sizing: border-box;
@@ -102,7 +102,7 @@ export default {
   box-sizing: border-box;
   left: 249px;
   top: 58px;
-  z-index: 1000;
+  z-index: 1003;
 }
 .btn-box-collapsed {
   left: 0px;

@@ -1,25 +1,30 @@
 <template>
   <div>
     <ul>
-      <li v-for="(skill, index) in showSkills" :key="index">
-        <div>===============</div>
-        <div>
-          <div>图片</div>
-          <div>{{ showSkills[index].name }}</div>
+      <li v-for="(skill, index) in showSkills" :key="index" class="mask-fa">
+        <div :class="{'mask-layer': !skillsFlag[index]}" class="mask-text">
+          <span :class="{'text-display': skillsFlag[index]}"> ==== 未解锁 ==== </span>
         </div>
-        <div>
-          <div>
-            <span>{{ showSkills[index].initSp }} | </span>
-            <span>{{ showSkills[index].spCost }} | </span>
-            <span>{{ showSkills[index].duration }}</span>
+        <div class="skill-box">
+          <div id="title-box">
+            <div>
+              <img id="img-box" :src="imgUrls[index]" alt="Worry!" />
+            </div>
+            <div>{{ showSkills[index].name }}</div>
           </div>
-          <div v-html="showSkills[index].description"></div>
-        </div>
-        <div>
-          技能等级
-          <el-button @click="increaseN(index)">+</el-button>
-          {{ skillsLevel[index] }}
-          <el-button @click="decreaseN(index)">-</el-button>
+          <div id="description-box">
+            <div>
+              <span>{{ showSkills[index].initSp }} | </span>
+              <span>{{ showSkills[index].spCost }} | </span>
+              <span>{{ showSkills[index].duration }}</span>
+            </div>
+            <div v-html="showSkills[index].description"></div>
+          </div>
+          <div id="level-box">
+            <el-button @click="increaseN(index)" size="mini" class="level-btn">+</el-button>
+            <div class="level-value">Lv. {{ skillsLevel[index] }}</div>
+            <el-button @click="decreaseN(index)" size="mini" class="level-btn">-</el-button>
+          </div>
         </div>
       </li>
     </ul>
@@ -34,30 +39,19 @@ export default {
   data () {
     return {
       // 用于显示的数据
-      showSkills: {
-        type: Array,
-        default: []
-      },
+      showSkills: Array,
       // 重新处理后的数据
-      skillsTranslated: {
-        type: Array,
-        default: []
-      },
+      skillsTranslated: Array,
       // 目标干员的数据
-      emSkills: {
-        type: Array,
-        default: []
-      },
+      emSkills: Array,
       // 技能的等级
-      skillsLevel: {
-        type: Array,
-        default: []
-      },
+      skillsLevel: Array,
+      // 技能是否解锁
+      skillsFlag: Array,
       // 技能等级信息改变
-      levelChanged: {
-        type: Boolean,
-        default: false
-      },
+      levelChanged: false,
+      // 技能的图片信息
+      imgUrls: Array,
       // 所有的技能信息
       skillData: Object
     }
@@ -77,13 +71,17 @@ export default {
     // 获取需要显示的技能信息
     getShowSkills () {
       const showSkills = []
-      for (let i = 0; i <= this.elite; i++) {
-        if (this.skillsLevel[i] !== null) {
-          showSkills.push(this.skillsTranslated[i][this.skillsLevel[i]])
-          // showSkills.push(this.translateSkills[i][this.skillsLevel[i]])
+      const skillsFlag = []
+      for (const skill in this.skillsTranslated) {
+        showSkills.push(this.skillsTranslated[skill][this.skillsLevel[skill]])
+        if (this.elite >= skill) {
+          skillsFlag.push(true)
+        } else {
+          skillsFlag.push(false)
         }
       }
       this.showSkills = showSkills
+      this.skillsFlag = skillsFlag
     },
     // 翻译技能信息,并重新保存
     translateSkills () {
@@ -108,18 +106,20 @@ export default {
     getSkills () {
       const emSkills = []
       const skillsLevel = []
+      const imgUrls = []
       for (const i in this.skillsName) {
         for (const j in this.skillData) {
           if (this.skillsName[i] === j) {
             emSkills.push(this.skillData[j])
             skillsLevel.push(7)
+            imgUrls.push(require('@/assets/images/skillsimgs/skill_icon_' + j + '.png'))
             break
           }
         }
       }
-      descTranslate(emSkills[0].levels[1].description)
       this.emSkills = emSkills
       this.skillsLevel = skillsLevel
+      this.imgUrls = imgUrls
     },
     // 获取技能数据
     getSkillData () {
@@ -159,5 +159,68 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+// 遮罩层
+.mask-text {
+  display: flex;
+  align-items: center;
+  span {
+    margin: 0px auto;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  .text-display {
+    display: none;
+  }
+}
+.mask-fa {
+  position: relative;
+}
+.mask-layer {
+  position: absolute;
+  float: left;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .3);
+}
+.skill-box {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #ebebeb;
+  #title-box {
+    width: 10vw;
+    max-width: 110px;
+    min-width: 70px;
+    img {
+      text-align: center;
+      height: 64px;
+      width: 64px;
+    }
+    div {
+      text-align: center;
+    }
+  }
+  #description-box {
+    width: 70vw;
+    padding: 5px;
+  }
+  #level-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 5vw;
+    min-width: 32px;
+    .level-btn {
+      width: 32px;
+      text-align: center;
+      padding: 5px 5px;
+      margin: 0px auto;
+    }
+    .level-value {
+      text-align: center;
+    }
+  }
+}
 </style>

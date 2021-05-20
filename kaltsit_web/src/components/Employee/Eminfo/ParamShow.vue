@@ -53,17 +53,19 @@ export default {
 
 <style lang="scss" scoped>
 #param-show {
+  min-width: 370px;
+  display: flex;
+  flex: 1;
   ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
   }
   li {
-    text-align: left;
     box-sizing: border-box;
     height: 50px;
-    min-width: 160px;
-    min-width: 170px;
+    width: 48%;
+    max-width: 220px;
     padding: 2px 2px;
   }
   strong {

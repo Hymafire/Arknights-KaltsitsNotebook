@@ -105,6 +105,7 @@ export default {
 
 <style lang="scss" scoped>
 #param-input {
+  min-width: 335px;
   .el-row {
     display: flex;
     height: 50px;

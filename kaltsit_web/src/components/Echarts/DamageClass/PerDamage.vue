@@ -34,13 +34,6 @@ export default {
   methods: {
     perDamageChart () {
       // 数据
-      /*
-      for (let def = 0; def <= 800; def++) {
-        const damage = Math.max(this.atk - def, this.atk * 0.05)
-        const pre_dam = damage / this.atkTime
-        data.push([def, pre_dam])
-      }
-      */
       const data = damageCalc.perDamage(this.atk, this.atkTime, this.damMod, this.atkMod)
       // 初始化DOM
       const myChart = echarts.getInstanceByDom(document.getElementById('per-damage'))
@@ -97,7 +90,9 @@ export default {
       }
       this.per_dam_chart.setOption(option)
       // 自适应
-      window.addEventListener('resize', () => { myChart.resize() })
+      if (this.isActive) {
+        window.addEventListener('resize', () => { myChart.resize() })
+      }
     }
   },
   watch: {
