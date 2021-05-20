@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-container>
-      <el-header height="48px" class="base-style">
+      <el-header class="base-style header-height">
         <NavBar />
       </el-header>
       <el-main class="base-style">
@@ -31,6 +31,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media only screen and (max-width:767px) {
+  .header-height {
+    height: 42px !important;
+  }
+}
+@media only screen and (min-width:768px) {
+  .header-height {
+    height: 48px !important;
+  }
+}
 .base-style {
   padding: 0px;
   margin: 0px;

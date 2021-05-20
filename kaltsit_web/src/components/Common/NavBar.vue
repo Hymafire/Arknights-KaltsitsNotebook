@@ -82,9 +82,9 @@ a {
   display: flex;
   width: 100%;
   .tool-mag {
-    height: 48px;
-    width: 48px;
-    line-height: 48px;
+    height: 42px;
+    width: 42px;
+    line-height: 42px;
     font-size: 26px;
     font-weight: 100;
     text-align: center;
@@ -92,16 +92,17 @@ a {
   .tool-title {
     display: inline-block;
     box-sizing: border-box;
-    height: 48px;
-    line-height: 48px;
-    font-size: 22px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 21px;
+    letter-spacing: 2px;
     font-weight: 400;
     color: #303133;
     margin-right: auto;
   }
   .tool-btn {
-    height: 48px;
-    width: 48px;
+    height: 42px;
+    width: 42px;
     border: 0px solid transparent;
     background-color: transparent;
   }

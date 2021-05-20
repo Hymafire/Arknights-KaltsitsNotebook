@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container class="searchlist-color">
     <!-- 搜索栏 -->
     <el-header class="search-header" height="50px">
       <el-input
@@ -18,8 +18,9 @@
     </el-header>
     <!-- 搜索栏-end -->
     <!-- 列表栏 -->
-    <el-main class="list-main">
+    <el-main class="list-main searchlist-color">
       <el-tree
+        class="searchlist-color"
         :data="listData"
         :props="proplist"
         @node-click="handleNodeClick"
@@ -58,6 +59,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.searchlist-color {
+  background-color: rgba(255, 255, 255, .3);
+}
 .search-input {
   margin-top: 10px;
 }
@@ -68,5 +72,12 @@ export default {
 .list-main {
   height: 100%;
   padding: 5px;
+}
+.search-btn {
+  padding: 0px;
+  margin: 0 auto;
+}
+/deep/.el-input-group__append {
+  padding: 0px 15px;
 }
 </style>

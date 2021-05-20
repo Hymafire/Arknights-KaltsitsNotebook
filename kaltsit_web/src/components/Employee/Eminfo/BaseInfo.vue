@@ -1,6 +1,8 @@
 <template>
-  <div id="base-info" :style="{backgroundImage:'url(' + imgUrl + ')'}" class="bc-img title-sticky">
-    <div class="bc-title">{{ employee.name }}</div>
+  <div id="base-info" class="title-sticky bc-color">
+    <div id="em-img" :style="{backgroundImage:'url(' + imgUrl + ')'}" class="bc-img">
+      <div class="bc-title">{{ employee.name }}</div>
+    </div>
   </div>
 </template>
 
@@ -24,13 +26,16 @@ export default {
   width: 100%;
   height: 450px;
   display: flex;
+}
+#em-img {
+  width: 100%;
+  height: 100%;
+  display: flex;
   justify-content: start;
   align-items: flex-end;
 }
-#em-img {
-  display: inline-block;
-  height: 250px;
-  height: 250px;
+.bc-color {
+  background-color: #ddd;
 }
 .bc-img {
   background-repeat: no-repeat;
@@ -39,7 +44,7 @@ export default {
 }
 .title-sticky {
   position: sticky;
-  top: -410px;
+  top: -412px;
   z-index: 1002;
 }
 .bc-title {
@@ -49,13 +54,6 @@ export default {
   font-style: italic;
   color: #fff;
   font-weight: 700;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
-}
-.card-style {
-  margin-bottom: 5px;
-  background-color: white;
-  border: 1px solid #ebeef5;
-  border-radius: 4px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 </style>

@@ -4,7 +4,7 @@
       :visible.sync="drawer"
       :direction="direction"
       :before-close="handleClose"
-      size="50%"
+      size="40%"
     >
       <div id="drawer-nav">
         <router-link to="/home" replace>
