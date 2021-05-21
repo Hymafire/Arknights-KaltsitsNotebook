@@ -10,3 +10,7 @@
 .talpu {
   color: #ff6237
 }
+.stun {
+  color: gray;
+  text-decoration-line: underline;
+}

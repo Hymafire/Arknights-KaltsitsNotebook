@@ -60,7 +60,7 @@ export default {
 
 <style lang="scss" scoped>
 .searchlist-color {
-  background-color: rgba(255, 255, 255, .3);
+  background-color: transparent;
 }
 .search-input {
   margin-top: 10px;

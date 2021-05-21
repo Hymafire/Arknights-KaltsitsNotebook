@@ -66,7 +66,7 @@ export default {
   position: absolute;
   z-index: 1003;
   height: 100%;
-  background-color: rgba(255, 255, 255, .9);
+  background-color: rgba(255, 255, 255, .98);
   box-sizing: border-box;
   padding: 1px;
   border-right: 1px solid #dcdfe6;

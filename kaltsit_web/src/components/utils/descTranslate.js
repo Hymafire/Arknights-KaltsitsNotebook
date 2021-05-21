@@ -11,6 +11,7 @@ function tagTranslate (str) {
   str = str.replace(/<@ba.rem>/g, '<span class="rem">')
   str = str.replace(/<@ba.vdown>/g, '<span class="vdown">')
   str = str.replace(/<@ba.talpu>/g, '<span class="talpu">')
+  str = str.replace(/<\$ba.stun>/g, '<span class="stun">')
   str = str.replace(/\\n/g, '<br>')
   str = str.replace(/<\/>/g, '</span>')
   return str
