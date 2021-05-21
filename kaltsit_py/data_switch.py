@@ -516,10 +516,9 @@ class PreTreated(object):
         print(self.pre_treated_data)
 
 if __name__ == "__main__": 
-    #A = EnemyDataSwitch()
-    #A.letsEnemySwitch()
-    # B = EmployeeDataSwitch()
-    # B.letsEmployeeSwitch()
-    C = PreTreated()
-    C.letsPreTreat()
-    
+    A = EnemyDataSwitch()
+    A.letsEnemySwitch()
+    B = EmployeeDataSwitch()
+    B.letsEmployeeSwitch()
+    # C = PreTreated()
+    # C.letsPreTreat()

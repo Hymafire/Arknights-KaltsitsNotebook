@@ -4,7 +4,7 @@
     "appellation": "Amiya",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害",
+    "description": "攻击造成<@ba.kw>法术伤害</>",
     "displayNum": "R001",
     "favor": {
       "atk": 70,
@@ -197,12 +197,234 @@
     "tokenKey": null,
     "trait": null
   },
+  "char_003_kalts": {
+    "Key": "char_003_kalts",
+    "appellation": "Kal'tsit",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "恢复友方单位生命",
+    "displayNum": "B003",
+    "favor": {
+      "atk": 0,
+      "def": 40,
+      "maxHp": 400
+    },
+    "itemUsage": "罗德岛医疗部门负责人，凯尔希。",
+    "maxPotential": 5,
+    "name": "凯尔希",
+    "phases": {
+      "atk": [
+        [
+          167,
+          274
+        ],
+        [
+          274,
+          392
+        ],
+        [
+          392,
+          490
+        ]
+      ],
+      "atkSpd": 100.0,
+      "atkTime": 2.85,
+      "blockCnt": [
+        1,
+        1,
+        1
+      ],
+      "cost": [
+        18,
+        20,
+        20
+      ],
+      "def": [
+        [
+          94,
+          137
+        ],
+        [
+          137,
+          172
+        ],
+        [
+          172,
+          215
+        ]
+      ],
+      "hpRec": 0.0,
+      "magRes": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "maxDeckStack": [
+        0,
+        0,
+        0
+      ],
+      "maxHp": [
+        [
+          865,
+          1219
+        ],
+        [
+          1219,
+          1469
+        ],
+        [
+          1469,
+          1633
+        ]
+      ],
+      "maxLevel": [
+        50,
+        80,
+        90
+      ],
+      "range": [
+        "3-3",
+        "3-8",
+        "3-10"
+      ],
+      "respawnTime": 70,
+      "spRec": 1.0
+    },
+    "position": "RANGED",
+    "potential": [
+      {
+        "attType": "cost",
+        "description": "部署费用-1",
+        "type": 0,
+        "value": -1.0
+      },
+      {
+        "attType": "respawnTime",
+        "description": "再部署时间-4秒",
+        "type": 0,
+        "value": -4.0
+      },
+      {
+        "attType": "atk",
+        "description": "攻击力+25",
+        "type": 0,
+        "value": 25.0
+      },
+      {
+        "attType": "maxHp",
+        "description": "第二天赋效果增强",
+        "type": 1,
+        "value": 0
+      },
+      {
+        "attType": "cost",
+        "description": "部署费用-1",
+        "type": 0,
+        "value": -1.0
+      }
+    ],
+    "profession": "MEDIC",
+    "rarity": 5,
+    "skills": [
+      "skchr_kalts_1",
+      "skchr_kalts_2",
+      "skchr_kalts_3"
+    ],
+    "tagList": [
+      "召唤",
+      "治疗"
+    ],
+    "talents": [
+      [
+        {
+          "blackboard": [
+            {
+              "key": "cnt",
+              "value": 1.0
+            }
+          ],
+          "description": "可以使用并治疗Mon3tr，拥有35秒再部署时间，优先治疗自身和Mon3tr；Mon3tr不在凯尔希攻击范围内时防御力降至0",
+          "name": "Mon3tr",
+          "prefabKey": "1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 0
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "cnt",
+              "value": 1.0
+            }
+          ],
+          "description": "可以使用并治疗Mon3tr，拥有30秒再部署时间，优先治疗自身和Mon3tr；Mon3tr不在凯尔希攻击范围内时防御力降至0",
+          "name": "Mon3tr",
+          "prefabKey": "1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 1
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "cnt",
+              "value": 1.0
+            }
+          ],
+          "description": "可以使用并治疗Mon3tr，拥有25秒再部署时间，优先治疗自身和Mon3tr；Mon3tr不在凯尔希攻击范围内时防御力降至0",
+          "name": "Mon3tr",
+          "prefabKey": "1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        }
+      ],
+      [
+        {
+          "blackboard": [],
+          "description": "Mon3tr在被击倒后（不包括撤退）使周围8格内所有敌人<$ba.stun>晕眩</>3秒并对其造成1200点真实伤害",
+          "name": "不毁重构",
+          "prefabKey": "2",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        },
+        {
+          "blackboard": [],
+          "description": "Mon3tr在被击倒后（不包括撤退）使周围8格内所有敌人<$ba.stun>晕眩</>3.5<@ba.talpu>（+0.5）</>秒并对其造成1400<@ba.talpu>（+200）</>点真实伤害",
+          "name": "不毁重构",
+          "prefabKey": "2",
+          "rangeId": null,
+          "requiredPotentialRank": 4,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        }
+      ]
+    ],
+    "tokenKey": "token_10002_kalts_mon3tr",
+    "trait": null
+  },
   "char_009_12fce": {
     "Key": "char_009_12fce",
     "appellation": "12F",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成群体法术伤害",
+    "description": "攻击造成<@ba.kw>群体法术伤害</>",
     "displayNum": "R303",
     "favor": {
       "atk": 50,
@@ -323,7 +545,7 @@
     "appellation": "Ch'en",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "普通攻击连续造成两次伤害",
+    "description": "普通攻击连续造成<@ba.kw>两次</>伤害",
     "displayNum": "LM04",
     "favor": {
       "atk": 50,
@@ -562,7 +784,7 @@
     "appellation": "Blaze",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "同时攻击阻挡的所有敌人",
+    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>",
     "displayNum": "RE41",
     "favor": {
       "atk": 60,
@@ -826,7 +1048,7 @@
               "value": 15.0
             }
           ],
-          "description": "在战场停留15秒后获得抵抗（晕眩、寒冷和冻结的持续时间减少50%）",
+          "description": "在战场停留15秒后获得<$ba.buffres>抵抗</>",
           "name": "严酷训练",
           "prefabKey": "2",
           "rangeId": null,
@@ -847,7 +1069,7 @@
               "value": 12.0
             }
           ],
-          "description": "在战场停留12<@ba.talpu>（-3）</>秒后获得抵抗（晕眩、寒冷和冻结的持续时间减少50%）",
+          "description": "在战场停留12<@ba.talpu>（-3）</>秒后获得<$ba.buffres>抵抗</>",
           "name": "严酷训练",
           "prefabKey": "2",
           "rangeId": null,
@@ -864,10 +1086,10 @@
   },
   "char_1011_lava2": {
     "Key": "char_1011_lava2",
-    "appellation": "Purgatory",
+    "appellation": "Lava the Purgatory",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成群体法术伤害",
+    "description": "攻击造成<@ba.kw>群体法术伤害</>",
     "displayNum": "RF01",
     "favor": {
       "atk": 90,
@@ -1089,12 +1311,255 @@
     "tokenKey": null,
     "trait": null
   },
+  "char_1012_skadi2": {
+    "Key": "char_1012_skadi2",
+    "appellation": "Skadi the Corrupting Heart",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "不攻击，持续恢复范围内所有友军<@ba.kw>生命</>（每秒恢复相当于自身攻击力10%的生命），自身不受<$ba.inspire>鼓舞</>影响",
+    "displayNum": "CR01",
+    "favor": {
+      "atk": 50,
+      "def": 30,
+      "maxHp": 0
+    },
+    "itemUsage": "浊心斯卡蒂，一位让你熟悉又陌生的访客。",
+    "maxPotential": 5,
+    "name": "浊心斯卡蒂",
+    "phases": {
+      "atk": [
+        [
+          145,
+          228
+        ],
+        [
+          228,
+          305
+        ],
+        [
+          305,
+          368
+        ]
+      ],
+      "atkSpd": 100.0,
+      "atkTime": 1.0,
+      "blockCnt": [
+        1,
+        1,
+        1
+      ],
+      "cost": [
+        6,
+        8,
+        8
+      ],
+      "def": [
+        [
+          93,
+          139
+        ],
+        [
+          139,
+          186
+        ],
+        [
+          186,
+          233
+        ]
+      ],
+      "hpRec": 0.0,
+      "magRes": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "maxDeckStack": [
+        0,
+        0,
+        0
+      ],
+      "maxHp": [
+        [
+          613,
+          877
+        ],
+        [
+          877,
+          1202
+        ],
+        [
+          1202,
+          1603
+        ]
+      ],
+      "maxLevel": [
+        50,
+        80,
+        90
+      ],
+      "range": [
+        "x-4",
+        "x-1",
+        "x-1"
+      ],
+      "respawnTime": 70,
+      "spRec": 1.0
+    },
+    "position": "RANGED",
+    "potential": [
+      {
+        "attType": "cost",
+        "description": "部署费用-1",
+        "type": 0,
+        "value": -1.0
+      },
+      {
+        "attType": "respawnTime",
+        "description": "再部署时间-6秒",
+        "type": 0,
+        "value": -6.0
+      },
+      {
+        "attType": "atk",
+        "description": "攻击力+27",
+        "type": 0,
+        "value": 27.0
+      },
+      {
+        "attType": "maxHp",
+        "description": "第二天赋效果增强",
+        "type": 1,
+        "value": 0
+      },
+      {
+        "attType": "cost",
+        "description": "部署费用-1",
+        "type": 0,
+        "value": -1.0
+      }
+    ],
+    "profession": "SUPPORT",
+    "rarity": 5,
+    "skills": [
+      "skchr_skadi2_1",
+      "skchr_skadi2_2",
+      "skchr_skadi2_3"
+    ],
+    "tagList": [
+      "支援",
+      "生存",
+      "输出"
+    ],
+    "talents": [
+      [
+        {
+          "blackboard": [
+            {
+              "key": "cnt",
+              "value": 1.0
+            }
+          ],
+          "description": "可以使用一个持续15秒的海嗣，海嗣的攻击范围视为自身攻击范围的延伸",
+          "name": "远古血亲",
+          "prefabKey": "1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 1
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "cnt",
+              "value": 1.0
+            }
+          ],
+          "description": "可以使用一个持续25秒的海嗣，海嗣的攻击范围视为自身攻击范围的延伸",
+          "name": "远古血亲",
+          "prefabKey": "1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        }
+      ],
+      [
+        {
+          "blackboard": [
+            {
+              "key": "skadi2_t_2[atk][1].atk",
+              "value": 0.06
+            },
+            {
+              "key": "skadi2_t_2[atk][2].atk",
+              "value": 0.15
+            }
+          ],
+          "description": "自身或海嗣攻击范围内存在我方干员时，自身攻击力+6%；存在【深海猎人】干员时改为攻击力+15%",
+          "name": "捕食习性",
+          "prefabKey": "2",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "skadi2_t_2[atk][1].atk",
+              "value": 0.09
+            },
+            {
+              "key": "skadi2_t_2[atk][2].atk",
+              "value": 0.18
+            }
+          ],
+          "description": "自身或海嗣攻击范围内存在我方干员时，自身攻击力+9%<@ba.talpu>（+3%）</>；存在【深海猎人】干员时改为攻击力+18%<@ba.talpu>（+3%）</>",
+          "name": "捕食习性",
+          "prefabKey": "2",
+          "rangeId": null,
+          "requiredPotentialRank": 4,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        }
+      ]
+    ],
+    "tokenKey": "token_10017_skadi2_dedant",
+    "trait": {
+      "candidates": [
+        {
+          "blackboard": [
+            {
+              "key": "attack@atk_to_hp_recovery_ratio",
+              "value": 0.1
+            }
+          ],
+          "overrideDescripton": "不攻击，持续恢复范围内所有友军<@ba.kw>生命</>（每秒相当于自身攻击力<@ba.kw>{attack@atk_to_hp_recovery_ratio:0%}</>的生命），自身不受<$ba.inspire>鼓舞</>影响",
+          "prefabKey": "-1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 0
+          }
+        }
+      ]
+    }
+  },
   "char_101_sora": {
     "Key": "char_101_sora",
     "appellation": "Sora",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "不进行攻击，持续恢复攻击范围内所有友军的生命（每秒恢复相当于空攻击力10%的生命）",
+    "description": "不攻击，持续恢复范围内所有友军<@ba.kw>生命</>（每秒恢复相当于自身攻击力10%的生命），自身不受<$ba.inspire>鼓舞</>影响",
     "displayNum": "PL05",
     "favor": {
       "atk": 50,
@@ -1273,7 +1738,26 @@
       ]
     ],
     "tokenKey": null,
-    "trait": null
+    "trait": {
+      "candidates": [
+        {
+          "blackboard": [
+            {
+              "key": "attack@atk_to_hp_recovery_ratio",
+              "value": 0.1
+            }
+          ],
+          "overrideDescripton": "不攻击，持续恢复范围内所有友军<@ba.kw>生命</>（每秒相当于自身攻击力<@ba.kw>{attack@atk_to_hp_recovery_ratio:0%}</>的生命），自身不受<$ba.inspire>鼓舞</>影响",
+          "prefabKey": "-1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 0
+          }
+        }
+      ]
+    }
   },
   "char_102_texas": {
     "Key": "char_102_texas",
@@ -2300,7 +2784,7 @@
     "appellation": "Gitano",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成群体法术伤害",
+    "description": "攻击造成<@ba.kw>群体法术伤害</>",
     "displayNum": "SI01",
     "favor": {
       "atk": 70,
@@ -2543,7 +3027,7 @@
     "appellation": "Deepcolor",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害可以使用召唤物协助作战",
+    "description": "攻击造成<@ba.kw>法术伤害</>\\n可以使用<@ba.kw>召唤物</>协助作战",
     "displayNum": "AA04",
     "favor": {
       "atk": 0,
@@ -2985,7 +3469,7 @@
     "appellation": "W",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "攻击造成群体物理伤害",
+    "description": "攻击造成<@ba.kw>群体物理伤害</>",
     "displayNum": "B214",
     "favor": {
       "atk": 100,
@@ -3179,7 +3663,7 @@
               "value": 1.18
             }
           ],
-          "description": "攻击范围内的敌人在被晕眩时受到的物理伤害+18%",
+          "description": "攻击范围内的敌人在被<$ba.stun>晕眩</>时受到的物理伤害+18%",
           "name": "落井下石",
           "prefabKey": "2",
           "rangeId": null,
@@ -3196,7 +3680,7 @@
               "value": 1.21
             }
           ],
-          "description": "攻击范围内的敌人在被晕眩时受到的物理伤害+21%<@ba.talpu>（+3%）</>",
+          "description": "攻击范围内的敌人在被<$ba.stun>晕眩</>时受到的物理伤害+21%<@ba.talpu>（+3%）</>",
           "name": "落井下石",
           "prefabKey": "2",
           "rangeId": null,
@@ -3605,7 +4089,7 @@
     "appellation": "ShiraYuki",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "攻击造成群体物理伤害",
+    "description": "攻击造成<@ba.kw>群体物理伤害</>",
     "displayNum": "LM10",
     "favor": {
       "atk": 70,
@@ -3928,7 +4412,7 @@
     "appellation": "Lava",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成群体法术伤害",
+    "description": "攻击造成<@ba.kw>群体法术伤害</>",
     "displayNum": "PA15",
     "favor": {
       "atk": 60,
@@ -4839,7 +5323,7 @@
     "appellation": "Estelle",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "同时攻击阻挡的所有敌人",
+    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>",
     "displayNum": "IU04",
     "favor": {
       "atk": 0,
@@ -5456,7 +5940,7 @@
     "appellation": "Dobermann",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "可以攻击到较远敌人",
+    "description": "可以攻击到<@ba.kw>较远敌人</>",
     "displayNum": "R100",
     "favor": {
       "atk": 30,
@@ -6124,7 +6608,7 @@
     "appellation": "Ifrit",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成超远距离的群体法术伤害",
+    "description": "攻击造成<@ba.kw>超远距离的群体法术伤害</>",
     "displayNum": "RL03",
     "favor": {
       "atk": 110,
@@ -6891,7 +7375,7 @@
     "appellation": "Lappland",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "可以进行远程攻击，但此时攻击力降低至80%",
+    "description": "可以进行<@ba.kw>远程攻击</>，但此时攻击力降低至80%",
     "displayNum": "SR01",
     "favor": {
       "atk": 75,
@@ -7122,7 +7606,7 @@
     "appellation": "Haze",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害",
+    "description": "攻击造成<@ba.kw>法术伤害</>",
     "displayNum": "VC02",
     "favor": {
       "atk": 60,
@@ -7350,7 +7834,7 @@
     "appellation": "Specter",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "同时攻击阻挡的所有敌人",
+    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>",
     "displayNum": "AA02",
     "favor": {
       "atk": 80,
@@ -7578,7 +8062,7 @@
     "appellation": "Projekt Red",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "再部署时间大幅度减少",
+    "description": "再部署时间大幅度<@ba.kw>减少</>",
     "displayNum": "SW01",
     "favor": {
       "atk": 75,
@@ -9339,7 +9823,7 @@
     "appellation": "Firewatch",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "优先攻击攻击范围内防御力最低的敌方单位",
+    "description": "优先攻击攻击范围内<@ba.kw>防御力最低</>的敌方单位",
     "displayNum": "ST01",
     "favor": {
       "atk": 90,
@@ -9671,7 +10155,7 @@
               "value": 10.0
             }
           ],
-          "description": "部署费用-2，再部署时间-8秒，但部署后晕眩10秒",
+          "description": "部署费用-2，再部署时间-8秒，但部署后<$ba.stun>晕眩</>10秒",
           "name": "稳妥降落",
           "prefabKey": "1",
           "rangeId": null,
@@ -9696,7 +10180,7 @@
               "value": 10.0
             }
           ],
-          "description": "部署费用-4，再部署时间-15秒，但部署后晕眩10秒",
+          "description": "部署费用-4，再部署时间-15秒，但部署后<$ba.stun>晕眩</>10秒",
           "name": "稳妥降落",
           "prefabKey": "1",
           "rangeId": null,
@@ -9716,7 +10200,7 @@
     "appellation": "Vulcan",
     "atkNum": null,
     "damageMod": "Heal",
-    "description": "无法被友方角色治疗",
+    "description": "<@ba.kw>无法</>被友方角色治疗",
     "displayNum": "MN02",
     "favor": {
       "atk": 50,
@@ -9945,7 +10429,7 @@
     "appellation": "Nightmare",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害",
+    "description": "攻击造成<@ba.kw>法术伤害</>",
     "displayNum": "VC03",
     "favor": {
       "atk": 70,
@@ -10174,7 +10658,7 @@
     "appellation": "Skyfire",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成群体法术伤害",
+    "description": "攻击造成<@ba.kw>群体法术伤害</>",
     "displayNum": "SK01",
     "favor": {
       "atk": 90,
@@ -10572,7 +11056,7 @@
     "appellation": "SilverAsh",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "可以进行远程攻击，但此时攻击力降低至80%",
+    "description": "可以进行<@ba.kw>远程攻击</>，但此时攻击力降低至80%",
     "displayNum": "JC01",
     "favor": {
       "atk": 50,
@@ -10795,7 +11279,7 @@
       [
         {
           "blackboard": [],
-          "description": "攻击范围内敌人的隐匿效果失效",
+          "description": "攻击范围内敌人的<$ba.invisible>隐匿</>效果失效",
           "name": "鹰眼视觉",
           "prefabKey": "2",
           "rangeId": null,
@@ -10834,7 +11318,7 @@
     "appellation": "Cliffheart",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "技能可以使敌人产生位移可以放置于远程位",
+    "description": "技能可以使敌人产生<@ba.kw>位移</>\\n可以放置于远程位",
     "displayNum": "JC06",
     "favor": {
       "atk": 70,
@@ -11062,7 +11546,7 @@
     "appellation": "Pramanix",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害",
+    "description": "攻击造成<@ba.kw>法术伤害</>",
     "displayNum": "JC05",
     "favor": {
       "atk": 65,
@@ -11206,7 +11690,7 @@
               "value": 1.15
             }
           ],
-          "description": "攻击范围内的敌人生命少于40%时，令其获得【脆弱】（受到伤害提高15%）（同类效果取最高）",
+          "description": "攻击范围内的敌人生命少于40%时，令其获得15%的<$ba.fragile>脆弱</>效果",
           "name": "虚弱化",
           "prefabKey": "1",
           "rangeId": null,
@@ -11227,7 +11711,7 @@
               "value": 1.18
             }
           ],
-          "description": "攻击范围内的敌人生命少于40%时，令其获得【脆弱】（受到伤害提高18%<@ba.talpu>（+3%）</>）（同类效果取最高）",
+          "description": "攻击范围内的敌人生命少于40%时，令其获得18%<@ba.talpu>（+3%）</>的<$ba.fragile>脆弱</>效果",
           "name": "虚弱化",
           "prefabKey": "1",
           "rangeId": null,
@@ -11248,7 +11732,7 @@
               "value": 1.3
             }
           ],
-          "description": "攻击范围内的敌人生命少于40%时，令其获得【脆弱】（受到伤害提高30%）（同类效果取最高）",
+          "description": "攻击范围内的敌人生命少于40%时，令其获得30%的<$ba.fragile>脆弱</>效果",
           "name": "虚弱化",
           "prefabKey": "1",
           "rangeId": null,
@@ -11269,7 +11753,7 @@
               "value": 1.33
             }
           ],
-          "description": "攻击范围内的敌人生命少于40%时，令其获得【脆弱】（受到伤害提高33%<@ba.talpu>（+3%）</>）（同类效果取最高）",
+          "description": "攻击范围内的敌人生命少于40%时，令其获得33%<@ba.talpu>（+3%）</>的<$ba.fragile>脆弱</>效果",
           "name": "虚弱化",
           "prefabKey": "1",
           "rangeId": null,
@@ -11554,7 +12038,7 @@
               "value": 2.0
             }
           ],
-          "description": "可以使用幻影。幻影无法攻击和阻挡敌人，拥有75法术抗性，30%的物理闪避，并且更容易吸引敌人的攻击，同时每秒损失3%的最大生命",
+          "description": "可以使用幻影。幻影无法攻击和阻挡敌人，拥有75法术抗性，30%的物理闪避，并且更容易吸引敌人的攻击，同时每秒流失3%的最大生命",
           "name": "转瞬即逝的幻影",
           "prefabKey": "2",
           "rangeId": null,
@@ -11574,7 +12058,7 @@
     "appellation": "Eyjafjalla",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害",
+    "description": "攻击造成<@ba.kw>法术伤害</>",
     "displayNum": "LN02",
     "favor": {
       "atk": 90,
@@ -12042,7 +12526,7 @@
     "appellation": "Earthspirit",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害，并对敌人造成短暂的停顿",
+    "description": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成短暂的<$ba.sluggish>停顿</>",
     "displayNum": "LN01",
     "favor": {
       "atk": 50,
@@ -12182,7 +12666,7 @@
               "value": 0.1
             }
           ],
-          "description": "略微延长特性停顿的持续时间",
+          "description": "略微延长特性<$ba.sluggish>停顿</>的持续时间",
           "name": "地质勘探",
           "prefabKey": "1",
           "rangeId": null,
@@ -12199,7 +12683,7 @@
               "value": 0.13
             }
           ],
-          "description": "稍微延长特性停顿的持续时间",
+          "description": "稍微延长特性<$ba.sluggish>停顿</>的持续时间",
           "name": "地质勘探",
           "prefabKey": "1",
           "rangeId": null,
@@ -12238,7 +12722,7 @@
     "appellation": "Mousse",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害",
+    "description": "攻击造成<@ba.kw>法术伤害</>",
     "displayNum": "VC04",
     "favor": {
       "atk": 35,
@@ -12692,7 +13176,7 @@
     "appellation": "Hellagur",
     "atkNum": null,
     "damageMod": "Heal",
-    "description": "不成为其他角色的治疗目标，每次攻击到敌人后回复自身{value}生命",
+    "description": "不成为其他角色的治疗目标，每次攻击到敌人后回复自身<@ba.kw>{value}</>生命",
     "displayNum": "AZ01",
     "favor": {
       "atk": 70,
@@ -13366,7 +13850,7 @@
     "appellation": "Frostleaf",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "可以进行远程攻击，但此时攻击力降低至80%",
+    "description": "可以进行<@ba.kw>远程攻击</>，但此时攻击力降低至80%",
     "displayNum": "R123",
     "favor": {
       "atk": 0,
@@ -13546,7 +14030,7 @@
     "appellation": "Истина",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害，并对敌人造成短暂的停顿",
+    "description": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成短暂的<$ba.sluggish>停顿</>",
     "displayNum": "USS2",
     "favor": {
       "atk": 65,
@@ -13900,7 +14384,7 @@
               "value": 0.5
             }
           ],
-          "description": "攻击时，10%几率当次攻击的攻击力提升至150%，并眩晕敌人0.5秒",
+          "description": "攻击时，10%几率当次攻击的攻击力提升至150%，并<$ba.stun>晕眩</>敌人0.5秒",
           "name": "平底锅专精",
           "prefabKey": "1",
           "rangeId": null,
@@ -13925,7 +14409,7 @@
               "value": 0.5
             }
           ],
-          "description": "攻击时，13%<@ba.talpu>（+3%）</>几率当次攻击的攻击力提升至150%，并眩晕敌人0.5秒",
+          "description": "攻击时，13%<@ba.talpu>（+3%）</>几率当次攻击的攻击力提升至150%，并<$ba.stun>晕眩</>敌人0.5秒",
           "name": "平底锅专精",
           "prefabKey": "1",
           "rangeId": null,
@@ -13950,7 +14434,7 @@
               "value": 1.0
             }
           ],
-          "description": "攻击时，15%几率当次攻击的攻击力提升至200%，并眩晕敌人1秒",
+          "description": "攻击时，15%几率当次攻击的攻击力提升至200%，并<$ba.stun>晕眩</>敌人1秒",
           "name": "平底锅专精",
           "prefabKey": "1",
           "rangeId": null,
@@ -13975,7 +14459,7 @@
               "value": 1.0
             }
           ],
-          "description": "攻击时，18%<@ba.talpu>（+3%）</>几率当次攻击的攻击力提升至200%，并眩晕敌人1秒",
+          "description": "攻击时，18%<@ba.talpu>（+3%）</>几率当次攻击的攻击力提升至200%，并<$ba.stun>晕眩</>敌人1秒",
           "name": "平底锅专精",
           "prefabKey": "1",
           "rangeId": null,
@@ -14623,7 +15107,7 @@
     "appellation": "Ceobe",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害",
+    "description": "攻击造成<@ba.kw>法术伤害</>",
     "displayNum": "R155",
     "favor": {
       "atk": 90,
@@ -15071,7 +15555,7 @@
               "value": 3.0
             }
           ],
-          "description": "部署后立即获得3层护盾（可以抵消3次伤害）",
+          "description": "部署后立即获得3层<$ba.shield>护盾</>",
           "name": "干明可鉴",
           "prefabKey": "2",
           "rangeId": null,
@@ -15091,7 +15575,7 @@
     "appellation": "Dusk",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成群体法术伤害",
+    "description": "攻击造成<@ba.kw>群体法术伤害</>",
     "displayNum": "NM02",
     "favor": {
       "atk": 110,
@@ -16425,7 +16909,7 @@
     "appellation": "Steward",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害",
+    "description": "攻击造成<@ba.kw>法术伤害</>",
     "displayNum": "PA42",
     "favor": {
       "atk": 50,
@@ -16933,7 +17417,7 @@
     "appellation": "Mostima",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成群体法术伤害",
+    "description": "攻击造成<@ba.kw>群体法术伤害</>",
     "displayNum": "LT77",
     "favor": {
       "atk": 105,
@@ -17149,7 +17633,7 @@
     "appellation": "Kafka",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "再部署时间大幅度减少",
+    "description": "再部署时间大幅度<@ba.kw>减少</>",
     "displayNum": "CB06",
     "favor": {
       "atk": 0,
@@ -17290,7 +17774,7 @@
               "value": 0.0
             }
           ],
-          "description": "被动技能触发期间阻挡数降至0且获得【迷彩】",
+          "description": "被动技能触发期间阻挡数降至0且获得<$ba.camou>迷彩</>",
           "name": "注意力误导",
           "prefabKey": "1",
           "rangeId": null,
@@ -17307,7 +17791,7 @@
               "value": 0.08
             }
           ],
-          "description": "被动技能触发期间攻击力+8%，阻挡数降至0且获得【迷彩】",
+          "description": "被动技能触发期间攻击力+8%，阻挡数降至0且获得<$ba.camou>迷彩</>",
           "name": "注意力误导",
           "prefabKey": "1",
           "rangeId": null,
@@ -17324,7 +17808,7 @@
               "value": 0.11
             }
           ],
-          "description": "被动技能触发期间攻击力+11%<@ba.talpu>（+3%）</>，阻挡数降至0且获得【迷彩】",
+          "description": "被动技能触发期间攻击力+11%<@ba.talpu>（+3%）</>，阻挡数降至0且获得<$ba.camou>迷彩</>",
           "name": "注意力误导",
           "prefabKey": "1",
           "rangeId": null,
@@ -17341,7 +17825,7 @@
               "value": 0.15
             }
           ],
-          "description": "被动技能触发期间攻击力+15%，阻挡数降至0且获得【迷彩】",
+          "description": "被动技能触发期间攻击力+15%，阻挡数降至0且获得<$ba.camou>迷彩</>",
           "name": "注意力误导",
           "prefabKey": "1",
           "rangeId": null,
@@ -17358,7 +17842,7 @@
               "value": 0.18
             }
           ],
-          "description": "被动技能触发期间攻击力+18%<@ba.talpu>（+3%）</>，阻挡数降至0且获得【迷彩】",
+          "description": "被动技能触发期间攻击力+18%<@ba.talpu>（+3%）</>，阻挡数降至0且获得<$ba.camou>迷彩</>",
           "name": "注意力误导",
           "prefabKey": "1",
           "rangeId": null,
@@ -17378,7 +17862,7 @@
     "appellation": "Manticore",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "对攻击范围内所有敌人造成伤害拥有50%的物理和法术闪避且不容易成为敌人的攻击目标",
+    "description": "对攻击范围内<@ba.kw>所有敌人</>造成伤害\\n拥有50%的物理和法术闪避且不容易成为敌人的<@ba.kw>攻击目标</>",
     "displayNum": "SG01",
     "favor": {
       "atk": 60,
@@ -17523,7 +18007,7 @@
               "value": 0.25
             }
           ],
-          "description": "平时处于隐匿状态（不会被远程攻击选为目标），攻击时会解除隐匿状态，且当次攻击的攻击力+25%。停止攻击6秒后，重新进入隐匿状态",
+          "description": "平时处于<$ba.invisible>隐匿</>状态，攻击时会解除<$ba.invisible>隐匿</>状态，且当次攻击的攻击力+25%。停止攻击6秒后，重新进入<$ba.invisible>隐匿</>状态",
           "name": "隐匿的杀手·中级",
           "prefabKey": "1",
           "rangeId": null,
@@ -17544,7 +18028,7 @@
               "value": 0.29
             }
           ],
-          "description": "平时处于隐匿状态（不会被远程攻击选为目标），攻击时会解除隐匿状态，且当次攻击的攻击力+29%<@ba.talpu>（+4%）</>。停止攻击6秒后，重新进入隐匿状态",
+          "description": "平时处于<$ba.invisible>隐匿</>状态，攻击时会解除<$ba.invisible>隐匿</>状态，且当次攻击的攻击力+29%<@ba.talpu>（+4%）</>。停止攻击6秒后，重新进入<$ba.invisible>隐匿</>状态",
           "name": "隐匿的杀手·中级",
           "prefabKey": "1",
           "rangeId": null,
@@ -17565,7 +18049,7 @@
               "value": 0.5
             }
           ],
-          "description": "平时处于隐匿状态（不会被远程攻击选为目标），攻击时会解除隐匿状态，且当次攻击的攻击力+50%。停止攻击5秒后，重新进入隐匿状态",
+          "description": "平时处于<$ba.invisible>隐匿</>状态，攻击时会解除<$ba.invisible>隐匿</>状态，且当次攻击的攻击力+50%。停止攻击5秒后，重新进入<$ba.invisible>隐匿</>状态",
           "name": "隐匿的杀手·精英",
           "prefabKey": "1",
           "rangeId": null,
@@ -17586,7 +18070,7 @@
               "value": 0.54
             }
           ],
-          "description": "平时处于隐匿状态（不会被远程攻击选为目标），攻击时会解除隐匿状态，且当次攻击的攻击力+54%<@ba.talpu>（+4%）</>。停止攻击5秒后，重新进入隐匿状态",
+          "description": "平时处于<$ba.invisible>隐匿</>状态，攻击时会解除<$ba.invisible>隐匿</>状态，且当次攻击的攻击力+54%<@ba.talpu>（+4%）</>。停止攻击5秒后，重新进入<$ba.invisible>隐匿</>状态",
           "name": "隐匿的杀手·精英",
           "prefabKey": "1",
           "rangeId": null,
@@ -17625,7 +18109,7 @@
     "appellation": "Andreana",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "优先攻击攻击范围内防御力最低的敌方单位",
+    "description": "优先攻击攻击范围内<@ba.kw>防御力最低</>的敌方单位",
     "displayNum": "II04",
     "favor": {
       "atk": 40,
@@ -17837,7 +18321,7 @@
     "appellation": "Meteorite",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "攻击造成群体物理伤害",
+    "description": "攻击造成<@ba.kw>群体物理伤害</>",
     "displayNum": "ST03",
     "favor": {
       "atk": 85,
@@ -18538,7 +19022,7 @@
     "appellation": "Aak",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "自身生命会不断减少",
+    "description": "自身生命会不断流失",
     "displayNum": "LM20",
     "favor": {
       "atk": 50,
@@ -18692,7 +19176,7 @@
               "value": 0.6
             }
           ],
-          "description": "每次攻击时会随机触发下列效果之一：回复自身生命13%；当次攻击力提升至130%；目标停顿1秒；目标晕眩0.6秒",
+          "description": "每次攻击时会随机触发下列效果之一：回复自身生命13%；当次攻击力提升至130%；目标<$ba.sluggish>停顿</>1秒；目标<$ba.stun>晕眩</>0.6秒",
           "name": "混合药物射击",
           "prefabKey": "1",
           "rangeId": null,
@@ -18721,7 +19205,7 @@
               "value": 0.8
             }
           ],
-          "description": "每次攻击时会随机触发下列效果之一：回复自身生命14%；当次攻击力提升至140%；目标停顿1.2秒；目标晕眩0.8秒",
+          "description": "每次攻击时会随机触发下列效果之一：回复自身生命14%；当次攻击力提升至140%；目标<$ba.sluggish>停顿</>1.2秒；目标<$ba.stun>晕眩</>0.8秒",
           "name": "混合药物射击",
           "prefabKey": "1",
           "rangeId": null,
@@ -18750,7 +19234,7 @@
               "value": 1.0
             }
           ],
-          "description": "每次攻击时会随机触发下列效果之一：回复自身生命15%；当次攻击力提升至150%；目标停顿1.4秒；目标晕眩1秒",
+          "description": "每次攻击时会随机触发下列效果之一：回复自身生命15%；当次攻击力提升至150%；目标<$ba.sluggish>停顿</>1.4秒；目标<$ba.stun>晕眩</>1秒",
           "name": "混合药物射击",
           "prefabKey": "1",
           "rangeId": null,
@@ -19053,7 +19537,7 @@
     "appellation": "Savage",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "同时攻击阻挡的所有敌人",
+    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>",
     "displayNum": "RB01",
     "favor": {
       "atk": 0,
@@ -19061,7 +19545,7 @@
       "maxHp": 0
     },
     "itemUsage": "雷姆必拓所属近卫干员暴行，心里总是想着为你和阿米娅做些什么。",
-    "maxPotential": 1,
+    "maxPotential": 2,
     "name": "暴行",
     "phases": {
       "atk": [
@@ -19149,6 +19633,12 @@
         "description": "攻击力+35",
         "type": 0,
         "value": 35.0
+      },
+      {
+        "attType": "maxHp",
+        "description": "生命上限+250",
+        "type": 0,
+        "value": 250.0
       }
     ],
     "profession": "WARRIOR",
@@ -19401,7 +19891,7 @@
     "appellation": "Rope",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "技能可以使敌人产生位移可以放置于远程位",
+    "description": "技能可以使敌人产生<@ba.kw>位移</>\\n可以放置于远程位",
     "displayNum": "RB02",
     "favor": {
       "atk": 0,
@@ -19612,7 +20102,7 @@
     "appellation": "Gravel",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "再部署时间大幅度减少",
+    "description": "再部署时间大幅度<@ba.kw>减少</>",
     "displayNum": "KZ04",
     "favor": {
       "atk": 0,
@@ -19981,7 +20471,7 @@
     "appellation": "FEater",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "同时攻击阻挡的所有敌人可以放置于远程位",
+    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>\\n可以放置于远程位",
     "displayNum": "YD01",
     "favor": {
       "atk": 45,
@@ -20193,7 +20683,7 @@
     "appellation": "Mayer",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害可以使用召唤物协助作战",
+    "description": "攻击造成<@ba.kw>法术伤害</>\\n可以使用<@ba.kw>召唤物</>协助作战",
     "displayNum": "RL05",
     "favor": {
       "atk": 35,
@@ -20388,7 +20878,7 @@
     "appellation": "Waai Fu",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "再部署时间大幅度减少",
+    "description": "再部署时间大幅度<@ba.kw>减少</>",
     "displayNum": "LM12",
     "favor": {
       "atk": 50,
@@ -20632,7 +21122,7 @@
     "appellation": "Magallan",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害可以使用召唤物协助作战",
+    "description": "攻击造成<@ba.kw>法术伤害</>\\n可以使用<@ba.kw>召唤物</>协助作战",
     "displayNum": "RL06",
     "favor": {
       "atk": 40,
@@ -20823,7 +21313,7 @@
       [
         {
           "blackboard": [],
-          "description": "无人机在部署后的12秒内处于隐匿状态（不会成为敌方远程单位的攻击目标）",
+          "description": "无人机在部署后的12秒内处于<$ba.invisible>隐匿</>状态（不会成为敌方远程单位的攻击目标）",
           "name": "光学折射配件",
           "prefabKey": "2",
           "rangeId": null,
@@ -20835,7 +21325,7 @@
         },
         {
           "blackboard": [],
-          "description": "无人机在部署后的14<@ba.talpu>（+2）</>秒内处于隐匿状态（不会成为敌方远程单位的攻击目标）",
+          "description": "无人机在部署后的14<@ba.talpu>（+2）</>秒内处于<$ba.invisible>隐匿</>状态（不会成为敌方远程单位的攻击目标）",
           "name": "光学折射配件",
           "prefabKey": "2",
           "rangeId": null,
@@ -20847,7 +21337,7 @@
         },
         {
           "blackboard": [],
-          "description": "无人机在部署后的20秒内处于隐匿状态（不会成为敌方远程单位的攻击目标）",
+          "description": "无人机在部署后的20秒内处于<$ba.invisible>隐匿</>状态（不会成为敌方远程单位的攻击目标）",
           "name": "光学折射配件",
           "prefabKey": "2",
           "rangeId": null,
@@ -20859,7 +21349,7 @@
         },
         {
           "blackboard": [],
-          "description": "无人机在部署后的22<@ba.talpu>（+2）</>秒内处于隐匿状态（不会成为敌方远程单位的攻击目标）",
+          "description": "无人机在部署后的22<@ba.talpu>（+2）</>秒内处于<$ba.invisible>隐匿</>状态（不会成为敌方远程单位的攻击目标）",
           "name": "光学折射配件",
           "prefabKey": "2",
           "rangeId": null,
@@ -20879,7 +21369,7 @@
     "appellation": "Phantom",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "再部署时间大幅度减少",
+    "description": "再部署时间大幅度<@ba.kw>减少</>",
     "displayNum": "R109",
     "favor": {
       "atk": 90,
@@ -21073,7 +21563,7 @@
     "appellation": "Bibeak",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "普通攻击连续造成两次伤害",
+    "description": "普通攻击连续造成<@ba.kw>两次</>伤害",
     "displayNum": "R138",
     "favor": {
       "atk": 80,
@@ -21301,7 +21791,7 @@
     "appellation": "Greyy",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成群体法术伤害",
+    "description": "攻击造成<@ba.kw>群体法术伤害</>",
     "displayNum": "R119",
     "favor": {
       "atk": 0,
@@ -21442,7 +21932,7 @@
               "value": 0.4
             }
           ],
-          "description": "攻击时对攻击目标造成0.4秒的停顿",
+          "description": "攻击时对攻击目标造成0.4秒的<$ba.sluggish>停顿</>",
           "name": "静电场",
           "prefabKey": "1",
           "rangeId": null,
@@ -21459,7 +21949,7 @@
               "value": 0.6
             }
           ],
-          "description": "攻击时对攻击目标造成0.6秒的停顿",
+          "description": "攻击时对攻击目标造成0.6秒的<$ba.sluggish>停顿</>",
           "name": "静电场",
           "prefabKey": "1",
           "rangeId": null,
@@ -21479,7 +21969,7 @@
     "appellation": "Shamare",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害",
+    "description": "攻击造成<@ba.kw>法术伤害</>",
     "displayNum": "R148",
     "favor": {
       "atk": 65,
@@ -21623,7 +22113,7 @@
               "value": 1.1
             }
           ],
-          "description": "攻击范围内的敌人生命少于40%时，令其获得【脆弱】（受到伤害提高10%）（同类效果取最高）",
+          "description": "攻击范围内的敌人生命少于40%时，令其获得10%的<$ba.fragile>脆弱</>效果",
           "name": "溃败暗示 ",
           "prefabKey": "1",
           "rangeId": null,
@@ -21644,7 +22134,7 @@
               "value": 1.13
             }
           ],
-          "description": "攻击范围内的敌人生命少于40%时，令其获得【脆弱】（受到伤害提高13%<@ba.talpu>（+3%）</>）（同类效果取最高）",
+          "description": "攻击范围内的敌人生命少于40%时，令其获得13%<@ba.talpu>（+3%）</>的<$ba.fragile>脆弱</>效果",
           "name": "溃败暗示 ",
           "prefabKey": "1",
           "rangeId": null,
@@ -21665,7 +22155,7 @@
               "value": 1.2
             }
           ],
-          "description": "攻击范围内的敌人生命少于40%时，令其获得【脆弱】（受到伤害提高20%）（同类效果取最高）",
+          "description": "攻击范围内的敌人生命少于40%时，令其获得20%的<$ba.fragile>脆弱</>效果",
           "name": "溃败暗示 ",
           "prefabKey": "1",
           "rangeId": null,
@@ -21686,7 +22176,7 @@
               "value": 1.23
             }
           ],
-          "description": "攻击范围内的敌人生命少于40%时，令其获得【脆弱】（受到伤害提高23%<@ba.talpu>（+3%）</>）（同类效果取最高）",
+          "description": "攻击范围内的敌人生命少于40%时，令其获得23%<@ba.talpu>（+3%）</>的<$ba.fragile>脆弱</>效果",
           "name": "溃败暗示 ",
           "prefabKey": "1",
           "rangeId": null,
@@ -21707,7 +22197,7 @@
               "value": 1.3
             }
           ],
-          "description": "攻击范围内的敌人生命少于40%时，令其获得【脆弱】（受到伤害提高30%）（同类效果取最高）",
+          "description": "攻击范围内的敌人生命少于40%时，令其获得30%的<$ba.fragile>脆弱</>效果",
           "name": "溃败暗示 ",
           "prefabKey": "1",
           "rangeId": null,
@@ -21728,7 +22218,7 @@
               "value": 1.33
             }
           ],
-          "description": "攻击范围内的敌人生命少于40%时，令其获得【脆弱】（受到伤害提高33%<@ba.talpu>（+3%）</>）（同类效果取最高）",
+          "description": "攻击范围内的敌人生命少于40%时，令其获得33%<@ba.talpu>（+3%）</>的<$ba.fragile>脆弱</>效果",
           "name": "溃败暗示 ",
           "prefabKey": "1",
           "rangeId": null,
@@ -21748,7 +22238,7 @@
     "appellation": "Podenco",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害，并对敌人造成短暂的停顿",
+    "description": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成短暂的<$ba.sluggish>停顿</>",
     "displayNum": "R157",
     "favor": {
       "atk": 50,
@@ -22878,7 +23368,7 @@
     "appellation": "Whislash",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "可以攻击到较远敌人",
+    "description": "可以攻击到<@ba.kw>较远敌人</>",
     "displayNum": "KZ07",
     "favor": {
       "atk": 30,
@@ -23196,7 +23686,7 @@
     "appellation": "Arene",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "可以进行远程攻击，但此时攻击力降低至80%",
+    "description": "可以进行<@ba.kw>远程攻击</>，但此时攻击力降低至80%",
     "displayNum": "LT06",
     "favor": {
       "atk": 55,
@@ -23443,7 +23933,7 @@
     "appellation": "Jaye",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "再部署时间减少，撤退时不返还部署费用，在场时每3秒消耗3点部署费用（不足时自动撤退）",
+    "description": "再部署时间<@ba.kw>减少</>，撤退时不返还<@ba.kw>部署费用</>，在场时每3秒<@ba.kw>消耗</>3点部署费用（不足时自动撤退）",
     "displayNum": "LM14",
     "favor": {
       "atk": 40,
@@ -23678,7 +24168,7 @@
     "appellation": "Astesia",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害",
+    "description": "攻击造成<@ba.kw>法术伤害</>",
     "displayNum": "RR01",
     "favor": {
       "atk": 30,
@@ -24013,7 +24503,7 @@
               "value": -0.5
             }
           ],
-          "description": "技能开启时，所有【医疗】干员获得抵抗（晕眩、寒冷和冻结的持续时间减少50%）",
+          "description": "技能开启时，所有【医疗】干员获得<$ba.buffres>抵抗</>",
           "name": "医疗班保护",
           "prefabKey": "1",
           "rangeId": null,
@@ -24030,7 +24520,7 @@
               "value": -0.5
             }
           ],
-          "description": "技能开启时，所有【医疗】和【辅助】干员获得抵抗（晕眩、寒冷和冻结的持续时间减少50%）",
+          "description": "技能开启时，所有【医疗】和【辅助】干员获得<$ba.buffres>抵抗</>",
           "name": "医疗班保护",
           "prefabKey": "1+",
           "rangeId": null,
@@ -24050,7 +24540,7 @@
     "appellation": "Shaw",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "同时攻击阻挡的所有敌人可以放置于远程位",
+    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>\\n可以放置于远程位",
     "displayNum": "LM11",
     "favor": {
       "atk": 35,
@@ -24227,7 +24717,7 @@
     "appellation": "Orchid",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害，并对敌人造成短暂的停顿",
+    "description": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成短暂的<$ba.sluggish>停顿</>",
     "displayNum": "PA61",
     "favor": {
       "atk": 40,
@@ -24404,7 +24894,7 @@
     "appellation": "Executor",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "攻击范围内的所有敌人，对自己前方一横排的敌人攻击力提升至150%",
+    "description": "攻击范围内的<@ba.kw>所有敌人</>，对自己前方一横排的敌人攻击力提升至150%",
     "displayNum": "LT01",
     "favor": {
       "atk": 65,
@@ -24634,7 +25124,7 @@
     "appellation": "Popukar",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "同时攻击阻挡的所有敌人",
+    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>",
     "displayNum": "PA65",
     "favor": {
       "atk": 50,
@@ -24843,7 +25333,7 @@
     "appellation": "Catapult",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "攻击造成群体物理伤害",
+    "description": "攻击造成<@ba.kw>群体物理伤害</>",
     "displayNum": "PA63",
     "favor": {
       "atk": 55,
@@ -24984,7 +25474,7 @@
     "appellation": "Midnight",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "可以进行远程攻击，但此时攻击力降低至80%",
+    "description": "可以进行<@ba.kw>远程攻击</>，但此时攻击力降低至80%",
     "displayNum": "PA62",
     "favor": {
       "atk": 50,
@@ -25420,7 +25910,7 @@
     "appellation": "Lancet-2",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "恢复友方单位生命，且不受部署数量限制，但再部署时间极长",
+    "description": "恢复友方单位生命，且不受<@ba.kw>部署数量</>限制，但再部署时间极长",
     "displayNum": "RCX2",
     "favor": {
       "atk": 40,
@@ -25626,7 +26116,7 @@
     "appellation": "Castle-3",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "能够阻挡一个敌人，且不受部署数量限制，但再部署时间极长",
+    "description": "能够阻挡一个敌人，且不受<@ba.kw>部署数量</>限制，但再部署时间极长",
     "displayNum": "RCX3",
     "favor": {
       "atk": 60,
@@ -26329,7 +26819,7 @@
     "appellation": "Angelina",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害，并对敌人造成短暂的停顿",
+    "description": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成短暂的<$ba.sluggish>停顿</>",
     "displayNum": "SR02",
     "favor": {
       "atk": 75,
@@ -26598,7 +27088,7 @@
     "appellation": "Thorns",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "可以进行远程攻击，但此时攻击力降低至80%",
+    "description": "可以进行<@ba.kw>远程攻击</>，但此时攻击力降低至80%",
     "displayNum": "II01",
     "favor": {
       "atk": 30,
@@ -26906,7 +27396,7 @@
     "appellation": "Ayerscarpe",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "可以进行远程攻击，但此时攻击力降低至80%",
+    "description": "可以进行<@ba.kw>远程攻击</>，但此时攻击力降低至80%",
     "displayNum": "RB04",
     "favor": {
       "atk": 75,
@@ -27364,7 +27854,7 @@
     "appellation": "Cutter",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "普通攻击连续造成两次伤害",
+    "description": "普通攻击连续造成<@ba.kw>两次</>伤害",
     "displayNum": "R144",
     "favor": {
       "atk": 70,
@@ -27592,7 +28082,7 @@
     "appellation": "Ambriel",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "优先攻击攻击范围内防御力最低的敌方单位",
+    "description": "优先攻击攻击范围内<@ba.kw>防御力最低</>的敌方单位",
     "displayNum": "LT02",
     "favor": {
       "atk": 75,
@@ -27737,7 +28227,7 @@
               "value": 2.0
             }
           ],
-          "description": "攻击原本攻击范围以外的目标时，有25%的几率使其晕眩2秒",
+          "description": "攻击原本攻击范围以外的目标时，有25%的几率使其<$ba.stun>晕眩</>2秒",
           "name": "精确打击",
           "prefabKey": "1",
           "rangeId": null,
@@ -27758,10 +28248,222 @@
               "value": 2.0
             }
           ],
-          "description": "攻击原本攻击范围以外的目标时，有28%<@ba.talpu>（+3%）</>的几率使其晕眩2秒",
+          "description": "攻击原本攻击范围以外的目标时，有28%<@ba.talpu>（+3%）</>的几率使其<$ba.stun>晕眩</>2秒",
           "name": "精确打击",
           "prefabKey": "1",
           "rangeId": null,
+          "requiredPotentialRank": 4,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        }
+      ]
+    ],
+    "tokenKey": null,
+    "trait": null
+  },
+  "char_304_zebra": {
+    "Key": "char_304_zebra",
+    "appellation": "Heavyrain",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "能够阻挡三个敌人",
+    "displayNum": "R164",
+    "favor": {
+      "atk": 0,
+      "def": 35,
+      "maxHp": 350
+    },
+    "itemUsage": "重装干员暴雨，任劳任怨。",
+    "maxPotential": 5,
+    "name": "暴雨",
+    "phases": {
+      "atk": [
+        [
+          199,
+          256
+        ],
+        [
+          256,
+          321
+        ],
+        [
+          321,
+          378
+        ]
+      ],
+      "atkSpd": 100.0,
+      "atkTime": 1.2,
+      "blockCnt": [
+        3,
+        3,
+        3
+      ],
+      "cost": [
+        20,
+        22,
+        24
+      ],
+      "def": [
+        [
+          253,
+          378
+        ],
+        [
+          378,
+          519
+        ],
+        [
+          519,
+          721
+        ]
+      ],
+      "hpRec": 0.0,
+      "magRes": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "maxDeckStack": [
+        0,
+        0,
+        0
+      ],
+      "maxHp": [
+        [
+          1443,
+          1899
+        ],
+        [
+          1899,
+          2467
+        ],
+        [
+          2467,
+          3380
+        ]
+      ],
+      "maxLevel": [
+        50,
+        70,
+        80
+      ],
+      "range": [
+        "0-1",
+        "0-1",
+        "0-1"
+      ],
+      "respawnTime": 80,
+      "spRec": 1.0
+    },
+    "position": "MELEE",
+    "potential": [
+      {
+        "attType": "cost",
+        "description": "部署费用-1",
+        "type": 0,
+        "value": -1.0
+      },
+      {
+        "attType": "respawnTime",
+        "description": "再部署时间-10秒",
+        "type": 0,
+        "value": -10.0
+      },
+      {
+        "attType": "cost",
+        "description": "部署费用-1",
+        "type": 0,
+        "value": -1.0
+      },
+      {
+        "attType": "maxHp",
+        "description": "天赋效果增强",
+        "type": 1,
+        "value": 0
+      },
+      {
+        "attType": "cost",
+        "description": "部署费用-1",
+        "type": 0,
+        "value": -1.0
+      }
+    ],
+    "profession": "TANK",
+    "rarity": 4,
+    "skills": [
+      "skchr_zebra_1",
+      "skchr_zebra_2"
+    ],
+    "tagList": [
+      "防护",
+      "支援"
+    ],
+    "talents": [
+      [
+        {
+          "blackboard": [
+            {
+              "key": "prob",
+              "value": 0.1
+            }
+          ],
+          "description": "自身和周围8格内的高台干员获得10%的物理闪避",
+          "name": "条纹迷彩",
+          "prefabKey": "1",
+          "rangeId": "x-4",
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 1
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "prob",
+              "value": 0.13
+            }
+          ],
+          "description": "自身和周围8格内的高台干员获得13%<@ba.talpu>（+3%）</>的物理闪避",
+          "name": "条纹迷彩",
+          "prefabKey": "1",
+          "rangeId": "x-4",
+          "requiredPotentialRank": 4,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 1
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "prob",
+              "value": 0.2
+            }
+          ],
+          "description": "自身和周围8格内的高台干员获得20%的物理闪避",
+          "name": "条纹迷彩",
+          "prefabKey": "1",
+          "rangeId": "x-4",
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "prob",
+              "value": 0.23
+            }
+          ],
+          "description": "自身和周围8格内的高台干员获得23%<@ba.talpu>（+3%）</>的物理闪避",
+          "name": "条纹迷彩",
+          "prefabKey": "1",
+          "rangeId": "x-4",
           "requiredPotentialRank": 4,
           "unlockCondition": {
             "level": 1,
@@ -27778,7 +28480,7 @@
     "appellation": "Leizi",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害，且会在3个敌人间跳跃，每次跳跃伤害降低25%并造成短暂停顿",
+    "description": "攻击造成<@ba.kw>法术伤害</>，且会在<@ba.kw>3</>个敌人间跳跃，每次跳跃伤害降低20%并造成短暂<$ba.sluggish>停顿</>",
     "displayNum": "YD05",
     "favor": {
       "atk": 75,
@@ -27995,7 +28697,7 @@
               "value": 0.2
             }
           ],
-          "overrideDescripton": "攻击造成<@ba.kw>法术伤害</>，且会在<@ba.kw>{attack@max_target}</>个敌人间跳跃，每次跳跃伤害降低25%并造成短暂停顿（精英2后更新）",
+          "overrideDescripton": "攻击造成<@ba.kw>法术伤害</>，且会在<@ba.kw>{attack@max_target}</>个敌人间跳跃，每次跳跃伤害降低20%并造成短暂<$ba.sluggish>停顿</>（精英2后更新）",
           "prefabKey": "-1",
           "rangeId": null,
           "requiredPotentialRank": 0,
@@ -28015,7 +28717,7 @@
               "value": 0.2
             }
           ],
-          "overrideDescripton": "攻击造成<@ba.kw>法术伤害</>，且会在<@ba.kw>{attack@max_target}</>个敌人间跳跃，每次跳跃伤害降低25%并造成短暂停顿",
+          "overrideDescripton": "攻击造成<@ba.kw>法术伤害</>，且会在<@ba.kw>{attack@max_target}</>个敌人间跳跃，每次跳跃伤害降低20%并造成短暂<$ba.sluggish>停顿</>",
           "prefabKey": "-1",
           "rangeId": null,
           "requiredPotentialRank": 0,
@@ -28032,7 +28734,7 @@
     "appellation": "Swire",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "可以攻击到较远敌人",
+    "description": "可以攻击到<@ba.kw>较远敌人</>",
     "displayNum": "LM08",
     "favor": {
       "atk": 40,
@@ -28278,7 +28980,7 @@
     "appellation": "Mudrock",
     "atkNum": null,
     "damageMod": "Heal",
-    "description": "无法被友方角色治疗",
+    "description": "<@ba.kw>无法</>被友方角色治疗",
     "displayNum": "R159",
     "favor": {
       "atk": 0,
@@ -28433,7 +29135,7 @@
               "value": 0.15
             }
           ],
-          "description": "每9秒获得1层护盾（可以抵消1次伤害）（最多2层，部署后立即获得1层），每层护盾破裂时恢复自身15%最大生命",
+          "description": "每9秒获得1层<$ba.shield>护盾</>（最多2层，部署后立即获得1层），每层护盾破裂时恢复自身15%最大生命",
           "name": "沃土予身",
           "prefabKey": "1",
           "rangeId": null,
@@ -28462,7 +29164,7 @@
               "value": 0.17
             }
           ],
-          "description": "每9秒获得1层护盾（可以抵消1次伤害）（最多2层，部署后立即获得1层），每层护盾破裂时恢复自身17%<@ba.talpu>（+2%）</>最大生命",
+          "description": "每9秒获得1层<$ba.shield>护盾</>（最多2层，部署后立即获得1层），每层护盾破裂时恢复自身17%<@ba.talpu>（+2%）</>最大生命",
           "name": "沃土予身",
           "prefabKey": "1",
           "rangeId": null,
@@ -28491,7 +29193,7 @@
               "value": 0.2
             }
           ],
-          "description": "每9秒获得1层护盾（可以抵消1次伤害）（最多2层，部署后立即获得1层），每层护盾破裂时恢复自身20%最大生命",
+          "description": "每9秒获得1层<$ba.shield>护盾</>（最多2层，部署后立即获得1层），每层护盾破裂时恢复自身20%最大生命",
           "name": "沃土予身",
           "prefabKey": "1",
           "rangeId": null,
@@ -28520,7 +29222,7 @@
               "value": 0.22
             }
           ],
-          "description": "每9秒获得1层护盾（可以抵消1次伤害）（最多2层，部署后立即获得1层），每层护盾破裂时恢复自身22%<@ba.talpu>（+2%）</>最大生命",
+          "description": "每9秒获得1层<$ba.shield>护盾</>（最多2层，部署后立即获得1层），每层护盾破裂时恢复自身22%<@ba.talpu>（+2%）</>最大生命",
           "name": "沃土予身",
           "prefabKey": "1",
           "rangeId": null,
@@ -28549,7 +29251,7 @@
               "value": 0.2
             }
           ],
-          "description": "每9秒获得1层护盾（可以抵消1次伤害）（最多3层，部署后立即获得1层），每层护盾破裂时恢复自身20%最大生命",
+          "description": "每9秒获得1层<$ba.shield>护盾</>（最多3层，部署后立即获得1层），每层护盾破裂时恢复自身20%最大生命",
           "name": "沃土予身",
           "prefabKey": "1",
           "rangeId": null,
@@ -28578,7 +29280,7 @@
               "value": 0.22
             }
           ],
-          "description": "每9秒获得1层护盾（可以抵消1次伤害）（最多3层，部署后立即获得1层），每层护盾破裂时恢复自身22%<@ba.talpu>（+2%）</>最大生命",
+          "description": "每9秒获得1层<$ba.shield>护盾</>（最多3层，部署后立即获得1层），每层护盾破裂时恢复自身22%<@ba.talpu>（+2%）</>最大生命",
           "name": "沃土予身",
           "prefabKey": "1",
           "rangeId": null,
@@ -28828,7 +29530,7 @@
     "appellation": "Glaucus",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害，并对敌人造成短暂的停顿",
+    "description": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成短暂的<$ba.sluggish>停顿</>",
     "displayNum": "R128",
     "favor": {
       "atk": 35,
@@ -29059,7 +29761,7 @@
     "appellation": "Click",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "操作浮游单元对敌人造成法术伤害浮游单元连续攻击同一敌人时伤害提升（最高造成干员110%攻击力的伤害）",
+    "description": "操作<@ba.kw>浮游单元</>对敌人造成<@ba.kw>法术伤害</>\\n浮游单元连续攻击同一敌人时伤害提升（最高造成干员110%攻击力的伤害）",
     "displayNum": "R140",
     "favor": {
       "atk": 60,
@@ -29453,7 +30155,7 @@
               "value": 7.0
             }
           ],
-          "description": "部署后立即获得一层护盾（可以抵消1次伤害），护盾破裂后获得7点技力",
+          "description": "部署后立即获得一层<$ba.shield>护盾</>，护盾破裂后获得7点技力",
           "name": "铁弦",
           "prefabKey": "2",
           "rangeId": null,
@@ -29470,7 +30172,7 @@
               "value": 9.0
             }
           ],
-          "description": "部署后立即获得一层护盾（可以抵消1次伤害），护盾破裂后获得9<@ba.talpu>（+2）</>点技力",
+          "description": "部署后立即获得一层<$ba.shield>护盾</>，护盾破裂后获得9<@ba.talpu>（+2）</>点技力",
           "name": "铁弦",
           "prefabKey": "2",
           "rangeId": null,
@@ -29490,7 +30192,7 @@
     "appellation": "Sideroca",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害",
+    "description": "攻击造成<@ba.kw>法术伤害</>",
     "displayNum": "R126",
     "favor": {
       "atk": 0,
@@ -29639,7 +30341,7 @@
               "value": -0.5
             }
           ],
-          "description": "击杀7个敌人后获得攻击速度+15和抵抗（晕眩、寒冷和冻结的持续时间减少50%）",
+          "description": "击杀7个敌人后获得攻击速度+15和<$ba.buffres>抵抗</>",
           "name": "佣兵之韧",
           "prefabKey": "1",
           "rangeId": null,
@@ -29664,7 +30366,7 @@
               "value": -0.5
             }
           ],
-          "description": "击杀5<@ba.talpu>（-2）</>个敌人后获得攻击速度+15和抵抗（晕眩、寒冷和冻结的持续时间减少50%）",
+          "description": "击杀5<@ba.talpu>（-2）</>个敌人后获得攻击速度+15和<$ba.buffres>抵抗</>",
           "name": "佣兵之韧",
           "prefabKey": "1",
           "rangeId": null,
@@ -29684,7 +30386,7 @@
     "appellation": "Scene",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害可以使用召唤物协助作战",
+    "description": "攻击造成<@ba.kw>法术伤害</>\\n可以使用<@ba.kw>召唤物</>协助作战",
     "displayNum": "R162",
     "favor": {
       "atk": 0,
@@ -29825,7 +30527,7 @@
               "value": 3.0
             }
           ],
-          "description": "可以使用3个移动摄影车。摄影车周围8格内敌人的隐匿效果失效",
+          "description": "可以使用3个移动摄影车。摄影车周围8格内敌人的<$ba.invisible>隐匿</>效果失效",
           "name": "摄影小队",
           "prefabKey": "1",
           "rangeId": null,
@@ -29842,7 +30544,7 @@
               "value": 4.0
             }
           ],
-          "description": "可以使用4个移动摄影车。摄影车周围8格内敌人的隐匿效果失效",
+          "description": "可以使用4个移动摄影车。摄影车周围8格内敌人的<$ba.invisible>隐匿</>效果失效",
           "name": "摄影小队",
           "prefabKey": "1",
           "rangeId": null,
@@ -29859,7 +30561,7 @@
               "value": 5.0
             }
           ],
-          "description": "可以使用5个移动摄影车。摄影车周围8格内敌人的隐匿效果失效",
+          "description": "可以使用5个移动摄影车。摄影车周围8格内敌人的<$ba.invisible>隐匿</>效果失效",
           "name": "摄影小队",
           "prefabKey": "1",
           "rangeId": null,
@@ -29879,7 +30581,7 @@
     "appellation": "Utage",
     "atkNum": null,
     "damageMod": "Heal",
-    "description": "不成为其他角色的治疗目标，每次攻击到敌人后回复自身{value}生命",
+    "description": "不成为其他角色的治疗目标，每次攻击到敌人后回复自身<@ba.kw>{value}</>生命",
     "displayNum": "HK03",
     "favor": {
       "atk": 30,
@@ -30161,7 +30863,7 @@
     "appellation": "Iris",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害，在找不到攻击目标时可以将攻击能量储存起来之后一齐发射（最多3个）",
+    "description": "攻击造成<@ba.kw>法术伤害</>，在找不到攻击目标时可以将攻击能量<@ba.kw>储存</>起来之后一齐发射（最多3个）",
     "displayNum": "VC12",
     "favor": {
       "atk": 130,
@@ -30658,7 +31360,7 @@
     "appellation": "Tsukinogi",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害",
+    "description": "攻击造成<@ba.kw>法术伤害</>",
     "displayNum": "R129",
     "favor": {
       "atk": 40,
@@ -30803,7 +31505,7 @@
               "value": 0.12
             }
           ],
-          "description": "攻击范围内的友军生命少于40%时，使其获得【庇护】（受到的物理与法术伤害降低12%）（同类效果取最高）",
+          "description": "攻击范围内的友军生命少于40%时，使其获得12%的<$ba.protect>庇护</>",
           "name": "祝",
           "prefabKey": "1",
           "rangeId": null,
@@ -30824,7 +31526,7 @@
               "value": 0.14
             }
           ],
-          "description": "攻击范围内的友军生命少于40%时，使其获得【庇护】（受到的物理与法术伤害降低14%<@ba.talpu>（+2%）</>）（同类效果取最高）",
+          "description": "攻击范围内的友军生命少于40%时，使其获得14%<@ba.talpu>（+2%）</>的<$ba.protect>庇护</>",
           "name": "祝",
           "prefabKey": "1",
           "rangeId": null,
@@ -30845,7 +31547,7 @@
               "value": 0.18
             }
           ],
-          "description": "攻击范围内的友军生命少于40%时，使其获得【庇护】（受到的物理与法术伤害降低18%）（同类效果取最高）",
+          "description": "攻击范围内的友军生命少于40%时，使其获得18%的<$ba.protect>庇护</>",
           "name": "祝",
           "prefabKey": "1",
           "rangeId": null,
@@ -30866,7 +31568,7 @@
               "value": 0.2
             }
           ],
-          "description": "攻击范围内的友军生命少于40%时，使其获得【庇护】（受到的物理与法术伤害降低20%<@ba.talpu>（+2%）</>）（同类效果取最高）",
+          "description": "攻击范围内的友军生命少于40%时，使其获得20%<@ba.talpu>（+2%）</>的<$ba.protect>庇护</>",
           "name": "祝",
           "prefabKey": "1",
           "rangeId": null,
@@ -30886,7 +31588,7 @@
     "appellation": "Beeswax",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "通常时不攻击且防御力和法术抗性大幅度提升，技能开启时攻击造成群体法术伤害",
+    "description": "通常时<@ba.kw>不攻击</>且防御力和法术抗性大幅度<@ba.kw>提升</>，技能开启时攻击造成<@ba.kw>群体法术伤害</>",
     "displayNum": "R147",
     "favor": {
       "atk": 70,
@@ -31232,7 +31934,7 @@
               "value": 1.0
             }
           ],
-          "description": "拥有抵抗（晕眩、寒冷和冻结的持续时间减少50%）",
+          "description": "拥有<$ba.buffres>抵抗</>",
           "name": "药物阻断技巧",
           "prefabKey": "1",
           "rangeId": null,
@@ -31253,7 +31955,7 @@
               "value": 0.6
             }
           ],
-          "description": "拥有抵抗（晕眩、寒冷和冻结的持续时间减少50%）且受到来自自然环境的伤害-40%",
+          "description": "拥有<$ba.buffres>抵抗</>且受到来自自然环境的伤害-40%",
           "name": "药物阻断技巧",
           "prefabKey": "1",
           "rangeId": null,
@@ -31274,7 +31976,7 @@
               "value": 0.5
             }
           ],
-          "description": "拥有抵抗（晕眩、寒冷和冻结的持续时间减少50%）且受到来自自然环境的伤害-50%<@ba.talpu>（+10%）</>",
+          "description": "拥有<$ba.buffres>抵抗</>且受到来自自然环境的伤害-50%<@ba.talpu>（+10%）</>",
           "name": "药物阻断技巧",
           "prefabKey": "1",
           "rangeId": null,
@@ -31294,7 +31996,7 @@
     "appellation": "Aosta",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "攻击范围内的所有敌人，对自己前方一横排的敌人攻击力提升至150%",
+    "description": "攻击范围内的<@ba.kw>所有敌人</>，对自己前方一横排的敌人攻击力提升至150%",
     "displayNum": "SR28",
     "favor": {
       "atk": 65,
@@ -31783,7 +32485,7 @@
     "appellation": "Ceylon",
     "atkNum": null,
     "damageMod": "Heal",
-    "description": "拥有较大治疗范围，但在治疗较远目标时治疗量变为{heal_scale:0%}",
+    "description": "拥有较大治疗范围，但在治疗较远目标时治疗量变为<@ba.kw>{heal_scale:0%}</>",
     "displayNum": "SS01",
     "favor": {
       "atk": 40,
@@ -32273,7 +32975,7 @@
     "appellation": "Surtr",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害",
+    "description": "攻击造成<@ba.kw>法术伤害</>",
     "displayNum": "R111",
     "favor": {
       "atk": 100,
@@ -32555,7 +33257,7 @@
     "appellation": "Ethan",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "对攻击范围内所有敌人造成伤害拥有50%的物理和法术闪避且不容易成为敌人的攻击目标",
+    "description": "对攻击范围内<@ba.kw>所有敌人</>造成伤害\\n拥有50%的物理和法术闪避且不容易成为敌人的<@ba.kw>攻击目标</>",
     "displayNum": "R130",
     "favor": {
       "atk": 0,
@@ -32700,7 +33402,7 @@
               "value": 2.0
             }
           ],
-          "description": "攻击时有25%的几率使目标束缚（无法移动）2秒",
+          "description": "攻击时有25%的几率使目标<$ba.root>束缚</>2秒",
           "name": "缠绕",
           "prefabKey": "1",
           "rangeId": null,
@@ -32721,7 +33423,7 @@
               "value": 3.0
             }
           ],
-          "description": "攻击时有25%的几率使目标束缚（无法移动）3秒",
+          "description": "攻击时有25%的几率使目标<$ba.root>束缚</>3秒",
           "name": "缠绕",
           "prefabKey": "1",
           "rangeId": null,
@@ -32760,7 +33462,7 @@
     "appellation": "Broca",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "同时攻击阻挡的所有敌人",
+    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>",
     "displayNum": "SR27",
     "favor": {
       "atk": 80,
@@ -33004,7 +33706,7 @@
     "appellation": "Suzuran",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害，并对敌人造成短暂的停顿",
+    "description": "攻击造成<@ba.kw>法术伤害</>，并对敌人造成短暂的<$ba.sluggish>停顿</>",
     "displayNum": "R172",
     "favor": {
       "atk": 75,
@@ -33183,7 +33885,7 @@
               "value": 1.2
             }
           ],
-          "description": "攻击范围内被停顿的敌人在下一瞬间起还会受到等长时间的【脆弱】（受到伤害+20%）（同类效果取最高）",
+          "description": "攻击范围内被<$ba.sluggish>停顿</>的敌人在下一瞬间起还会受到等长时间的20%的<$ba.fragile>脆弱</>效果",
           "name": "画地为牢",
           "prefabKey": "2",
           "rangeId": null,
@@ -33200,7 +33902,7 @@
               "value": 1.23
             }
           ],
-          "description": "攻击范围内被停顿的敌人在下一瞬间起还会受到等长时间的【脆弱】（受到伤害+23%<@ba.talpu>（+3%）</>）（同类效果取最高）",
+          "description": "攻击范围内被<$ba.sluggish>停顿</>的敌人在下一瞬间起还会受到等长时间的23%<@ba.talpu>（+3%）</>的<$ba.fragile>脆弱</>效果",
           "name": "画地为牢",
           "prefabKey": "2",
           "rangeId": null,
@@ -33477,6 +34179,217 @@
           "description": "生命值低于40%时，仅一次获得70%物理闪避和每秒回复6%<@ba.talpu>（+1%）</>的最大生命，持续17<@ba.talpu>（+2）</>秒",
           "name": "清明",
           "prefabKey": "2",
+          "rangeId": null,
+          "requiredPotentialRank": 4,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        }
+      ]
+    ],
+    "tokenKey": null,
+    "trait": null
+  },
+  "char_363_toddi": {
+    "Key": "char_363_toddi",
+    "appellation": "Toddifons",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "优先攻击重量最重的敌人",
+    "displayNum": "VC11",
+    "favor": {
+      "atk": 95,
+      "def": 0,
+      "maxHp": 0
+    },
+    "itemUsage": "狙击干员熔泉，送箭矢上天，洒烈火下地。",
+    "maxPotential": 5,
+    "name": "熔泉",
+    "phases": {
+      "atk": [
+        [
+          427,
+          594
+        ],
+        [
+          594,
+          782
+        ],
+        [
+          782,
+          954
+        ]
+      ],
+      "atkSpd": 100.0,
+      "atkTime": 2.4,
+      "blockCnt": [
+        1,
+        1,
+        1
+      ],
+      "cost": [
+        21,
+        23,
+        23
+      ],
+      "def": [
+        [
+          60,
+          80
+        ],
+        [
+          80,
+          100
+        ],
+        [
+          100,
+          123
+        ]
+      ],
+      "hpRec": 0.0,
+      "magRes": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "maxDeckStack": [
+        0,
+        0,
+        0
+      ],
+      "maxHp": [
+        [
+          820,
+          1066
+        ],
+        [
+          1066,
+          1333
+        ],
+        [
+          1333,
+          1667
+        ]
+      ],
+      "maxLevel": [
+        50,
+        70,
+        80
+      ],
+      "range": [
+        "4-4",
+        "4-3",
+        "4-3"
+      ],
+      "respawnTime": 70,
+      "spRec": 1.0
+    },
+    "position": "RANGED",
+    "potential": [
+      {
+        "attType": "cost",
+        "description": "部署费用-1",
+        "type": 0,
+        "value": -1.0
+      },
+      {
+        "attType": "respawnTime",
+        "description": "再部署时间-4秒",
+        "type": 0,
+        "value": -4.0
+      },
+      {
+        "attType": "atk",
+        "description": "攻击力+34",
+        "type": 0,
+        "value": 34.0
+      },
+      {
+        "attType": "maxHp",
+        "description": "天赋效果增强",
+        "type": 1,
+        "value": 0
+      },
+      {
+        "attType": "cost",
+        "description": "部署费用-1",
+        "type": 0,
+        "value": -1.0
+      }
+    ],
+    "profession": "SNIPER",
+    "rarity": 4,
+    "skills": [
+      "skchr_toddi_1",
+      "skchr_toddi_2"
+    ],
+    "tagList": [
+      "输出"
+    ],
+    "talents": [
+      [
+        {
+          "blackboard": [
+            {
+              "key": "atk_scale",
+              "value": 1.3
+            }
+          ],
+          "description": "攻击【萨卡兹】敌人时，攻击力提升至130%",
+          "name": "火热直觉",
+          "prefabKey": "1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 1
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "atk_scale",
+              "value": 1.35
+            }
+          ],
+          "description": "攻击【萨卡兹】敌人时，攻击力提升至135%<@ba.talpu>（+5%）</>",
+          "name": "火热直觉",
+          "prefabKey": "1",
+          "rangeId": null,
+          "requiredPotentialRank": 4,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 1
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "atk_scale",
+              "value": 1.45
+            }
+          ],
+          "description": "攻击【萨卡兹】敌人时，攻击力提升至145%",
+          "name": "火热直觉",
+          "prefabKey": "1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "atk_scale",
+              "value": 1.5
+            }
+          ],
+          "description": "攻击【萨卡兹】敌人时，攻击力提升至150%<@ba.talpu>（+5%）</>",
+          "name": "火热直觉",
+          "prefabKey": "1",
           "rangeId": null,
           "requiredPotentialRank": 4,
           "unlockCondition": {
@@ -34057,7 +34970,7 @@
     "appellation": "Leonhardt",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成群体法术伤害",
+    "description": "攻击造成<@ba.kw>群体法术伤害</>",
     "displayNum": "RB03",
     "favor": {
       "atk": 90,
@@ -34285,7 +35198,7 @@
     "appellation": "Thermal-EX",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "不进行攻击，且不受部署数量限制，但再部署时间极长",
+    "description": "不进行攻击，且不受<@ba.kw>部署数量</>限制，但再部署时间极长",
     "displayNum": "RCX4",
     "favor": {
       "atk": 90,
@@ -34398,7 +35311,7 @@
               "value": 1.1
             }
           ],
-          "description": "部署经过3秒后，对周围8格内的所有敌人造成相当于攻击力300%的物理伤害，并令其获得8秒【脆弱】（受到伤害提高10%）（同类效果取最高），之后自身强制退出战场",
+          "description": "部署经过3秒后，对周围8格内的所有敌人造成相当于攻击力300%的物理伤害，并令其获得8秒10%的<$ba.fragile>脆弱</>效果，之后自身强制退出战场",
           "name": "延迟引爆·I",
           "prefabKey": "1",
           "rangeId": null,
@@ -34427,7 +35340,7 @@
               "value": 1.18
             }
           ],
-          "description": "部署经过3秒后，对周围8格内的所有敌人造成相当于攻击力320%的物理伤害，并令其获得8秒【脆弱】（受到伤害提高18%）（同类效果取最高），之后自身强制退出战场",
+          "description": "部署经过3秒后，对周围8格内的所有敌人造成相当于攻击力320%的物理伤害，并令其获得8秒18%的<$ba.fragile>脆弱</>效果，之后自身强制退出战场",
           "name": "延迟引爆·II",
           "prefabKey": "1",
           "rangeId": null,
@@ -34456,7 +35369,7 @@
               "value": 1.21
             }
           ],
-          "description": "部署经过3秒后，对周围8格内的所有敌人造成相当于攻击力340%的物理伤害，并令其获得8秒【脆弱】（受到伤害提高21%）（同类效果取最高），之后自身强制退出战场",
+          "description": "部署经过3秒后，对周围8格内的所有敌人造成相当于攻击力340%的物理伤害，并令其获得8秒21%的<$ba.fragile>脆弱</>效果，之后自身强制退出战场",
           "name": "延迟引爆·III",
           "prefabKey": "1",
           "rangeId": null,
@@ -34485,7 +35398,7 @@
               "value": 1.24
             }
           ],
-          "description": "部署经过3秒后，对周围8格内的所有敌人造成相当于攻击力360%的物理伤害，并令其获得8秒【脆弱】（受到伤害提高24%）（同类效果取最高），之后自身强制退出战场",
+          "description": "部署经过3秒后，对周围8格内的所有敌人造成相当于攻击力360%的物理伤害，并令其获得8秒24%的<$ba.fragile>脆弱</>效果，之后自身强制退出战场",
           "name": "延迟引爆·IV",
           "prefabKey": "1",
           "rangeId": null,
@@ -34514,7 +35427,7 @@
               "value": 1.27
             }
           ],
-          "description": "部署经过3秒后，对周围8格内的所有敌人造成相当于攻击力380%的物理伤害，并令其获得8秒【脆弱】（受到伤害提高27%）（同类效果取最高），之后自身强制退出战场",
+          "description": "部署经过3秒后，对周围8格内的所有敌人造成相当于攻击力380%的物理伤害，并令其获得8秒27%的<$ba.fragile>脆弱</>效果，之后自身强制退出战场",
           "name": "延迟引爆·V",
           "prefabKey": "1",
           "rangeId": null,
@@ -34543,7 +35456,7 @@
               "value": 1.3
             }
           ],
-          "description": "部署经过3秒后，对周围8格内的所有敌人造成相当于攻击力400%的物理伤害，并令其获得8秒【脆弱】（受到伤害提高30%）（同类效果取最高），之后自身强制退出战场",
+          "description": "部署经过3秒后，对周围8格内的所有敌人造成相当于攻击力400%的物理伤害，并令其获得8秒30%的<$ba.fragile>脆弱</>效果，之后自身强制退出战场",
           "name": "延迟引爆·VI",
           "prefabKey": "1",
           "rangeId": null,
@@ -34749,7 +35662,7 @@
     "appellation": "Sesa",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "攻击造成群体物理伤害",
+    "description": "攻击造成<@ba.kw>群体物理伤害</>",
     "displayNum": "R158",
     "favor": {
       "atk": 85,
@@ -35146,7 +36059,7 @@
     "appellation": "Snowsant",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "技能可以使敌人产生位移可以放置于远程位",
+    "description": "技能可以使敌人产生<@ba.kw>位移</>\\n可以放置于远程位",
     "displayNum": "LM16",
     "favor": {
       "atk": 0,
@@ -35374,7 +36287,7 @@
     "appellation": "Purestream",
     "atkNum": null,
     "damageMod": "Heal",
-    "description": "拥有较大治疗范围，但在治疗较远目标时治疗量变为{heal_scale:0%}",
+    "description": "拥有较大治疗范围，但在治疗较远目标时治疗量变为<@ba.kw>{heal_scale:0%}</>",
     "displayNum": "R160",
     "favor": {
       "atk": 35,
@@ -35519,7 +36432,7 @@
               "value": -0.5
             }
           ],
-          "description": "在治疗目标后使其获得2秒抵抗（晕眩、寒冷和冻结的持续时间减少50%）",
+          "description": "在治疗目标后使其获得2秒<$ba.buffres>抵抗</>",
           "name": "快速愈合",
           "prefabKey": "1",
           "rangeId": null,
@@ -35540,7 +36453,7 @@
               "value": -0.5
             }
           ],
-          "description": "在治疗目标后使其获得4秒抵抗（晕眩、寒冷和冻结的持续时间减少50%）",
+          "description": "在治疗目标后使其获得4秒<$ba.buffres>抵抗</>",
           "name": "快速愈合",
           "prefabKey": "1",
           "rangeId": null,
@@ -35579,7 +36492,7 @@
     "appellation": "Mint",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "通常时不攻击且防御力和法术抗性大幅度提升，技能开启时攻击造成群体法术伤害",
+    "description": "通常时<@ba.kw>不攻击</>且防御力和法术抗性大幅度<@ba.kw>提升</>，技能开启时攻击造成<@ba.kw>群体法术伤害</>",
     "displayNum": "VC08",
     "favor": {
       "atk": 75,
@@ -35846,7 +36759,7 @@
     "appellation": "Rosmontis",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "攻击对小范围的地面敌人造成两次物理伤害（第二次为余震，伤害降低至攻击力的一半）",
+    "description": "攻击对小范围的<@ba.kw>地面</>敌人造成<@ba.kw>两次</>物理伤害（第二次为余震，伤害降低至攻击力的一半）",
     "displayNum": "RE45",
     "favor": {
       "atk": 60,
@@ -36096,7 +37009,7 @@
     "appellation": "Weedy",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "同时攻击阻挡的所有敌人可以放置于远程位",
+    "description": "同时攻击阻挡的<@ba.kw>所有敌人</>\\n可以放置于远程位",
     "displayNum": "R117",
     "favor": {
       "atk": 45,
@@ -36745,7 +37658,7 @@
     "appellation": "Absinthe",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害",
+    "description": "攻击造成<@ba.kw>法术伤害</>",
     "displayNum": "US11",
     "favor": {
       "atk": 70,
@@ -36972,7 +37885,7 @@
     "appellation": "Tomimi",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害",
+    "description": "攻击造成<@ba.kw>法术伤害</>",
     "displayNum": "SG05",
     "favor": {
       "atk": 35,
@@ -37580,7 +38493,7 @@
               "value": 1.08
             }
           ],
-          "description": "生命值高于一半时，攻击力造成108%伤害；生命值不高于一半时，获得【庇护】（受到的物理与法术伤害降低10%）（同类效果取最高）",
+          "description": "生命值高于一半时，攻击力造成108%伤害；生命值不高于一半时，获得10%的<$ba.protect>庇护</>",
           "name": "勇冠三军",
           "prefabKey": "1",
           "rangeId": null,
@@ -37605,7 +38518,7 @@
               "value": 1.1
             }
           ],
-          "description": "生命值高于一半时，攻击力造成110%<@ba.talpu>（+2%）</>伤害；生命值不高于一半时，获得【庇护】（受到的物理与法术伤害降低12%<@ba.talpu>（+2%）</>）（同类效果取最高）",
+          "description": "生命值高于一半时，攻击力造成110%<@ba.talpu>（+2%）</>伤害；生命值不高于一半时，获得12%<@ba.talpu>（+2%）</>的<$ba.protect>庇护</>",
           "name": "勇冠三军",
           "prefabKey": "1",
           "rangeId": null,
@@ -37630,7 +38543,7 @@
               "value": 1.15
             }
           ],
-          "description": "生命值高于一半时，攻击力造成115%伤害；生命值不高于一半时，获得【庇护】（受到的物理与法术伤害降低20%）（同类效果取最高）",
+          "description": "生命值高于一半时，攻击力造成115%伤害；生命值不高于一半时，获得20%的<$ba.protect>庇护</>",
           "name": "勇冠三军",
           "prefabKey": "1",
           "rangeId": null,
@@ -37655,7 +38568,7 @@
               "value": 1.17
             }
           ],
-          "description": "生命值高于一半时，攻击力造成117%<@ba.talpu>（+2%）</>伤害；生命值不高于一半时，获得【庇护】（受到的物理与法术伤害降低22%<@ba.talpu>（+2%）</>）（同类效果取最高）",
+          "description": "生命值高于一半时，攻击力造成117%<@ba.talpu>（+2%）</>伤害；生命值不高于一半时，获得22%<@ba.talpu>（+2%）</>的<$ba.protect>庇护</>",
           "name": "勇冠三军",
           "prefabKey": "1",
           "rangeId": null,
@@ -37856,7 +38769,7 @@
               "value": 1.2
             }
           ],
-          "description": "自身可以攻击并优先攻击【沉睡】的目标且攻击力提升至120%",
+          "description": "自身可以攻击并优先攻击<$ba.sleep>沉睡</>的目标且攻击力提升至120%",
           "name": "仁慈",
           "prefabKey": "2",
           "rangeId": null,
@@ -37873,7 +38786,7 @@
               "value": 1.24
             }
           ],
-          "description": "自身可以攻击并优先攻击【沉睡】的目标且攻击力提升至124%<@ba.talpu>（+4%）</>",
+          "description": "自身可以攻击并优先攻击<$ba.sleep>沉睡</>的目标且攻击力提升至124%<@ba.talpu>（+4%）</>",
           "name": "仁慈",
           "prefabKey": "2",
           "rangeId": null,
@@ -37890,7 +38803,7 @@
               "value": 1.4
             }
           ],
-          "description": "自身可以攻击并优先攻击【沉睡】的目标且攻击力提升至140%",
+          "description": "自身可以攻击并优先攻击<$ba.sleep>沉睡</>的目标且攻击力提升至140%",
           "name": "仁慈",
           "prefabKey": "2",
           "rangeId": null,
@@ -37907,7 +38820,7 @@
               "value": 1.44
             }
           ],
-          "description": "自身可以攻击并优先攻击【沉睡】的目标且攻击力提升至144%<@ba.talpu>（+4%）</>",
+          "description": "自身可以攻击并优先攻击<$ba.sleep>沉睡</>的目标且攻击力提升至144%<@ba.talpu>（+4%）</>",
           "name": "仁慈",
           "prefabKey": "2",
           "rangeId": null,
@@ -37927,7 +38840,7 @@
     "appellation": "Whisperain",
     "atkNum": null,
     "damageMod": "Heal",
-    "description": "拥有较大治疗范围，但在治疗较远目标时治疗量变为{heal_scale:0%}",
+    "description": "拥有较大治疗范围，但在治疗较远目标时治疗量变为<@ba.kw>{heal_scale:0%}</>",
     "displayNum": "R163",
     "favor": {
       "atk": 40,
@@ -38067,7 +38980,7 @@
               "value": 0.03
             }
           ],
-          "description": "攻击范围内拥有【抵抗】状态的友方单位每秒恢复相当于絮雨攻击力3%的生命（不受特性影响）",
+          "description": "攻击范围内拥有<$ba.buffres>抵抗</>的友方单位每秒恢复相当于絮雨攻击力3%的生命（不受特性影响）",
           "name": "生命塔台",
           "prefabKey": "1",
           "rangeId": null,
@@ -38084,7 +38997,7 @@
               "value": 0.04
             }
           ],
-          "description": "攻击范围内拥有【抵抗】状态的友方单位每秒恢复相当于絮雨攻击力4%<@ba.talpu>（+1%）</>的生命（不受特性影响）",
+          "description": "攻击范围内拥有<$ba.buffres>抵抗</>的友方单位每秒恢复相当于絮雨攻击力4%<@ba.talpu>（+1%）</>的生命（不受特性影响）",
           "name": "生命塔台",
           "prefabKey": "1",
           "rangeId": null,
@@ -38101,7 +39014,7 @@
               "value": 0.06
             }
           ],
-          "description": "攻击范围内拥有【抵抗】状态的友方单位每秒恢复相当于絮雨攻击力6%的生命（不受特性影响）",
+          "description": "攻击范围内拥有<$ba.buffres>抵抗</>的友方单位每秒恢复相当于絮雨攻击力6%的生命（不受特性影响）",
           "name": "生命塔台",
           "prefabKey": "1",
           "rangeId": null,
@@ -38118,7 +39031,7 @@
               "value": 0.07
             }
           ],
-          "description": "攻击范围内拥有【抵抗】状态的友方单位每秒恢复相当于絮雨攻击力7%<@ba.talpu>（+1%）</>的生命（不受特性影响）",
+          "description": "攻击范围内拥有<$ba.buffres>抵抗</>的友方单位每秒恢复相当于絮雨攻击力7%<@ba.talpu>（+1%）</>的生命（不受特性影响）",
           "name": "生命塔台",
           "prefabKey": "1",
           "rangeId": null,
@@ -38157,7 +39070,7 @@
     "appellation": "Pinecone",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "攻击范围内的所有敌人，对自己前方一横排的敌人攻击力提升至150%",
+    "description": "攻击范围内的<@ba.kw>所有敌人</>，对自己前方一横排的敌人攻击力提升至150%",
     "displayNum": "CB09",
     "favor": {
       "atk": 55,
@@ -38404,7 +39317,7 @@
     "appellation": "Robin",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "可以使用陷阱来协助作战，但陷阱无法放置于敌人已在的格子中",
+    "description": "可以使用陷阱来协助作战，但陷阱无法放置于<@ba.kw>敌人已在</>的格子中",
     "displayNum": "CB08",
     "favor": {
       "atk": 40,
@@ -38650,7 +39563,7 @@
     "appellation": "Beanstalk",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "可以在攻击范围内选择一次战术点来召唤援军，自身攻击援军阻挡的敌人时攻击力提升至150%",
+    "description": "可以在攻击范围内选择一次<@ba.kw>战术点</>来召唤援军，自身攻击援军阻挡的敌人时攻击力提升至150%",
     "displayNum": "CB16",
     "favor": {
       "atk": 50,
@@ -38864,7 +39777,7 @@
     "appellation": "Mr.Nothing",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "再部署时间减少，撤退时不返还部署费用，在场时每3秒消耗3点部署费用（不足时自动撤退）",
+    "description": "再部署时间<@ba.kw>减少</>，撤退时不返还<@ba.kw>部署费用</>，在场时每3秒<@ba.kw>消耗</>3点部署费用（不足时自动撤退）",
     "displayNum": "YD11",
     "favor": {
       "atk": 40,
@@ -39013,7 +39926,7 @@
               "value": 3.0
             }
           ],
-          "description": "如果4秒内没有主动攻击过，下一次攻击的攻击力提升至125%并晕眩目标3秒",
+          "description": "如果4秒内没有主动攻击过，下一次攻击的攻击力提升至125%并<$ba.stun>晕眩</>目标3秒",
           "name": "出其不意",
           "prefabKey": "1",
           "rangeId": null,
@@ -39038,7 +39951,7 @@
               "value": 3.0
             }
           ],
-          "description": "如果4秒内没有主动攻击过，下一次攻击的攻击力提升至130%<@ba.talpu>（+5%）</>并晕眩目标3秒",
+          "description": "如果4秒内没有主动攻击过，下一次攻击的攻击力提升至130%<@ba.talpu>（+5%）</>并<$ba.stun>晕眩</>目标3秒",
           "name": "出其不意",
           "prefabKey": "1",
           "rangeId": null,
@@ -39063,7 +39976,7 @@
               "value": 4.0
             }
           ],
-          "description": "如果4秒内没有主动攻击过，下一次攻击的攻击力提升至150%并晕眩目标4秒",
+          "description": "如果4秒内没有主动攻击过，下一次攻击的攻击力提升至150%并<$ba.stun>晕眩</>目标4秒",
           "name": "出其不意",
           "prefabKey": "1",
           "rangeId": null,
@@ -39088,7 +40001,7 @@
               "value": 4.0
             }
           ],
-          "description": "如果4秒内没有主动攻击过，下一次攻击的攻击力提升至155%<@ba.talpu>（+5%）</>并晕眩目标4秒",
+          "description": "如果4秒内没有主动攻击过，下一次攻击的攻击力提升至155%<@ba.talpu>（+5%）</>并<$ba.stun>晕眩</>目标4秒",
           "name": "出其不意",
           "prefabKey": "1",
           "rangeId": null,
@@ -39272,7 +40185,7 @@
               "value": 3.0
             }
           ],
-          "description": "部署后立即对攻击范围内一个敌人投掷闪光弹，使其和周围敌人晕眩3秒",
+          "description": "部署后立即对攻击范围内一个敌人投掷闪光弹，使其和周围敌人<$ba.stun>晕眩</>3秒",
           "name": "辅助装备",
           "prefabKey": "1",
           "rangeId": null,
@@ -39289,7 +40202,7 @@
               "value": 4.0
             }
           ],
-          "description": "部署后立即对攻击范围内一个敌人投掷闪光弹，使其和周围敌人晕眩4秒",
+          "description": "部署后立即对攻击范围内一个敌人投掷闪光弹，使其和周围敌人<$ba.stun>晕眩</>4秒",
           "name": "辅助装备",
           "prefabKey": "1",
           "rangeId": null,
@@ -39494,7 +40407,7 @@
               "value": 1.3
             }
           ],
-          "description": "优先攻击晕眩的敌人且攻击晕眩敌人时攻击力提升至130%",
+          "description": "优先攻击<$ba.stun>晕眩</>的敌人且攻击<$ba.stun>晕眩</>敌人时攻击力提升至130%",
           "name": "持盾射击",
           "prefabKey": "1",
           "rangeId": null,
@@ -39511,7 +40424,7 @@
               "value": 1.35
             }
           ],
-          "description": "优先攻击晕眩的敌人且攻击晕眩敌人时攻击力提升至135%<@ba.talpu>（+5%）</>",
+          "description": "优先攻击<$ba.stun>晕眩</>的敌人且攻击<$ba.stun>晕眩</>敌人时攻击力提升至135%<@ba.talpu>（+5%）</>",
           "name": "持盾射击",
           "prefabKey": "1",
           "rangeId": null,
@@ -39528,7 +40441,7 @@
               "value": 1.6
             }
           ],
-          "description": "优先攻击晕眩的敌人且攻击晕眩敌人时攻击力提升至160%",
+          "description": "优先攻击<$ba.stun>晕眩</>的敌人且攻击<$ba.stun>晕眩</>敌人时攻击力提升至160%",
           "name": "持盾射击",
           "prefabKey": "1",
           "rangeId": null,
@@ -39545,7 +40458,7 @@
               "value": 1.65
             }
           ],
-          "description": "优先攻击晕眩的敌人且攻击晕眩敌人时攻击力提升至165%<@ba.talpu>（+5%）</>",
+          "description": "优先攻击<$ba.stun>晕眩</>的敌人且攻击<$ba.stun>晕眩</>敌人时攻击力提升至165%<@ba.talpu>（+5%）</>",
           "name": "持盾射击",
           "prefabKey": "1",
           "rangeId": null,
@@ -39588,7 +40501,7 @@
     "appellation": "Frost",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "可以使用陷阱来协助作战，但陷阱无法放置于敌人已在的格子中",
+    "description": "可以使用陷阱来协助作战，但陷阱无法放置于<@ba.kw>敌人已在</>的格子中",
     "displayNum": "RS03",
     "favor": {
       "atk": 40,
@@ -39834,7 +40747,7 @@
     "appellation": "Tachanka",
     "atkNum": null,
     "damageMod": "Phy",
-    "description": "普通攻击连续造成两次伤害",
+    "description": "普通攻击连续造成<@ba.kw>两次</>伤害",
     "displayNum": "RS04",
     "favor": {
       "atk": 40,
@@ -40098,6 +41011,843 @@
     "tokenKey": null,
     "trait": null
   },
+  "char_472_pasngr": {
+    "Key": "char_472_pasngr",
+    "appellation": "Passenger",
+    "atkNum": null,
+    "damageMod": "Mag",
+    "description": "攻击造成<@ba.kw>法术伤害</>，且会在<@ba.kw>3</>个敌人间跳跃，每次跳跃伤害降低20%并造成短暂<$ba.sluggish>停顿</>",
+    "displayNum": "SG07",
+    "favor": {
+      "atk": 85,
+      "def": 0,
+      "maxHp": 0
+    },
+    "itemUsage": "工程干员异客，将以雷霆手段惩罚敌手。",
+    "maxPotential": 5,
+    "name": "异客",
+    "phases": {
+      "atk": [
+        [
+          277,
+          385
+        ],
+        [
+          385,
+          507
+        ],
+        [
+          507,
+          611
+        ]
+      ],
+      "atkSpd": 100.0,
+      "atkTime": 2.3,
+      "blockCnt": [
+        1,
+        1,
+        1
+      ],
+      "cost": [
+        30,
+        33,
+        33
+      ],
+      "def": [
+        [
+          49,
+          84
+        ],
+        [
+          84,
+          116
+        ],
+        [
+          116,
+          130
+        ]
+      ],
+      "hpRec": 0.0,
+      "magRes": [
+        10.0,
+        15.0,
+        20.0
+      ],
+      "maxDeckStack": [
+        0,
+        0,
+        0
+      ],
+      "maxHp": [
+        [
+          654,
+          935
+        ],
+        [
+          935,
+          1215
+        ],
+        [
+          1215,
+          1558
+        ]
+      ],
+      "maxLevel": [
+        50,
+        80,
+        90
+      ],
+      "range": [
+        "3-6",
+        "3-1",
+        "3-1"
+      ],
+      "respawnTime": 70,
+      "spRec": 1.0
+    },
+    "position": "RANGED",
+    "potential": [
+      {
+        "attType": "cost",
+        "description": "部署费用-1",
+        "type": 0,
+        "value": -1.0
+      },
+      {
+        "attType": "maxHp",
+        "description": "第二天赋效果增强",
+        "type": 1,
+        "value": 0
+      },
+      {
+        "attType": "atk",
+        "description": "攻击力+32",
+        "type": 0,
+        "value": 32.0
+      },
+      {
+        "attType": "cost",
+        "description": "部署费用-1",
+        "type": 0,
+        "value": -1.0
+      },
+      {
+        "attType": "maxHp",
+        "description": "第一天赋效果增强",
+        "type": 1,
+        "value": 0
+      }
+    ],
+    "profession": "CASTER",
+    "rarity": 5,
+    "skills": [
+      "skchr_pasngr_1",
+      "skchr_pasngr_2",
+      "skchr_pasngr_3"
+    ],
+    "tagList": [
+      "输出"
+    ],
+    "talents": [
+      [
+        {
+          "blackboard": [
+            {
+              "key": "hp_ratio",
+              "value": 0.8
+            },
+            {
+              "key": "pasngr_t_1[enhance].damage_scale",
+              "value": 1.1
+            },
+            {
+              "key": "pasngr_t_1[enhance].duration",
+              "value": 3.0
+            }
+          ],
+          "description": "攻击命中生命值在80%以上的敌人时，3秒内异客对其造成的伤害提升10%",
+          "name": "机理分析",
+          "prefabKey": "1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 1
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "hp_ratio",
+              "value": 0.8
+            },
+            {
+              "key": "pasngr_t_1[enhance].damage_scale",
+              "value": 1.15
+            },
+            {
+              "key": "pasngr_t_1[enhance].duration",
+              "value": 3.0
+            }
+          ],
+          "description": "攻击命中生命值在80%以上的敌人时，3秒内异客对其造成的伤害提升15%<@ba.talpu>（+5%）</>",
+          "name": "机理分析",
+          "prefabKey": "1",
+          "rangeId": null,
+          "requiredPotentialRank": 5,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 1
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "hp_ratio",
+              "value": 0.8
+            },
+            {
+              "key": "pasngr_t_1[enhance].damage_scale",
+              "value": 1.2
+            },
+            {
+              "key": "pasngr_t_1[enhance].duration",
+              "value": 3.0
+            }
+          ],
+          "description": "攻击命中生命值在80%以上的敌人时，3秒内异客对其造成的伤害提升20%",
+          "name": "机理分析",
+          "prefabKey": "1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "hp_ratio",
+              "value": 0.8
+            },
+            {
+              "key": "pasngr_t_1[enhance].damage_scale",
+              "value": 1.25
+            },
+            {
+              "key": "pasngr_t_1[enhance].duration",
+              "value": 3.0
+            }
+          ],
+          "description": "攻击命中生命值在80%以上的敌人时，3秒内异客对其造成的伤害提升25%<@ba.talpu>（+5%）</>",
+          "name": "机理分析",
+          "prefabKey": "1",
+          "rangeId": null,
+          "requiredPotentialRank": 5,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        }
+      ],
+      [
+        {
+          "blackboard": [
+            {
+              "key": "atk",
+              "value": 0.08
+            }
+          ],
+          "description": "当周围4格没有敌人时，攻击力+8%",
+          "name": "孤卒",
+          "prefabKey": "2",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "atk",
+              "value": 0.1
+            }
+          ],
+          "description": "当周围4格没有敌人时，攻击力+10%<@ba.talpu>（+2%）</>",
+          "name": "孤卒",
+          "prefabKey": "2",
+          "rangeId": null,
+          "requiredPotentialRank": 2,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        }
+      ]
+    ],
+    "tokenKey": null,
+    "trait": {
+      "candidates": [
+        {
+          "blackboard": [
+            {
+              "key": "attack@max_target",
+              "value": 3.0
+            },
+            {
+              "key": "attack@sluggish",
+              "value": 0.2
+            }
+          ],
+          "overrideDescripton": "攻击造成<@ba.kw>法术伤害</>，且会在<@ba.kw>{attack@max_target}</>个敌人间跳跃，每次跳跃伤害降低20%并造成短暂<$ba.sluggish>停顿</>（精英2后更新）",
+          "prefabKey": "-1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 0
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "attack@max_target",
+              "value": 4.0
+            },
+            {
+              "key": "attack@sluggish",
+              "value": 0.2
+            }
+          ],
+          "overrideDescripton": "攻击造成<@ba.kw>法术伤害</>，且会在<@ba.kw>{attack@max_target}</>个敌人间跳跃，每次跳跃伤害降低20%并造成短暂<$ba.sluggish>停顿</>",
+          "prefabKey": "-1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        }
+      ]
+    }
+  },
+  "char_474_glady": {
+    "Key": "char_474_glady",
+    "appellation": "Gladiia",
+    "atkNum": null,
+    "damageMod": "Phy",
+    "description": "技能可以使敌人产生<@ba.kw>位移</>\\n可以放置于远程位",
+    "displayNum": "AA05",
+    "favor": {
+      "atk": 50,
+      "def": 50,
+      "maxHp": 0
+    },
+    "itemUsage": "罗德岛阿戈尔事务负责人歌蕾蒂娅，现在会向你透露一些信息。",
+    "maxPotential": 5,
+    "name": "歌蕾蒂娅",
+    "phases": {
+      "atk": [
+        [
+          344,
+          492
+        ],
+        [
+          492,
+          640
+        ],
+        [
+          640,
+          801
+        ]
+      ],
+      "atkSpd": 100.0,
+      "atkTime": 1.8,
+      "blockCnt": [
+        2,
+        2,
+        2
+      ],
+      "cost": [
+        14,
+        16,
+        16
+      ],
+      "def": [
+        [
+          144,
+          213
+        ],
+        [
+          213,
+          281
+        ],
+        [
+          281,
+          331
+        ]
+      ],
+      "hpRec": 0.0,
+      "magRes": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "maxDeckStack": [
+        0,
+        0,
+        0
+      ],
+      "maxHp": [
+        [
+          999,
+          1350
+        ],
+        [
+          1350,
+          1754
+        ],
+        [
+          1754,
+          2309
+        ]
+      ],
+      "maxLevel": [
+        50,
+        80,
+        90
+      ],
+      "range": [
+        "2-2",
+        "3-2",
+        "3-2"
+      ],
+      "respawnTime": 80,
+      "spRec": 1.0
+    },
+    "position": "MELEE",
+    "potential": [
+      {
+        "attType": "cost",
+        "description": "部署费用-1",
+        "type": 0,
+        "value": -1.0
+      },
+      {
+        "attType": "respawnTime",
+        "description": "再部署时间-10秒",
+        "type": 0,
+        "value": -10.0
+      },
+      {
+        "attType": "cost",
+        "description": "部署费用-1",
+        "type": 0,
+        "value": -1.0
+      },
+      {
+        "attType": "maxHp",
+        "description": "第二天赋效果增强",
+        "type": 1,
+        "value": 0
+      },
+      {
+        "attType": "cost",
+        "description": "部署费用-1",
+        "type": 0,
+        "value": -1.0
+      }
+    ],
+    "profession": "SPECIAL",
+    "rarity": 5,
+    "skills": [
+      "skchr_glady_1",
+      "skchr_glady_2",
+      "skchr_glady_3"
+    ],
+    "tagList": [
+      "位移",
+      "输出",
+      "控场"
+    ],
+    "talents": [
+      [
+        {
+          "blackboard": [
+            {
+              "key": "hp_recovery_per_sec_by_max_hp_ratio",
+              "value": 0.015
+            },
+            {
+              "key": "damage_resistance",
+              "value": 0.15
+            }
+          ],
+          "description": "在场时，所有【深海猎人】干员每秒回复1.5%最大生命值且受到【海嗣】敌人的物理与法术伤害降低15%",
+          "name": "阿戈尔的波涛",
+          "prefabKey": "1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 1
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "hp_recovery_per_sec_by_max_hp_ratio",
+              "value": 0.025
+            },
+            {
+              "key": "damage_resistance",
+              "value": 0.25
+            }
+          ],
+          "description": "在场时，所有【深海猎人】干员每秒回复2.5%最大生命值且受到【海嗣】敌人的物理与法术伤害降低25%",
+          "name": "阿戈尔的波涛",
+          "prefabKey": "1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        }
+      ],
+      [
+        {
+          "blackboard": [
+            {
+              "key": "value",
+              "value": 3.0
+            },
+            {
+              "key": "atk_scale",
+              "value": 1.3
+            }
+          ],
+          "description": "攻击重量小于等于3的敌人时攻击力提升至130%",
+          "name": "弱肉强食",
+          "prefabKey": "2",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "value",
+              "value": 3.0
+            },
+            {
+              "key": "atk_scale",
+              "value": 1.36
+            }
+          ],
+          "description": "攻击重量小于等于3的敌人时攻击力提升至136%<@ba.talpu>（+6%）</>",
+          "name": "弱肉强食",
+          "prefabKey": "2",
+          "rangeId": null,
+          "requiredPotentialRank": 4,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        }
+      ]
+    ],
+    "tokenKey": null,
+    "trait": null
+  },
+  "char_475_akafyu": {
+    "Key": "char_475_akafyu",
+    "appellation": "Akafuyu",
+    "atkNum": null,
+    "damageMod": "Heal",
+    "description": "不成为其他角色的治疗目标，每次攻击到敌人后回复自身<@ba.kw>{value}</>生命",
+    "displayNum": "HK04",
+    "favor": {
+      "atk": 30,
+      "def": 55,
+      "maxHp": 0
+    },
+    "itemUsage": "东国剑士赤冬，信影流传人。",
+    "maxPotential": 5,
+    "name": "赤冬",
+    "phases": {
+      "atk": [
+        [
+          325,
+          465
+        ],
+        [
+          465,
+          604
+        ],
+        [
+          604,
+          728
+        ]
+      ],
+      "atkSpd": 100.0,
+      "atkTime": 1.2,
+      "blockCnt": [
+        1,
+        1,
+        1
+      ],
+      "cost": [
+        21,
+        23,
+        25
+      ],
+      "def": [
+        [
+          157,
+          216
+        ],
+        [
+          216,
+          278
+        ],
+        [
+          278,
+          328
+        ]
+      ],
+      "hpRec": 0.0,
+      "magRes": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "maxDeckStack": [
+        0,
+        0,
+        0
+      ],
+      "maxHp": [
+        [
+          1491,
+          2071
+        ],
+        [
+          2071,
+          2726
+        ],
+        [
+          2726,
+          3635
+        ]
+      ],
+      "maxLevel": [
+        50,
+        70,
+        80
+      ],
+      "range": [
+        "1-1",
+        "1-1",
+        "1-1"
+      ],
+      "respawnTime": 70,
+      "spRec": 1.0
+    },
+    "position": "MELEE",
+    "potential": [
+      {
+        "attType": "cost",
+        "description": "部署费用-1",
+        "type": 0,
+        "value": -1.0
+      },
+      {
+        "attType": "respawnTime",
+        "description": "再部署时间-4秒",
+        "type": 0,
+        "value": -4.0
+      },
+      {
+        "attType": "def",
+        "description": "防御力+23",
+        "type": 0,
+        "value": 23.0
+      },
+      {
+        "attType": "respawnTime",
+        "description": "再部署时间-6秒",
+        "type": 0,
+        "value": -6.0
+      },
+      {
+        "attType": "cost",
+        "description": "部署费用-1",
+        "type": 0,
+        "value": -1.0
+      }
+    ],
+    "profession": "WARRIOR",
+    "rarity": 4,
+    "skills": [
+      "skchr_akafyu_1",
+      "skchr_akafyu_2"
+    ],
+    "tagList": [
+      "生存",
+      "输出"
+    ],
+    "talents": [
+      [
+        {
+          "blackboard": [
+            {
+              "key": "min_attack_speed",
+              "value": 50.0
+            },
+            {
+              "key": "max_attack_speed",
+              "value": 0.0
+            },
+            {
+              "key": "max_hp_ratio",
+              "value": 1.0
+            },
+            {
+              "key": "min_hp_ratio",
+              "value": 0.5
+            }
+          ],
+          "description": "根据已损失的生命值，提高攻击速度（损失50%生命值时达到最大可提升攻击速度50）",
+          "name": "信影流·羽飞",
+          "prefabKey": "1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 0
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "min_attack_speed",
+              "value": 75.0
+            },
+            {
+              "key": "max_attack_speed",
+              "value": 0.0
+            },
+            {
+              "key": "max_hp_ratio",
+              "value": 1.0
+            },
+            {
+              "key": "min_hp_ratio",
+              "value": 0.4
+            }
+          ],
+          "description": "根据已损失的生命值，提高攻击速度（损失60%生命值时达到最大可提升攻击速度75）",
+          "name": "信影流·羽飞",
+          "prefabKey": "1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 1
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "min_attack_speed",
+              "value": 100.0
+            },
+            {
+              "key": "max_attack_speed",
+              "value": 0.0
+            },
+            {
+              "key": "max_hp_ratio",
+              "value": 1.0
+            },
+            {
+              "key": "min_hp_ratio",
+              "value": 0.3
+            }
+          ],
+          "description": "根据已损失的生命值，提高攻击速度（损失70%生命值时达到最大可提升攻击速度100）",
+          "name": "信影流·羽飞",
+          "prefabKey": "1",
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        }
+      ]
+    ],
+    "tokenKey": null,
+    "trait": {
+      "candidates": [
+        {
+          "blackboard": [
+            {
+              "key": "value",
+              "value": 30.0
+            }
+          ],
+          "overrideDescripton": "不成为其他角色的治疗目标，每次攻击到敌人后回复自身<@ba.kw>{value}</>生命（精英1后更新）",
+          "prefabKey": null,
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 0
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "value",
+              "value": 50.0
+            }
+          ],
+          "overrideDescripton": "不成为其他角色的治疗目标，每次攻击到敌人后回复自身<@ba.kw>{value}</>生命（精英2后更新）",
+          "prefabKey": null,
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 1
+          }
+        },
+        {
+          "blackboard": [
+            {
+              "key": "value",
+              "value": 70.0
+            }
+          ],
+          "overrideDescripton": "不成为其他角色的治疗目标，每次攻击到敌人后回复自身<@ba.kw>{value}</>生命",
+          "prefabKey": null,
+          "rangeId": null,
+          "requiredPotentialRank": 0,
+          "unlockCondition": {
+            "level": 1,
+            "phase": 2
+          }
+        }
+      ]
+    }
+  },
   "char_500_noirc": {
     "Key": "char_500_noirc",
     "appellation": "Noir Corne",
@@ -40228,7 +41978,7 @@
     "appellation": "Durin",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害",
+    "description": "攻击造成<@ba.kw>法术伤害</>",
     "displayNum": "A44",
     "favor": {
       "atk": 30,
@@ -40679,7 +42429,7 @@
     "appellation": "Reserve (Caster)",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成法术伤害",
+    "description": "攻击造成<@ba.kw>法术伤害</>",
     "displayNum": null,
     "favor": {
       "atk": 0,
@@ -41097,7 +42847,7 @@
     "appellation": "Pith",
     "atkNum": null,
     "damageMod": "Mag",
-    "description": "攻击造成群体法术伤害",
+    "description": "攻击造成<@ba.kw>群体法术伤害</>",
     "displayNum": null,
     "favor": {
       "atk": 0,
