@@ -2,17 +2,14 @@
   <el-container>
     <!-- 列表和查询区 -->
     <el-aside width="249px" :class="{'aside-collapse': $store.state.isListCollapse}">
-      <SearchList
-        :list-data="enemyList"
-        @objChanged="changeName"
-      />
+      <SearchList :list-data="enemyList" @objChanged="changeName" />
     </el-aside>
     <!--  属性输出区  -->
     <el-main :class="{'is-aside-collapse': $store.state.isListCollapse}">
       <div class="collapse-btn-box" :class="{'btn-box-collapsed': $store.state.isListCollapse}">
         <el-button class="collapse-btn" @click="changeCollapse">|||</el-button>
       </div>
-      <Eninfo :enemy_name="enemy_name" />
+      <Eninfo/>
     </el-main>
   </el-container>
 </template>
@@ -24,7 +21,6 @@ import Eninfo from '../components/Enemy/Eninfo.vue'
 export default {
   data () {
     return {
-      enemy_name: '源石虫',
       enemyList: []
     }
   },
@@ -38,11 +34,11 @@ export default {
     Eninfo
   },
   methods: {
-    changeName (name) {
-      this.enemy_name = name
-    },
     getEnemyList () {
       this.enemyList = require('@/assets/data/enemylist.json')
+    },
+    changeName (name) {
+      this.$store.commit('changeEnemyName', name)
     },
     closeDrawer () {
       this.$store.commit('closeDrawer')

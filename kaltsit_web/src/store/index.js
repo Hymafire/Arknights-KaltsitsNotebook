@@ -8,7 +8,11 @@ export default new Vuex.Store({
     // 抽屉是否打开
     isDrawerOpen: false,
     // 列表是否折叠
-    isListCollapse: false
+    isListCollapse: false,
+    // 目标敌人
+    enemyName: '源石虫',
+    // 目标干员信息
+    employeeName: '斯卡蒂'
   },
   mutations: {
     // 抽屉开关
@@ -28,6 +32,13 @@ export default new Vuex.Store({
       } else {
         state.isListCollapse = false
       }
+    },
+    // 目标名改变
+    changeEnemyName (state, enemyName) {
+      state.enemyName = enemyName
+    },
+    changeEmployeeName (state, employeeName) {
+      state.employeeName = employeeName
     }
   },
   actions: {

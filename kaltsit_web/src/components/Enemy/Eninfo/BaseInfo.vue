@@ -4,31 +4,31 @@
     <img id="en-img" :src="imgUrl" alt="Worry!"/>
     <ul>
       <li>
-        <span>最大血量</span> {{ enemyParams.maxHp[0] }}
+        <span>最大血量</span> {{ enemy.maxHp[0] }}
       </li>
       <li>
-        <span>攻击</span> {{ enemyParams.atk[0] }}
+        <span>攻击</span> {{ enemy.atk[0] }}
       </li>
       <li>
-        <span>防御</span> {{ enemyParams.def[0] }}
+        <span>防御</span> {{ enemy.def[0] }}
       </li>
       <li>
-        <span>法抗</span> {{ enemyParams.magRes[0] }}
+        <span>法抗</span> {{ enemy.magRes[0] }}
       </li>
       <li>
-        <span>移速</span> {{ enemyParams.moveSpd }}
+        <span>移速</span> {{ enemy.moveSpd }}
       </li>
       <li>
-        <span>攻击间隔</span> {{ enemyParams.atkTime }}s
+        <span>攻击间隔</span> {{ enemy.atkTime }}s
       </li>
       <li>
-        <span>生命回复</span> {{ enemyParams.hpRec }}/s
+        <span>生命回复</span> {{ enemy.hpRec }}/s
       </li>
       <li>
-        <span>重量</span> {{ enemyParams.massLevel }}
+        <span>重量</span> {{ enemy.massLevel }}
       </li>
       <li>
-        <span>射程</span> {{ enemyParams.rangeRadius }}
+        <span>射程</span> {{ enemy.rangeRadius }}
       </li>
     </ul>
   </div>
@@ -38,7 +38,7 @@
 export default {
   name: 'BaseInfo',
   props: {
-    enemyParams: Object,
+    enemy: Object,
     enemyKey: String
   },
   computed: {

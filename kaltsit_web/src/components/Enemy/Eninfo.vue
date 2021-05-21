@@ -6,7 +6,7 @@
       </div>
     </el-header>
     <el-main class="info-main">
-      <BaseInfo :enemy-params="enemy" :enemyKey="enemy.Key"/>
+      <BaseInfo :enemy="enemy" :enemyKey="enemy.Key"/>
       <PerDamage
         :atk="enemy.atk[0]"
         :atk-time="enemy.atkTime"
@@ -24,45 +24,30 @@ import PerDamage from '../Echarts/DamageClass/PerDamage.vue'
 export default {
   data () {
     return {
-      enemyData: [],
-      enemy: []
+      enemyData: []
     }
   },
   created () {
     this.getEnemyData()
-    this.findEnemy()
-  },
-  props: {
-    enemy_name: {
-      type: String,
-      default: '源石虫'
-    }
   },
   components: {
     BaseInfo,
     PerDamage
   },
+  computed: {
+    enemy: function () {
+      for (const en in this.enemyData) {
+        if (this.enemyData[en].name === this.$store.state.enemyName) {
+          return this.enemyData[en]
+        }
+      }
+      return []
+    }
+  },
   methods: {
     // 获取数据
     getEnemyData () {
       this.enemyData = require('@/assets/data/enemydata.json')
-    },
-    // 查询敌人 （入口）
-    findEnemy () {
-      for (const en in this.enemyData) {
-        if (this.enemyData[en].name === this.enemy_name) {
-          this.enemy = this.enemyData[en]
-          break
-        }
-      }
-    }
-  },
-  watch: {
-    enemy_name: {
-      handler: function () {
-        this.findEnemy()
-      },
-      immediate: true
     }
   }
 }
