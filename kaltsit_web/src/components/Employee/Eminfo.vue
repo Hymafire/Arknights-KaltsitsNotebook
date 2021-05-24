@@ -30,6 +30,13 @@
         />
       </div>
       <!-- 分析区 -->
+      <EmAnalysis
+        :employeeData="employeeData"
+        :employeeKey="employee.Key"
+        :emParam="em_param"
+        :employeeName="employee_name"
+      />
+      <!--
       <el-collapse v-model="activeName" class="collapse-title">
         <el-collapse-item title="秒伤害量" name="1">
           <PerDamage
@@ -46,10 +53,8 @@
             :isActive="isActive('2')"
           />
         </el-collapse-item>
-        <el-collapse-item title="能力评分表" name="3">
-          <RankRadar :name="employee_name" :isActive="isActive('3')"/>
-        </el-collapse-item>
       </el-collapse>
+      -->
       <!-- 分析区-end -->
     </div>
   </div>
@@ -63,10 +68,10 @@ import ParamShow from './Eminfo/ParamShow.vue'
 import RangeShow from './Eminfo/RangeShow.vue'
 import TalentInfo from './Eminfo/TalentInfo.vue'
 import SkillInfo from './Eminfo/SkillInfo.vue'
-import RankRadar from '../Echarts/RankClass/RankRadar.vue'
-import PerDamage from '../Echarts/DamageClass/PerDamage.vue'
-import DamageTotal from '../Echarts/DamageClass/DamageTotal.vue'
+// import PerDamage from '../Echarts/DamageClass/PerDamage.vue'
+// import DamageTotal from '../Echarts/DamageClass/DamageTotal.vue'
 import baseCalc from '../utils/baseCalc.js'
+import EmAnalysis from './EmAnalysis.vue'
 
 export default {
   data () {
@@ -100,9 +105,9 @@ export default {
     RangeShow,
     TalentInfo,
     SkillInfo,
-    PerDamage,
-    DamageTotal,
-    RankRadar
+    // PerDamage,
+    // DamageTotal
+    EmAnalysis
   },
   methods: {
     // 获取干员列表

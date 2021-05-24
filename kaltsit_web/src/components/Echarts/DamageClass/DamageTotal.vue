@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="damage-total"
-    class="echarts-box"
-  />
+  <div id="damage-total" class="echarts-box" />
 </template>
 
 <script>
@@ -139,19 +136,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// 图表容器
-@media only screen and (max-width:599px) {
-  .echarts-box {
-    width: 100vw;
-    height: 75vw;
-    margin: 0 auto;
-  }
-}
-@media only screen and (min-width:600px) {
-  .echarts-box {
-    width: 600px;
-    height: 450px;
-    margin: 0 auto;
-  }
-}
+
 </style>
