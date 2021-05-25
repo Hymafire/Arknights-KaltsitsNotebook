@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <!-- 列表和查询区 -->
-    <el-aside width="249px" :class="{'aside-collapse': $store.state.isListCollapse}">
+    <el-aside class="aside-width" :class="{'aside-collapse': $store.state.isListCollapse}">
       <SearchList :list-data="enemyList" @objChanged="changeName" />
     </el-aside>
     <!--  属性输出区  -->
@@ -60,12 +60,15 @@ export default {
 }
 .el-aside {
   position: absolute;
-  z-index: 100;
+  z-index: 1003;
   height: 100%;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, .98);
   box-sizing: border-box;
   padding: 1px;
   border-right: 1px solid #dcdfe6;
+}
+.aside-width {
+  width: 249px !important;
 }
 .el-main {
   position: absolute;
@@ -92,22 +95,32 @@ export default {
 .collapse-btn-box {
   width: 30px;
   height: 30px;
-  background-color: #dcdfe6;
   position: fixed;
   text-align: right;
   box-sizing: border-box;
   left: 249px;
-  top: 58px;
-  z-index: 1000;
+  top: 52px;
+  z-index: 1003;
+}
+@media only screen and (max-width:767px) {
+  .collapse-btn-box {
+    top: 46px;
+  }
+  .aside-width {
+    width: 199px !important;
+  }
+  .collapse-btn-box {
+    left: 199px;
+  }
 }
 .btn-box-collapsed {
-  left: 0px;
+  left: 1px;
 }
 .collapse-btn {
   height: 30px;
   width: 30px;
   border: 0px solid transparent;
   padding: 0px;
-  // background-color: transparent;
+  background-color: rgba(255, 255, 255, .8);
 }
 </style>

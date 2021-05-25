@@ -21,9 +21,9 @@
             <div v-html="showSkills[index].description"></div>
           </div>
           <div id="level-box">
-            <el-button @click="increaseN(index)" size="mini" class="level-btn">+</el-button>
-            <div class="level-value">Lv. {{ skillsLevel[index] }}</div>
-            <el-button @click="decreaseN(index)" size="mini" class="level-btn">-</el-button>
+            <el-button @click="increaseN(index)" size="mini" class="level-btn" :disabled="skillsLevel[index] >= 9">+</el-button>
+            <div class="level-value">Lv. {{ skillsLevel[index] + 1 }}</div>
+            <el-button @click="decreaseN(index)" size="mini" class="level-btn" :disabled="skillsLevel[index] <= 0">-</el-button>
           </div>
         </div>
       </li>

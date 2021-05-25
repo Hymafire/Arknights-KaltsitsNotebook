@@ -35,26 +35,8 @@
         :employeeKey="employee.Key"
         :emParam="em_param"
         :employeeName="employee_name"
+        :isChanged="changed_flag"
       />
-      <!--
-      <el-collapse v-model="activeName" class="collapse-title">
-        <el-collapse-item title="秒伤害量" name="1">
-          <PerDamage
-            :atk="em_param.atk"
-            :atkTime="em_param.atkTime"
-            :isActive="isActive('1')"
-          />
-        </el-collapse-item>
-        <el-collapse-item title="总伤害量" name="2">
-          <DamageTotal
-            :avgDef="pretreated.enAvgDef"
-            :atk="em_param.atk"
-            :atkTime="em_param.atkTime"
-            :isActive="isActive('2')"
-          />
-        </el-collapse-item>
-      </el-collapse>
-      -->
       <!-- 分析区-end -->
     </div>
   </div>
@@ -68,8 +50,6 @@ import ParamShow from './Eminfo/ParamShow.vue'
 import RangeShow from './Eminfo/RangeShow.vue'
 import TalentInfo from './Eminfo/TalentInfo.vue'
 import SkillInfo from './Eminfo/SkillInfo.vue'
-// import PerDamage from '../Echarts/DamageClass/PerDamage.vue'
-// import DamageTotal from '../Echarts/DamageClass/DamageTotal.vue'
 import baseCalc from '../utils/baseCalc.js'
 import EmAnalysis from './EmAnalysis.vue'
 
@@ -105,8 +85,6 @@ export default {
     RangeShow,
     TalentInfo,
     SkillInfo,
-    // PerDamage,
-    // DamageTotal
     EmAnalysis
   },
   methods: {
@@ -158,7 +136,6 @@ export default {
     infoForm: {
       handler () {
         this.letsCalc()
-        this.$forceUpdate()
       },
       deep: true
     }

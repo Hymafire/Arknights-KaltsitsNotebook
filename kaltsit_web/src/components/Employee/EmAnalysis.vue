@@ -1,20 +1,27 @@
 <template>
-  <div id="em-echarts">
+  <div id="em-analysis">
     <el-collapse v-model="activeName" class="collapse-title">
-      <el-collapse-item title="能力排名" name="totalClass">
+      <el-collapse-item title="能力排名" name="totalRank">
         <RankRadar
           :name="employeeName"
           :dataList="rankData"
           :indicatorList="tagList"
-          :isActive="isActive('totalClass')"
+          :isActive="isActive('totalRank')"
         />
       </el-collapse-item>
-      <el-collapse-item title="伤害类" name="damageClass">
-        <DamageClass
-          :employeeName="employeeName"
-          :emParam="emParam"
-          :pretreated="pretreatedData"
-          :isClassActive="isActive('damageClass')"
+      <el-collapse-item title="秒伤害量" name="perDamage">
+        <PerDamage
+          :atk="emParam.atk"
+          :atkTime="emParam.atkTime"
+          :isActive="isActive('perDamage')"
+        />
+      </el-collapse-item>
+      <el-collapse-item title="总伤害量" name="totalDamage">
+        <DamageTotal
+          :avgDef="pretreatedData.enAvgDef"
+          :atk="emParam.atk"
+          :atkTime="emParam.atkTime"
+          :isActive="isActive('totalDamage')"
         />
       </el-collapse-item>
     </el-collapse>
@@ -22,8 +29,10 @@
 </template>
 
 <script>
-import DamageClass from './EmAnalysis/DamageClass.vue'
+// import DamageClass from './EmAnalysis/DamageClass.vue'
 import RankRadar from '../Echarts/RankClass/RankRadar.vue'
+import PerDamage from '../Echarts/DamageClass/PerDamage.vue'
+import DamageTotal from '../Echarts/DamageClass/DamageTotal.vue'
 
 export default {
   name: 'EmAnalysis',
@@ -44,11 +53,14 @@ export default {
     employeeName: String,
     employeeData: Object,
     employeeKey: String,
-    emParam: Array
+    emParam: Array,
+    isChanged: Boolean
   },
   components: {
-    DamageClass,
-    RankRadar
+    // DamageClass,
+    RankRadar,
+    PerDamage,
+    DamageTotal
   },
   computed: {
     // 数值排名
@@ -75,9 +87,6 @@ export default {
         }
       }
       return rankData
-    },
-    emParamTmp: function () {
-      return this.emParam
     }
   },
   methods: {
@@ -104,6 +113,14 @@ export default {
         }
       }
       return false
+    }
+  },
+  watch: {
+    isChanged: {
+      handler () {
+        this.$forceUpdate()
+      },
+      immediate: true
     }
   }
 }

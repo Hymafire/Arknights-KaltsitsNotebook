@@ -64,6 +64,7 @@ export default {
   border-bottom: 2px solid #dcdfe6;
 }
 .info-main {
-  padding: 0px 10px;
+  padding: 3px;
+  padding-top: 0px;
 }
 </style>

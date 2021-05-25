@@ -4,9 +4,8 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import './assets/styles/styles.scss'
-import './plugins/element.js'
 import './assets/css/global.css'
-import './assets/css/colorful.css'
+import './plugins/element.js'
 
 Vue.config.productionTip = false
 

@@ -49,10 +49,10 @@ export default {
           data: ['Avg', 'NORMAL', 'ELITE', 'BOSS']
         },
         grid: {
-          top: 40,
+          top: 30,
           y2: 30,
-          left: 30,
-          right: 50
+          left: 40,
+          right: 40
         },
         xAxis: {
           name: '时间',

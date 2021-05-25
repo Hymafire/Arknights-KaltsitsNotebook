@@ -5,10 +5,8 @@ import store from './store'
 import ElementUI from 'element-ui'
 import './registerServiceWorker'
 import './assets/styles/styles.scss'
+import './assets/styles/global.css'
 import './plugins/element.js'
-import './assets/css/global.css'
-import './assets/css/colorful.css'
-import './assets/css/echartsStyle.css'
 
 Vue.use(ElementUI)
 

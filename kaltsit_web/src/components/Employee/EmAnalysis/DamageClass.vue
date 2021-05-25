@@ -51,11 +51,6 @@ export default {
       default: false
     }
   },
-  computed: {
-    emParamTmp: function () {
-      return this.emParam
-    }
-  },
   components: {
     // DamageTotal,
     PerDamage
@@ -70,14 +65,6 @@ export default {
         }
       }
       return false
-    }
-  },
-  watch: {
-    emParamTmp: {
-      handler () {
-        this.$forceUpdate()
-      },
-      deep: true
     }
   }
 }

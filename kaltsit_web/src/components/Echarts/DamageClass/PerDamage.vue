@@ -51,11 +51,11 @@ export default {
         },
         // 四周间距
         grid: {
-          top: 50,
+          top: 10,
           // buttom 参数设置有问题（？？？） 替换成 y2
           y2: 30,
           left: 30,
-          right: 50
+          right: 40
         },
         // x轴
         xAxis: {
