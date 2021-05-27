@@ -10,7 +10,12 @@
     <!--  属性输出区  -->
     <el-main :class="{'is-aside-collapse': $store.state.isListCollapse}">
       <div class="collapse-btn-box" :class="{'btn-box-collapsed': $store.state.isListCollapse}">
-        <el-button class="collapse-btn" @click="changeCollapse">|||</el-button>
+        <el-button
+          class="collapse-btn"
+          @click="changeCollapse"
+          :class="[{'el-icon-s-fold': !$store.state.isListCollapse},
+          {'el-icon-s-unfold': $store.state.isListCollapse}]"
+        />
       </div>
       <Eminfo :employee_name="employee_name" />
     </el-main>
@@ -58,6 +63,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.el-button {
+  font-size: 20px;
+  color: rgba(64, 64, 64, .7)
+}
 .el-container {
   height: 100%;
   position: relative;
@@ -70,6 +79,10 @@ export default {
   box-sizing: border-box;
   padding: 1px;
   border-right: 1px solid #dcdfe6;
+  // 动画
+  transition: all 0.4s;
+  -webkit-transform: translate(0, -1px);
+  transform: translate(0, -1px);
 }
 .aside-width {
   width: 249px !important;
@@ -84,17 +97,14 @@ export default {
   padding: 1px;
 }
 .aside-collapse {
-  display: none !important;
+  // 动画
+  transition: all 0.4s;
+  -webkit-transform: translate(-249px, -1px);
+  transform: translate(-249px, -1px);
 }
 .is-aside-collapse {
   left: 0px !important;
   width: 100%;
-}
-@media only screen and (max-width:1080px) {
-  .el-main {
-    left: 0px;
-    width: 100%;
-  }
 }
 .collapse-btn-box {
   width: 30px;
@@ -102,9 +112,24 @@ export default {
   position: fixed;
   text-align: right;
   box-sizing: border-box;
-  left: 249px;
+  // left: 249px;
+  // 动画
+  transition: all 0.4s;
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
   top: 52px;
   z-index: 1003;
+}
+@media only screen and (max-width:1080px) {
+  .el-main {
+    left: 0px;
+    width: 100%;
+  }
+  .collapse-btn-box {
+    transition: all 0.4s;
+    -webkit-transform: translate(248px, -1px);
+    transform: translate(248px, -1px);
+  }
 }
 @media only screen and (max-width:767px) {
   .collapse-btn-box {
@@ -114,11 +139,24 @@ export default {
     width: 199px !important;
   }
   .collapse-btn-box {
-    left: 199px;
+    // left: 199px;
+    -webkit-transform: translate(198px, 0px);
+    transform: translate(198px, 0px);
+  }
+  .el-aside {
+    -webkit-transform: translate(0, -1px);
+    transform: translate(0, -1px);
+  }
+  .aside-collapse {
+    -webkit-transform: translate(-199px, -1px);
+    transform: translate(-199px, -1px);
   }
 }
 .btn-box-collapsed {
-  left: 1px;
+  // left: 1px;
+  transition: all 0.4s;
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
 }
 .collapse-btn {
   height: 30px;

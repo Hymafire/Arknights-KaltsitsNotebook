@@ -163,4 +163,9 @@ export default {
     background-color: #67c23a;
   }
 }
+@media only screen and (max-width:450px) {
+  #param-input {
+    width: 100%;
+  }
+}
 </style>

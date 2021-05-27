@@ -22,9 +22,12 @@
     <!-- 大-end -->
     <!-- 小 -->
     <div id="tool-bar" class="hidden-sm-and-up">
+      <div class="el-icon-menu tool-mag"></div>
+      <!--
       <div class="tool-mag">&gt;</div>
+      -->
       <div class="tool-title">{{ $route.name }}</div>
-      <button class="tool-btn" @click="openDrawer">|||</button>
+      <button class="tool-btn el-icon-s-operation" @click="openDrawer" />
     </div>
     <!-- 小-end -->
   </div>
@@ -88,12 +91,13 @@ a {
     font-size: 26px;
     font-weight: 100;
     text-align: center;
+    color: rgb(80, 80, 80);
   }
   .tool-title {
     display: inline-block;
     box-sizing: border-box;
     height: 42px;
-    line-height: 42px;
+    line-height: 40px;
     font-size: 21px;
     letter-spacing: 2px;
     font-weight: 400;
@@ -105,6 +109,8 @@ a {
     width: 42px;
     border: 0px solid transparent;
     background-color: transparent;
+    font-size: 26px;
+    color: rgb(80, 80, 80)
   }
   button:hover {
     background-color: rgba(0, 0, 0, .1)

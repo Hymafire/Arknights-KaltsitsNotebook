@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="per-damage"
-    class="echarts-box"
-  />
+  <div id="per-damage" class="echarts-box" />
 </template>
 
 <script>

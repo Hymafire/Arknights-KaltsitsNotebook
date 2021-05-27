@@ -88,4 +88,9 @@ export default {
   font-size: 0px;
   color: transparent;
 }
+@media only screen and (max-width:450px){
+  #param-show {
+    width: 100%;
+  }
+}
 </style>

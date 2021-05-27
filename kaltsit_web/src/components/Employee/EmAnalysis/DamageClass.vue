@@ -1,37 +1,61 @@
 <template>
   <div id="damage-class">
-    <!--
-    <el-collapse v-model="activeName" class="collapse-title">
-      <el-collapse-item title="伤害类排名" name="1">
-        <RankRadar />
-      </el-collapse-item>
-      <el-collapse-item title="秒伤害量" name="2">
-        <PerDamage
-          :atk="emParam.atk"
-          :atkTime="emParam.atkTime"
-          :isActive="isActive('1')"
+    <div id="damageRank">
+      <div class="class-collapse-title">
+        <span>- 伤害类排名</span>
+        <button
+          @click="changeActive('damageRank')"
+          :class="{'el-icon-arrow-right': !isActive('damageRank'), 'el-icon-arrow-down': isActive('damageRank')}"
         />
-      </el-collapse-item>
-      <el-collapse-item title="总伤害量" name="3">
-        <DamageTotal
-          :avgDef="pretreated.enAvgDef"
-          :atk="emParam.atk"
-          :atkTime="emParam.atkTime"
-          :isActive="isActive('2')"
+      </div>
+      <el-collapse-transition>
+        <div v-if="isActive('damageRank')">
+          DamageClass
+        </div>
+      </el-collapse-transition>
+    </div>
+    <div id="perDamage">
+      <div class="class-collapse-title">
+        <span>- 秒伤害量</span>
+        <button
+          @click="changeActive('perDamage')"
+          :class="{'el-icon-arrow-right': !isActive('perDamage'), 'el-icon-arrow-down': isActive('perDamage')}"
         />
-      </el-collapse-item>
-    </el-collapse>
-    -->
-    <PerDamage
-      :atk="emParam.atk"
-      :atkTime="emParam.atkTime"
-      :isActive="isActive('1')"
-    />
+      </div>
+      <el-collapse-transition>
+        <div v-if="isActive('perDamage')">
+          <PerDamage
+            :atk="emParam.atk"
+            :atkTime="emParam.atkTime"
+            :isActive="true"
+          />
+        </div>
+      </el-collapse-transition>
+    </div>
+    <div id="totalDamage">
+      <div class="class-collapse-title">
+        <span>- 总伤害量</span>
+        <button
+          @click="changeActive('totalDamage')"
+          :class="{'el-icon-arrow-right': !isActive('totalDamage'), 'el-icon-arrow-down': isActive('totalDamage')}"
+        />
+      </div>
+      <el-collapse-transition>
+        <div v-if="isActive('totalDamage')">
+          <DamageTotal
+            :avgDef="pretreated.enAvgDef"
+            :atk="emParam.atk"
+            :atkTime="emParam.atkTime"
+            :isActive="true"
+          />
+        </div>
+      </el-collapse-transition>
+    </div>
   </div>
 </template>
 
 <script>
-// import DamageTotal from '../../Echarts/DamageClass/DamageTotal.vue'
+import DamageTotal from '../../Echarts/DamageClass/DamageTotal.vue'
 import PerDamage from '../../Echarts/DamageClass/PerDamage.vue'
 // import RankRadar from '../../Echarts/RankClass/RankRadar.vue'
 
@@ -46,13 +70,10 @@ export default {
     employeeName: String,
     emParam: Array,
     pretreated: Array,
-    isClassActive: {
-      type: Boolean,
-      default: false
-    }
+    isChanged: Boolean
   },
   components: {
-    // DamageTotal,
+    DamageTotal,
     PerDamage
     // RankRadar
   },
@@ -65,25 +86,27 @@ export default {
         }
       }
       return false
+    },
+    changeActive (name) {
+      const index = this.activeName.indexOf(name)
+      if (index === -1) {
+        this.activeName.push(name)
+      } else {
+        this.activeName.splice(index, 1)
+      }
+    }
+  },
+  watch: {
+    isChanged: {
+      handler () {
+        this.$forceUpdate()
+      },
+      immediate: true
     }
   }
 }
 </script>
 
 <style lang="scss" scroped>
-.collapse-title {
-  height: 30px;
-}
-//
-/deep/.el-collapse-item__header {
-  height: 39px;
-  font-size: 16px;
-  font-weight: 700;
-  padding-left: 20px;
-  letter-spacing: 2px;
-}
-//
-/deep/.el-collapse-item__content {
-  padding: 0px;
-}
+
 </style>

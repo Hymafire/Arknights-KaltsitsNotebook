@@ -2,8 +2,13 @@
   <div>
     <ul>
       <li v-for="(skill, index) in showSkills" :key="index" class="mask-fa">
-        <div :class="{'mask-layer': !skillsFlag[index]}" class="mask-text">
-          <span :class="{'text-display': skillsFlag[index]}"> ==== 未解锁 ==== </span>
+        <div
+          :id="maskId(index)"
+          :class="{'mask-layer-hidden': skillsFlag[index]}"
+          class="mask-text mask-layer">
+          <span :class="{'text-hidden': skillsFlag[index]}">
+            ==== 未解锁 ====
+          </span>
         </div>
         <div class="skill-box">
           <div id="title-box">
@@ -111,7 +116,7 @@ export default {
         for (const j in this.skillData) {
           if (this.skillsName[i] === j) {
             emSkills.push(this.skillData[j])
-            skillsLevel.push(7)
+            skillsLevel.push(6)
             imgUrls.push(require('@/assets/images/skillsimgs/skill_icon_' + j + '.png'))
             break
           }
@@ -132,6 +137,23 @@ export default {
     decreaseN (n) {
       this.skillsLevel[n]--
       this.levelChanged = !this.levelChanged
+    },
+    maskId (index) {
+      return 'mask-layer' + index
+    },
+    isDisplayNone () {
+      // console.log(this.skillsFlag)
+      for (const index in this.skillsFlag) {
+        if (this.skillsFlag[index]) {
+          setTimeout(function () {
+            const obj = document.getElementById('mask-layer' + index)
+            obj.style.zIndex = '-1'
+          }, 800)
+        } else {
+          const obj = document.getElementById('mask-layer' + index)
+          obj.style.zIndex = '1'
+        }
+      }
     }
   },
   watch: {
@@ -140,12 +162,14 @@ export default {
         this.getSkills()
         this.translateSkills()
         this.getShowSkills()
+        this.isDisplayNone()
       },
       immediate: true
     },
     elite: {
       handler () {
         this.getShowSkills()
+        this.isDisplayNone()
       },
       immediate: true
     },
@@ -166,12 +190,15 @@ export default {
   span {
     margin: 0px auto;
     font-size: 20px;
-    color: #fff;
     font-weight: 700;
     letter-spacing: 2px;
+    transition: all .8s;
+    color: #fff;
   }
-  .text-display {
-    display: none;
+  .text-hidden {
+    // display: none;
+    transition: all .8s;
+    color: rgba(255, 255, 255, 0);
   }
 }
 .mask-fa {
@@ -183,7 +210,15 @@ export default {
   z-index: 1;
   width: 100%;
   height: 100%;
+  transition: all .8s;
   background-color: rgba(0, 0, 0, .4);
+}
+.mask-layer-hidden {
+  transition: all .8s;
+  background-color: rgba(0, 0, 0, 0);
+}
+.mask-layer-display {
+  display: none;
 }
 .skill-box {
   display: flex;

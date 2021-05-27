@@ -7,7 +7,12 @@
     <!--  属性输出区  -->
     <el-main :class="{'is-aside-collapse': $store.state.isListCollapse}">
       <div class="collapse-btn-box" :class="{'btn-box-collapsed': $store.state.isListCollapse}">
-        <el-button class="collapse-btn" @click="changeCollapse">|||</el-button>
+        <el-button
+          class="collapse-btn"
+          @click="changeCollapse"
+          :class="[{'el-icon-d-arrow-left': !$store.state.isListCollapse},
+          {'el-icon-d-arrow-right': $store.state.isListCollapse}]"
+        />
       </div>
       <Eninfo/>
     </el-main>
@@ -81,6 +86,7 @@ export default {
 }
 .aside-collapse {
   display: none !important;
+  // transform: translate(-249px, 0);
 }
 .is-aside-collapse {
   left: 0px !important;

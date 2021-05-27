@@ -2,7 +2,7 @@
   <div>
     <ul>
       <li v-for="(talent, index) in talents" :key="index" class="mask-fa">
-        <div :class="{'mask-layer': !talentsFlag[index]}" class="mask-text">
+        <div :class="{'mask-layer-hidden': !talentsFlag[index]}" class="mask-text mask-layer">
           <span :class="{'text-display': talentsFlag[index]}"> ==== 未解锁 ==== </span>
         </div>
         <div id="talent-info">
@@ -72,12 +72,15 @@ export default {
   span {
     margin: 0px auto;
     font-size: 20px;
+    transition: all 0.8s;
     color: #fff;
     font-weight: 700;
     letter-spacing: 2px;
   }
   .text-display {
-    display: none;
+    // display: none;
+    transition: all 0.8s;
+    color: rgba(255, 255, 255, 0)
   }
 }
 .mask-fa {
@@ -89,6 +92,11 @@ export default {
   z-index: 1;
   width: 100%;
   height: 100%;
+  transition: all 0.8s;
+  background-color: rgba(0, 0, 0, 0);
+}
+.mask-layer-hidden {
+  transition: all 0.8s;
   background-color: rgba(0, 0, 0, .4);
 }
 ul {
