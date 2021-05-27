@@ -67,15 +67,18 @@ export default {
     }
   },
   props: {
-    employeeName: String,
     emParam: Array,
-    pretreated: Array,
-    isChanged: Boolean
+    pretreated: Array
   },
   components: {
     DamageTotal,
     PerDamage
     // RankRadar
+  },
+  computed: {
+    changed: function () {
+      return this.$store.state.isEmParamsUpdate
+    }
   },
   methods: {
     // 判断折叠面板是否处于激活状态
@@ -97,7 +100,7 @@ export default {
     }
   },
   watch: {
-    isChanged: {
+    changed: {
       handler () {
         this.$forceUpdate()
       },

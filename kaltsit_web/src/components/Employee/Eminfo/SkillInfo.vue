@@ -62,9 +62,13 @@ export default {
     }
   },
   props: {
-    employeeName: String,
     skillsName: Array,
     elite: Number
+  },
+  computed: {
+    employeeName: function () {
+      return this.$store.state.employeeName
+    }
   },
   created () {
     this.getSkillData()
@@ -142,7 +146,6 @@ export default {
       return 'mask-layer' + index
     },
     isDisplayNone () {
-      // console.log(this.skillsFlag)
       for (const index in this.skillsFlag) {
         if (this.skillsFlag[index]) {
           setTimeout(function () {

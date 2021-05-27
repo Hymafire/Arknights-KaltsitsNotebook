@@ -27,8 +27,12 @@ export default {
   },
   props: {
     talentTable: Array,
-    paramInputed: Object,
-    changed: Boolean
+    paramInputed: Object
+  },
+  computed: {
+    changed: function () {
+      return this.$store.state.isEmParamsUpdate
+    }
   },
   methods: {
     // 获取需要显示的天赋信息

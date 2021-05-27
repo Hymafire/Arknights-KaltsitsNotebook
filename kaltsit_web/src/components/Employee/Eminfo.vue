@@ -12,7 +12,7 @@
           @submitInfo="updateInfo"
         />
         <!-- changed_flag 用于表示 em_param 已经修改，需要更新 -->
-        <ParamShow :showParam="em_param" :changed="changed_flag" />
+        <ParamShow :showParam="emParam" />
         <RangeShow />
       </div>
       <!-- 天赋信息 -->
@@ -20,11 +20,9 @@
         <TalentInfo
           :talentTable="employee.talents"
           :paramInputed="infoForm"
-          :changed="changed_flag"
         />
         <!-- 技能信息 -->
         <SkillInfo
-          :employeeName="employee_name"
           :skillsName="employee.skills"
           :elite="infoForm.elite"
         />
@@ -33,9 +31,7 @@
       <EmAnalysis
         :employeeData="employeeData"
         :employeeKey="employee.Key"
-        :emParam="em_param"
-        :employeeName="employee_name"
-        :isChanged="changed_flag"
+        :emParam="emParam"
       />
       <!-- 分析区-end -->
     </div>
@@ -57,12 +53,9 @@ export default {
   data () {
     return {
       employeeData: [],
-      pretreated: [],
       employee: [],
-      em_param: [],
-      infoForm: [],
-      changed_flag: false,
-      activeName: []
+      emParam: [],
+      infoForm: []
     }
   },
   // 创建时调用
@@ -71,12 +64,6 @@ export default {
   },
   mounted () {
     this.findEmployee()
-  },
-  props: {
-    employee_name: {
-      type: String,
-      default: '斯卡蒂'
-    }
   },
   components: {
     BaseInfo,
@@ -87,16 +74,20 @@ export default {
     SkillInfo,
     EmAnalysis
   },
+  computed: {
+    employeeName: function () {
+      return this.$store.state.employeeName
+    }
+  },
   methods: {
     // 获取干员列表
     getEmployeeData () {
       this.employeeData = require('@/assets/data/employeedata.json')
-      this.pretreated = require('@/assets/data/pretreated.json')
     },
     // 查找干员
     findEmployee () {
       for (const em in this.employeeData) {
-        if (this.employeeData[em].name === this.employee_name) {
+        if (this.employeeData[em].name === this.employeeName) {
           this.employee = this.employeeData[em]
           break
         }
@@ -109,26 +100,23 @@ export default {
     },
     // 计算函数入口
     letsCalc () {
-      baseCalc.baseParamCalc(this.em_param, this.employee.phases, this.infoForm)
-      baseCalc.favorCalc(this.em_param, this.employee.favor, this.infoForm.favorValue)
-      baseCalc.potentialCalc(this.em_param, this.employee.potential, this.infoForm.potentialLevel)
-      this.changed_flag = !this.changed_flag
-    },
-    // 判断折叠面板是否处于激活状态
-    isActive (name) {
-      for (let i = 0; i < this.activeName.length; i++) {
-        if (name === this.activeName[i]) {
-          return true
-        }
-      }
-      return false
+      // 基础数据计算 (等级、精英化阶段)
+      baseCalc.baseParamCalc(this.emParam, this.employee.phases, this.infoForm)
+      // 加成数据计算 (天赋、潜能)
+      baseCalc.favorCalc(this.emParam, this.employee.favor, this.infoForm.favorValue)
+      baseCalc.potentialCalc(this.emParam, this.employee.potential, this.infoForm.potentialLevel)
+      // 数据更新
+      this.changeUpdate()
     },
     changeCollapse () {
       this.$store.commit('changeCollapse')
+    },
+    changeUpdate () {
+      this.$store.commit('changeIsEmParamsUpdate')
     }
   },
   watch: {
-    employee_name: {
+    employeeName: {
       handler () {
         this.findEmployee()
       }
@@ -158,22 +146,5 @@ export default {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-}
-// 图形区
-// 抽屉标题
-.collapse-title {
-  height: 30px;
-}
-//
-/deep/.el-collapse-item__header {
-  height: 39px;
-  font-size: 16px;
-  font-weight: 700;
-  padding-left: 20px;
-  letter-spacing: 2px;
-}
-//
-/deep/.el-collapse-item__content {
-  padding: 0px;
 }
 </style>

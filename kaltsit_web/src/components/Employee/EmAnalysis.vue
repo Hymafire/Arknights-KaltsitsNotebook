@@ -30,10 +30,8 @@
       <el-collapse-transition>
         <div v-if="isActive('damageClass')">
           <DamageClass
-            :employeeName="employeeName"
             :emParam="emParam"
             :pretreated="pretreatedData"
-            :isChanged="isChanged"
           />
         </div>
       </el-collapse-transition>
@@ -61,11 +59,9 @@ export default {
     this.createTagList()
   },
   props: {
-    employeeName: String,
     employeeData: Object,
     employeeKey: String,
-    emParam: Array,
-    isChanged: Boolean
+    emParam: Array
   },
   components: {
     DamageClass,
@@ -96,6 +92,9 @@ export default {
         }
       }
       return rankData
+    },
+    employeeName: function () {
+      return this.$store.state.employeeName
     }
   },
   methods: {
@@ -130,14 +129,6 @@ export default {
       } else {
         this.activeName.splice(index, 1)
       }
-    }
-  },
-  watch: {
-    isChanged: {
-      handler () {
-        this.$forceUpdate()
-      },
-      immediate: true
     }
   }
 }

@@ -17,7 +17,7 @@
           {'el-icon-s-unfold': $store.state.isListCollapse}]"
         />
       </div>
-      <Eminfo :employee_name="employee_name" />
+      <Eminfo/>
     </el-main>
   </el-container>
 </template>
@@ -29,7 +29,6 @@ import Eminfo from '../components/Employee/Eminfo.vue'
 export default {
   data () {
     return {
-      employee_name: '斯卡蒂',
       employeeList: []
     }
   },
@@ -43,11 +42,11 @@ export default {
     Eminfo
   },
   methods: {
-    changeName (name) {
-      this.employee_name = name
-    },
     getEmployeeList () {
       this.employeeList = require('@/assets/data/employeelist.json')
+    },
+    changeName (name) {
+      this.$store.commit('changeEmployeeName', name)
     },
     closeDrawer () {
       this.$store.commit('closeDrawer')

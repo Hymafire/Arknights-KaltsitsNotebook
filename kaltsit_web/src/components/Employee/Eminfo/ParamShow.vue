@@ -34,10 +34,6 @@
         <span>{{ showParam.respawnTime }}s</span>
       </li>
     </ul>
-    <!-- 隐藏起来 -->
-    <div class="hidden-style">
-      {{ changed }}
-    </div>
   </div>
 </template>
 
@@ -45,8 +41,19 @@
 export default {
   name: 'ParamShow',
   props: {
-    showParam: Array,
-    changed: Boolean
+    showParam: Array
+  },
+  computed: {
+    changed: function () {
+      return this.$store.state.isEmParamsUpdate
+    }
+  },
+  watch: {
+    changed: {
+      handler () {
+        this.$forceUpdate()
+      }
+    }
   }
 }
 </script>
