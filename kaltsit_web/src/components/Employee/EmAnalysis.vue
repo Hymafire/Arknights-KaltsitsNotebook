@@ -1,38 +1,49 @@
 <template>
   <div id="em-analysis">
-    <el-collapse v-model="activeName" class="collapse-title">
-      <el-collapse-item title="能力排名" name="totalRank">
-        <RankRadar
-          :name="employeeName"
-          :dataList="rankData"
-          :indicatorList="tagList"
-          :isActive="isActive('totalRank')"
+    <div id="totalRank" class="collapse-box">
+      <div class="collapse-title">
+        <span>总排名</span>
+        <button
+          @click="changeActive('totalRank')"
+          :class="{'el-icon-arrow-right': !isActive('totalRank'), 'el-icon-arrow-down': isActive('totalRank')}"
         />
-      </el-collapse-item>
-      <el-collapse-item title="秒伤害量" name="perDamage">
-        <PerDamage
-          :atk="emParam.atk"
-          :atkTime="emParam.atkTime"
-          :isActive="isActive('perDamage')"
+      </div>
+      <el-collapse-transition>
+        <div v-if="isActive('totalRank')">
+          <RankRadar
+            :name="employeeName"
+            :dataList="rankData"
+            :indicatorList="tagList"
+            :isActive="isActive('totalRank')"
+          />
+        </div>
+      </el-collapse-transition>
+    </div>
+    <div id="damageClass" class="collapse-box">
+      <div class="collapse-title">
+        <span>攻击类</span>
+        <button
+          @click="changeActive('damageClass')"
+          :class="{'el-icon-arrow-right': !isActive('damageClass'), 'el-icon-arrow-down': isActive('damageClass')}"
         />
-      </el-collapse-item>
-      <el-collapse-item title="总伤害量" name="totalDamage">
-        <DamageTotal
-          :avgDef="pretreatedData.enAvgDef"
-          :atk="emParam.atk"
-          :atkTime="emParam.atkTime"
-          :isActive="isActive('totalDamage')"
-        />
-      </el-collapse-item>
-    </el-collapse>
+      </div>
+      <el-collapse-transition>
+        <div v-if="isActive('damageClass')">
+          <DamageClass
+            :employeeName="employeeName"
+            :emParam="emParam"
+            :pretreated="pretreatedData"
+            :isChanged="isChanged"
+          />
+        </div>
+      </el-collapse-transition>
+    </div>
   </div>
 </template>
 
 <script>
-// import DamageClass from './EmAnalysis/DamageClass.vue'
+import DamageClass from './EmAnalysis/DamageClass.vue'
 import RankRadar from '../Echarts/RankClass/RankRadar.vue'
-import PerDamage from '../Echarts/DamageClass/PerDamage.vue'
-import DamageTotal from '../Echarts/DamageClass/DamageTotal.vue'
 
 export default {
   name: 'EmAnalysis',
@@ -57,10 +68,8 @@ export default {
     isChanged: Boolean
   },
   components: {
-    // DamageClass,
-    RankRadar,
-    PerDamage,
-    DamageTotal
+    DamageClass,
+    RankRadar
   },
   computed: {
     // 数值排名
@@ -113,6 +122,14 @@ export default {
         }
       }
       return false
+    },
+    changeActive (name) {
+      const index = this.activeName.indexOf(name)
+      if (index === -1) {
+        this.activeName.push(name)
+      } else {
+        this.activeName.splice(index, 1)
+      }
     }
   },
   watch: {
@@ -127,19 +144,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.collapse-title {
-  height: 30px;
-}
-//
-/deep/.el-collapse-item__header {
-  height: 39px;
-  font-size: 16px;
-  font-weight: 700;
-  padding-left: 20px;
-  letter-spacing: 2px;
-}
-//
-/deep/.el-collapse-item__content {
-  padding: 0px;
-}
+
 </style>
