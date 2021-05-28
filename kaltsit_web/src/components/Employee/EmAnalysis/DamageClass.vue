@@ -27,7 +27,9 @@
           <PerDamage
             :atk="emParam.atk"
             :atkTime="emParam.atkTime"
-            :isActive="true"
+            :baseAtkTime="emParam.baseAtkTime"
+            :atkMod="atkMod"
+            :damMod="damMod"
           />
         </div>
       </el-collapse-transition>
@@ -56,7 +58,9 @@
 
 <script>
 import DamageTotal from '../../Echarts/DamageClass/DamageTotal.vue'
-import PerDamage from '../../Echarts/DamageClass/PerDamage.vue'
+import { damModJudge, atkModJudge } from '../../utils/damageCalc'
+import PerDamage from '../EmAnalysis/DamageClass/PerDamage.vue'
+// import PerDamage from '../../Echarts/DamageClass/PerDamage.vue'
 // import RankRadar from '../../Echarts/RankClass/RankRadar.vue'
 
 export default {
@@ -68,7 +72,8 @@ export default {
   },
   props: {
     emParam: Array,
-    pretreated: Array
+    pretreated: Array,
+    description: String
   },
   components: {
     DamageTotal,
@@ -78,6 +83,12 @@ export default {
   computed: {
     changed: function () {
       return this.$store.state.isEmParamsUpdate
+    },
+    damMod: function () {
+      return damModJudge(this.description)
+    },
+    atkMod: function () {
+      return atkModJudge(this.description)
     }
   },
   methods: {

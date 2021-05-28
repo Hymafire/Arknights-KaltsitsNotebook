@@ -89,6 +89,7 @@ export default {
       for (const em in this.employeeData) {
         if (this.employeeData[em].name === this.employeeName) {
           this.employee = this.employeeData[em]
+          console.log(this.employee.description)
           break
         }
       }
@@ -100,12 +101,9 @@ export default {
     },
     // 计算函数入口
     letsCalc () {
-      // 基础数据计算 (等级、精英化阶段)
       baseCalc.baseParamCalc(this.emParam, this.employee.phases, this.infoForm)
-      // 加成数据计算 (天赋、潜能)
       baseCalc.favorCalc(this.emParam, this.employee.favor, this.infoForm.favorValue)
       baseCalc.potentialCalc(this.emParam, this.employee.potential, this.infoForm.potentialLevel)
-      // 数据更新
       this.changeUpdate()
     },
     changeCollapse () {

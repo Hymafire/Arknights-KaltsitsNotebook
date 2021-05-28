@@ -10,20 +10,18 @@ export default {
   name: 'RankRadar',
   props: {
     name: String,
+    dataList: Array,
+    indicatorList: Array,
     isActive: {
       type: Boolean,
-      default: true
-    },
-    dataList: Array,
-    indicatorList: Array
+      default: false
+    }
   },
   mounted () {
     this.rankRadarChart()
   },
   methods: {
     rankRadarChart () {
-      //
-      // console.log(this.dataList)
       const myChart = echarts.getInstanceByDom(document.getElementById('rank-radar'))
       if (myChart == null) {
         this.rank_radar = echarts.init(document.getElementById('rank-radar'))

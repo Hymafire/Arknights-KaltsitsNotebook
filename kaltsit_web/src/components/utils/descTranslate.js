@@ -28,12 +28,13 @@ function completeValue (str, blackboard) {
 function valueFormat (str, key, param) {
   str = str.replace('{' + key + '}', param)
   str = str.replace('{' + key.toUpperCase() + '}', param)
-  str = str.replace('{' + key + ':0%}', parseInt(param * 100) + '%')
+  str = str.replace('{' + key + ':0%}', (param * 100).toFixed(0) + '%')
+  str = str.replace('{' + key + ':0%}', (param * 100).toFixed(0) + '%')
   str = str.replace('{' + key.toUpperCase() + ':0.0%}', (param * 100).toFixed(1) + '%')
-  str = str.replace('{' + key + ':0}', parseInt(param))
+  str = str.replace('{' + key + ':0}', (param).toFixed(0))
   str = str.replace('{' + key + ':0.0}', param.toFixed(1))
   str = str.replace('{-' + key + '}', -param)
-  str = str.replace('{-' + key + ':0%}', -parseInt(param * 100) + '%')
+  str = str.replace('{-' + key + ':0%}', -(param * 100).toFixed(0) + '%')
   return str
 }
 module.exports = {
