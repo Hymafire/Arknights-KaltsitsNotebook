@@ -1,5 +1,7 @@
 <template>
-  <div id="line-chart" class="echarts-box" />
+  <div id="echart-clothes">
+    <div id="line-chart" class="echarts-box" />
+  </div>
 </template>
 
 <script>
@@ -12,19 +14,10 @@ export default {
     legendList: [],
     seriesList: Array,
     echartLabel: Array,
-    isChanged: Boolean,
-    isActive: {
-      type: Boolean,
-      default: false
-    }
+    isChanged: Boolean
   },
   mounted () {
     this.lineChart()
-  },
-  computed: {
-    employeeName: function () {
-      return this.$store.state.employeeName
-    }
   },
   methods: {
     lineChart () {
@@ -39,11 +32,6 @@ export default {
         title: {
           left: 'center',
           text: this.echartLabel[0]
-        },
-        // 曲线标题
-        legend: {
-          left: '70%',
-          data: this.legendList
         },
         grid: {
           top: 35,
@@ -75,11 +63,16 @@ export default {
         // 数据
         series: this.seriesList
       }
+      if (this.legendList !== []) {
+        option.legend = {
+          left: '70',
+          data: this.legendList
+        }
+      }
       this.line_chart.setOption(option)
       // 自适应 有Bug
-      if (this.isActive) {
-        window.addEventListener('resize', () => { myChart.resize() })
-      }
+      // window.addEventListener('resize', () => { myChart.resize() })
+      window.onresize = myChart.resize
     }
   },
   watch: {
@@ -92,6 +85,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+#echart-clothes {
+  width: 100%;
+  overflow: hidden;
+}
 </style>
