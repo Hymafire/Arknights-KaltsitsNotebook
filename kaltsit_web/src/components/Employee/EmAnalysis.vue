@@ -11,10 +11,7 @@
       </div>
       <el-collapse-transition>
         <div v-if="isActive('totalRank')">
-          <TotalRank
-            :employeeData="employeeData"
-            :employeeKey="employeeKey"
-          />
+          <TotalRank />
         </div>
       </el-collapse-transition>
     </div>
@@ -30,11 +27,7 @@
       </div>
       <el-collapse-transition>
         <div v-if="isActive('damageClass')">
-          <DamageClass
-            :emParam="emParam"
-            :pretreated="pretreatedData"
-            :description="employeeData[employeeKey].description"
-          />
+          <DamageClass :emParam="emParam" />
         </div>
       </el-collapse-transition>
     </div>
@@ -50,16 +43,10 @@ export default {
   name: 'EmAnalysis',
   data () {
     return {
-      pretreatedData: [],
       activeName: []
     }
   },
-  created () {
-    this.getPertreated()
-  },
   props: {
-    employeeData: Object,
-    employeeKey: String,
     emParam: Array
   },
   components: {
@@ -67,9 +54,6 @@ export default {
     TotalRank
   },
   methods: {
-    getPertreated () {
-      this.pretreatedData = require('../../assets/data/pretreated.json')
-    },
     // 判断折叠面板是否处于激活状态
     isActive (name) {
       for (let i = 0; i < this.activeName.length; i++) {

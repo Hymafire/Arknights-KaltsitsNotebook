@@ -15,17 +15,23 @@
 <script>
 import NavBar from './components/Common/NavBar.vue'
 import NavDrawer from './components/Common/NavDrawer.vue'
+import { emDataPretreate } from './components/utils/pretreatedCalc.js'
 
 export default {
   name: 'App',
-  data () {
-    return {
-      isOpen: false
-    }
-  },
   components: {
     NavBar,
     NavDrawer
+  },
+  created () {
+    this.initData()
+  },
+  methods: {
+    initData () {
+      const employeeData = require('./assets/data/employeedata.json')
+      this.$store.commit('inputEmployeeData', employeeData)
+      this.$store.commit('inputEmPretreatedData', emDataPretreate(employeeData))
+    }
   }
 }
 </script>

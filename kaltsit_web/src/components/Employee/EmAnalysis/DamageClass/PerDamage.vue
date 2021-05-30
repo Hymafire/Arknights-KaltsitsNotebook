@@ -47,7 +47,7 @@ export default {
       }
       return labelFormat(xAxis, '秒伤害量')
     },
-    legend: function () {
+    legendList: function () {
       if (this.atkMod === 4) {
         return ['远程', '近战']
       }

@@ -11,7 +11,7 @@ import * as echarts from 'echarts'
 export default {
   name: 'LineChart',
   props: {
-    legendList: [],
+    legendList: Array,
     seriesList: Array,
     echartLabel: Array,
     isChanged: Boolean

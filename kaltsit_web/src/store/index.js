@@ -13,8 +13,12 @@ export default new Vuex.Store({
     enemyName: '源石虫',
     // 目标干员信息
     employeeName: '斯卡蒂',
+    employeeKey: 'char_263_skadi',
     // 目标干员信息是否更新
-    isEmParamsUpdate: true
+    isEmParamsUpdate: true,
+    // 数据
+    employeeData: Object,
+    emPretreatedData: Object
   },
   mutations: {
     // 抽屉开关
@@ -41,10 +45,23 @@ export default new Vuex.Store({
     },
     changeEmployeeName (state, employeeName) {
       state.employeeName = employeeName
+      for (const em in state.employeeData) {
+        if (state.employeeData[em].name === employeeName) {
+          state.employeeKey = state.employeeData[em].Key
+          break
+        }
+      }
     },
     // 目标干员信息是否更新
     changeIsEmParamsUpdate (state) {
       state.isEmParamsUpdate = !state.isEmParamsUpdate
+    },
+    // 数据载入
+    inputEmployeeData (state, employeeData) {
+      state.employeeData = employeeData
+    },
+    inputEmPretreatedData (state, emPretreateData) {
+      state.emPretreatedData = emPretreateData
     }
   },
   actions: {

@@ -28,11 +28,7 @@
         />
       </div>
       <!-- 分析区 -->
-      <EmAnalysis
-        :employeeData="employeeData"
-        :employeeKey="employee.Key"
-        :emParam="emParam"
-      />
+      <EmAnalysis :emParam="emParam" />
       <!-- 分析区-end -->
     </div>
   </div>
@@ -52,15 +48,10 @@ import EmAnalysis from './EmAnalysis.vue'
 export default {
   data () {
     return {
-      employeeData: [],
       employee: [],
       emParam: [],
       infoForm: []
     }
-  },
-  // 创建时调用
-  created () {
-    this.getEmployeeData()
   },
   mounted () {
     this.findEmployee()
@@ -75,24 +66,14 @@ export default {
     EmAnalysis
   },
   computed: {
-    employeeName: function () {
-      return this.$store.state.employeeName
+    employeeKey () {
+      return this.$store.state.employeeKey
     }
   },
   methods: {
-    // 获取干员列表
-    getEmployeeData () {
-      this.employeeData = require('@/assets/data/employeedata.json')
-    },
     // 查找干员
     findEmployee () {
-      for (const em in this.employeeData) {
-        if (this.employeeData[em].name === this.employeeName) {
-          this.employee = this.employeeData[em]
-          console.log(this.employee.description)
-          break
-        }
-      }
+      this.employee = this.$store.state.employeeData[this.employeeKey]
       this.letsCalc()
     },
     // 更新输入的信息
@@ -114,7 +95,7 @@ export default {
     }
   },
   watch: {
-    employeeName: {
+    employeeKey: {
       handler () {
         this.findEmployee()
       }

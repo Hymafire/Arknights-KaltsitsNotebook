@@ -9,7 +9,6 @@ import * as echarts from 'echarts'
 export default {
   name: 'RankRadar',
   props: {
-    name: String,
     dataList: Array,
     indicatorList: Array,
     isActive: {
@@ -56,14 +55,6 @@ export default {
       if (this.isActive) {
         window.addEventListener('resize', () => { myChart.resize() })
       }
-    }
-  },
-  watch: {
-    name: {
-      handler () {
-        this.rankRadarChart()
-      },
-      immediate: true
     }
   }
 }

@@ -14,6 +14,24 @@
         </div>
       </el-collapse-transition>
     </div>
+    <div id="damageBar">
+      <div class="class-collapse-title">
+        <span>- 伤害类对比</span>
+        <button
+          @click="changeActive('damageBar')"
+          :class="{'el-icon-arrow-right': !isActive('damageBar'), 'el-icon-arrow-down': isActive('damageBar')}"
+        />
+      </div>
+      <el-collapse-transition>
+        <div v-if="isActive('damageBar')">
+          <DamageBar
+            :key="this.$store.state.employeeKey"
+            :atk="emParam.atk"
+            :atkTime="emParam.atkTime"
+          />
+        </div>
+      </el-collapse-transition>
+    </div>
     <div id="perDamage">
       <div class="class-collapse-title">
         <span>- 秒伤害量</span>
@@ -58,8 +76,9 @@
 
 <script>
 import DamageTotal from '../../Echarts/DamageClass/DamageTotal.vue'
-import { damModJudge, atkModJudge } from '../../utils/damageCalc'
+import { damModJudge, atkModJudge } from '../../utils/damageCalc.js'
 import PerDamage from '../EmAnalysis/DamageClass/PerDamage.vue'
+import DamageBar from '../EmAnalysis/DamageClass/DamageBar.vue'
 // import PerDamage from '../../Echarts/DamageClass/PerDamage.vue'
 // import RankRadar from '../../Echarts/RankClass/RankRadar.vue'
 
@@ -71,13 +90,12 @@ export default {
     }
   },
   props: {
-    emParam: Array,
-    pretreated: Array,
-    description: String
+    emParam: Array
   },
   components: {
     DamageTotal,
-    PerDamage
+    PerDamage,
+    DamageBar
     // RankRadar
   },
   computed: {
@@ -85,10 +103,10 @@ export default {
       return this.$store.state.isEmParamsUpdate
     },
     damMod: function () {
-      return damModJudge(this.description)
+      return damModJudge(this.$store.state.employeeData[this.$store.state.employeeKey].description)
     },
     atkMod: function () {
-      return atkModJudge(this.description)
+      return atkModJudge(this.$store.state.employeeData[this.$store.state.employeeKey].description)
     }
   },
   methods: {
