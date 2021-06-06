@@ -1,6 +1,6 @@
 <template>
   <div id="em-analysis">
-    <!-- 1.totalRank -->
+    <!-- totalRank -->
     <div id="totalRank" class="collapse-box">
       <div class="collapse-title">
         <span>总排名</span>
@@ -11,12 +11,15 @@
       </div>
       <el-collapse-transition>
         <div v-if="isActive('totalRank')">
+          <!--
           <TotalRank />
+          -->
+          totalRank
         </div>
       </el-collapse-transition>
     </div>
     <!-- totalRank-end -->
-    <!-- 2.damageClass -->
+    <!-- damageClass -->
     <div id="damageClass" class="collapse-box">
       <div class="collapse-title">
         <span>攻击类</span>
@@ -27,36 +30,17 @@
       </div>
       <el-collapse-transition>
         <div v-if="isActive('damageClass')">
-          <DamageClass :emParam="emParam" />
+          <DamageClass :skillParam="skillParam" />
         </div>
       </el-collapse-transition>
     </div>
     <!-- damageClass-end -->
-    <!-- 5.skillClass -->
-    <div id="skillClass" class="collapse-box">
-      <div class="collapse-title">
-        <span>技能分析</span>
-        <button
-          @click="changeActive('skillClass')"
-          :class="{'el-icon-arrow-right': !isActive('skillClass'), 'el-icon-arrow-down': isActive('skillClass')}"
-        />
-      </div>
-      <el-collapse-transition>
-        <div v-if="isActive('skillClass')">
-          <SkillClass
-            :emParam="emParam"
-            :skillLevel="skillLevel"
-          />
-        </div>
-      </el-collapse-transition>
-    </div>
-    <!-- skillClass-end -->
   </div>
 </template>
 
 <script>
-import DamageClass from './EmAnalysis/DamageClass.vue'
-import TotalRank from '../Employee/EmAnalysis/TotalRank.vue'
+import DamageClass from './DamageClass.vue'
+// import TotalRank from '../Employee/EmAnalysis/TotalRank.vue'
 
 export default {
   name: 'EmAnalysis',
@@ -66,12 +50,11 @@ export default {
     }
   },
   props: {
-    emParam: Array,
-    skillLevel: Array
+    skillParam: Array
   },
   components: {
-    DamageClass,
-    TotalRank
+    DamageClass
+    // TotalRank
   },
   methods: {
     // 判断折叠面板是否处于激活状态

@@ -1,5 +1,6 @@
 <template>
   <LineChart
+    :chartId="'base-perdamage-chart'"
     :legendList="legendList"
     :seriesList="seriesList"
     :echartLabel="echartLabel"

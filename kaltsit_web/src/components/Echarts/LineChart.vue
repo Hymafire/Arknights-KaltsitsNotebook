@@ -1,6 +1,6 @@
 <template>
   <div id="echart-clothes">
-    <div id="line-chart" class="echarts-box" />
+    <div :id="chartId" class="echarts-box" />
   </div>
 </template>
 
@@ -11,6 +11,7 @@ import * as echarts from 'echarts'
 export default {
   name: 'LineChart',
   props: {
+    chartId: String,
     legendList: Array,
     seriesList: Array,
     echartLabel: Array,
@@ -22,9 +23,9 @@ export default {
   methods: {
     lineChart () {
       // 初始化DOM
-      const myChart = echarts.getInstanceByDom(document.getElementById('line-chart'))
+      const myChart = echarts.getInstanceByDom(document.getElementById(this.chartId))
       if (myChart == null) {
-        this.line_chart = echarts.init(document.getElementById('line-chart'))
+        this.line_chart = echarts.init(document.getElementById(this.chartId))
       }
       // 配置内容
       const option = {

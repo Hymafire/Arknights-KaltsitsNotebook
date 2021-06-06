@@ -25,6 +25,7 @@
         <SkillInfo
           :skillsName="employee.skills"
           :elite="infoForm.elite"
+          @submitLevel="updateLevel"
         />
       </div>
       <!-- 分析区 -->
@@ -50,7 +51,8 @@ export default {
     return {
       employee: [],
       emParam: [],
-      infoForm: []
+      infoForm: [],
+      skillsLevel: []
     }
   },
   mounted () {
@@ -79,6 +81,9 @@ export default {
     // 更新输入的信息
     updateInfo (info) {
       this.infoForm = info
+    },
+    updataLevel (level) {
+      this.skillsLevel = level
     },
     // 计算函数入口
     letsCalc () {

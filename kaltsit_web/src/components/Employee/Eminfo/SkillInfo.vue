@@ -53,8 +53,6 @@ export default {
       skillsLevel: Array,
       // 技能是否解锁
       skillsFlag: Array,
-      // 技能等级信息改变
-      levelChanged: false,
       // 技能的图片信息
       imgUrls: Array,
       // 所有的技能信息
@@ -135,12 +133,10 @@ export default {
       this.skillData = require('@/assets/data/skill_table.json')
     },
     increaseN (n) {
-      this.skillsLevel[n]++
-      this.levelChanged = !this.levelChanged
+      this.$set(this.skillsLevel, n, this.skillsLevel[n] + 1)
     },
     decreaseN (n) {
-      this.skillsLevel[n]--
-      this.levelChanged = !this.levelChanged
+      this.$set(this.skillsLevel, n, this.skillsLevel[n] - 1)
     },
     maskId (index) {
       return 'mask-layer' + index
@@ -176,7 +172,7 @@ export default {
       },
       immediate: true
     },
-    levelChanged: {
+    skillsLevel: {
       handler () {
         this.getShowSkills()
       }
