@@ -153,6 +153,9 @@ export default {
           obj.style.zIndex = '1'
         }
       }
+    },
+    commitInfo () {
+      this.$emit('submitLevel', this.skillsLevel, this.skillsFlag)
     }
   },
   watch: {
@@ -162,6 +165,7 @@ export default {
         this.translateSkills()
         this.getShowSkills()
         this.isDisplayNone()
+        this.commitInfo()
       },
       immediate: true
     },
@@ -169,12 +173,14 @@ export default {
       handler () {
         this.getShowSkills()
         this.isDisplayNone()
+        this.commitInfo()
       },
       immediate: true
     },
     skillsLevel: {
       handler () {
         this.getShowSkills()
+        this.commitInfo()
       }
     }
   }

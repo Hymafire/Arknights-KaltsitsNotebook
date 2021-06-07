@@ -41,7 +41,7 @@
 export default {
   name: 'ParamShow',
   props: {
-    showParam: Array
+    showParam: Object
   },
   computed: {
     changed: function () {

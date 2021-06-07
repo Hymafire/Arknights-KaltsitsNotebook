@@ -1,36 +1,45 @@
 <template>
-  
+  <div>
+    <!-- damageClass -->
+    <CollapseItem
+      :compontentName="'伤害类排名'"
+      :isChild="true"
+    >
+      {{ 'DamageClass' }}
+    </CollapseItem>
+    <!-- damageClass-end -->
+    <!-- perDamage-Line-Chart -->
+    <CollapseItem
+      :compontentName="'秒伤折线图'"
+      :isChild="true"
+    >
+      <PerDamage
+        :skillParam="skillParam"
+        :skillId="skillId"
+        :emParam="emParam"
+      />
+    </CollapseItem>
+  </div>
 </template>
 
 <script>
+import CollapseItem from '../../../Common/CollapseItem.vue'
+import perDamage from './DamageClass/PerDamage.vue'
+import { emDataPretreate } from '../../../utils/skillParamCalc.js'
+
 export default {
-  data () {
-    return {
-      activeName: []
-    }
-  },
   props: {
-    skillParam: Array
+    emParam: Object,
+    skillData: Object,
+    skillId: String
   },
   components: {
+    CollapseItem,
+    perDamage
   },
-  methods: {
-    // 判断折叠面板是否处于激活状态
-    isActive (name) {
-      for (let i = 0; i < this.activeName.length; i++) {
-        if (name === this.activeName[i]) {
-          return true
-        }
-      }
-      return false
-    },
-    changeActive (name) {
-      const index = this.activeName.indexOf(name)
-      if (index === -1) {
-        this.activeName.push(name)
-      } else {
-        this.activeName.splice(index, 1)
-      }
+  computed: {
+    skillParam () {
+      return emDataPretreate(this.emParam, this.skillData, 'dam')
     }
   }
 }

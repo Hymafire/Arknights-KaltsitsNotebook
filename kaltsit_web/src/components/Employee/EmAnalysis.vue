@@ -1,96 +1,45 @@
 <template>
   <div id="em-analysis">
     <!-- 1.totalRank -->
-    <div id="totalRank" class="collapse-box">
-      <div class="collapse-title">
-        <span>总排名</span>
-        <button
-          @click="changeActive('totalRank')"
-          :class="{'el-icon-arrow-right': !isActive('totalRank'), 'el-icon-arrow-down': isActive('totalRank')}"
-        />
-      </div>
-      <el-collapse-transition>
-        <div v-if="isActive('totalRank')">
-          <TotalRank />
-        </div>
-      </el-collapse-transition>
-    </div>
+    <CollapseItem :compontentName="'总排名'">
+      <TotalRank />
+    </CollapseItem>
     <!-- totalRank-end -->
     <!-- 2.damageClass -->
-    <div id="damageClass" class="collapse-box">
-      <div class="collapse-title">
-        <span>攻击类</span>
-        <button
-          @click="changeActive('damageClass')"
-          :class="{'el-icon-arrow-right': !isActive('damageClass'), 'el-icon-arrow-down': isActive('damageClass')}"
-        />
-      </div>
-      <el-collapse-transition>
-        <div v-if="isActive('damageClass')">
-          <DamageClass :emParam="emParam" />
-        </div>
-      </el-collapse-transition>
-    </div>
+    <CollapseItem :compontentName="'攻击类'">
+      <DamageClass :emParam="emParam" />
+    </CollapseItem>
     <!-- damageClass-end -->
     <!-- 5.skillClass -->
-    <div id="skillClass" class="collapse-box">
-      <div class="collapse-title">
-        <span>技能分析</span>
-        <button
-          @click="changeActive('skillClass')"
-          :class="{'el-icon-arrow-right': !isActive('skillClass'), 'el-icon-arrow-down': isActive('skillClass')}"
-        />
-      </div>
-      <el-collapse-transition>
-        <div v-if="isActive('skillClass')">
-          <SkillClass
-            :emParam="emParam"
-            :skillLevel="skillLevel"
-          />
-        </div>
-      </el-collapse-transition>
-    </div>
+    <CollapseItem :compontentName="'技能分析'">
+      <SkillClass
+        :emParam="emParam"
+        :skillsLevel="skillsLevel"
+        :skillsFlag="skillsFlag"
+      />
+    </CollapseItem>
     <!-- skillClass-end -->
   </div>
 </template>
 
 <script>
-import DamageClass from './EmAnalysis/DamageClass.vue'
+import CollapseItem from '../Common/CollapseItem.vue'
 import TotalRank from '../Employee/EmAnalysis/TotalRank.vue'
+import DamageClass from './EmAnalysis/DamageClass.vue'
+import SkillClass from './EmAnalysis/SkillClass.vue'
 
 export default {
   name: 'EmAnalysis',
-  data () {
-    return {
-      activeName: []
-    }
-  },
   props: {
-    emParam: Array,
-    skillLevel: Array
+    emParam: Object,
+    skillsLevel: Array,
+    skillsFlag: Array
   },
   components: {
+    CollapseItem,
+    TotalRank,
     DamageClass,
-    TotalRank
-  },
-  methods: {
-    // 判断折叠面板是否处于激活状态
-    isActive (name) {
-      for (let i = 0; i < this.activeName.length; i++) {
-        if (name === this.activeName[i]) {
-          return true
-        }
-      }
-      return false
-    },
-    changeActive (name) {
-      const index = this.activeName.indexOf(name)
-      if (index === -1) {
-        this.activeName.push(name)
-      } else {
-        this.activeName.splice(index, 1)
-      }
-    }
+    SkillClass
   }
 }
 </script>

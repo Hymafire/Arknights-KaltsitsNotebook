@@ -29,7 +29,11 @@
         />
       </div>
       <!-- 分析区 -->
-      <EmAnalysis :emParam="emParam" />
+      <EmAnalysis
+        :emParam="emParam"
+        :skillsLevel="skillsLevel"
+        :skillFlag="skillsFlag"
+      />
       <!-- 分析区-end -->
     </div>
   </div>
@@ -49,10 +53,11 @@ import EmAnalysis from './EmAnalysis.vue'
 export default {
   data () {
     return {
-      employee: [],
-      emParam: [],
-      infoForm: [],
-      skillsLevel: []
+      employee: {},
+      emParam: {},
+      infoForm: {},
+      skillsLevel: [],
+      skillsFlag: []
     }
   },
   mounted () {
@@ -82,8 +87,9 @@ export default {
     updateInfo (info) {
       this.infoForm = info
     },
-    updataLevel (level) {
-      this.skillsLevel = level
+    updateLevel (skillsLevel, skillsFlag) {
+      this.skillsLevel = skillsLevel
+      this.skillsFlag = skillsFlag
     },
     // 计算函数入口
     letsCalc () {
