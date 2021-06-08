@@ -71,57 +71,6 @@ li {
   text-decoration-line: underline;
 }
 
-/* 抽屉样式 */
-.collapse-box {
-  border-top: 1px solid #ebeef5;
-}
-.collapse-box-tiny {
-  border-top: 1px solid #ebeef5;
-}
-.class-collapse-title,
-.collapse-title {
-  display: flex;
-  justify-content: space-between;
-  box-sizing: border-box;
-  button {
-    border: 0px solid transparent;
-    background-color: #fff;
-    padding: 0px;
-    color: #666;
-  }
-}
-.collapse-title {
-  height: 36px;
-  span {
-    line-height: 36px;
-    font-weight: 700;
-    padding-left: 13px;
-    font-size: 17px;
-    letter-spacing: 2px;
-  }
-  button {
-    width: 36px;
-    font-weight: 700;
-    font-size: 15px;
-  }
-}
-.class-collapse-title {
-  height: 30px;
-  span {
-    line-height: 30px;
-    font-weight: 600;
-    padding-left: 20px;
-    font-size: 15px;
-    letter-spacing: 1px;
-  }
-  button {
-    width: 30px;
-    font-weight: 600;
-    font-size: 13px;
-    margin-right: 3px;
-  }
-}
-
 /* 杂项 */
 button {
   outline:none;

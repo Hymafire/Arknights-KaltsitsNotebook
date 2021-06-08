@@ -1,14 +1,14 @@
 <template>
   <div>
     <CollapseItem
-      :compontentName="' -总评价'"
-      :isChild="true"
+      :compontentName="'总评价'"
+      :layer="4"
     >
     </CollapseItem>
     <CollapseItem
       v-if="skillType.dam"
-      :compontentName="' -攻击类'"
-      :isChild="true"
+      :compontentName="'攻击类'"
+      :layer="4"
     >
       <DamageClass
         :emParam="emParam"
@@ -18,14 +18,14 @@
     </CollapseItem>
     <CollapseItem
       v-if="skillType.sur"
-      :compontentName="' -生存类'"
-      :isChild="true"
+      :compontentName="'生存类'"
+      :layer="4"
     >
     </CollapseItem>
     <CollapseItem
       v-if="skillType.sup"
-      :compontentName="' -辅助类'"
-      :isChild="true"
+      :compontentName="'辅助类'"
+      :layer="4"
     >
     </CollapseItem>
   </div>

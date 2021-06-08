@@ -1,5 +1,13 @@
 // 计算工具库
 // 基础类计算
+// Total
+function emParamCalc (emData, inputParam) {
+  const emParam = {}
+  baseParamCalc(emParam, emData.phases, inputParam)
+  favorCalc(emParam, emData.favor, inputParam.favorValue)
+  potentialCalc(emParam, emData.potential, inputParam.potentialLevel)
+  return emParam
+}
 // 等级
 function baseParamCalc (param, data, input) {
   const Lv = input.levelValue - 1
@@ -41,6 +49,7 @@ function talentCalc () {
 }
 //
 module.exports = {
+  emParamCalc,
   baseParamCalc,
   favorCalc,
   potentialCalc,

@@ -3,7 +3,7 @@
     <div v-for="(skill, i) in skillsTable" :key="skill">
       <CollapseItem
         :compontentName="skillData(skill, i).name"
-        :isChild="true"
+        :layer="3"
       >
         <SkillAnalysis
           :skillId="skill"

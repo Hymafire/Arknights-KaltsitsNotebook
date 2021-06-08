@@ -3,7 +3,7 @@
     <!-- damageClass -->
     <CollapseItem
       :compontentName="'伤害类排名'"
-      :isChild="true"
+      :layer="5"
     >
       {{ 'DamageClass' }}
     </CollapseItem>
@@ -11,7 +11,7 @@
     <!-- perDamage-Line-Chart -->
     <CollapseItem
       :compontentName="'秒伤折线图'"
-      :isChild="true"
+      :layer="5"
     >
       <PerDamage
         :skillParam="skillParam"

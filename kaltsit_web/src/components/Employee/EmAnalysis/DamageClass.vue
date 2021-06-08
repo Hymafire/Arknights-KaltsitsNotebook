@@ -3,7 +3,7 @@
     <!-- damageClass -->
     <CollapseItem
       :compontentName="'伤害类排名'"
-      :isChild="true"
+      :layer="2"
     >
       {{ 'DamageClass' }}
     </CollapseItem>
@@ -11,7 +11,7 @@
     <!-- damageBar -->
     <CollapseItem
       :compontentName="'伤害类对比'"
-      :isChild="true"
+      :layer="2"
     >
       <DamageBar
         :key="this.$store.state.employeeKey"
@@ -23,7 +23,7 @@
     <!-- perdamage -->
     <CollapseItem
       :compontentName="'秒伤害量'"
-      :isChild="true"
+      :layer="2"
     >
       <PerDamage
         :atk="emParam.atk"
