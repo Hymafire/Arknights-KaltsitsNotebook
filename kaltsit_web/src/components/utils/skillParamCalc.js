@@ -1,23 +1,23 @@
 /* skillParamCalc */
 // 入口
 function getSkillParam (emParam, skillData, skillType) {
-  const skillParam = {}
+  const skillParam = JSON.parse(JSON.stringify(emParam))
   if (skillType === 'dam') {
-    damCalcMod(skillParam, emParam, skillData)
+    damCalcMod(skillParam, skillData)
   }
   return skillParam
 }
 // dam
-function damCalcMod (skillParam, emParam, skillData) {
+function damCalcMod (skillParam, skillData) {
   for (let i = 0; i < skillData.blackboard.length; i++) {
     const calcKey = skillData.blackboard[i].key
     const calcValue = skillData.blackboard[i].value
     if (calcKey === 'atk') {
-      skillParam.atk = paramUp(emParam.atk, calcValue)
+      skillParam.atk = paramUp(skillParam.atk, calcValue)
     } else if (calcKey === 'atk_speed') {
-      skillParam.atkTime = atkSpdUp(emParam.atkTime, calcValue)
+      skillParam.atkTime = atkSpdUp(skillParam.atkTime, calcValue)
     } else if (calcKey === 'atk_scale') {
-      skillParam.atk = scaleUp(emParam.atk, calcValue)
+      skillParam.atk = scaleUp(skillParam.atk, calcValue)
     }
   }
   return skillParam
@@ -32,7 +32,7 @@ function paramUp (basedata, upValue) {
 }
 // 攻速增加 key: atk_speed
 function atkSpdUp (basedata, upValue) {
-  return basedata * 100 / (100 + upValue)
+  return basedata + upValue
 }
 // Scale（瞬时生效）key: atk_scale, heal_scale
 function scaleUp (basedata, scaleValue) {

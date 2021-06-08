@@ -43,8 +43,7 @@ export default {
         dam: false,
         sur: false,
         sup: false
-      },
-      skillTypeTable: {}
+      }
     }
   },
   props: {

@@ -181,6 +181,7 @@ export default {
       handler () {
         this.getShowSkills()
         this.commitInfo()
+        this.$store.commit('changeIsEmParamsUpdate')
       }
     }
   }

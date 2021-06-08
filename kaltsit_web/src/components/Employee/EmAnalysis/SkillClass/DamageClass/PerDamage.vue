@@ -17,25 +17,23 @@ import { labelFormat, lineSeriesFormat } from '../../../../utils/echartsFormat.j
 export default {
   data () {
     return {
-      legendList: ['常态', '技能']
+      legendList: ['常态', '技能'],
+      seriesList: []
     }
   },
   props: {
     skillId: String,
     skillParam: Object,
-    emParam: Object
+    emParam: Object,
+    damMod: String,
+    atkMod: Number
   },
   components: {
     LineChart
   },
   computed: {
-    seriesList () {
-      const dataList = []
-      const dataList1 = perDamage(this.emParam.atk, this.emParam.atkTime, this.baseAtkTime, this.damMod, this.atkMod)
-      dataList.push(dataList1)
-      const dataList2 = perDamage(this.skillParam.atk, this.skillParam.atkTime, this.baseAtkTime, this.damMod, this.atkMod)
-      dataList.push(dataList2)
-      return lineSeriesFormat(dataList, this.legendList)
+    isChanged () {
+      return this.$store.state.isEmParamsUpdate
     },
     echartLabel () {
       let xAxis = '防御'
@@ -43,6 +41,23 @@ export default {
         xAxis = '法抗'
       }
       return labelFormat(xAxis, '秒伤害量')
+    }
+  },
+  methods: {
+    getSeriesList () {
+      const dataList = []
+      const dataList1 = perDamage(this.emParam.atk, this.emParam.atkTime, this.emParam.baseAtkTime, this.damMod, this.atkMod)
+      dataList.push(dataList1)
+      const dataList2 = perDamage(this.skillParam.atk, this.skillParam.atkTime, this.skillParam.baseAtkTime, this.damMod, this.atkMod)
+      dataList.push(dataList2)
+      this.seriesList = lineSeriesFormat(dataList, this.legendList)
+    }
+  },
+  watch: {
+    isChanged: {
+      handler () {
+        this.getSeriesList()
+      }
     }
   }
 }
