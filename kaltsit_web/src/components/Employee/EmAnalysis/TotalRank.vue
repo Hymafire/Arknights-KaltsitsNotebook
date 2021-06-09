@@ -1,6 +1,6 @@
 <template>
   <RankRadar
-    :key="this.$store.state.employeeKey"
+    :key="this.$store.state.em.emKey"
     :dataList="rankData"
     :indicatorList="tagList"
   />
@@ -23,11 +23,11 @@ export default {
   },
   computed: {
     rankData: function () {
-      const employee = this.$store.state.employeeData[this.$store.state.employeeKey].phases
+      const employee = this.$store.state.em.emData.phases
       const emLen = employee.atk.length - 1
       const rankData = [0, 0, 0, 0, 0]
-      for (const Em in this.$store.state.employeeData) {
-        const compareEm = this.$store.state.employeeData[Em].phases
+      for (const em in this.$store.state.em.employeeTable) {
+        const compareEm = this.$store.state.em.employeeTable[em].phases
         if (employee.atk[emLen][1] >= compareEm.atk[compareEm.atk.length - 1][1]) {
           rankData[0]++
         }
@@ -45,15 +45,12 @@ export default {
         }
       }
       return rankData
-    },
-    employeeName: function () {
-      return this.$store.state.employeeName
     }
   },
   methods: {
     createTagList () {
       const tagList = []
-      const employeeNum = this.$store.state.emPretreatedData.atk.totalAvg.emNum
+      const employeeNum = this.$store.state.em.emPretreatedData.atk.totalAvg.emNum
       tagList.push({ name: '攻击力', max: employeeNum })
       tagList.push({ name: '攻击间隔', max: employeeNum })
       tagList.push({ name: '最大生命值', max: employeeNum })

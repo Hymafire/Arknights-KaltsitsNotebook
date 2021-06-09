@@ -1,6 +1,6 @@
 /* 预处理组件 */
-/* 参数输入、结果输出 */
-function emDataPretreate (preData) {
+/* ====================== employee ================== */
+function emTablePretreate (preData) {
   const paramList = ['atk', 'def', 'maxHp', 'magRes', 'atkTime', 'perDam', 'range']
   const classList = ['profession', 'position', 'rarity']
   const professionList = ['CASTER', 'MEDIC', 'WARRIOR', 'SUPPORT', 'SNIPER', 'TANK', 'PIONEER', 'SPECIAL']
@@ -131,7 +131,51 @@ function initParamStruct (paramList, classList, baseList) {
   }
   return paramObj
 }
-/* ================================================== */
+/* ==================== em ===================== */
+function emDataPretreate (preData, skillsData) {
+  const emPreObj = {}
+  emPreObj.atkMod = atkModJudge(preData.description)
+  emPreObj.damMod = damModJudge(preData.description)
+  for (const skill in skillsData) {
+    const skillObj = {}
+    skillObj.damMod = emPreObj.damMod
+    skillObj.atkMod = emPreObj.atkMod
+    emPreObj[skill] = skillObj
+  }
+  return emPreObj
+}
+// 判断攻击类型
+// atkMod: 0-普通, 1-群攻, 2-有限群攻, 3-双击, 4-远程降攻
+function atkModJudge (description) {
+  let atkMod = 0
+  if (description.indexOf('群体') !== -1) {
+    atkMod = 1
+  } else if (description.indexOf('所有敌人') !== -1) {
+    atkMod = 2
+  } else if (description.indexOf('两次') !== -1) {
+    atkMod = 3
+  } else if (description.indexOf('远程攻击') !== -1) {
+    atkMod = 4
+  }
+  return atkMod
+}
+// 判断伤害类型
+// damMod: Phy-物理，Mag-法术，Heal-治疗，True-真实，NoAtk-不攻击
+function damModJudge (description) {
+  let damMod = 'Phy'
+  if (description.indexOf('法术') !== -1) {
+    damMod = 'Mag'
+  } else if (description.indexOf('恢复') !== -1) {
+    damMod = 'Heal'
+  } else if (description.indexOf('真实') !== -1) {
+    damMod = 'True'
+  } else if (description.indexOf('不攻击') !== -1) {
+    damMod = 'NoAtk'
+  }
+  return damMod
+}
+/* ================================================ */
 module.exports = {
+  emTablePretreate,
   emDataPretreate
 }

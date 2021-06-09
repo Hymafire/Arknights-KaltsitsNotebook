@@ -15,7 +15,7 @@ export default {
     chartId: String,
     title: String,
     seriesList: Array,
-    dataList: Array,
+    dataList: Object,
     isChanged: Boolean
   },
   mounted () {
@@ -52,7 +52,6 @@ export default {
         yAxis: {},
         series: this.seriesList
       }
-      console.log(option)
       this.bar_chart.setOption(option)
       // 自适应 有Bug
       window.addEventListener('resize', () => { myChart.resize() })

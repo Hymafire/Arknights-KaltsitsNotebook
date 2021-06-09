@@ -7,16 +7,12 @@
     <!-- totalRank-end -->
     <!-- 2.damageClass -->
     <CollapseItem :compontentName="'攻击类'">
-      <DamageClass :emParam="emParam" />
+      <DamageClass />
     </CollapseItem>
     <!-- damageClass-end -->
     <!-- 5.skillClass -->
     <CollapseItem :compontentName="'技能分析'">
-      <SkillClass
-        :emParam="emParam"
-        :skillsLevel="skillsLevel"
-        :skillsFlag="skillsFlag"
-      />
+      <SkillClass />
     </CollapseItem>
     <!-- skillClass-end -->
   </div>
@@ -29,12 +25,6 @@ import DamageClass from './EmAnalysis/DamageClass.vue'
 import SkillClass from './EmAnalysis/SkillClass.vue'
 
 export default {
-  name: 'EmAnalysis',
-  props: {
-    emParam: Object,
-    skillsLevel: Array,
-    skillsFlag: Array
-  },
   components: {
     CollapseItem,
     TotalRank,

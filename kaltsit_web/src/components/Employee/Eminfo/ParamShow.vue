@@ -40,19 +40,9 @@
 <script>
 export default {
   name: 'ParamShow',
-  props: {
-    showParam: Object
-  },
   computed: {
-    changed: function () {
-      return this.$store.state.isEmParamsUpdate
-    }
-  },
-  watch: {
-    changed: {
-      handler () {
-        this.$forceUpdate()
-      }
+    showParam () {
+      return this.$store.state.em.emParam
     }
   }
 }

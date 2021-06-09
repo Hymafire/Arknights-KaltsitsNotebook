@@ -4,8 +4,8 @@
     :legendList="legendList"
     :seriesList="seriesList"
     :echartLabel="echartLabel"
-    :isChanged="$store.state.isEmParamsUpdate"
-    :key="$store.state.employeeName"
+    :isChanged="$store.state.em.isEmUpdated"
+    :key="$store.state.em.emKey"
   />
 </template>
 
@@ -16,14 +16,6 @@ import { perDamage } from '../../../utils/damageCalc.js'
 import { labelFormat, lineSeriesFormat } from '../../../utils/echartsFormat.js'
 
 export default {
-  /* 参数：攻击力、攻击间隔、攻击速度、攻击描述、伤害类型 */
-  props: {
-    atk: Number,
-    atkTime: Number,
-    baseAtkTime: Number,
-    atkMod: Number,
-    damMod: String
-  },
   components: {
     LineChart
   },
@@ -31,11 +23,14 @@ export default {
   computed: {
     seriesList: function () {
       const dataList = []
+      const emParam = this.$store.state.em.emParam
+      const emPretData = this.$store.state.em.emPretData
       let nameList = ['']
-      const dataList1 = perDamage(this.atk, this.atkTime, this.baseAtkTime, this.damMod, this.atkMod)
+      const dataList1 = perDamage(emParam, emPretData)
       dataList.push(dataList1)
       if (this.atkMod === 4) {
-        const dataList2 = perDamage(this.atk, this.atkTime, this.baseAtkTime, this.damMod, 0)
+        const pretData = { atkMod: 0, damMod: emPretData.damMod }
+        const dataList2 = perDamage(emParam, pretData)
         dataList.push(dataList2)
         nameList = ['远程', '近战']
       }

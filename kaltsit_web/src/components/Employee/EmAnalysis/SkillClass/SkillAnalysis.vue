@@ -11,8 +11,6 @@
       :layer="4"
     >
       <DamageClass
-        :emParam="emParam"
-        :skillId="skillId"
         :skillData="skillData"
       />
     </CollapseItem>
@@ -47,8 +45,6 @@ export default {
     }
   },
   props: {
-    skillId: String,
-    emParam: Object,
     skillData: Object
   },
   components: {
@@ -75,7 +71,6 @@ export default {
           this.skillType.sur = true
         }
       }
-      console.log(this.skillType)
     }
   }
 }

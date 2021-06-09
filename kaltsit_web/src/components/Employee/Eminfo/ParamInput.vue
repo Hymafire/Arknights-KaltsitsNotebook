@@ -76,13 +76,17 @@ export default {
       }
     }
   },
-  props: {
-    potential: Number,
-    maxLevel: Array
+  computed: {
+    potential () {
+      return this.$store.state.em.emData.maxPotential
+    },
+    maxLevel () {
+      return this.$store.state.em.emData.phases.maxLevel
+    }
   },
   methods: {
     submitInfo () {
-      this.$emit('submitInfo', this.baseInfo)
+      this.$store.commit('em/updateEmInputParam', this.baseInfo)
     },
     eliteClick (elt) {
       this.baseInfo.elite = elt

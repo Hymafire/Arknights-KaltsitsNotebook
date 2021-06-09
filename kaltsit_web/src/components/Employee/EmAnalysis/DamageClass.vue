@@ -14,9 +14,7 @@
       :layer="2"
     >
       <DamageBar
-        :key="this.$store.state.employeeKey"
-        :atk="emParam.atk"
-        :atkTime="emParam.atkTime"
+        :key="this.$store.state.em.emKey"
       />
     </CollapseItem>
     <!-- damageBar-end -->
@@ -25,13 +23,7 @@
       :compontentName="'秒伤害量'"
       :layer="2"
     >
-      <PerDamage
-        :atk="emParam.atk"
-        :atkTime="emParam.atkTime"
-        :baseAtkTime="emParam.baseAtkTime"
-        :atkMod="atkMod"
-        :damMod="damMod"
-      />
+      <PerDamage />
     </CollapseItem>
     <!-- perDamage-end -->
   </div>
@@ -39,16 +31,13 @@
 
 <script>
 import CollapseItem from '../../Common/CollapseItem.vue'
-import { damModJudge, atkModJudge } from '../../utils/damageCalc.js'
+// import { damModJudge, atkModJudge } from '../../utils/damageCalc.js'
 import PerDamage from '../EmAnalysis/DamageClass/PerDamage.vue'
 import DamageBar from '../EmAnalysis/DamageClass/DamageBar.vue'
 // import RankRadar from '../../Echarts/RankClass/RankRadar.vue'
 
 export default {
   name: 'DamageClass',
-  props: {
-    emParam: Object
-  },
   components: {
     CollapseItem,
     PerDamage,
@@ -56,22 +45,15 @@ export default {
     // RankRadar
   },
   computed: {
-    changed: function () {
-      return this.$store.state.isEmParamsUpdate
-    },
-    damMod: function () {
-      return damModJudge(this.$store.state.employeeData[this.$store.state.employeeKey].description)
-    },
-    atkMod: function () {
-      return atkModJudge(this.$store.state.employeeData[this.$store.state.employeeKey].description)
+    isEmUpdate () {
+      return this.$store.state.isEmUpdate
     }
   },
   watch: {
-    changed: {
+    isEmUpdate: {
       handler () {
         this.$forceUpdate()
-      },
-      immediate: true
+      }
     }
   }
 }

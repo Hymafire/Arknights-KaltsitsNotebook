@@ -2,7 +2,12 @@
 // 攻击类计算
 // 秒伤 per-damage =============================
 // 攻击，攻击间隔，伤害类型，攻击方式
-function perDamage (atk, atkTime, baseAtkTime, damMod, atkMod) {
+function perDamage (param, pretData) {
+  const atk = param.atk
+  const atkTime = param.atkTime
+  const baseAtkTime = param.baseAtkTime
+  const damMod = pretData.damMod
+  const atkMod = pretData.atkMod
   // damMod
   const data = []
   if (damMod === 'Phy') {

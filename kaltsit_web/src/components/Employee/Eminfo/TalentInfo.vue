@@ -25,13 +25,12 @@ export default {
       talentsFlag: Array
     }
   },
-  props: {
-    talentTable: Array,
-    paramInputed: Object
-  },
   computed: {
-    changed: function () {
-      return this.$store.state.isEmParamsUpdate
+    talentTable () {
+      return this.$store.state.em.emData.talents
+    },
+    paramInputed () {
+      return this.$store.state.em.emInputParam
     }
   },
   methods: {
@@ -60,7 +59,13 @@ export default {
     }
   },
   watch: {
-    changed: {
+    talentTable: {
+      handler () {
+        this.getTalents()
+      },
+      immediate: true
+    },
+    paramInputed: {
       handler () {
         this.getTalents()
       }

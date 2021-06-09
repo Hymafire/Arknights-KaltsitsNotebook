@@ -7,7 +7,7 @@
         :title="'攻击力'"
         :seriesList="seriesList"
         :dataList="atkDataList"
-        :isChanged="$store.state.isEmParamsUpdate"
+        :isChanged="$store.state.em.isEmUpdate"
       />
     </div>
     <div id="atkTime">
@@ -16,7 +16,7 @@
         :title="'攻击速度'"
         :seriesList="seriesList"
         :dataList="atkTimeDataList"
-        :isChanged="$store.state.isEmParamsUpdate"
+        :isChanged="$store.state.em.isEmUpdate"
       />
     </div>
     <BarChart
@@ -24,7 +24,7 @@
       :title="'秒输出量'"
       :seriesList="seriesList"
       :dataList="perDamDataList"
-      :isChanged="$store.state.isEmParamsUpdate"
+      :isChanged="$store.state.em.isEmUpdate"
     />
   </div>
 </template>
@@ -45,65 +45,63 @@ export default {
   components: {
     BarChart
   },
-  props: {
-    atk: Number,
-    atkTime: Number
-  },
   computed: {
-    employee () {
-      return this.$store.state.employeeData[this.$store.state.employeeKey]
-    },
     atkDataList () {
-      const max = this.employee.phases.atk[this.employee.phases.atk.length - 1][1] + this.employee.favor.atk
-      const min = this.employee.phases.atk[0][0]
-      return this.formatData('atk', this.atk, max, min)
+      const emData = this.$store.state.em.emData
+      const emParam = this.$store.state.em.emParam
+      const max = emData.phases.atk[emData.phases.atk.length - 1][1] + emData.favor.atk
+      const min = emData.phases.atk[0][0]
+      return this.formatData('atk', emParam.atk, max, min)
     },
     atkTimeDataList () {
-      return this.formatData('atkTime', this.atkTime, this.atkTime, this.atkTime)
+      const emParam = this.$store.state.em.emParam
+      return this.formatData('atkTime', emParam.atkTime, emParam.atkTime, emParam.atkTime)
     },
     perDamDataList () {
-      const max = (this.employee.phases.atk[this.employee.phases.atk.length - 1][1] + this.employee.favor.atk) / this.atkTime
-      const min = this.employee.phases.atk[0][0] / this.atkTime
-      return this.formatData('perDam', this.perDam, max, min)
-    },
-    perDam () {
-      return this.atk / this.atkTime
+      const emData = this.$store.state.em.emData
+      const emParam = this.$store.state.em.emParam
+      const max = (emData.phases.atk[emData.phases.atk.length - 1][1] + emData.favor.atk) / emParam.atkTime
+      const min = emData.phases.atk[0][0] / emParam.atkTime
+      const perDam = emParam.atk / emParam.atkTime
+      return this.formatData('perDam', perDam.toFixed(2), max.toFixed(2), min.toFixed(2))
     }
   },
   methods: {
     formatData (param, emValue, emMax, emMin) {
+      const emData = this.$store.state.em.emData
+      const emPretreatedData = this.$store.state.em.emPretreatedData
       const option = {
         dimensious: ['class', 'avg', 'max', 'min'],
         source: [
           {
-            class: this.employee.name,
+            class: emData.name,
             avg: emValue,
             max: emMax,
             min: emMin
           },
           {
-            class: this.employee.profession,
-            min: this.$store.state.emPretreatedData[param].profession[this.employee.profession].minValue,
-            avg: this.$store.state.emPretreatedData[param].profession[this.employee.profession].avgValue,
-            max: this.$store.state.emPretreatedData[param].profession[this.employee.profession].maxValue
+            class: emData.profession,
+            min: emPretreatedData[param].profession[emData.profession].minValue,
+            avg: emPretreatedData[param].profession[emData.profession].avgValue,
+            max: emPretreatedData[param].profession[emData.profession].maxValue
           },
           {
-            class: this.employee.position,
-            min: this.$store.state.emPretreatedData[param].position[this.employee.position].minValue,
-            avg: this.$store.state.emPretreatedData[param].position[this.employee.position].avgValue,
-            max: this.$store.state.emPretreatedData[param].position[this.employee.position].maxValue
+            class: emData.position,
+            min: emPretreatedData[param].position[emData.position].minValue,
+            avg: emPretreatedData[param].position[emData.position].avgValue,
+            max: emPretreatedData[param].position[emData.position].maxValue
           },
           {
-            class: this.employee.rarity + 1 + '星',
-            min: this.$store.state.emPretreatedData[param].rarity[this.employee.rarity].minValue,
-            avg: this.$store.state.emPretreatedData[param].rarity[this.employee.rarity].avgValue,
-            max: this.$store.state.emPretreatedData[param].rarity[this.employee.rarity].maxValue
+            class: emData.rarity + 1 + '星',
+            min: emPretreatedData[param].rarity[emData.rarity].minValue,
+            avg: emPretreatedData[param].rarity[emData.rarity].avgValue,
+            max: emPretreatedData[param].rarity[emData.rarity].maxValue
           },
           {
             class: '总体',
-            min: this.$store.state.emPretreatedData[param].totalAvg.minValue,
-            avg: this.$store.state.emPretreatedData[param].totalAvg.avgValue,
-            max: this.$store.state.emPretreatedData[param].totalAvg.maxValue
+            min: emPretreatedData[param].totalAvg.minValue,
+            avg: emPretreatedData[param].totalAvg.avgValue,
+            max: emPretreatedData[param].totalAvg.maxValue
           }
         ]
       }

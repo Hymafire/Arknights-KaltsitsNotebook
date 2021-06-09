@@ -59,13 +59,12 @@ export default {
       skillData: Object
     }
   },
-  props: {
-    skillsName: Array,
-    elite: Number
-  },
   computed: {
-    employeeName: function () {
-      return this.$store.state.employeeName
+    skillsName () {
+      return this.$store.state.em.emData.skills
+    },
+    elite () {
+      return this.$store.state.em.emInputParam.elite
     }
   },
   created () {
@@ -153,19 +152,15 @@ export default {
           obj.style.zIndex = '1'
         }
       }
-    },
-    commitInfo () {
-      this.$emit('submitLevel', this.skillsLevel, this.skillsFlag)
     }
   },
   watch: {
-    employeeName: {
+    skillsName: {
       handler () {
         this.getSkills()
         this.translateSkills()
         this.getShowSkills()
         this.isDisplayNone()
-        this.commitInfo()
       },
       immediate: true
     },
@@ -173,16 +168,18 @@ export default {
       handler () {
         this.getShowSkills()
         this.isDisplayNone()
-        this.commitInfo()
       },
       immediate: true
     },
     skillsLevel: {
       handler () {
         this.getShowSkills()
-        this.commitInfo()
-        this.$store.commit('changeIsEmParamsUpdate')
-      }
+        this.$store.commit('em/updateSkillsLevel', this.skillsLevel)
+        this.$store.commit('em/updateSkillsFlag', this.skillsFlag)
+        this.$store.commit('em/changeIsEmUpdate')
+      },
+      deep: true,
+      immediate: true
     }
   }
 }

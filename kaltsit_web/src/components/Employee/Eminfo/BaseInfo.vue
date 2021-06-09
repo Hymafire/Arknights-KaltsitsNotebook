@@ -1,7 +1,7 @@
 <template>
   <div id="base-info" class="title-sticky bc-color">
     <div id="em-img" :style="{backgroundImage:'url(' + imgUrl + ')'}" class="bc-img">
-      <div class="bc-title">{{ employee.name }}</div>
+      <div class="bc-title">{{ $store.state.em.emName }}</div>
     </div>
   </div>
 </template>
@@ -9,13 +9,9 @@
 <script>
 export default {
   name: 'BaseInfo',
-  props: {
-    employee: Object,
-    employeeKey: String
-  },
   computed: {
     imgUrl: function () {
-      return require('../../../assets/images/emimgs/' + this.employeeKey + '.png')
+      return require('../../../assets/images/emimgs/' + this.$store.state.em.emKey + '.png')
     }
   }
 }

@@ -1,15 +1,11 @@
 <template>
   <div>
-    <div v-for="(skill, i) in skillsTable" :key="skill">
+    <div v-for="skill in skillsData" :key="skill.name">
       <CollapseItem
-        :compontentName="skillData(skill, i).name"
+        :compontentName="skill.name"
         :layer="3"
       >
-        <SkillAnalysis
-          :skillId="skill"
-          :emParam="emParam"
-          :skillData="skillData(skill, i)"
-        />
+        <SkillAnalysis :skillData="skill" />
       </CollapseItem>
     </div>
   </div>
@@ -20,24 +16,21 @@ import CollapseItem from '../../Common/CollapseItem.vue'
 import SkillAnalysis from './SkillClass/SkillAnalysis.vue'
 
 export default {
-  props: {
-    emParam: Object,
-    skillsLevel: Array,
-    skillsFlag: Array
-  },
   components: {
     SkillAnalysis,
     CollapseItem
   },
   computed: {
-    skillsTable () {
-      return this.$store.state.employeeData[this.$store.state.employeeKey].skills
-    }
-  },
-  methods: {
-    skillData (skillId, skillLevel) {
-      const skillsData = require('../../../assets/data/skill_table.json')
-      return skillsData[skillId].levels[skillLevel]
+    skillsData () {
+      const skillsTable = require('../../../assets/data/skill_table.json')
+      const skillsKey = this.$store.state.em.emData.skills
+      const skillsLevel = this.$store.state.em.emSkillsLevel
+      const skillsData = {}
+      for (const i in skillsKey) {
+        skillsData[skillsKey[i]] = skillsTable[skillsKey[i]].levels[skillsLevel[i]]
+        skillsData[skillsKey[i]].skillId = skillsKey[i]
+      }
+      return skillsData
     }
   }
 }
