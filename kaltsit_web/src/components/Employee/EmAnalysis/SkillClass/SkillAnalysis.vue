@@ -45,7 +45,8 @@ export default {
     }
   },
   props: {
-    skillData: Object
+    skillId: String,
+    skillNo: Number
   },
   components: {
     CollapseItem,
@@ -53,6 +54,11 @@ export default {
   },
   created () {
     this.getSkillType()
+  },
+  computed: {
+    skillData () {
+      return this.$store.state.em.emSkillsData[this.skillId].levels[this.$store.state.em.emSkillsLevel[this.skillNo]]
+    }
   },
   methods: {
     // 获取技能类型:

@@ -1,11 +1,14 @@
 <template>
   <div>
-    <div v-for="skill in skillsData" :key="skill.name">
+    <div v-for="(skill, index) in skillsName" :key="skill.Id">
       <CollapseItem
         :compontentName="skill.name"
         :layer="3"
       >
-        <SkillAnalysis :skillData="skill" />
+        <SkillAnalysis
+          :skillId="skill.Id"
+          :skillNo="index"
+        />
       </CollapseItem>
     </div>
   </div>
@@ -21,16 +24,17 @@ export default {
     CollapseItem
   },
   computed: {
-    skillsData () {
-      const skillsTable = require('../../../assets/data/skill_table.json')
-      const skillsKey = this.$store.state.em.emData.skills
-      const skillsLevel = this.$store.state.em.emSkillsLevel
-      const skillsData = {}
-      for (const i in skillsKey) {
-        skillsData[skillsKey[i]] = skillsTable[skillsKey[i]].levels[skillsLevel[i]]
-        skillsData[skillsKey[i]].skillId = skillsKey[i]
+    skillsName () {
+      const skillsName = []
+      let cnt = 0
+      const skillsData = this.$store.state.em.emSkillsData
+      for (const skill in skillsData) {
+        const skillName = {}
+        skillName.name = skillsData[skill].levels[this.$store.state.em.emSkillsLevel[cnt]].name
+        skillName.Id = skill
+        this.$set(skillsName, cnt++, skillName)
       }
-      return skillsData
+      return skillsName
     }
   }
 }

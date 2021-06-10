@@ -82,6 +82,27 @@ const Employee = {
   }
 }
 
+// enemy-store
+
+// locales
+const Locales = {
+  namespaced: true,
+  state: {
+    localesId: 'cn',
+    profList: Object,
+    posList: Object
+  },
+  mutations: {
+    initLocales (state, id) {
+      state.localesId = id
+      const profList = require('../assets/locales/prof_list.json')
+      state.profList = Object.assign({}, state.profList, profList[state.localesId])
+      const posList = require('../assets/locales/pos_list.json')
+      state.posList = Object.assign({}, state.posList, posList[state.localesId])
+    }
+  }
+}
+
 export default new Vuex.Store({
   state: {
     // 抽屉是否打开
@@ -118,6 +139,7 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    em: Employee
+    em: Employee,
+    lo: Locales
   }
 })

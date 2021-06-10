@@ -11,13 +11,13 @@
           </span>
         </div>
         <div class="skill-box">
-          <div id="title-box">
+          <div class="title-box">
             <div>
-              <img id="img-box" :src="imgUrls[index]" alt="Worry!" />
+              <img class="img-box" :src="imgUrls[index]" alt="Worry!" />
             </div>
             <div>{{ showSkills[index].name }}</div>
           </div>
-          <div id="description-box">
+          <div class="description-box">
             <div>
               <span>{{ showSkills[index].initSp }} | </span>
               <span>{{ showSkills[index].spCost }} | </span>
@@ -25,8 +25,8 @@
             </div>
             <div v-html="showSkills[index].description"></div>
           </div>
-          <div id="level-box">
-            <el-button @click="increaseN(index)" size="mini" class="level-btn" :disabled="skillsLevel[index] >= 9">+</el-button>
+          <div class="level-box">
+            <el-button @click="increaseN(index)" size="mini" class="level-btn" :disabled="skillsMaxLevelLimit(index)">+</el-button>
             <div class="level-value">Lv. {{ skillsLevel[index] + 1 }}</div>
             <el-button @click="decreaseN(index)" size="mini" class="level-btn" :disabled="skillsLevel[index] <= 0">-</el-button>
           </div>
@@ -47,16 +47,8 @@ export default {
       showSkills: Array,
       // 重新处理后的数据
       skillsTranslated: Array,
-      // 目标干员的数据
-      emSkills: Array,
-      // 技能的等级
       skillsLevel: Array,
-      // 技能是否解锁
-      skillsFlag: Array,
-      // 技能的图片信息
-      imgUrls: Array,
-      // 所有的技能信息
-      skillData: Object
+      skillsFlag: Array
     }
   },
   computed: {
@@ -65,11 +57,23 @@ export default {
     },
     elite () {
       return this.$store.state.em.emInputParam.elite
+    },
+    imgUrls () {
+      const imgUrls = []
+      const skillsData = this.$store.state.em.emSkillsData
+      for (const skillId in skillsData) {
+        const skillData = skillsData[skillId]
+        if (skillData.iconId === null) {
+          imgUrls.push(require('@/assets/images/skillsimgs/skill_icon_' + skillData.skillId + '.png'))
+        } else {
+          imgUrls.push(require('@/assets/images/skillsimgs/skill_icon_' + skillData.iconId + '.png'))
+        }
+      }
+      return imgUrls
     }
   },
   created () {
-    this.getSkillData()
-    this.getSkills()
+    this.initSkillsLevel()
     this.translateSkills()
     this.getShowSkills()
   },
@@ -91,45 +95,46 @@ export default {
     },
     // 翻译技能信息,并重新保存
     translateSkills () {
+      const emSkills = this.$store.state.em.emSkillsData
       const skillsTranslated = []
-      for (const i in this.emSkills) {
+      for (const i in emSkills) {
         const skill = []
-        for (const j in this.emSkills[i].levels) {
+        for (const j in emSkills[i].levels) {
           const skillLv = []
-          skillLv.name = this.emSkills[i].levels[j].name
-          skillLv.duration = this.emSkills[i].levels[j].duration
-          const str = descTranslate(this.emSkills[i].levels[j].description, this.emSkills[i].levels[j].blackboard)
+          skillLv.name = emSkills[i].levels[j].name
+          skillLv.duration = emSkills[i].levels[j].duration
+          const str = descTranslate(emSkills[i].levels[j].description, emSkills[i].levels[j].blackboard)
           skillLv.description = str
-          skillLv.initSp = this.emSkills[i].levels[j].spData.initSp
-          skillLv.spCost = this.emSkills[i].levels[j].spData.spCost
+          skillLv.initSp = emSkills[i].levels[j].spData.initSp
+          skillLv.spCost = emSkills[i].levels[j].spData.spCost
           skill.push(skillLv)
         }
         skillsTranslated.push(skill)
       }
       this.skillsTranslated = skillsTranslated
     },
-    // 获取目标干员的技能信息
-    getSkills () {
-      const emSkills = []
+    initSkillsLevel () {
       const skillsLevel = []
-      const imgUrls = []
       for (const i in this.skillsName) {
-        for (const j in this.skillData) {
-          if (this.skillsName[i] === j) {
-            emSkills.push(this.skillData[j])
-            skillsLevel.push(6)
-            imgUrls.push(require('@/assets/images/skillsimgs/skill_icon_' + j + '.png'))
-            break
-          }
+        if (this.elite === 0) {
+          this.$set(skillsLevel, i, 3)
+        } else {
+          this.$set(skillsLevel, i, 6)
         }
       }
-      this.emSkills = emSkills
       this.skillsLevel = skillsLevel
-      this.imgUrls = imgUrls
     },
-    // 获取技能数据
-    getSkillData () {
-      this.skillData = require('@/assets/data/skill_table.json')
+    initSkillsLevel2 () {
+      const maxLevel = [3, 6, 9]
+      for (const i in this.skillsName) {
+        this.skillsLevel[i] = Math.min(this.skillsLevel[i], maxLevel[this.elite])
+      }
+    },
+    skillsMaxLevelLimit (i) {
+      const maxLevel = [3, 6, 9]
+      if (this.skillsLevel[i] >= maxLevel[this.elite]) {
+        return true
+      }
     },
     increaseN (n) {
       this.$set(this.skillsLevel, n, this.skillsLevel[n] + 1)
@@ -157,19 +162,18 @@ export default {
   watch: {
     skillsName: {
       handler () {
-        this.getSkills()
+        this.initSkillsLevel()
         this.translateSkills()
         this.getShowSkills()
         this.isDisplayNone()
-      },
-      immediate: true
+      }
     },
     elite: {
       handler () {
+        this.initSkillsLevel2()
         this.getShowSkills()
         this.isDisplayNone()
-      },
-      immediate: true
+      }
     },
     skillsLevel: {
       handler () {
@@ -227,7 +231,7 @@ export default {
   display: flex;
   justify-content: space-around;
   border-bottom: 1px solid #ebebeb;
-  #title-box {
+  .title-box {
     width: 10vw;
     max-width: 110px;
     min-width: 70px;
@@ -240,11 +244,11 @@ export default {
       text-align: center;
     }
   }
-  #description-box {
+  .description-box {
     width: 70vw;
     padding: 5px;
   }
-  #level-box {
+  .level-box {
     display: flex;
     flex-direction: column;
     justify-content: space-around;

@@ -5,9 +5,9 @@
         <div :class="{'mask-layer-hidden': !talentsFlag[index]}" class="mask-text mask-layer">
           <span :class="{'text-display': talentsFlag[index]}"> ==== 未解锁 ==== </span>
         </div>
-        <div id="talent-info">
-          <div id="talent-name">{{ talent.name }}</div>
-          <div id="talent-desc" v-html="talent.description" />
+        <div class="talent-info">
+          <div class="talent-name">{{ talent.name }}</div>
+          <div v-html="talent.description" />
         </div>
       </li>
     </ul>
@@ -125,9 +125,9 @@ ul {
     width: 50%
   }
 }
-#talent-info {
+.talent-info {
   padding: 5px 10px;
-  #talent-name {
+  .talent-name {
     font-weight: 700;
   }
 }

@@ -24,23 +24,26 @@ export default {
   computed: {
     rankData: function () {
       const employee = this.$store.state.em.emData.phases
+      const emFavor = this.$store.state.em.emData.favor
       const emLen = employee.atk.length - 1
       const rankData = [0, 0, 0, 0, 0]
       for (const em in this.$store.state.em.employeeTable) {
         const compareEm = this.$store.state.em.employeeTable[em].phases
-        if (employee.atk[emLen][1] >= compareEm.atk[compareEm.atk.length - 1][1]) {
+        const compareEmF = this.$store.state.em.employeeTable[em].favor
+        const compareEmLen = compareEm.atk.length - 1
+        if (employee.atk[emLen][1] + emFavor.atk >= compareEm.atk[compareEmLen][1] + compareEmF.atk) {
           rankData[0]++
         }
         if (employee.atkTime <= compareEm.atkTime) {
           rankData[1]++
         }
-        if (employee.maxHp[emLen][1] >= compareEm.maxHp[compareEm.maxHp.length - 1][1]) {
+        if (employee.maxHp[emLen][1] + emFavor.maxHp >= compareEm.maxHp[compareEmLen][1] + compareEmF.maxHp) {
           rankData[2]++
         }
-        if (employee.def[emLen][1] >= compareEm.def[compareEm.def.length - 1][1]) {
+        if (employee.def[emLen][1] + emFavor.def >= compareEm.def[compareEmLen][1] + compareEmF.def) {
           rankData[3]++
         }
-        if (employee.magRes[emLen] >= compareEm.magRes[compareEm.magRes.length - 1]) {
+        if (employee.magRes[emLen] >= compareEm.magRes[compareEmLen]) {
           rankData[4]++
         }
       }

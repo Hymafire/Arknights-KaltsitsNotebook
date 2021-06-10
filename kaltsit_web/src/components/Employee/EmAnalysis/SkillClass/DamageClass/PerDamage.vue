@@ -4,7 +4,7 @@
     :legendList="legendList"
     :seriesList="seriesList"
     :echartLabel="echartLabel"
-    :isChanged="$store.state.isEmParamsUpdate"
+    :isChanged="$store.state.em.isEmUpdated"
     :key="skillId"
   />
 </template>
@@ -17,47 +17,35 @@ import { labelFormat, lineSeriesFormat } from '../../../../utils/echartsFormat.j
 export default {
   data () {
     return {
-      legendList: ['常态', '技能'],
-      seriesList: []
+      legendList: ['常态', '技能']
     }
   },
   props: {
     skillId: String,
-    skillParam: Object,
-    emParam: Object,
-    damMod: String,
-    atkMod: Number
+    skillParam: Object
   },
   components: {
     LineChart
   },
   computed: {
-    isChanged () {
-      return this.$store.state.isEmParamsUpdate
-    },
     echartLabel () {
       let xAxis = '防御'
-      if (this.damMod === 'Mag') {
+      const damMod = this.$store.state.em.emPretData.damMod
+      if (damMod === 'Mag') {
         xAxis = '法抗'
       }
       return labelFormat(xAxis, '秒伤害量')
-    }
-  },
-  methods: {
-    getSeriesList () {
+    },
+    seriesList () {
       const dataList = []
-      const dataList1 = perDamage(this.emParam.atk, this.emParam.atkTime, this.emParam.baseAtkTime, this.damMod, this.atkMod)
+      const emParam = this.$store.state.em.emParam
+      const emPretData = this.$store.state.em.emPretData
+      console.log()
+      const dataList1 = perDamage(emParam, emPretData)
       dataList.push(dataList1)
-      const dataList2 = perDamage(this.skillParam.atk, this.skillParam.atkTime, this.skillParam.baseAtkTime, this.damMod, this.atkMod)
+      const dataList2 = perDamage(this.skillParam, emPretData)
       dataList.push(dataList2)
-      this.seriesList = lineSeriesFormat(dataList, this.legendList)
-    }
-  },
-  watch: {
-    isChanged: {
-      handler () {
-        this.getSeriesList()
-      }
+      return lineSeriesFormat(dataList, this.legendList)
     }
   }
 }

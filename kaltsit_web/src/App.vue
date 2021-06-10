@@ -24,6 +24,7 @@ export default {
   },
   created () {
     this.initData()
+    this.initLocales()
   },
   methods: {
     initData () {
@@ -31,6 +32,10 @@ export default {
       this.$store.commit('em/inputEmployeeData', employeeData)
       const skillsData = require('./assets/data/skill_table.json')
       this.$store.commit('em/inputEmSkillsData', skillsData)
+    },
+    initLocales () {
+      const localesId = 'cn'
+      this.$store.commit('lo/initLocales', localesId)
     }
   }
 }

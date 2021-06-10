@@ -1,13 +1,5 @@
 <template>
   <div id="damage-class">
-    <!-- damageClass -->
-    <CollapseItem
-      :compontentName="'伤害类排名'"
-      :layer="2"
-    >
-      {{ 'DamageClass' }}
-    </CollapseItem>
-    <!-- damageClass-end -->
     <!-- damageBar -->
     <CollapseItem
       :compontentName="'伤害类对比'"
@@ -31,7 +23,6 @@
 
 <script>
 import CollapseItem from '../../Common/CollapseItem.vue'
-// import { damModJudge, atkModJudge } from '../../utils/damageCalc.js'
 import PerDamage from '../EmAnalysis/DamageClass/PerDamage.vue'
 import DamageBar from '../EmAnalysis/DamageClass/DamageBar.vue'
 // import RankRadar from '../../Echarts/RankClass/RankRadar.vue'

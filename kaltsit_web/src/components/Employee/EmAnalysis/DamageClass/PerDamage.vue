@@ -28,7 +28,7 @@ export default {
       let nameList = ['']
       const dataList1 = perDamage(emParam, emPretData)
       dataList.push(dataList1)
-      if (this.atkMod === 4) {
+      if (emPretData.atkMod === 4) {
         const pretData = { atkMod: 0, damMod: emPretData.damMod }
         const dataList2 = perDamage(emParam, pretData)
         dataList.push(dataList2)
@@ -38,13 +38,13 @@ export default {
     },
     echartLabel: function () {
       let xAxis = '防御'
-      if (this.damMod === 'Mag') {
+      if (this.$store.state.em.emPretData.damMod === 'Mag') {
         xAxis = '法抗'
       }
       return labelFormat(xAxis, '秒伤害量')
     },
     legendList: function () {
-      if (this.atkMod === 4) {
+      if (this.$store.state.em.emPretData.atkMod === 4) {
         return ['远程', '近战']
       }
       return []

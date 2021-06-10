@@ -48,7 +48,11 @@ export default {
       this.employeeList = require('@/assets/data/employeelist.json')
     },
     changeName (name) {
-      this.$store.commit('em/changeEmployeeName', name)
+      const disCommitList = ['★', '★★', '★★★', '★★★★', '★★★★★', '★★★★★★', '先锋', '狙击', '医疗', '术师', '近卫', '重装', '辅助', '特种']
+      const isIn = disCommitList.indexOf(name)
+      if (isIn === -1) {
+        this.$store.commit('em/changeEmployeeName', name)
+      }
     },
     closeDrawer () {
       this.$store.commit('closeDrawer')

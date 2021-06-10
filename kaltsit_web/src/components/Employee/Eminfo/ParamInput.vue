@@ -77,6 +77,9 @@ export default {
     }
   },
   computed: {
+    emKey () {
+      return this.$store.state.em.emKey
+    },
     potential () {
       return this.$store.state.em.emData.maxPotential
     },
@@ -93,6 +96,10 @@ export default {
     },
     potClick (pot) {
       this.baseInfo.potentialLevel = pot
+    },
+    initInputParam () {
+      this.baseInfo.elite = Math.min(this.baseInfo.elite, this.maxLevel.length - 1)
+      this.baseInfo.potentialLevel = Math.min(this.baseInfo.potentialLevel, this.potential)
     }
   },
   watch: {
@@ -102,6 +109,12 @@ export default {
       },
       deep: true,
       immediate: true
+    },
+    emKey: {
+      handler () {
+        this.initInputParam()
+        this.submitInfo()
+      }
     }
   }
 }

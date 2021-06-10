@@ -15,10 +15,7 @@
     >
       <PerDamage
         :skillParam="skillParam"
-        :skillId="skillData.skillId"
-        :emParam="emParam"
-        :damMod="damMod"
-        :atkMod="atkMod"
+        :skillId="skillData.prefabId"
       />
     </CollapseItem>
   </div>
