@@ -8,6 +8,23 @@ function emParamCalc (emData, inputParam) {
   potentialCalc(emParam, emData.potential, inputParam.potentialLevel)
   return emParam
 }
+function emParamUpCalc (emData, inputParam) {
+  const emParamUp = {
+    maxHp: 0,
+    atk: 0,
+    def: 0,
+    magRes: 0,
+    cost: 0,
+    blockCnt: 0,
+    range: 0,
+    atkTime: 0,
+    baseAtkTime: 0,
+    respawnTime: 0
+  }
+  favorCalc(emParamUp, emData.favor, inputParam.favorValue)
+  potentialCalc(emParamUp, emData.potential, inputParam.potentialLevel)
+  return emParamUp
+}
 // 等级
 function baseParamCalc (param, data, input) {
   const Lv = input.levelValue - 1
@@ -44,14 +61,13 @@ function potentialCalc (param, potentialData, potential) {
   }
 }
 // 天赋
+/*
 function talentCalc () {
   console.log('aaa')
 }
+*/
 //
 module.exports = {
   emParamCalc,
-  baseParamCalc,
-  favorCalc,
-  potentialCalc,
-  talentCalc
+  emParamUpCalc
 }

@@ -55,6 +55,7 @@ export default {
 .base-style {
   padding: 0px;
   margin: 0px;
+  height: 100%;
 }
 .el-container {
   height: 100%;

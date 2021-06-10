@@ -77,6 +77,9 @@ export default {
     this.translateSkills()
     this.getShowSkills()
   },
+  mounted () {
+    this.isDisplayNone()
+  },
   methods: {
     // 获取需要显示的技能信息
     getShowSkills () {
