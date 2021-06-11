@@ -86,6 +86,7 @@ export default {
   width: 20%;
   display: flex;
   justify-content: center;
+  flex: 0.5
 }
 .range-box-style {
   display: inline-block;

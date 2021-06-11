@@ -170,6 +170,10 @@ export default {
     width: 60%;
     margin-left: 15px;
     margin-right: 10px;
+    align-items: center;
+  }
+  /deep/.el-slider__runway {
+    margin: 22px 0;
   }
   /deep/.el-slider__button {
     width: 10px;
