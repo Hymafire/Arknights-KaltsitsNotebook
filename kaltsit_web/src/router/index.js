@@ -17,9 +17,9 @@ const routes = [
   { path: '/home', name: '首页', component: Home },
   { path: '/enemy', name: '敌人分析', component: Enemy },
   { path: '/employee', name: '干员分析', component: Employee },
-  { path: '/createn', name: '敌人等级', component: CreateEn },
+  { path: '/createn', name: '敌人登记', component: CreateEn },
   { path: '/createm', name: '简历编辑', component: CreateEm },
-  { path: '/compare', name: '干员比较', component: Compare },
+  { path: '/compare', name: '干员对比', component: Compare },
   { path: '/test', name: 'Test', component: Test }
 ]
 

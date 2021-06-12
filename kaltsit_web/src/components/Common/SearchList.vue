@@ -7,6 +7,7 @@
         placeholder="输入查询名称"
         v-model="objName"
         class="search-input"
+        maxlength="20"
       >
         <el-button
           slot="append"

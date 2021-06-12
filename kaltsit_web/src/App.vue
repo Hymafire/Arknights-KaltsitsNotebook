@@ -35,7 +35,7 @@ export default {
     },
     initLocales () {
       const localesId = 'cn'
-      this.$store.commit('lo/initLocales', localesId)
+      this.$store.commit('loc/initLocales', localesId)
     }
   }
 }

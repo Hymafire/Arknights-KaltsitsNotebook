@@ -80,13 +80,13 @@ export default {
             min: (emMin).toFixed(2)
           },
           {
-            class: this.$store.state.lo.profList[emData.profession],
+            class: this.$store.state.loc.profList[emData.profession],
             min: (emPretreatedData[param].profession[emData.profession].minValue).toFixed(2),
             avg: (emPretreatedData[param].profession[emData.profession].avgValue).toFixed(2),
             max: (emPretreatedData[param].profession[emData.profession].maxValue).toFixed(2)
           },
           {
-            class: this.$store.state.lo.posList[emData.position],
+            class: this.$store.state.loc.posList[emData.position],
             min: (emPretreatedData[param].position[emData.position].minValue).toFixed(2),
             avg: (emPretreatedData[param].position[emData.position].avgValue).toFixed(2),
             max: (emPretreatedData[param].position[emData.position].maxValue).toFixed(2)

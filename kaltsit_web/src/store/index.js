@@ -30,9 +30,9 @@ const Employee = {
   mutations: {
     // 改变目标干员
     changeEmployeeName (state, emName) {
-      state.emName = emName
       for (const em in state.employeeTable) {
-        if (state.employeeTable[em].name === state.emName) {
+        if (state.employeeTable[em].name === emName) {
+          state.emName = emName
           state.emKey = state.employeeTable[em].Key
           break
         }
@@ -83,7 +83,22 @@ const Employee = {
 }
 
 // enemy-store
-
+const Enemy = {
+  namespaced: true,
+  state: {
+    enName: String,
+    enKey: String,
+    enData: Object,
+    enLevel: Number,
+    enemyTable: Object,
+    enPretreateData: Object
+  },
+  mutations: {
+    changeEnemyName (state, enName) {
+      state.enName = enName
+    }
+  }
+}
 // locales
 const Locales = {
   namespaced: true,
@@ -136,20 +151,15 @@ const DrawerAndLists = {
 
 export default new Vuex.Store({
   state: {
-    version: 'v0.10.1',
-    // 目标敌人
-    enemyName: '源石虫'
+    version: 'v0.10.1'
   },
   mutations: {
-    // 目标名改变
-    changeEnemyName (state, enemyName) {
-      state.enemyName = enemyName
-    }
   },
   actions: {
   },
   modules: {
     em: Employee,
+    en: Enemy,
     loc: Locales,
     dal: DrawerAndLists
   }

@@ -7,11 +7,6 @@
     </el-header>
     <el-main class="info-main">
       <BaseInfo :enemy="enemy" :enemyKey="enemy.Key"/>
-      <PerDamage
-        :atk="enemy.atk[0]"
-        :atk-time="enemy.atkTime"
-        :is-active="true"
-      />
     </el-main>
   </el-container>
 </template>
@@ -19,7 +14,6 @@
 <script>
 /* eslint-disable camelcase */
 import BaseInfo from './Eninfo/BaseInfo.vue'
-import PerDamage from '../Echarts/DamageClass/PerDamage.vue'
 
 export default {
   data () {
@@ -31,13 +25,12 @@ export default {
     this.getEnemyData()
   },
   components: {
-    BaseInfo,
-    PerDamage
+    BaseInfo
   },
   computed: {
     enemy: function () {
       for (const en in this.enemyData) {
-        if (this.enemyData[en].name === this.$store.state.enemyName) {
+        if (this.enemyData[en].name === this.$store.state.en.enName) {
           return this.enemyData[en]
         }
       }
