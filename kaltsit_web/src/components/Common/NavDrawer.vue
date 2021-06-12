@@ -35,18 +35,18 @@ export default {
   },
   computed: {
     isDrawerOpen () {
-      return this.$store.state.isDrawerOpen
+      return this.$store.state.dal.isDrawerOpen
     }
   },
   methods: {
     handleClose () {
-      this.$store.commit('closeDrawer')
+      this.$store.commit('dal/closeDrawer')
     }
   },
   watch: {
     isDrawerOpen: {
       handler () {
-        this.drawer = this.$store.state.isDrawerOpen
+        this.drawer = this.$store.state.dal.isDrawerOpen
       }
     }
   }

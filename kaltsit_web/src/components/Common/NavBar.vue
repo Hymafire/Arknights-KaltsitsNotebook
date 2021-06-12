@@ -40,7 +40,7 @@ export default {
   name: 'NavBar',
   methods: {
     openDrawer () {
-      this.$store.commit('openDrawer')
+      this.$store.commit('dal/openDrawer')
     }
   }
 }

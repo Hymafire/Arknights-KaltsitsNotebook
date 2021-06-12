@@ -6,7 +6,7 @@
     </div>
     <div>
       <div class="version">
-        v0.10.0
+        {{ this.$store.state.version }}
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     closeDrawer () {
-      this.$store.commit('closeDrawer')
+      this.$store.commit('dal/closeDrawer')
     }
   }
 }

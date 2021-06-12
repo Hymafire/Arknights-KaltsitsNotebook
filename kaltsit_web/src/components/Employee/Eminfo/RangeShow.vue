@@ -1,9 +1,8 @@
 <template>
   <div id="range-show">
-    <div v-for="col in colRange" :key="col">
-      <div v-for="row in rowRange" :key="row">
-        <div class="range-box-style" :class="getColorClass(col, row)">
-        </div>
+    <div class="range-chart-container">
+      <div v-for="row in rowRange" :key="row" class="range-row">
+        <div v-for="col in colRange" :key="col" class="range-box-style" :class="getColorClass(col, row)" :style="blockSize" />
       </div>
     </div>
   </div>
@@ -22,6 +21,14 @@ export default {
   computed: {
     rangeId () {
       return this.$store.state.em.emData.phases.range[this.$store.state.em.emInputParam.elite]
+    },
+    blockSize () {
+      const maxDiff = Math.max(this.colRange.length, this.rowRange.length)
+      const styleObj = {
+        padding: Math.min(35 / maxDiff, 12) + '%',
+        margin: 6 / (maxDiff + 1) + '%'
+      }
+      return styleObj
     }
   },
   created () {
@@ -83,18 +90,29 @@ export default {
 
 <style lang="scss" scoped>
 #range-show {
-  width: 20%;
+  min-width: 140px;
+  max-width: 200px;
+  width: auto;
   display: flex;
   justify-content: center;
-  flex: 0.5
+  align-items: center;
+  flex: 1;
+}
+.range-chart-container {
+  width: 100%;
+  height: 100%;
+  padding-left: 2px;
+  padding-right: 5px;
+  box-sizing: border-box;
+}
+.range-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
 }
 .range-box-style {
   display: inline-block;
   box-sizing: border-box;
-  height: 1.5vw;
-  width: 1.5vw;
-  padding: 1.5vw;
-  margin: .5vw;
 }
 .base-position {
   border: 3px solid darkgrey;

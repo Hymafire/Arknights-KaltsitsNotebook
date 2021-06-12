@@ -103,14 +103,14 @@ const Locales = {
   }
 }
 
-export default new Vuex.Store({
+// drawer and lists
+const DrawerAndLists = {
+  namespaced: true,
   state: {
     // 抽屉是否打开
     isDrawerOpen: false,
     // 列表是否折叠
-    isListCollapse: false,
-    // 目标敌人
-    enemyName: '源石虫'
+    isListCollapse: false
   },
   mutations: {
     // 抽屉开关
@@ -130,7 +130,17 @@ export default new Vuex.Store({
       } else {
         state.isListCollapse = false
       }
-    },
+    }
+  }
+}
+
+export default new Vuex.Store({
+  state: {
+    version: 'v0.10.1',
+    // 目标敌人
+    enemyName: '源石虫'
+  },
+  mutations: {
     // 目标名改变
     changeEnemyName (state, enemyName) {
       state.enemyName = enemyName
@@ -140,6 +150,7 @@ export default new Vuex.Store({
   },
   modules: {
     em: Employee,
-    lo: Locales
+    loc: Locales,
+    dal: DrawerAndLists
   }
 })

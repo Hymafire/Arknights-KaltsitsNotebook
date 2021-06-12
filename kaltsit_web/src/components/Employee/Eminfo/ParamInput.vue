@@ -1,65 +1,67 @@
 <template>
   <div id="param-input">
-    <el-row>
-      <span>精英阶段</span>
-      <ul class="input-position">
-        <li
-          v-for="elt in Array(maxLevel.length).keys()"
-          :key="elt"
-          class="btn-position"
-        >
-          <el-button
-            size="mini"
-            @click="eliteClick(elt)"
-            class="btn-slience"
-            :class="{'btn-active': baseInfo.elite == elt}"
+    <div class="input-container">
+      <el-row>
+        <span>精英阶段</span>
+        <ul class="input-position">
+          <li
+            v-for="elt in Array(maxLevel.length).keys()"
+            :key="elt"
+            class="btn-position"
           >
-            {{ elt }}
-          </el-button>
-        </li>
-      </ul>
-    </el-row>
-    <el-row>
-      <span>潜能等级</span>
-      <ul class="input-position">
-        <li
-          v-for="pot in Array(potential+1).keys()"
-          :key="pot"
-          class="btn-position"
-        >
-          <el-button
-            size="mini"
-            @click="potClick(pot)"
-            class="btn-slience"
-            :class="{'btn-active': baseInfo.potentialLevel == pot}"
+            <el-button
+              size="mini"
+              @click="eliteClick(elt)"
+              class="btn-slience"
+              :class="{'btn-active': baseInfo.elite == elt}"
+            >
+              {{ elt }}
+            </el-button>
+          </li>
+        </ul>
+      </el-row>
+      <el-row>
+        <span>潜能等级</span>
+        <ul class="input-position">
+          <li
+            v-for="pot in Array(potential+1).keys()"
+            :key="pot"
+            class="btn-position"
           >
-            {{ pot+1 }}
-          </el-button>
-        </li>
-      </ul>
-    </el-row>
-    <!-- 等级 -->
-    <el-row>
-      <span>干员等级</span>
-      <el-slider
-        v-model="baseInfo.levelValue"
-        :show-tooltip="false"
-        :min="1"
-        :max="maxLevel[baseInfo.elite]"
-      />
-      <span class="value-number">{{ baseInfo.levelValue }}</span>
-    </el-row>
-    <!-- 信赖 -->
-    <el-row>
-      <span>干员信赖</span>
-      <el-slider
-        v-model="baseInfo.favorValue"
-        :show-tooltip="false"
-        :min="0"
-        :max="100"
-      />
-      <span class="value-number">{{ baseInfo.favorValue }}</span>
-    </el-row>
+            <el-button
+              size="mini"
+              @click="potClick(pot)"
+              class="btn-slience"
+              :class="{'btn-active': baseInfo.potentialLevel == pot}"
+            >
+              {{ pot+1 }}
+            </el-button>
+          </li>
+        </ul>
+      </el-row>
+      <!-- 等级 -->
+      <el-row>
+        <span>干员等级</span>
+        <el-slider
+          v-model="baseInfo.levelValue"
+          :show-tooltip="false"
+          :min="1"
+          :max="maxLevel[baseInfo.elite]"
+        />
+        <span class="value-number">{{ baseInfo.levelValue }}</span>
+      </el-row>
+      <!-- 信赖 -->
+      <el-row>
+        <span>干员信赖</span>
+        <el-slider
+          v-model="baseInfo.favorValue"
+          :show-tooltip="false"
+          :min="0"
+          :max="100"
+        />
+        <span class="value-number">{{ baseInfo.favorValue }}</span>
+      </el-row>
+    </div>
   </div>
 </template>
 
@@ -121,19 +123,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.input-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+}
 #param-input {
-  min-width: 335px;
+  min-width: 300px;
+  // width: 40%;
+  flex: 1;
+  // max-width: 420px;
+  height: 100%;
   .el-row {
     display: flex;
-    height: 50px;
-    line-height: 50px;
-    padding-left: 10px;
+    width: 96%;
+    height: 40px;
+    align-items: center;
   }
   span {
     font-weight: 700;
   }
   .value-number {
     font-weight: normal;
+    text-align: left;
+    width: 30px;
   }
   .input-position {
     display: inline-block;
@@ -155,6 +172,11 @@ export default {
       padding: 5px 10px;
     }
   }
+  @media only screen and (min-width:768px) and (max-width:800px) {
+    button {
+      padding: 5px 11px;
+    }
+  }
   .btn-slience {
     color: #67c23a;
     background-color: #f0f9eb;
@@ -167,13 +189,13 @@ export default {
   }
   // 滑动条
   .el-slider {
-    width: 60%;
+    width: calc(100% - 120px);
     margin-left: 15px;
     margin-right: 10px;
     align-items: center;
   }
   /deep/.el-slider__runway {
-    margin: 22px 0;
+    margin: 17px 0;
   }
   /deep/.el-slider__button {
     width: 10px;
@@ -184,7 +206,7 @@ export default {
     background-color: #67c23a;
   }
 }
-@media only screen and (max-width:450px) {
+@media only screen and (max-width:767px) {
   #param-input {
     width: 100%;
   }

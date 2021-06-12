@@ -1,17 +1,17 @@
 <template>
   <el-container>
     <!-- 列表和查询区 -->
-    <el-aside class="aside-width" :class="{'aside-collapse': $store.state.isListCollapse}">
+    <el-aside class="aside-width" :class="{'aside-collapse': $store.state.dal.isListCollapse}">
       <SearchList :list-data="enemyList" @objChanged="changeName" />
     </el-aside>
     <!--  属性输出区  -->
-    <el-main :class="{'is-aside-collapse': $store.state.isListCollapse}">
-      <div class="collapse-btn-box" :class="{'btn-box-collapsed': $store.state.isListCollapse}">
+    <el-main :class="{'is-aside-collapse': $store.state.dal.isListCollapse}">
+      <div class="collapse-btn-box" :class="{'btn-box-collapsed': $store.state.dal.isListCollapse}">
         <el-button
           class="collapse-btn"
           @click="changeCollapse"
-          :class="[{'el-icon-d-arrow-left': !$store.state.isListCollapse},
-          {'el-icon-d-arrow-right': $store.state.isListCollapse}]"
+          :class="[{'el-icon-d-arrow-left': !$store.state.dal.isListCollapse},
+          {'el-icon-d-arrow-right': $store.state.dal.isListCollapse}]"
         />
       </div>
       <Eninfo/>
@@ -46,13 +46,13 @@ export default {
       this.$store.commit('changeEnemyName', name)
     },
     closeDrawer () {
-      this.$store.commit('closeDrawer')
+      this.$store.commit('dal/closeDrawer')
     },
     initCollapse () {
-      this.$store.commit('initCollapse')
+      this.$store.commit('dal/initCollapse')
     },
     changeCollapse () {
-      this.$store.commit('changeCollapse')
+      this.$store.commit('dal/changeCollapse')
     }
   }
 }

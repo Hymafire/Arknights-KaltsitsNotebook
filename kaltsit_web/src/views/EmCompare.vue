@@ -12,7 +12,7 @@ export default {
   },
   methods: {
     closeDrawer () {
-      this.$store.commit('closeDrawer')
+      this.$store.commit('dal/closeDrawer')
     }
   }
 }

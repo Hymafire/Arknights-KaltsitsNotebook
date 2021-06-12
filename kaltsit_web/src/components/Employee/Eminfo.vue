@@ -7,8 +7,10 @@
       <!-- 参数信息 -->
       <div id="param-info">
         <ParamInput />
-        <ParamShow />
-        <RangeShow />
+        <div class="param-show-container">
+          <ParamShow />
+          <RangeShow />
+        </div>
       </div>
       <div>
         <!-- 天赋信息 -->
@@ -58,7 +60,25 @@ export default {
 //
 #param-info {
   display: flex;
+  // justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  height: 200px;
+}
+.param-show-container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  // justify-content: space-around;
+  // width: 60%;
+  flex: 1.5;
+}
+@media only screen and (max-width: 767px) {
+  #param-info {
+    height: auto;
+  }
+  .param-show-container {
+    width: 100%;
+  }
 }
 </style>
