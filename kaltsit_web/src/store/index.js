@@ -99,6 +99,35 @@ const Enemy = {
     }
   }
 }
+
+// compare
+const EmCompare = {
+  namespaced: true,
+  state: {
+    emNameList: [],
+    emKeyList: [],
+    emInputParam: Object,
+    eachInputParam: Object
+  },
+  mutations: {
+    addEmployee (state, emName) {
+      for (const emKey in this.state.em.employeeTable) {
+        if (this.state.em.employeeTable[emKey].name === emName) {
+          const isIn = state.emNameList.indexOf(emName)
+          if (isIn === -1) {
+            Vue.set(state.emNameList, state.emNameList.length, emName)
+            Vue.set(state.emKeyList, state.emKeyList.length, emKey)
+          }
+        }
+      }
+    },
+    subEmployee (state, index) {
+      Vue.delete(state.emNameList, index)
+      Vue.delete(state.emKeyList, index)
+    }
+  }
+}
+
 // locales
 const Locales = {
   namespaced: true,
@@ -160,6 +189,7 @@ export default new Vuex.Store({
   modules: {
     em: Employee,
     en: Enemy,
+    emc: EmCompare,
     loc: Locales,
     dal: DrawerAndLists
   }

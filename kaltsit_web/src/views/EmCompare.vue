@@ -1,19 +1,17 @@
 <template>
-  <div>
-    <span>干员对比</span>
-  </div>
+  <ViewBaseUi id="emCom-view" :viewMod="'emcompare'">
+    <EmcInfo />
+  </ViewBaseUi>
 </template>
 
 <script>
+import ViewBaseUi from '../components/Common/ViewBaseUi.vue'
+import EmcInfo from '../components/EmCompare/EmcInfo.vue'
+
 export default {
-  name: 'Compare',
-  created () {
-    this.closeDrawer()
-  },
-  methods: {
-    closeDrawer () {
-      this.$store.commit('dal/closeDrawer')
-    }
+  components: {
+    ViewBaseUi,
+    EmcInfo
   }
 }
 </script>

@@ -28,15 +28,8 @@ export default {
       List: [],
       initName: {
         employee: '斯卡蒂',
-        enemy: '源石虫'
-      },
-      commitInstruct: {
-        employee: 'em/changeEmployeeName',
-        enemy: 'en/changeEnemyName'
-      },
-      disCommitList: {
-        employee: ['★', '★★', '★★★', '★★★★', '★★★★★', '★★★★★★', '先锋', '狙击', '医疗', '术师', '近卫', '重装', '辅助', '特种'],
-        enemy: ['普通', '精英', '领袖']
+        enemy: '源石虫',
+        emcompare: ''
       }
     }
   },
@@ -61,10 +54,21 @@ export default {
       }
     },
     changeName (name) {
-      const disCommitList = this.disCommitList[this.viewMod]
+      let disCommitList = []
+      if (this.viewMod === 'enemy') {
+        disCommitList = ['普通', '精英', '领袖']
+      } else {
+        disCommitList = ['★', '★★', '★★★', '★★★★', '★★★★★', '★★★★★★', '先锋', '狙击', '医疗', '术师', '近卫', '重装', '辅助', '特种']
+      }
       const isIn = disCommitList.indexOf(name)
       if (isIn === -1) {
-        this.$store.commit(this.commitInstruct[this.viewMod], name)
+        if (this.viewMod === 'enemy') {
+          this.$store.commit('en/changeEnemyName', name)
+        } else if (this.viewMod === 'employee') {
+          this.$store.commit('em/changeEmployeeName', name)
+        } else {
+          this.$store.commit('emc/addEmployee', name)
+        }
       }
     },
     closeDrawer () {
