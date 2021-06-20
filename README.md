@@ -3,7 +3,7 @@
 > 凯尔希医生的笔记本上记了点什么......
 
 ## 1.网站简介
-> 一个用于展示和分析 [**明日方舟**](https://ak.hypergryph.com/) 游戏数据的网站。
+> 一个用于展示和分析 [**《明日方舟》**](https://ak.hypergryph.com/) 游戏数据的网站。
 
 > 网站部署位置：[www.kaltsit.cc](http://www.kaltsit.cc)
 
