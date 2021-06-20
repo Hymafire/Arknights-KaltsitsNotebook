@@ -93,7 +93,7 @@ i {
     margin-bottom: 2px;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 769px) {
   strong {
     width: 40%;
   }

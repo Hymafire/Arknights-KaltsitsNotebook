@@ -25,6 +25,8 @@ export default {
     blockSize () {
       const maxDiff = Math.max(this.colRange.length, this.rowRange.length)
       const styleObj = {
+        // width: 设定宽度，用于处理部分浏览器兼容问题
+        width: Math.min(70 / maxDiff, 24) + '%',
         padding: Math.min(35 / maxDiff, 12) + '%',
         margin: 6 / (maxDiff + 1) + '%'
       }
@@ -109,10 +111,12 @@ export default {
   display: flex;
   justify-content: center;
   flex-wrap: nowrap;
+  width: 100%;
 }
 .range-box-style {
-  display: inline-block;
+  // display: inline-block;
   box-sizing: border-box;
+  // -webkit-box-sizing: border-box;
 }
 .base-position {
   border: 3px solid darkgrey;

@@ -167,7 +167,7 @@ export default {
     font-weight: 500;
     padding: 5px 12px;
   }
-  @media only screen and (max-width:321px) {
+  @media only screen and (max-width:333px) {
     button {
       padding: 5px 10px;
     }
