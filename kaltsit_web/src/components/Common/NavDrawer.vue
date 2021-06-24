@@ -13,11 +13,17 @@
         <router-link to="/employee" replace>
           干员分析
         </router-link>
-        <router-link to="/compare" replace>
+        <router-link to="/compare" replace v-if="$store.state.cp.isDevFuncApply">
           干员对比
         </router-link>
         <router-link to="/enemy" replace>
           敌人分析
+        </router-link>
+        <router-link to="/createm" replace v-if="$store.state.cp.isDevFuncApply">
+          创作干员
+        </router-link>
+        <router-link to="/createn" replace v-if="$store.state.cp.isDevFuncApply">
+          创作敌人
         </router-link>
       </div>
     </el-drawer>
@@ -61,6 +67,9 @@ a {
 /deep/.el-drawer__header {
   margin-bottom: 0px;
   padding: 10px;
+}
+/deep/.el-drawer__body {
+  overflow: scroll;
 }
 #drawer-nav {
   height: 100%;

@@ -37,20 +37,20 @@ const Employee = {
           break
         }
       }
-      state.emData = Object.assign({}, state.emData, state.employeeTable[state.emKey])
+      state.emData = Object.assign({}, state.employeeTable[state.emKey])
       this.commit('em/updateEmSkillsData')
-      state.emPretData = Object.assign({}, state.emPretData, emDataPretreate(state.emData, state.emSkillsData))
+      state.emPretData = Object.assign({}, emDataPretreate(state.emData, state.emSkillsData))
       this.commit('em/updateEmParam')
       this.commit('em/changeIsEmUpdate')
     },
     // 数据更新
     updateEmInputParam (state, inputParam) {
-      state.emInputParam = Object.assign({}, state.emInputParam, inputParam)
+      state.emInputParam = Object.assign({}, inputParam)
       this.commit('em/updateEmParam')
       this.commit('em/changeIsEmUpdate')
     },
     updateEmParam (state) {
-      state.emParam = Object.assign({}, state.emParam, emParamCalc(state.emData, state.emInputParam))
+      state.emParam = Object.assign({}, emParamCalc(state.emData, state.emInputParam))
     },
     // 技能
     updateEmSkillsData (state) {
@@ -62,10 +62,10 @@ const Employee = {
       state.emSkillsData = emSkillsData
     },
     updateSkillsLevel (state, skillsLevel) {
-      state.emSkillsLevel = Object.assign({}, state.emSkillsLevel, skillsLevel)
+      state.emSkillsLevel = Object.assign({}, skillsLevel)
     },
     updateSkillsFlag (state, skillsFlag) {
-      state.emSkillsFlag = Object.assign({}, state.emSkillsFlag, skillsFlag)
+      state.emSkillsFlag = Object.assign({}, skillsFlag)
     },
     // 数据载入
     inputEmployeeData (state, employeeTable) {
@@ -111,12 +111,13 @@ const EmCompare = {
   },
   mutations: {
     addEmployee (state, emName) {
-      for (const emKey in this.state.em.employeeTable) {
-        if (this.state.em.employeeTable[emKey].name === emName) {
-          const isIn = state.emNameList.indexOf(emName)
-          if (isIn === -1) {
-            Vue.set(state.emNameList, state.emNameList.length, emName)
-            Vue.set(state.emKeyList, state.emKeyList.length, emKey)
+      if (!this.state.cp.isCompareNumLimit || state.emNameList.length < 5) {
+        if (state.emNameList.indexOf(emName) === -1) {
+          for (const emKey in this.state.em.employeeTable) {
+            if (this.state.em.employeeTable[emKey].name === emName) {
+              Vue.set(state.emNameList, state.emNameList.length, emName)
+              Vue.set(state.emKeyList, state.emKeyList.length, emKey)
+            }
           }
         }
       }
@@ -124,6 +125,12 @@ const EmCompare = {
     subEmployee (state, index) {
       Vue.delete(state.emNameList, index)
       Vue.delete(state.emKeyList, index)
+    },
+    limitEmployeeList (state) {
+      while (state.emNameList.length > 5) {
+        Vue.delete(state.emNameList, 5)
+        Vue.delete(state.emKeyList, 5)
+      }
     }
   }
 }
@@ -140,9 +147,9 @@ const Locales = {
     initLocales (state, id) {
       state.localesId = id
       const profList = require('../assets/locales/prof_list.json')
-      state.profList = Object.assign({}, state.profList, profList[state.localesId])
+      state.profList = Object.assign({}, profList[state.localesId])
       const posList = require('../assets/locales/pos_list.json')
-      state.posList = Object.assign({}, state.posList, posList[state.localesId])
+      state.posList = Object.assign({}, posList[state.localesId])
     }
   }
 }
@@ -178,6 +185,51 @@ const DrawerAndLists = {
   }
 }
 
+// control panel
+const ControlPanel = {
+  namespaced: true,
+  state: {
+    isControlPanelOpen: false,
+    isEnemyAnalysis: false,
+    isCollapseAccordion: true,
+    isDevFuncApply: false,
+    isCompareNumLimit: true
+  },
+  mutations: {
+    openControlPanel (state) {
+      state.isControlPanelOpen = true
+    },
+    closeControlPanel (state) {
+      state.isControlPanelOpen = false
+    },
+    changeIsEnemyAnalysis (state, bool) {
+      state.isEnemyAnalysis = bool
+    },
+    changeIsCollapseAccordion (state, bool) {
+      state.isCollapseAccordion = bool
+    },
+    changeIsDevFuncApply (state, bool) {
+      state.isDevFuncApply = bool
+    },
+    changeIsCompareNumLimit (state, bool) {
+      state.isCompareNumLimit = bool
+    }
+  }
+}
+
+// collapse
+const CollapseItem = {
+  namespaced: true,
+  state: {
+    activeNameList: ['null', 'null', 'null', 'null', 'null']
+  },
+  mutations: {
+    changeActiveName (state, changeData) {
+      Vue.set(state.activeNameList, changeData.index, changeData.activeName)
+    }
+  }
+}
+
 export default new Vuex.Store({
   state: {
     version: 'v0.10.1'
@@ -191,6 +243,8 @@ export default new Vuex.Store({
     en: Enemy,
     emc: EmCompare,
     loc: Locales,
-    dal: DrawerAndLists
+    dal: DrawerAndLists,
+    cp: ControlPanel,
+    ci: CollapseItem
   }
 })

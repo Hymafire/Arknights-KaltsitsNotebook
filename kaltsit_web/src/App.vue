@@ -9,18 +9,21 @@
       </el-main>
     </el-container>
     <NavDrawer />
+    <ControlPanel />
   </div>
 </template>
 
 <script>
 import NavBar from './components/Common/NavBar.vue'
 import NavDrawer from './components/Common/NavDrawer.vue'
+import ControlPanel from './components/Common/ControlPanel.vue'
 
 export default {
   name: 'App',
   components: {
     NavBar,
-    NavDrawer
+    NavDrawer,
+    ControlPanel
   },
   created () {
     this.initData()

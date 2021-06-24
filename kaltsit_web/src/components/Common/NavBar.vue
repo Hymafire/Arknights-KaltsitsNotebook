@@ -8,24 +8,23 @@
       <router-link to="/employee" replace>
         干员分析
       </router-link>
-      <router-link to="/compare" replace>
+      <router-link to="/compare" replace v-if="$store.state.cp.isDevFuncApply">
         干员对比
       </router-link>
       <router-link to="/enemy" replace>
         敌人分析
       </router-link>
-      <!--
-      <router-link to="/createm" replace>简历编辑</router-link>
-      <router-link to="/createn" replace>敌人登记</router-link>
-      -->
+      <router-link to="/createm" replace v-if="$store.state.cp.isDevFuncApply">
+        创作干员
+      </router-link>
+      <router-link to="/createn" replace v-if="$store.state.cp.isDevFuncApply">
+        创作敌人
+      </router-link>
     </div>
     <!-- 大-end -->
     <!-- 小 -->
     <div id="tool-bar" class="hidden-sm-and-up">
-      <div class="el-icon-menu tool-mag"></div>
-      <!--
-      <div class="tool-mag">&gt;</div>
-      -->
+      <div class="el-icon-menu tool-mag" @click="openControlPanel" />
       <div class="tool-title">{{ $route.name }}</div>
       <button class="tool-btn el-icon-s-operation" @click="openDrawer" />
     </div>
@@ -38,9 +37,25 @@ import 'element-ui/lib/theme-chalk/display.css'
 
 export default {
   name: 'NavBar',
+  data () {
+    return {
+      controlPanelCnt: 0
+    }
+  },
   methods: {
     openDrawer () {
       this.$store.commit('dal/openDrawer')
+    },
+    openControlPanel () {
+      this.controlPanelCnt = this.controlPanelCnt + 1
+      if (this.controlPanelCnt === 1) {
+        setTimeout(() => {
+          this.controlPanelCnt = 0
+        }, 3000)
+      } else if (this.controlPanelCnt >= 5) {
+        this.controlPanelCnt = 0
+        this.$store.commit('cp/openControlPanel')
+      }
     }
   }
 }

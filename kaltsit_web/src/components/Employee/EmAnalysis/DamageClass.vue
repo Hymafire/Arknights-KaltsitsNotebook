@@ -5,9 +5,7 @@
       :compontentName="'伤害类对比'"
       :layer="2"
     >
-      <DamageBar
-        :key="this.$store.state.em.emKey"
-      />
+      <DamageBar :key="this.$store.state.em.emKey" />
     </CollapseItem>
     <!-- damageBar-end -->
     <!-- perdamage -->

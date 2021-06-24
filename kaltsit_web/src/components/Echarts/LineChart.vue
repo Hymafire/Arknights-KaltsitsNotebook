@@ -14,20 +14,13 @@ export default {
     chartId: String,
     legendList: Array,
     seriesList: Array,
-    echartLabel: Array,
-    isChanged: Boolean
+    echartLabel: Array
   },
   mounted () {
-    this.lineChart()
+    this.initLineChart()
   },
-  methods: {
-    lineChart () {
-      // 初始化DOM
-      const myChart = echarts.getInstanceByDom(document.getElementById(this.chartId))
-      if (myChart == null) {
-        this.line_chart = echarts.init(document.getElementById(this.chartId))
-      }
-      // 配置内容
+  computed: {
+    lineChartOption () {
       const option = {
         animation: false,
         title: {
@@ -70,16 +63,20 @@ export default {
           data: this.legendList
         }
       }
-      this.line_chart.setOption(option)
-      // 自适应 有Bug
-      // window.addEventListener('resize', () => { myChart.resize() })
-      window.onresize = myChart.resize
+      return option
+    }
+  },
+  methods: {
+    initLineChart () {
+      this.lineChart = echarts.init(document.getElementById(this.chartId))
+      this.lineChart.setOption(this.lineChartOption)
+      window.addEventListener('resize', () => { this.lineChart.resize() })
     }
   },
   watch: {
-    isChanged: {
+    lineChartOption: {
       handler () {
-        this.lineChart()
+        this.lineChart.setOption(this.lineChartOption)
       }
     }
   }

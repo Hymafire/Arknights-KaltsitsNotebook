@@ -53,7 +53,7 @@ export default {
       }
       this.rank_radar.setOption(option)
       if (this.isActive) {
-        window.addEventListener('resize', () => { myChart.resize() })
+        window.addEventListener('resize', () => { this.myChart.resize() })
       }
     }
   }

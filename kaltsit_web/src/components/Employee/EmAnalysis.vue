@@ -7,7 +7,7 @@
     <!-- 2.damageClass -->
     <CollapseItem
       :compontentName="'攻击类'"
-      v-if="this.$store"
+      v-if="!($store.state.em.emData.profession === 'MEDIC' || $store.state.em.emPretData === 'NoAtk')"
     >
       <DamageClass />
     </CollapseItem>

@@ -19,7 +19,7 @@
 export default {
   data () {
     return {
-      isActive: false
+      isActiveTmp: false
     }
   },
   props: {
@@ -28,6 +28,28 @@ export default {
       default: 1
     },
     compontentName: String
+  },
+  computed: {
+    isActive: {
+      get () {
+        if (this.$store.state.cp.isCollapseAccordion) {
+          return this.compontentName === this.$store.state.ci.activeNameList[this.layer - 1]
+        }
+        return this.isActiveTmp
+      },
+      set () {
+        if (this.$store.state.cp.isCollapseAccordion) {
+          const changeData = { index: this.layer - 1 }
+          if (this.compontentName === this.$store.state.ci.activeNameList[this.layer - 1]) {
+            changeData.activeName = 'null'
+          } else {
+            changeData.activeName = this.compontentName
+          }
+          this.$store.commit('ci/changeActiveName', changeData)
+        }
+        this.isActiveTmp = !this.isActiveTmp
+      }
+    }
   },
   methods: {
     getStyleClass () {

@@ -21,6 +21,12 @@ export default {
         this.$set(iconUrls, i, require('@/assets/images/emicons/' + emList[i] + '.png'))
       }
       return iconUrls
+    },
+    isCompareNumLimit () {
+      if (this.$store.state.cp.isCompareNumLimit) {
+        this.$store.commit('emc/limitEmployeeList')
+      }
+      return this.$store.state.cp.isCompareNumLimit
     }
   },
   methods: {

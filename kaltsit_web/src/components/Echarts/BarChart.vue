@@ -11,24 +11,16 @@ import * as echarts from 'echarts'
 export default {
   name: 'BarChart',
   props: {
-    // legendList: Array,
     chartId: String,
     title: String,
     seriesList: Array,
-    dataList: Object,
-    isChanged: Boolean
+    dataList: Object
   },
   mounted () {
-    this.barChart()
+    this.initBarChart()
   },
-  methods: {
-    barChart () {
-      // 初始化DOM
-      const myChart = echarts.getInstanceByDom(document.getElementById(this.chartId))
-      if (myChart == null) {
-        this.bar_chart = echarts.init(document.getElementById(this.chartId))
-      }
-      // 配置内容
+  computed: {
+    barChartOption () {
       const option = {
         title: {
           text: this.title
@@ -52,16 +44,20 @@ export default {
         yAxis: {},
         series: this.seriesList
       }
-      this.bar_chart.setOption(option)
-      // 自适应 有Bug
-      window.addEventListener('resize', () => { myChart.resize() })
-      // window.onresize = myChart.resize
+      return option
+    }
+  },
+  methods: {
+    initBarChart () {
+      this.barChart = echarts.init(document.getElementById(this.chartId))
+      this.barChart.setOption(this.barChartOption)
+      window.addEventListener('resize', () => { this.barChart.resize() })
     }
   },
   watch: {
-    isChanged: {
+    barChartOption: {
       handler () {
-        this.barChart()
+        this.barChart.setOption(this.barChartOption)
       }
     }
   }
