@@ -12,68 +12,27 @@ function emTablePretreate (preData) {
   for (const emKey in preData) {
     const employee = preData[emKey]
     for (const param in pretreatedData) {
+      let value = 0
+      if (['atk', 'def', 'maxHp'].includes(param)) {
+        value = employee.phases[param][employee.phases[param].length - 1][1] + employee.favor[param]
+      } else if (param === 'magRes') {
+        value = employee.phases[param][employee.phases[param].length - 1]
+      } else if (param === 'atkTime') {
+        value = employee.phases[param]
+      } else if (param === 'perDam') {
+        value = (employee.phases.atk[employee.phases.atk.length - 1][1] + employee.favor.atk) / employee.phases.atkTime
+      }
       for (const class_ in pretreatedData[param]) {
-        if (['atk', 'def', 'maxHp'].includes(param)) {
-          const value = employee.phases[param][employee.phases[param].length - 1][1] + employee.favor[param]
-          if (class_ === 'totalAvg') {
-            const obj = pretreatedData[param].totalAvg
-            obj.emNum++
-            obj.sumValue += value
-            obj.maxValue = Math.max(obj.maxValue, value)
-            obj.minValue = Math.min(obj.minValue, value)
-          } else {
-            const obj = pretreatedData[param][class_][employee[class_]]
-            obj.emNum++
-            obj.sumValue += value
-            obj.maxValue = Math.max(obj.maxValue, value)
-            obj.minValue = Math.min(obj.minValue, value)
-          }
-        } else if (param === 'magRes') {
-          const value = employee.phases[param][employee.phases[param].length - 1]
-          if (class_ === 'totalAvg') {
-            const obj = pretreatedData[param].totalAvg
-            obj.emNum++
-            obj.sumValue += value
-            obj.maxValue = Math.max(obj.maxValue, value)
-            obj.minValue = Math.min(obj.minValue, value)
-          } else {
-            const obj = pretreatedData[param][class_][employee[class_]]
-            obj.emNum++
-            obj.sumValue += value
-            obj.maxValue = Math.max(obj.maxValue, value)
-            obj.minValue = Math.min(obj.minValue, value)
-          }
-        } else if (param === 'atkTime') {
-          const value = employee.phases[param]
-          if (class_ === 'totalAvg') {
-            const obj = pretreatedData[param].totalAvg
-            obj.emNum++
-            obj.sumValue += value
-            obj.maxValue = Math.max(obj.maxValue, value)
-            obj.minValue = Math.min(obj.minValue, value)
-          } else {
-            const obj = pretreatedData[param][class_][employee[class_]]
-            obj.emNum++
-            obj.sumValue += value
-            obj.maxValue = Math.max(obj.maxValue, value)
-            obj.minValue = Math.min(obj.minValue, value)
-          }
-        } else if (param === 'perDam') {
-          const value = (employee.phases.atk[employee.phases.atk.length - 1][1] + employee.favor.atk) / employee.phases.atkTime
-          if (class_ === 'totalAvg') {
-            const obj = pretreatedData[param].totalAvg
-            obj.emNum++
-            obj.sumValue += value
-            obj.maxValue = Math.max(obj.maxValue, value)
-            obj.minValue = Math.min(obj.minValue, value)
-          } else {
-            const obj = pretreatedData[param][class_][employee[class_]]
-            obj.emNum++
-            obj.sumValue += value
-            obj.maxValue = Math.max(obj.maxValue, value)
-            obj.minValue = Math.min(obj.minValue, value)
-          }
+        let obj = {}
+        if (class_ === 'totalAvg') {
+          obj = pretreatedData[param].totalAvg
+        } else {
+          obj = pretreatedData[param][class_][employee[class_]]
         }
+        obj.emNum++
+        obj.sumValue += value
+        obj.maxValue = Math.max(obj.maxValue, value)
+        obj.minValue = Math.min(obj.minValue, value)
       }
     }
   }

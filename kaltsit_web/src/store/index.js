@@ -89,13 +89,23 @@ const Enemy = {
     enName: String,
     enKey: String,
     enData: Object,
-    enLevel: Number,
+    enLevel: 0,
     enemyTable: Object,
     enPretreateData: Object
   },
   mutations: {
     changeEnemyName (state, enName) {
-      state.enName = enName
+      for (const en in state.enemyTable) {
+        if (state.enemyTable[en].name === enName) {
+          state.enKey = en
+          state.enName = enName
+          state.enData = Object.assign({}, state.enemyTable[en])
+          break
+        }
+      }
+    },
+    inputEnemyData (state, enemyTable) {
+      state.enemyTable = enemyTable
     }
   }
 }

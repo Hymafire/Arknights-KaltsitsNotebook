@@ -48,16 +48,17 @@ class EnemyDataSwitch(object):
     def getEnemyList(self):
         # 分类生成子列表
         enemy_chi_list = [[], [], []]
-        enemy_dict = {"NORMAL": 0, "ELITE": 1, "BOSS":2}
+        enemy_dict = {"NORMAL": 0, "ELITE": 1, "BOSS": 2}
         for em in self.handbook_json:
             enemy_chi_dict = {}
             enemy_chi_dict["name"] = self.handbook_json[em]["name"]
             enemy_chi_list[enemy_dict[self.handbook_json[em]["enemyLevel"]]].append(enemy_chi_dict)
             # 补充 enemydata.json
             # 两个json文件部分姓名信息不同
-            self.enemy_data[em]["name"] = self.handbook_json[em]["name"]
+            add_param_list = ["name", "enemyLevel", "enemyIndex", "enemyTags", "enemyRace", "endure", "attack", "defence", "resistance", "ability", "isInvalidKilled"]
+            for add_param in add_param_list:
+                self.enemy_data[em][add_param] = self.handbook_json[em][add_param]
             self.enemy_data[em]["damageMod"] = self.getDamageMod(self.handbook_json[em]["attackType"])
-            self.enemy_data[em]["enLevel"] = self.handbook_json[em]["enemyLevel"]
 
         # 敌人列表
         self.enemy_list.append({
@@ -78,57 +79,41 @@ class EnemyDataSwitch(object):
     def getEnemyData(self):
         for em in self.data_json["enemies"]:
             tmp_key = em["Key"]
-            level = len(em["Value"])            
+            level = len(em["Value"])
             base_data = {}    # 基数据
             # 提取数据（不变的）
             # 除去：level, prefabKey, cost, blockCnt, attackSpeed, respawnTime, maxDeployCount
             tmp_data = em["Value"][0]["enemyData"]    # 参数重定位
             base_data["Key"] = tmp_key
-            base_data["name"] = tmp_data["name"]["m_value"]
-            base_data["description"] = tmp_data["description"]["m_value"]
-            base_data["lifePointReduce"] = tmp_data["lifePointReduce"]["m_value"]
-            base_data["rangeRadius"] = tmp_data["rangeRadius"]["m_value"]
-            base_data["talent"] = tmp_data["talentBlackboard"]
-            base_data["skills"] = tmp_data["skills"]
-            base_data["spData"] = tmp_data["spData"]
-            base_data["moveSpd"] = tmp_data["attributes"]["moveSpeed"]["m_value"]
-            base_data["atkTime"] = tmp_data["attributes"]["baseAttackTime"]["m_value"]
-            base_data["hpRec"] = tmp_data["attributes"]["hpRecoveryPerSec"]["m_value"]
-            base_data["spRec"] = tmp_data["attributes"]["spRecoveryPerSec"]["m_value"]
-            base_data["massLevel"] = tmp_data["attributes"]["massLevel"]["m_value"]
+            invariant_param_list_1 = ["talentBlackboard", "skills", "spData"]
+            for i_param in invariant_param_list_1:
+                base_data[i_param] = tmp_data[i_param]
+            invariant_param_list_2 = ["name", "description", "lifePointReduce", "rangeRadius"]
+            for i_param in invariant_param_list_2:
+                base_data[i_param] = tmp_data[i_param]["m_value"]
+            invariant_param_list_3 = {"moveSpeed": "moveSpd", "baseAttackTime": "atkTime", \
+                "hpRecoveryPerSec": "hpRec", "spRecoveryPerSec": "spRec", "massLevel": "massLv"}
+            for i_param in invariant_param_list_3:
+                base_data[invariant_param_list_3[i_param]] = tmp_data["attributes"][i_param]["m_value"]
             # 免疫
-            base_data["immune"] = [0, 0, 0]
-            base_data["immune"][0] = tmp_data["attributes"]["stunImmune"]["m_value"]
-            base_data["immune"][1] = tmp_data["attributes"]["silenceImmune"]["m_value"]
-            base_data["immune"][2] = tmp_data["attributes"]["sleepImmune"]["m_value"]           
+            base_data["immune"] = {}
+            immune_list = ["stunImmune", "silenceImmune", "sleepImmune"]
+            for immune in immune_list:
+                base_data["immune"][immune] = tmp_data["attributes"][immune]["m_value"]
             # 提取数据（可变的）
-            base_data["maxHp"] = []
-            base_data["atk"] = []
-            base_data["def"] = []
-            base_data["magRes"] = []
-            for i in range(level):
-                if em["Value"][i]["enemyData"]["attributes"]["maxHp"]["m_defined"] == True:
-                    base_data["maxHp"].append(em["Value"][i]["enemyData"]["attributes"]["maxHp"]["m_value"])
-                else:
-                    base_data["maxHp"].append(em["Value"][0]["enemyData"]["attributes"]["maxHp"]["m_value"])            
-
-                if em["Value"][i]["enemyData"]["attributes"]["atk"]["m_defined"] == True:
-                    base_data["atk"].append(em["Value"][i]["enemyData"]["attributes"]["atk"]["m_value"])
-                else:
-                    base_data["atk"].append(em["Value"][0]["enemyData"]["attributes"]["atk"]["m_value"])
-
-                if em["Value"][i]["enemyData"]["attributes"]["def"]["m_defined"] == True:
-                    base_data["def"].append(em["Value"][i]["enemyData"]["attributes"]["def"]["m_value"])
-                else:
-                    base_data["def"].append(em["Value"][0]["enemyData"]["attributes"]["def"]["m_value"])
-
-                if em["Value"][i]["enemyData"]["attributes"]["magicResistance"]["m_defined"] == True:
-                    base_data["magRes"].append(em["Value"][i]["enemyData"]["attributes"]["magicResistance"]["m_value"])
-                else:
-                    base_data["magRes"].append(em["Value"][0]["enemyData"]["attributes"]["magicResistance"]["m_value"])
+            variable_param_list = {"maxHp": "maxHp", "atk": "atk", "def": "def", "magicResistance": "magRes"}
+            for v_param in variable_param_list:
+                base_data[variable_param_list[v_param]] = []
+                for i in range(level): 
+                    if em["Value"][i]["enemyData"]["attributes"][v_param]["m_defined"] == True:
+                        base_data[variable_param_list[v_param]].append(em["Value"][i]["enemyData"]["attributes"][v_param]["m_value"])
+                    else:
+                        base_data[variable_param_list[v_param]].append(em["Value"][0]["enemyData"]["attributes"][v_param]["m_value"])
+            
+            # print(base_data["atkTime"])
             # 将 base_data 存入 self.enemy_data
             self.enemy_data[tmp_key] = base_data     
-
+            
     #========================================= 小功能区 ========================================#
     # 伤害类型
     def getDamageMod(self, description: str):
@@ -246,6 +231,7 @@ class EmployeeDataSwitch(object):
                 # 除去： canUseGen..., potentialItemId, nationId, groupId, teamId, tokenKey
                 # itemDesc, itemObt..., isNotObt..., isSpChar, character..., allSkillLvlup
                 base_data["Key"] = tmp_key
+
                 base_data["name"] = tmp_data["name"]
                 base_data["description"] = tmp_data["description"]
                 base_data["displayNum"] = tmp_data["displayNumber"]
@@ -518,7 +504,7 @@ class PreTreated(object):
 if __name__ == "__main__": 
     A = EnemyDataSwitch()
     A.letsEnemySwitch()
-    B = EmployeeDataSwitch()
-    B.letsEmployeeSwitch()
+    # B = EmployeeDataSwitch()
+    # B.letsEmployeeSwitch()
     # C = PreTreated()
     # C.letsPreTreat()

@@ -2,11 +2,11 @@
   <el-container>
     <el-header height="42px">
       <div class="head-name">
-        {{ enemy.name }}
+        {{ $store.state.en.enName }}
       </div>
     </el-header>
     <el-main class="info-main">
-      <BaseInfo :enemy="enemy" :enemyKey="enemy.Key"/>
+      <BaseInfo />
     </el-main>
   </el-container>
 </template>
@@ -16,32 +16,8 @@
 import BaseInfo from './Eninfo/BaseInfo.vue'
 
 export default {
-  data () {
-    return {
-      enemyData: []
-    }
-  },
-  created () {
-    this.getEnemyData()
-  },
   components: {
     BaseInfo
-  },
-  computed: {
-    enemy: function () {
-      for (const en in this.enemyData) {
-        if (this.enemyData[en].name === this.$store.state.en.enName) {
-          return this.enemyData[en]
-        }
-      }
-      return []
-    }
-  },
-  methods: {
-    // 获取数据
-    getEnemyData () {
-      this.enemyData = require('@/assets/data/enemydata.json')
-    }
   }
 }
 </script>

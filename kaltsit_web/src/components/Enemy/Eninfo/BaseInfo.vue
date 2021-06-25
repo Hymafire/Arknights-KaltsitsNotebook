@@ -31,19 +31,20 @@
         <span>射程</span> {{ enemy.rangeRadius }}
       </li>
     </ul>
+    {{ enemy }}
   </div>
 </template>
 
 <script>
 export default {
   name: 'BaseInfo',
-  props: {
-    enemy: Object,
-    enemyKey: String
-  },
   computed: {
+    enemy () {
+      return this.$store.state.en.enData
+    },
     imgUrl: function () {
-      return require('../../../assets/images/enimgs/' + this.enemyKey + '.png')
+      const Key = this.$store.state.en.enKey
+      return require('../../../assets/images/enimgs/' + Key + '.png')
     }
   }
 }

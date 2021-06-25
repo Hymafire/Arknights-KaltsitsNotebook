@@ -26,15 +26,20 @@ export default {
     ControlPanel
   },
   created () {
-    this.initData()
+    this.initEmployeeData()
+    this.initEnemyData()
     this.initLocales()
   },
   methods: {
-    initData () {
+    initEmployeeData () {
       const employeeData = require('./assets/data/employeedata.json')
       this.$store.commit('em/inputEmployeeData', employeeData)
       const skillsData = require('./assets/data/skill_table.json')
       this.$store.commit('em/inputEmSkillsData', skillsData)
+    },
+    initEnemyData () {
+      const enemyData = require('./assets/data/enemydata.json')
+      this.$store.commit('en/inputEnemyData', enemyData)
     },
     initLocales () {
       const localesId = 'cn'
