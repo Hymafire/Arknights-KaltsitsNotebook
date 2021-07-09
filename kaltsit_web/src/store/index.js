@@ -91,6 +91,7 @@ const Enemy = {
     enData: Object,
     enLevel: 0,
     enemyTable: Object,
+    enemyList: null,
     enPretreateData: Object
   },
   mutations: {
@@ -106,6 +107,12 @@ const Enemy = {
     },
     inputEnemyData (state, enemyTable) {
       state.enemyTable = enemyTable
+    },
+    updateEnLevel (state, enLevel) {
+      state.enLevel = enLevel
+    },
+    setEnemyList (state, enemyList) {
+      state.enemyList = enemyList
     }
   }
 }
@@ -149,7 +156,7 @@ const EmCompare = {
 const Locales = {
   namespaced: true,
   state: {
-    localesId: 'cn',
+    localeId: 'cn',
     profList: Object,
     posList: Object
   },
@@ -242,7 +249,7 @@ const CollapseItem = {
 
 export default new Vuex.Store({
   state: {
-    version: 'v0.10.1'
+    version: 'v0.10.2'
   },
   mutations: {
   },

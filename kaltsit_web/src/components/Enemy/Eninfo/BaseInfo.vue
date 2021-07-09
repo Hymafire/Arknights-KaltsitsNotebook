@@ -1,76 +1,107 @@
 <template>
-  <!-- 敌人的基础信息 -->
   <div>
-    <img id="en-img" :src="imgUrl" alt="Worry!"/>
-    <ul>
-      <li>
-        <span>最大血量</span> {{ enemy.maxHp[0] }}
-      </li>
-      <li>
-        <span>攻击</span> {{ enemy.atk[0] }}
-      </li>
-      <li>
-        <span>防御</span> {{ enemy.def[0] }}
-      </li>
-      <li>
-        <span>法抗</span> {{ enemy.magRes[0] }}
-      </li>
-      <li>
-        <span>移速</span> {{ enemy.moveSpd }}
-      </li>
-      <li>
-        <span>攻击间隔</span> {{ enemy.atkTime }}s
-      </li>
-      <li>
-        <span>生命回复</span> {{ enemy.hpRec }}/s
-      </li>
-      <li>
-        <span>重量</span> {{ enemy.massLevel }}
-      </li>
-      <li>
-        <span>射程</span> {{ enemy.rangeRadius }}
-      </li>
-    </ul>
-    {{ enemy }}
+    <div class="baseinfo-container">
+      <img id="en-img" :src="imgUrl" alt="Worry!"/>
+      <div style="display: inline-block">
+        <h2>
+          <span>{{ enData.enemyIndex }}</span>
+          {{ enData.name }}
+        </h2>
+        <h4>{{ enData.enemyRace }}</h4>
+        <div class="class-box">
+          <span>{{ enData.endure }}</span>
+          <span>{{ enData.attack }}</span>
+          <span>{{ enData.defence }}</span>
+          <span>{{ enData.resistance }}</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h4>描述：</h4>
+      <div>{{ enData.description }}</div>
+    </div>
+    <div v-if="enData.ability !== null">
+      <h4>能力：</h4>
+      <div>{{ enData.ability }}</div>
+    </div>
+    <div v-if="enData.talentBlackboard !== null">
+      <h4>天赋：</h4>
+      <div>{{ enData.talentBlackboard }}</div>
+    </div>
+    <div>
+      <h4>属性：</h4>
+      <div class="paraminfo-container">
+        <div v-for="param in showList" :key="param" class="param-box">
+          <h5>{{ enParamList[param] }}</h5>
+          <div>{{ enData[param] }}</div>
+        </div>
+        <div class="immune-box"></div>
+      </div>
+    </div>
+    <div v-if="enData.skills !== null">
+      <h4>技能：</h4>
+      <div>{{ enData.skills }}</div>
+    </div>
+    <hr>
+    <div>{{ enData }}</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'BaseInfo',
+  data () {
+    return {
+      showList: ['maxHp', 'atk', 'def', 'magRes', 'atkTime', 'moveSpd', 'hpRec', 'spRec', 'rangeRadius', 'massLv', 'lifePointReduce']
+    }
+  },
   computed: {
-    enemy () {
+    enData () {
       return this.$store.state.en.enData
     },
     imgUrl: function () {
+      let imgUrl = null
       const Key = this.$store.state.en.enKey
-      return require('../../../assets/images/enimgs/' + Key + '.png')
+      try {
+        imgUrl = require('../../../assets/images/enimgs/' + Key + '.png')
+      } catch {}
+      return imgUrl
+    },
+    enParamList () {
+      const enParamLists = require('../../../assets/locales/en_param_list.json')
+      const local = this.$store.state.loc.localesId
+      return enParamLists[local]
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.baseinfo-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2px;
+}
 #en-img {
   display: inline-block;
   height: 100px;
   width: 100px;
 }
-div {
-  padding: 3px;
-  // 属性标题
-  span {
+h2 {
+  margin-bottom: 3px;
+  span{
+    height: 20px;
+    width: 20px;
+    font-size: 18px;
+    border: 5px solid #ccc;
+  }
+}
+.class-box {
+   span {
     display: inline-block;
-    height: 25px;
-    width: 85px;
-    font-weight: 700;
-    line-height: 25px;
-    text-align: center;
-    background-color: rgba(172, 255, 47, 0.6);
-    border-radius: 2px;
-    box-shadow: 2px 2px 5px -2px rgba(0, 0, 0, 0.3);
-    margin-right: 10px;
-    margin-top: 3px;
+    margin: 0 5px;
+    height: 50px;
+    width: 50px;
+    background-color: #ddd;
   }
 }
 </style>

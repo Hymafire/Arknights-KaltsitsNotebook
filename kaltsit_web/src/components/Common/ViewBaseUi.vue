@@ -21,6 +21,7 @@
 
 <script>
 import SearchList from './SearchList.vue'
+import { generateEnemyList } from '../utils/generateLists.js'
 
 export default {
   data () {
@@ -48,7 +49,12 @@ export default {
   methods: {
     getList () {
       if (this.viewMod === 'enemy') {
-        this.List = require('@/assets/data/enemylist.json')
+        if (this.$store.state.en.enemyList === null) {
+          this.List = generateEnemyList(this.$store.state.en.enemyTable, this.$store.state.loc.localesId)
+          this.$store.commit('en/setEnemyList', this.List)
+        } else {
+          this.List = this.$store.state.en.enemyList
+        }
       } else {
         this.List = require('@/assets/data/employeelist.json')
       }
